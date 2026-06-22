@@ -44,16 +44,18 @@ a{color:inherit}
 
 /* 전국 대표 카드 — 상단 풀폭 강조 (밝은 카드 + 강한 액센트로 헤더와 대비) */
 .feature{margin-top:-56px;position:relative;z-index:2;margin-bottom:36px}
-.feature-card{position:relative;background:var(--card);border:2px solid var(--kk-accent);border-radius:20px;padding:48px 52px 48px 56px;min-height:230px;display:flex;align-items:center;gap:40px;text-decoration:none;box-shadow:0 18px 48px rgba(3,107,63,.16);transition:transform .18s,box-shadow .18s;overflow:hidden}
+.feature-card{position:relative;background:var(--card);border:2px solid var(--kk-accent);border-radius:20px;padding:44px 48px 44px 52px;min-height:230px;display:flex;align-items:center;gap:40px;box-shadow:0 18px 48px rgba(3,107,63,.16);overflow:hidden}
 .feature-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,var(--kk-green),var(--kk-green-light))}
-.feature-card:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(3,107,63,.24)}
 .feature-card .icon{flex-shrink:0;width:104px;height:104px;border-radius:22px;background:linear-gradient(135deg,var(--kk-green),var(--kk-green-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:0 10px 24px rgba(3,107,63,.28)}
 .feature-card .body{flex:1}
 .feature-card .tag{display:inline-block;font-size:12px;font-weight:800;padding:5px 13px;border-radius:7px;background:var(--kk-green);color:#fff;margin-bottom:14px;letter-spacing:.6px}
 .feature-card h2{font-size:30px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px;color:var(--ink)}
 .feature-card p{font-size:15px;color:var(--muted);line-height:1.6;max-width:780px}
-.feature-card .go{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:var(--kk-green);color:#fff;padding:15px 30px;border-radius:11px;font-size:16px;font-weight:700;white-space:nowrap;box-shadow:0 6px 16px rgba(3,107,63,.22)}
-.feature-card:hover .go{background:var(--kk-green-dark)}
+.feature-card .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.feature-card .go{display:inline-flex;align-items:center;gap:8px;background:var(--kk-green);color:#fff;padding:13px 26px;border-radius:11px;font-size:15px;font-weight:700;white-space:nowrap;text-decoration:none;box-shadow:0 6px 16px rgba(3,107,63,.22);transition:.15s}
+.feature-card .go:hover{background:var(--kk-green-dark);transform:translateY(-2px)}
+.feature-card .go.ghost{background:#eafaf1;color:var(--kk-green-dark);box-shadow:none;border:1px solid #cde8d8}
+.feature-card .go.ghost:hover{background:var(--kk-green);color:#fff;border-color:var(--kk-green)}
 @media(max-width:760px){.feature-card{flex-direction:column;align-items:flex-start;padding:32px 28px;gap:22px}.feature-card h2{font-size:24px}}
 
 footer{text-align:center;color:var(--muted);font-size:12.5px;padding:28px 24px 40px;border-top:1px solid var(--border)}
@@ -67,31 +69,34 @@ footer .credit{margin-top:8px;font-weight:600;color:var(--kk-green)}
   <h1>소아비만 연구 · GIS 종합 분석 플랫폼</h1>
   <div class="subtitle">학교 주변 의료환경 · 영유아 소아비만 공간 분석 통합 포털</div>
   <div class="info">
-    <div><span>📊</span><span>전국 시군구 영유아 소아비만을 EHSA(신흥 핫스팟 분석)로 진단합니다.</span></div>
-    <div><span>🗺️</span><span>원주·용인 학교 주변 의료환경을 인터랙티브 지도로 탐색합니다.</span></div>
+    <div><span>📊</span><span>전국 시군구 영유아 소아비만을 EHSA(신흥 핫스팟 분석)로 진단</span></div>
+    <div><span>🗺️</span><span>원주·용인 학교 주변 의료환경을 인터랙티브 지도로 탐색</span></div>
   </div>
 </div>
 
 <div class="wrap">
   <div class="feature">
-    <a class="feature-card" href="./infant_obesity_ehsa/index.html">
+    <div class="feature-card">
       <div class="icon">📊</div>
       <div class="body">
         <span class="tag">전국 · 대표 분석</span>
         <h2>전국 시군구 영유아 소아비만 EHSA</h2>
-        <p>전국 시군구 단위 영유아 소아비만율을 EHSA(Emerging Hot Spot Analysis, 신흥 핫스팟 분석)로 진단합니다. 2012–2024 시계열 공간 패턴과 권역별 핫스팟·콜드스팟 추세를 인터랙티브 지도로 살펴봅니다.</p>
+        <p>전국 시군구 단위 영유아 소아비만율을 EHSA(Emerging Hot Spot Analysis, 신흥 핫스팟 분석)로 진단. 2012–2024 시계열 공간 패턴과 권역별 핫스팟·콜드스팟 추세를 인터랙티브 지도로 확인.</p>
+        <div class="actions">
+          <a class="go" href="./infant_obesity_ehsa/index.html">지도 열기 →</a>
+          <a class="go ghost" href="./infant_obesity_ehsa/gallery.html">결과지도 다운로드 →</a>
+        </div>
       </div>
-      <span class="go">지도 열기 →</span>
-    </a>
+    </div>
   </div>
 
   <div class="maps">
-    <a class="map-card" href="https://changminim.github.io/wonju-school-medical-map/" target="_blank" rel="noopener">
+    <a class="map-card" href="https://changminim.github.io/wonju-school-medical-map/">
       <div class="icon">🗺️</div>
       <span class="tag">원주 · 용인</span>
       <h3>원주·용인 학교 주변 의료환경 지도</h3>
-      <p>원주·용인 학교–의료기관 접근성을 인터랙티브하게 탐색합니다. 진료과 분류, 종별 필터, 반경 요약, 늘봄기관, 학교별 소아비만 추정치, 단계구분도와 2SFCA 접근성까지 한곳에서 확인할 수 있습니다.</p>
-      <span class="go">지도 열기 ↗</span>
+      <p>원주·용인 학교–의료기관 접근성 인터랙티브 탐색. 진료과 분류, 종별 필터, 반경 요약, 늘봄기관, 학교별 소아비만 추정치, 단계구분도와 2SFCA 접근성까지 한곳에서 확인.</p>
+      <span class="go">지도 열기 →</span>
     </a>
   </div>
 </div>

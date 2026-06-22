@@ -37,7 +37,8 @@ header.top a.nav:hover{background:rgba(255,255,255,.15)}
 .result-card h3{font-size:15.5px;font-weight:700;margin-bottom:4px}
 .result-card .meta{font-size:11.5px;color:var(--muted);margin-bottom:10px}
 .result-card .desc{font-size:12.5px;color:#4b5563;line-height:1.45;flex:1;margin-bottom:14px}
-.result-card .dl{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;background:#e8f5ee;color:var(--kk-green);border:1px solid #cde8d8;padding:7px 14px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none}
+.result-card .dls{display:flex;gap:8px;flex-wrap:wrap}
+.result-card .dl{display:inline-flex;align-items:center;gap:6px;background:#e8f5ee;color:var(--kk-green);border:1px solid #cde8d8;padding:7px 14px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none}
 .result-card .dl:hover{background:var(--kk-green);color:#fff;border-color:var(--kk-green)}
 
 .soon{border:1.5px dashed var(--border);border-radius:14px;padding:26px 22px;background:#fbfcfb;color:var(--muted);font-size:13px;line-height:1.6}
@@ -61,8 +62,7 @@ footer .credit{margin-top:8px;font-weight:600;color:var(--kk-green)}
 
 <div class="wrap">
   <div class="intro">
-    ArcGIS EHSA 방식(공간시간 Getis-Ord Gi*, 섬연결 가중, FDR 보정)으로 산출한 권역별 정지도입니다.
-    심볼은 ESRI EHSA 표준(v2)을 따릅니다. 썸네일을 클릭하면 원본이 새 탭으로 열리고, 버튼으로 PNG를 내려받을 수 있습니다.
+    ArcGIS EHSA 방식(공간시간 Getis-Ord Gi*, 섬연결 가중, FDR 보정)으로 산출한 권역별 정지도. 심볼은 ESRI EHSA 표준(v2) 준수. 썸네일 클릭 시 원본 새 탭, 버튼으로 PNG·GIF 다운로드.
   </div>
   <div id="sections"></div>
 </div>
@@ -70,36 +70,55 @@ footer .credit{margin-top:8px;font-weight:600;color:var(--kk-green)}
 <footer>GIS 기반 소아비만 종합 분석 플랫폼 · 데이터 기준 2026<div class="credit">made by 국립공주대학교 임창민</div></footer>
 
 <script>
-// 새 지도(개별 연도별 Gi* 등)는 해당 그룹의 items 배열에 객체만 추가하면 카드가 자동 생성됩니다.
+// 새 지도는 해당 그룹 items 배열에 객체만 추가하면 카드 자동 생성.
+// base=하위 폴더, file=PNG(썸네일·다운로드), gif=애니메이션(선택), meta=설명, desc=상세
+const GI='assets/hotspot_result_by_year/';
 const SECTIONS=[
   {
     title:'권역별 EHSA 종합도', icon:'🗺️',
-    desc:'비만율 · 과체중이상율 · 비만 아동수(규모) 3개 지표의 EHSA 패턴을 한 장에 담은 종합도입니다.',
+    desc:'비만율 · 과체중이상율 · 비만 아동수(규모) 3개 지표 EHSA 패턴을 한 장에 담은 종합도.',
     items:[
-      {file:'region_national_ehsa.png', tag:'전국', name:'전국 EHSA 종합도', size:'360 KB',
-       desc:'전국 기준 시군구 EHSA(비만율·과체중이상율·비만 아동수) 3패널 종합도.'},
-      {file:'region_chungcheong_ehsa.png', tag:'충청권', name:'충청권 EHSA 종합도', size:'216 KB',
-       desc:'충청권 내 비교 기준 시군구 EHSA 3패널 종합도.'},
-      {file:'region_gyeongsang_ehsa.png', tag:'경상권', name:'경상권 EHSA 종합도', size:'219 KB',
-       desc:'경상권 내 비교 기준 시군구 EHSA 3패널 종합도.'},
-      {file:'region_jeolla_ehsa.png', tag:'전라권', name:'전라권 EHSA 종합도', size:'392 KB',
-       desc:'전라권 내 비교 기준 시군구 EHSA 3패널 종합도(내부가 균질해 No Pattern 다수).'}
+      {file:'assets/region_national_ehsa.png', tag:'전국', name:'전국 EHSA 종합도',
+       meta:'3지표 패널 · 클릭 시 원본', desc:'전국 기준 시군구 EHSA(비만율·과체중이상율·비만 아동수) 3패널 종합도.'},
+      {file:'assets/region_chungcheong_ehsa.png', tag:'충청권', name:'충청권 EHSA 종합도',
+       meta:'3지표 패널 · 클릭 시 원본', desc:'충청권 내 비교 기준 시군구 EHSA 3패널 종합도.'},
+      {file:'assets/region_gyeongsang_ehsa.png', tag:'경상권', name:'경상권 EHSA 종합도',
+       meta:'3지표 패널 · 클릭 시 원본', desc:'경상권 내 비교 기준 시군구 EHSA 3패널 종합도.'},
+      {file:'assets/region_jeolla_ehsa.png', tag:'전라권', name:'전라권 EHSA 종합도',
+       meta:'3지표 패널 · 클릭 시 원본', desc:'전라권 내 비교 기준 시군구 EHSA 3패널 종합도(내부 균질해 No Pattern 다수).'}
     ]
   },
   {
-    title:'연도별 Gi* (공간시간) 패널', icon:'📈',
-    desc:'2012–2024 연도별 Getis-Ord Gi* z-score를 연도 패널로 펼친 공간시간 지도입니다.',
+    title:'권역별 연도별 Gi* 지도 (공간시간)', icon:'📈',
+    desc:'2012–2024 연도별 Getis-Ord Gi* z-score 패널. 비만율 기준(전국은 비만 아동수 별도 제공). PNG 패널 + GIF 애니메이션.',
     items:[
-      {file:'region_gyeongsang_giyear.png', tag:'경상권', name:'경상권 연도별 Gi* (비만율)', size:'308 KB',
-       desc:'2012–2024 연도별 비만율 Gi* z (space-time) 패널.'},
-      {file:'region_jeolla_giyear.png', tag:'전라권', name:'전라권 연도별 Gi* (비만율)', size:'503 KB',
-       desc:'2012–2024 연도별 비만율 Gi* z (space-time) 패널.'}
+      {file:GI+'region_national_giyear.png', gif:GI+'region_national_giyear.gif', tag:'전국 · 비만율', name:'전국 연도별 Gi* (비만율)',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'전국 기준 시군구 비만율 Gi* z 연도별 공간시간 패널.'},
+      {file:GI+'region_national_count_giyear.png', gif:GI+'region_national_count_giyear.gif', tag:'전국 · 규모', name:'전국 연도별 Gi* (비만 아동수)',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'전국 기준 비만 아동수(규모) Gi* z 연도별 공간시간 패널.'},
+      {file:GI+'region_capital_giyear.png', gif:GI+'region_capital_giyear.gif', tag:'수도권', name:'수도권 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'수도권 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_seoul_giyear.png', gif:GI+'region_seoul_giyear.gif', tag:'서울', name:'서울 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'서울 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_chungcheong_giyear.png', gif:GI+'region_chungcheong_giyear.gif', tag:'충청권', name:'충청권 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'충청권 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_jeolla_giyear.png', gif:GI+'region_jeolla_giyear.gif', tag:'전라권', name:'전라권 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'전라권 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_jeonbuk_giyear.png', gif:GI+'region_jeonbuk_giyear.gif', tag:'전북', name:'전북 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'전북 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_jeonnam_giyear.png', gif:GI+'region_jeonnam_giyear.gif', tag:'전남', name:'전남 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'전남 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_gyeongsang_giyear.png', gif:GI+'region_gyeongsang_giyear.gif', tag:'경상권', name:'경상권 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'경상권 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_gyeongbuk_giyear.png', gif:GI+'region_gyeongbuk_giyear.gif', tag:'경북', name:'경북 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'경북 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_gyeongnam_giyear.png', gif:GI+'region_gyeongnam_giyear.gif', tag:'경남', name:'경남 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'경남 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_gangwon_giyear.png', gif:GI+'region_gangwon_giyear.gif', tag:'강원', name:'강원 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'강원 내 비교 기준 비만율 Gi* z 연도별 패널.'},
+      {file:GI+'region_jeju_giyear.png', gif:GI+'region_jeju_giyear.gif', tag:'제주', name:'제주 연도별 Gi*',
+       meta:'2012–2024 패널 · PNG/GIF', desc:'제주 내 비교 기준 비만율 Gi* z 연도별 패널.'}
     ]
-  },
-  {
-    title:'개별 연도별 Gi* 지도', icon:'🧭', soon:true,
-    desc:'권역·연도별 개별 Getis-Ord Gi* 지도를 곧 추가합니다.',
-    soonText:'준비 중 — 권역별 · 연도별(2012–2024) 개별 Gi* 지도가 이 섹션에 추가될 예정입니다.'
   }
 ];
 
@@ -108,21 +127,19 @@ SECTIONS.forEach(s=>{
   const n=s.items?s.items.length:0;
   let h='<div class="section-title">'+s.icon+' '+s.title+(n?' <span class="cnt">· '+n+'종</span>':'')+'</div>';
   if(s.desc)h+='<div class="section-desc">'+s.desc+'</div>';
-  if(s.soon){
-    h+='<div class="soon"><b>곧 추가</b> · '+s.soonText+'</div>';
-  }else{
-    h+='<div class="results">'+s.items.map(it=>{
-      const dlname=it.name.replace(/[ ·()]+/g,'_')+'.png';
-      return '<div class="result-card">'+
-        '<a class="thumb" href="assets/'+it.file+'" target="_blank" rel="noopener"><img src="assets/'+it.file+'" alt="'+it.name+'" loading="lazy"></a>'+
-        '<div class="body"><span class="tag">'+it.tag+'</span>'+
-        '<h3>'+it.name+'</h3>'+
-        '<div class="meta">'+it.size+' · 클릭 시 원본</div>'+
-        '<div class="desc">'+it.desc+'</div>'+
-        '<a class="dl" href="assets/'+it.file+'" download="'+dlname+'">⬇ PNG 다운로드</a>'+
-        '</div></div>';
-    }).join('')+'</div>';
-  }
+  h+='<div class="results">'+s.items.map(it=>{
+    const base=it.name.replace(/[ ·()]+/g,'_');
+    const gif=it.gif?'<a class="dl" href="'+it.gif+'" download="'+base+'.gif">⬇ GIF 애니메이션</a>':'';
+    return '<div class="result-card">'+
+      '<a class="thumb" href="'+it.file+'" target="_blank" rel="noopener"><img src="'+it.file+'" alt="'+it.name+'" loading="lazy"></a>'+
+      '<div class="body"><span class="tag">'+it.tag+'</span>'+
+      '<h3>'+it.name+'</h3>'+
+      '<div class="meta">'+it.meta+'</div>'+
+      '<div class="desc">'+it.desc+'</div>'+
+      '<div class="dls">'+
+        '<a class="dl" href="'+it.file+'" download="'+base+'.png">⬇ PNG 다운로드</a>'+gif+
+      '</div></div></div>';
+  }).join('')+'</div>';
   root.insertAdjacentHTML('beforeend',h);
 });
 </script>

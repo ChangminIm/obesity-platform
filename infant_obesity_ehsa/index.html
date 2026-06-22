@@ -107,8 +107,11 @@
     <div class="legend" id="legend"></div>
 
     <details class="more" open>
-      <summary id="candTitle">권역 후보지(상대 핫스팟)</summary>
-      <div class="cand" id="cand"></div>
+      <summary>범례 설명 · EHSA 패턴</summary>
+      <div class="cand" id="legendHelp"></div>
+    </details>
+    <details class="more">
+      <summary>분석 방법</summary>
       <div class="note" id="note"></div>
     </details>
   </aside>
@@ -142,10 +145,10 @@ function symHTML(cat){
 }
 function txtcol(c){const n=parseInt(c.slice(1),16),r=n>>16,g=(n>>8)&255,bl=n&255;return (0.299*r+0.587*g+0.114*bl)>150?'#222':'#fff';}
 const EHSA_KO={
- 'Persistent Hot':'지속 핫','Intensifying Hot':'심화 핫','Consecutive Hot':'연속 핫','New Hot':'신규 핫',
- 'Diminishing Hot':'감소 핫','Sporadic Hot':'산발 핫','Oscillating Hot':'진동 핫','Historical Hot':'과거 핫',
- 'Persistent Cold':'지속 콜드','Intensifying Cold':'심화 콜드','Consecutive Cold':'연속 콜드','New Cold':'신규 콜드',
- 'Diminishing Cold':'감소 콜드','Sporadic Cold':'산발 콜드','Oscillating Cold':'진동 콜드','Historical Cold':'과거 콜드','No Pattern':'패턴 없음'};
+ 'Persistent Hot':'지속 핫스팟 (Persistent Hot Spot)','Intensifying Hot':'심화 핫스팟 (Intensifying Hot Spot)','Consecutive Hot':'연속 핫스팟 (Consecutive Hot Spot)','New Hot':'신규 핫스팟 (New Hot Spot)',
+ 'Diminishing Hot':'감소 핫스팟 (Diminishing Hot Spot)','Sporadic Hot':'산발 핫스팟 (Sporadic Hot Spot)','Oscillating Hot':'진동 핫스팟 (Oscillating Hot Spot)','Historical Hot':'과거 핫스팟 (Historical Hot Spot)',
+ 'Persistent Cold':'지속 콜드스팟 (Persistent Cold Spot)','Intensifying Cold':'심화 콜드스팟 (Intensifying Cold Spot)','Consecutive Cold':'연속 콜드스팟 (Consecutive Cold Spot)','New Cold':'신규 콜드스팟 (New Cold Spot)',
+ 'Diminishing Cold':'감소 콜드스팟 (Diminishing Cold Spot)','Sporadic Cold':'산발 콜드스팟 (Sporadic Cold Spot)','Oscillating Cold':'진동 콜드스팟 (Oscillating Cold Spot)','Historical Cold':'과거 콜드스팟 (Historical Cold Spot)','No Pattern':'패턴 없음 (No Pattern)'};
 const YEARS=EHSA_DATA.years;
 const REGION_KEYS=Object.keys(EHSA_DATA.regions);
 const CAND_TXT={"전국": "<b>비율 핫스팟(비만율):</b> 강릉시 <span style='color:#b00'>(Persistent Hot)</span>, 정선군 <span style='color:#b00'>(Persistent Hot)</span>, 평창군 <span style='color:#b00'>(Persistent Hot)</span>, 봉화군 <span style='color:#b00'>(Sporadic Hot)</span>, 진도군 <span style='color:#b00'>(Consecutive Hot)</span>, 영월군 <span style='color:#b00'>(Sporadic Hot)</span><br><b>규모 거점(2024 비만 아동수):</b> 화성시(603명), 남양주시(396명), 평택시(392명), 서구(350명), 시흥시(350명)", "수도권": "<b>비율 핫스팟(비만율):</b> 동두천시 <span style='color:#b00'>(Persistent Hot)</span>, 포천시 <span style='color:#b00'>(Persistent Hot)</span>, 연천군 <span style='color:#b00'>(Persistent Hot)</span>, 안산시 단원구 <span style='color:#b00'>(Consecutive Hot)</span>, 옹진군 <span style='color:#b00'>(Consecutive Hot)</span>, 양주시 <span style='color:#b00'>(Persistent Hot)</span><br><b>규모 거점(2024 비만 아동수):</b> 화성시(603명), 남양주시(396명), 평택시(392명), 서구(350명), 시흥시(350명)", "서울": "<b>비율 핫스팟(비만율):</b> 금천구 <span style='color:#b00'>(Consecutive Hot)</span><br><b>규모 거점(2024 비만 아동수):</b> 송파구(165명), 강동구(165명), 강서구(161명), 구로구(136명), 노원구(135명)", "충청권": "<b>비율 핫스팟(비만율):</b> 옥천군 <span style='color:#b00'>(Sporadic Hot)</span>, 영동군 <span style='color:#b00'>(Sporadic Hot)</span><br><b>규모 거점(2024 비만 아동수):</b> 아산시(241명), 천안시 서북구(228명), 세종시(186명), 서구(169명), 유성구(157명)", "전북": "<b>비율:</b> 권역 내 유의 핫 군집 없음 — 내부가 균질해 No Pattern 다수<br><b>규모 거점(2024 비만 아동수):</b> 전주시 덕진구(143명), 군산시(140명), 익산시(136명), 전주시 완산구(124명), 완주군(46명)", "전남": "<b>비율:</b> 권역 내 유의 핫 군집 없음 — 내부가 균질해 No Pattern 다수<br><b>규모 거점(2024 비만 아동수):</b> 광산구(241명), 북구(182명), 순천시(148명), 목포시(142명), 여수시(137명)", "전라권": "<b>비율:</b> 권역 내 유의 핫 군집 없음 — 내부가 균질해 No Pattern 다수<br><b>규모 거점(2024 비만 아동수):</b> 광산구(241명), 북구(182명), 순천시(148명), 전주시 덕진구(143명), 목포시(142명)", "경북": "<b>비율 핫스팟(비만율):</b> 영양군 <span style='color:#b00'>(New Hot)</span>, 울진군 <span style='color:#b00'>(Sporadic Hot)</span>, 청송군 <span style='color:#b00'>(Consecutive Hot)</span>, 영덕군 <span style='color:#b00'>(New Hot)</span><br><b>규모 거점(2024 비만 아동수):</b> 구미시(273명), 달성군(226명), 달서구(199명), 북구(184명), 포항시 북구(151명)", "경남": "<b>비율:</b> 권역 내 유의 핫 군집 없음 — 내부가 균질해 No Pattern 다수<br><b>규모 거점(2024 비만 아동수):</b> 김해시(279명), 양산시(217명), 북구(180명), 진주시(178명), 울주군(146명)", "경상권": "<b>비율 핫스팟(비만율):</b> 청송군 <span style='color:#b00'>(Sporadic Hot)</span>, 영양군 <span style='color:#b00'>(Sporadic Hot)</span>, 영덕군 <span style='color:#b00'>(Sporadic Hot)</span>, 울진군 <span style='color:#b00'>(Sporadic Hot)</span>, 포항시 북구 <span style='color:#b00'>(Sporadic Hot)</span>, 안동시 <span style='color:#b00'>(Sporadic Hot)</span><br><b>규모 거점(2024 비만 아동수):</b> 김해시(279명), 구미시(273명), 달성군(226명), 양산시(217명), 달서구(199명)", "강원": "<b>비율:</b> 권역 내 유의 핫 군집 없음 — 내부가 균질해 No Pattern 다수<br><b>규모 거점(2024 비만 아동수):</b> 원주시(177명), 춘천시(127명), 강릉시(125명), 속초시(58명), 동해시(53명)", "제주": "<b>비율:</b> 권역 내 유의 핫 군집 없음 — 내부가 균질해 No Pattern 다수<br><b>규모 거점(2024 비만 아동수):</b> 제주시(307명), 서귀포시(90명)"};
@@ -213,15 +216,25 @@ function updateLegend(){
   }else{
     const present=new Set();
     Object.values(EHSA_DATA.regions[state.region].units).forEach(x=>present.add(x['ehsa_'+state.ind]));
-    const block=(title,arr)=>'<div class="grp">'+title+'</div><div class="rows">'+arr.map(c=>
+    const block=(title,arr)=>'<div class="grp">'+title+'</div><div class="rows one">'+arr.map(c=>
       '<div class="row'+(present.has(c)?'':' absent')+'" title="'+c+'">'+symHTML(c)+'<span class="lb">'+EHSA_KO[c]+'</span></div>').join('')+'</div>';
     el.innerHTML=block('HOT SPOT',EHSA_ORDER_HOT)+block('COLD SPOT',EHSA_ORDER_COLD)
       +'<div class="grp">기타</div><div class="rows one"><div class="row'+(present.has('No Pattern')?'':' absent')+'" title="No Pattern">'+symHTML('No Pattern')+'<span class="lb">'+EHSA_KO['No Pattern']+' (No Pattern)</span></div></div>';
   }
 }
+// EHSA 패턴 9개 개념 정의 (핫스팟=상위 군집, 콜드스팟=하위 군집 공통) · 개조식
+const LEGEND_HELP=
+  '<div style="color:var(--mut);margin-bottom:6px">시공간 Gi* 시계열을 분류한 패턴. 핫스팟·콜드스팟 공통 적용.</div>'+
+  '<b>신규(New)</b> 최근 연도에 처음 유의해진 군집<br>'+
+  '<b>연속(Consecutive)</b> 최근 수년 끊김 없이 유의<br>'+
+  '<b>지속(Persistent)</b> 전 기간 대부분 유의한 군집<br>'+
+  '<b>심화(Intensifying)</b> 군집 강도가 갈수록 강해짐<br>'+
+  '<b>감소(Diminishing)</b> 군집 강도가 갈수록 약해짐<br>'+
+  '<b>산발(Sporadic)</b> 유의·비유의가 간헐 반복<br>'+
+  '<b>진동(Oscillating)</b> 핫스팟↔콜드스팟 전환 이력<br>'+
+  '<b>과거(Historical)</b> 과거엔 유의, 최근은 비유의<br>'+
+  '<b>패턴 없음(No Pattern)</b> 유의한 시공간 패턴 없음';
 function updatePanel(){
-  document.getElementById('candTitle').textContent = state.region==='전국' ? '전국 상위 핫스팟' : '권역 후보지(상대 핫스팟)';
-  document.getElementById('cand').innerHTML=CAND_TXT[state.region]||'';
   document.getElementById('note').innerHTML=NOTE_TXT[state.region]||'';
   document.getElementById('yearbox').style.display=state.mode==='hot'?'block':'none';
 }
@@ -259,6 +272,7 @@ document.querySelectorAll('#ind button').forEach(b=>b.onclick=()=>{
   state.ind=b.dataset.i;refresh();});
 document.getElementById('yr').oninput=e=>{state.yi=+e.target.value;document.getElementById('yrnow').textContent=YEARS[state.yi];refresh();};
 
+document.getElementById('legendHelp').innerHTML=LEGEND_HELP;
 buildLayer();updateLegend();updatePanel();
 </script>
 </body>
