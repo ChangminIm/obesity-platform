@@ -62,7 +62,9 @@ footer .credit{margin-top:8px;font-weight:600;color:var(--kk-green)}
 
 <div class="wrap">
   <div class="intro">
-    ArcGIS EHSA 방식(공간시간 Getis-Ord Gi*, 섬연결 가중, FDR 보정)으로 산출한 권역별 정지도. 심볼은 ESRI EHSA 표준(v2) 준수. 썸네일 클릭 시 원본 새 탭, 버튼으로 PNG·GIF 다운로드.
+    - ArcGIS EHSA 방식(공간시간 Getis-Ord Gi*, 섬연결 가중, FDR 보정) 산출 권역별 정지도<br>
+    - 심볼은 ESRI EHSA 표준(v2) 준수<br>
+    - 썸네일 클릭 시 원본 새 탭, 버튼으로 PNG·GIF 다운로드
   </div>
   <div id="sections"></div>
 </div>
@@ -76,7 +78,7 @@ const GI='assets/hotspot_result_by_year/';
 const SECTIONS=[
   {
     title:'권역별 EHSA 종합도', icon:'🗺️',
-    desc:'비만율 · 과체중이상율 · 비만 아동수(규모) 3개 지표 EHSA 패턴을 한 장에 담은 종합도.',
+    desc:'- 비만율·과체중이상율·비만 아동수(규모) 3개 지표 EHSA 패턴을 한 장에 담은 종합도',
     items:[
       {file:'assets/region_national_ehsa.png', tag:'전국', name:'전국 EHSA 종합도',
        meta:'3지표 패널 · 클릭 시 원본', desc:'전국 기준 시군구 EHSA(비만율·과체중이상율·비만 아동수) 3패널 종합도.'},
@@ -90,7 +92,7 @@ const SECTIONS=[
   },
   {
     title:'권역별 연도별 Gi* 지도 (공간시간)', icon:'📈',
-    desc:'2012–2024 연도별 Getis-Ord Gi* z-score 패널. 비만율 기준(전국은 비만 아동수 별도 제공). PNG 패널 + GIF 애니메이션.',
+    desc:'- 2012–2024 연도별 Getis-Ord Gi* z-score 패널<br>- 비만율 기준(전국은 비만 아동수 별도 제공)<br>- PNG 패널 + GIF 애니메이션',
     items:[
       {file:GI+'region_national_giyear.png', gif:GI+'region_national_giyear.gif', tag:'전국 · 비만율', name:'전국 연도별 Gi* (비만율)',
        meta:'2012–2024 패널 · PNG/GIF', desc:'전국 기준 시군구 비만율 Gi* z 연도별 공간시간 패널.'},
@@ -135,7 +137,7 @@ SECTIONS.forEach(s=>{
       '<div class="body"><span class="tag">'+it.tag+'</span>'+
       '<h3>'+it.name+'</h3>'+
       '<div class="meta">'+it.meta+'</div>'+
-      '<div class="desc">'+it.desc+'</div>'+
+      '<div class="desc">- '+it.desc.replace(/\.$/,'')+'</div>'+
       '<div class="dls">'+
         '<a class="dl" href="'+it.file+'" download="'+base+'.png">⬇ PNG 다운로드</a>'+gif+
       '</div></div></div>';

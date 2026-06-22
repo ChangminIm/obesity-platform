@@ -220,16 +220,16 @@ function updateLegend(){
 }
 // EHSA 패턴 9개 개념 정의 (핫스팟=상위 군집, 콜드스팟=하위 군집 공통) · 개조식
 const LEGEND_HELP=
-  '<div style="color:var(--mut);margin-bottom:6px">시공간 Gi* 시계열을 분류한 패턴. 핫스팟·콜드스팟 공통 적용.</div>'+
-  '<b>신규(New)</b> 최근 연도에 처음 유의해진 군집<br>'+
-  '<b>연속(Consecutive)</b> 최근 수년 끊김 없이 유의<br>'+
-  '<b>지속(Persistent)</b> 전 기간 대부분 유의한 군집<br>'+
-  '<b>심화(Intensifying)</b> 군집 강도가 갈수록 강해짐<br>'+
-  '<b>감소(Diminishing)</b> 군집 강도가 갈수록 약해짐<br>'+
-  '<b>산발(Sporadic)</b> 유의·비유의가 간헐 반복<br>'+
-  '<b>진동(Oscillating)</b> 핫스팟↔콜드스팟 전환 이력<br>'+
-  '<b>과거(Historical)</b> 과거엔 유의, 최근은 비유의<br>'+
-  '<b>패턴 없음(No Pattern)</b> 유의한 시공간 패턴 없음';
+  '<div style="color:var(--mut);margin-bottom:6px">시공간 Gi* 시계열 분류 패턴 · 핫스팟·콜드스팟 공통 적용</div>'+
+  '- <b>신규(New)</b> 최근 연도에 처음 유의해진 군집<br>'+
+  '- <b>연속(Consecutive)</b> 최근 수년 끊김 없이 유의<br>'+
+  '- <b>지속(Persistent)</b> 전 기간 대부분 유의한 군집<br>'+
+  '- <b>심화(Intensifying)</b> 군집 강도가 갈수록 강해짐<br>'+
+  '- <b>감소(Diminishing)</b> 군집 강도가 갈수록 약해짐<br>'+
+  '- <b>산발(Sporadic)</b> 유의·비유의가 간헐 반복<br>'+
+  '- <b>진동(Oscillating)</b> 핫스팟↔콜드스팟 전환 이력<br>'+
+  '- <b>과거(Historical)</b> 과거엔 유의, 최근은 비유의<br>'+
+  '- <b>패턴 없음(No Pattern)</b> 유의한 시공간 패턴 없음';
 function updatePanel(){
   document.getElementById('legendHelpBox').style.display=state.mode==='ehsa'?'block':'none';
   document.getElementById('yearbox').style.display=state.mode==='hot'?'block':'none';
