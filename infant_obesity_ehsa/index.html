@@ -85,8 +85,8 @@
 
     <h2>분석 모드</h2>
     <div class="seg" id="mode">
-      <button data-m="hot" class="on">연도별 핫스팟(Gi*)</button>
-      <button data-m="ehsa">EHSA 패턴</button>
+      <button data-m="hot" class="on">Getis-Ord 핫스팟 분석(연도별)</button>
+      <button data-m="ehsa">Emerging Hotspot Analysis(EHSA)</button>
     </div>
 
     <h2>지표</h2>
@@ -106,13 +106,9 @@
     <h2>범례</h2>
     <div class="legend" id="legend"></div>
 
-    <details class="more" open>
-      <summary>범례 설명 · EHSA 패턴</summary>
+    <details class="more" id="legendHelpBox" open>
+      <summary>범례 설명 · Emerging Hotspot Analysis(EHSA)</summary>
       <div class="cand" id="legendHelp"></div>
-    </details>
-    <details class="more">
-      <summary>분석 방법</summary>
-      <div class="note" id="note"></div>
     </details>
   </aside>
   <div id="map"></div>
@@ -210,8 +206,8 @@ function refresh(){
 function updateLegend(){
   const el=document.getElementById('legend');
   if(state.mode==='hot'){
-    const items=[['#991b1b','매우 강한 핫 (z≥2.58)'],['#dc2626','강한 핫 (z≥1.96)'],['#f87171','핫 (z≥1.645)'],
-      ['#e2e8f0','유의하지 않음'],['#93c5fd','콜드 (90%)'],['#2563eb','강한 콜드 (95%)'],['#1e40af','매우 강한 콜드 (99%)']];
+    const items=[['#991b1b','매우 강한 핫스팟 (z≥2.58)'],['#dc2626','강한 핫스팟 (z≥1.96)'],['#f87171','핫스팟 (z≥1.645)'],
+      ['#e2e8f0','유의하지 않음'],['#93c5fd','콜드스팟 (90%)'],['#2563eb','강한 콜드스팟 (95%)'],['#1e40af','매우 강한 콜드스팟 (99%)']];
     el.innerHTML='<div class="rows one">'+items.map(i=>'<div class="row"><span class="sw" style="background:'+i[0]+'"></span><span class="lb">'+i[1]+'</span></div>').join('')+'</div>';
   }else{
     const present=new Set();
@@ -235,7 +231,7 @@ const LEGEND_HELP=
   '<b>과거(Historical)</b> 과거엔 유의, 최근은 비유의<br>'+
   '<b>패턴 없음(No Pattern)</b> 유의한 시공간 패턴 없음';
 function updatePanel(){
-  document.getElementById('note').innerHTML=NOTE_TXT[state.region]||'';
+  document.getElementById('legendHelpBox').style.display=state.mode==='ehsa'?'block':'none';
   document.getElementById('yearbox').style.display=state.mode==='hot'?'block':'none';
 }
 
