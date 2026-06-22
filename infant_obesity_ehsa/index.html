@@ -60,7 +60,28 @@
   .leaflet-popup-content .nm{font-weight:700;color:var(--kk-d);font-size:14px}
   .leaflet-popup-content .kv{color:var(--mut)}
   .badge{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11.5px;color:#fff;margin-top:3px}
-  @media(max-width:760px){.wrap{flex-direction:column;height:auto}.panel{width:100%;border-right:0;border-bottom:1px solid var(--line)}#map{height:62vh}}
+  /* 우측 지역 상세 패널 */
+  .detail{width:330px;min-width:300px;background:#fff;border-left:1px solid var(--line);padding:18px;overflow-y:auto}
+  .detail h2{font-size:13px;color:var(--kk-d);margin:0 0 8px;font-weight:700}
+  .search{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;margin-bottom:12px}
+  .search:focus{outline:none;border-color:var(--kk)}
+  .detail .ph{color:var(--mut);font-size:12.5px;line-height:1.6}
+  .dhead{font-size:17px;font-weight:800;color:var(--kk-d);margin-bottom:4px}
+  .dhead .sido{font-size:12px;color:var(--mut);font-weight:500;margin-left:6px}
+  .ind-block{border-top:1px solid var(--line);padding:11px 0}
+  .ind-block.active{background:var(--kk-l);margin:0 -10px;padding:11px 10px;border-radius:8px;border-top:0}
+  .ind-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+  .ind-name{font-size:13px;font-weight:700}
+  .ehsa-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap}
+  .tl{display:grid;grid-template-columns:repeat(13,1fr);gap:2px;margin:4px 0 1px}
+  .tl .cell{aspect-ratio:1/1;border-radius:2px;border:1px solid rgba(0,0,0,.07)}
+  .tl .cell.cur{outline:2px solid var(--kk-d);outline-offset:0;z-index:1}
+  .tlyears{display:flex;justify-content:space-between;font-size:9.5px;color:var(--mut);margin-bottom:5px}
+  .dsum{font-size:11.5px;color:#4b5563;line-height:1.55}
+  .dsum b{color:var(--kk-d)}
+  .dsum .hot{color:var(--hot);font-weight:700}
+  .dsum .cold{color:var(--cold);font-weight:700}
+  @media(max-width:760px){.wrap{flex-direction:column;height:auto}.panel,.detail{width:100%;border-right:0;border-left:0;border-bottom:1px solid var(--line)}#map{height:62vh}}
 </style>
 </head>
 <body>
@@ -112,6 +133,12 @@
     </details>
   </aside>
   <div id="map"></div>
+  <aside class="detail">
+    <h2>지역 상세 · 한눈에</h2>
+    <input id="search" class="search" type="search" list="sggList" placeholder="시군구 검색…" autocomplete="off">
+    <datalist id="sggList"></datalist>
+    <div id="detailBody"></div>
+  </aside>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -187,14 +214,71 @@ function popupHtml(f){
 }
 function avg(a){const v=a.filter(x=>x!=null);return v.length?(v.reduce((s,x)=>s+x,0)/v.length).toFixed(1):'-';}
 
+// ── 지역 상세 패널 ──
+let selected=null, searchMap={};
+const IND_DEFS=[['ob','비만율','%'],['ow','과체중이상율','%'],['cnt','비만 아동수','명']];
+function rangeText(ys){
+  if(!ys.length)return '없음';
+  const r=[];let s=ys[0],p=ys[0];
+  for(let i=1;i<ys.length;i++){if(ys[i]===p+1)p=ys[i];else{r.push(s===p?''+s:s+'–'+p);s=p=ys[i];}}
+  r.push(s===p?''+s:s+'–'+p);
+  return r.join(', ')+' ('+ys.length+'개년)';
+}
+function highlightSelected(){
+  if(!layer)return;
+  layer.eachLayer(l=>{const sel=selected===l.feature.properties.sgg;
+    l.setStyle({weight:sel?3:0.8,color:sel?'#111':'#555'}); if(sel)l.bringToFront();});
+}
+function selectUnit(code){
+  const body=document.getElementById('detailBody');
+  const u=code&&EHSA_DATA.regions[state.region].units[code];
+  if(!u){selected=null;body.innerHTML='<div class="ph">지도에서 시군구를 클릭하거나 위 검색창에서 시군구를 선택하세요. 선택 지역의 지표별·연도별 핫스팟/콜드스팟 이력과 EHSA 분류가 한눈에 표시됩니다.</div>';highlightSelected();return;}
+  selected=code;
+  const lastI=YEARS.length-1;
+  let h='<div class="dhead">'+u.name+'<span class="sido">'+u.sido+'</span></div>';
+  IND_DEFS.forEach(([k,label,unit])=>{
+    const z=u['gi_'+k], val=u[k], cat=u['ehsa_'+k], col=EHSA_COL[cat]||'#999';
+    let cells='';
+    for(let i=0;i<YEARS.length;i++)
+      cells+='<div class="cell'+(i===state.yi?' cur':'')+'" style="background:'+giColor(z[i])+'" title="'+YEARS[i]+' · '+(val[i]==null?'-':val[i]+unit)+' · z='+z[i].toFixed(2)+'"></div>';
+    const hotY=YEARS.filter((y,i)=>z[i]>=1.645), coldY=YEARS.filter((y,i)=>z[i]<=-1.645);
+    h+='<div class="ind-block'+(k===state.ind?' active':'')+'">'+
+      '<div class="ind-head"><span class="ind-name">'+label+'</span>'+
+        '<span class="ehsa-badge" style="background:'+col+';color:'+txtcol(col)+'">'+EHSA_KO[cat]+'</span></div>'+
+      '<div class="tl">'+cells+'</div>'+
+      '<div class="tlyears"><span>'+YEARS[0]+'</span><span>'+YEARS[lastI]+'</span></div>'+
+      '<div class="dsum"><span class="hot">핫스팟</span> '+rangeText(hotY)+'<br>'+
+        '<span class="cold">콜드스팟</span> '+rangeText(coldY)+'<br>'+
+        '최신('+YEARS[lastI]+') <b>'+(val[lastI]==null?'-':val[lastI]+unit)+'</b> · z='+z[lastI].toFixed(2)+'</div>'+
+    '</div>';
+  });
+  body.innerHTML=h;
+  highlightSelected();
+}
+function buildSearchIndex(){
+  const u=EHSA_DATA.regions[state.region].units;
+  searchMap={};
+  document.getElementById('sggList').innerHTML=Object.keys(u).map(code=>{
+    const lab=u[code].name+' ('+u[code].sido+')'; searchMap[lab]=code;
+    return '<option value="'+lab+'"></option>';
+  }).join('');
+  document.getElementById('search').value='';
+}
+function flyToUnit(code){
+  if(!layer)return;
+  layer.eachLayer(l=>{if(l.feature.properties.sgg===code){try{map.fitBounds(l.getBounds(),{maxZoom:10,padding:[40,40]});}catch(e){}l.openPopup();}});
+}
+
 function buildLayer(){
   if(layer)map.removeLayer(layer);
   layer=L.geoJSON(EHSA_GEO,{
     filter:f=>!!EHSA_DATA.regions[state.region].units[f.properties.sgg],
     style:styleOf,
     onEachFeature:(f,l)=>{const u=unitOf(f);l.bindTooltip(u?u.name:'',{sticky:true});l.bindPopup(popupHtml(f));
+      const sgg=f.properties.sgg;
       l.on('mouseover',()=>l.setStyle({weight:2,color:'#111'}));
-      l.on('mouseout',()=>l.setStyle({weight:0.8,color:'#555'}));}
+      l.on('mouseout',()=>{const sel=selected===sgg;l.setStyle({weight:sel?3:0.8,color:sel?'#111':'#555'});});
+      l.on('click',()=>selectUnit(sgg));}
   }).addTo(map);
   try{map.fitBounds(layer.getBounds(),{padding:[20,20]});}catch(e){}
 }
@@ -202,6 +286,7 @@ function refresh(){
   layer.setStyle(styleOf);
   layer.eachLayer(l=>{l.setPopupContent(popupHtml(l.feature));});
   updateLegend();
+  if(selected)selectUnit(selected); else highlightSelected();
 }
 function updateLegend(){
   const el=document.getElementById('legend');
@@ -256,10 +341,15 @@ function setRegion(k){
   natBtn.classList.toggle('on',k==='전국');
   if(k==='전국'){regionDD.value='';regionDD.classList.add('dim');}
   else{regionDD.value=k;regionDD.classList.remove('dim');}
-  buildLayer();updateLegend();updatePanel();
+  selected=null;
+  buildLayer();updateLegend();updatePanel();buildSearchIndex();selectUnit(null);
 }
 natBtn.onclick=()=>setRegion('전국');
 regionDD.onchange=()=>{if(regionDD.value)setRegion(regionDD.value);};
+document.getElementById('search').addEventListener('change',e=>{
+  const code=searchMap[e.target.value];
+  if(code){selectUnit(code);flyToUnit(code);}
+});
 document.querySelectorAll('#mode button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#mode button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
   state.mode=b.dataset.m;updatePanel();refresh();});
@@ -269,7 +359,7 @@ document.querySelectorAll('#ind button').forEach(b=>b.onclick=()=>{
 document.getElementById('yr').oninput=e=>{state.yi=+e.target.value;document.getElementById('yrnow').textContent=YEARS[state.yi];refresh();};
 
 document.getElementById('legendHelp').innerHTML=LEGEND_HELP;
-buildLayer();updateLegend();updatePanel();
+buildLayer();updateLegend();updatePanel();buildSearchIndex();selectUnit(null);
 </script>
 </body>
 </html>
