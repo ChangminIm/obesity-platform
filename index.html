@@ -51,12 +51,12 @@ a{color:inherit}
 .feature-card .tag{display:inline-block;font-size:12px;font-weight:800;padding:5px 13px;border-radius:7px;background:var(--kk-green);color:#fff;margin-bottom:14px;letter-spacing:.6px}
 .feature-card h2{font-size:30px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px;color:var(--ink)}
 .feature-card p{font-size:15px;color:var(--muted);line-height:1.6;max-width:780px}
-.feature-card .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-.feature-card .go{display:inline-flex;align-items:center;gap:8px;background:var(--kk-green);color:#fff;padding:13px 26px;border-radius:11px;font-size:15px;font-weight:700;white-space:nowrap;text-decoration:none;box-shadow:0 6px 16px rgba(3,107,63,.22);transition:.15s}
+.feature-card .actions{flex-shrink:0;display:flex;flex-direction:column;gap:10px;align-self:center;align-items:stretch}
+.feature-card .go{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--kk-green);color:#fff;padding:13px 26px;border-radius:11px;font-size:15px;font-weight:700;white-space:nowrap;text-decoration:none;box-shadow:0 6px 16px rgba(3,107,63,.22);transition:.15s}
 .feature-card .go:hover{background:var(--kk-green-dark);transform:translateY(-2px)}
 .feature-card .go.ghost{background:#eafaf1;color:var(--kk-green-dark);box-shadow:none;border:1px solid #cde8d8}
 .feature-card .go.ghost:hover{background:var(--kk-green);color:#fff;border-color:var(--kk-green)}
-@media(max-width:760px){.feature-card{flex-direction:column;align-items:flex-start;padding:32px 28px;gap:22px}.feature-card h2{font-size:24px}}
+@media(max-width:760px){.feature-card{flex-direction:column;align-items:flex-start;padding:32px 28px;gap:22px}.feature-card h2{font-size:24px}.feature-card .actions{align-self:stretch;flex-direction:row;width:100%}.feature-card .actions .go{flex:1}}
 
 /* 아이콘 불릿 리스트 (원주·용인 스타일) */
 .flist{display:flex;flex-direction:column;gap:8px}
@@ -97,10 +97,10 @@ footer .credit{margin-top:8px;font-weight:600;color:var(--kk-green)}
           <div class="li"><span class="ic">🔥</span><span>발생 핫스팟 분석 (EHSA, Emerging Hot Spot Analysis)으로 시공간 패턴 진단</span></div>
           <div class="li"><span class="ic">🗺️</span><span>권역별 핫스팟·콜드스팟 추세 인터랙티브 지도·결과지도 제공</span></div>
         </div>
-        <div class="actions">
-          <a class="go" href="./infant_obesity_ehsa/index.html">지도 열기 →</a>
-          <a class="go ghost" href="./infant_obesity_ehsa/gallery.html">결과지도 다운로드 →</a>
-        </div>
+      </div>
+      <div class="actions">
+        <a class="go" href="./infant_obesity_ehsa/index.html">지도 열기 →</a>
+        <a class="go ghost" href="./infant_obesity_ehsa/gallery.html">결과지도 다운로드 →</a>
       </div>
     </div>
   </div>
