@@ -81,7 +81,7 @@
   .dsum b{color:var(--kk-d)}
   .dsum .hot{color:var(--hot);font-weight:700}
   .dsum .cold{color:var(--cold);font-weight:700}
-  @media(max-width:760px){.wrap{flex-direction:column;height:auto}.panel,.detail{width:100%;border-right:0;border-left:0;border-bottom:1px solid var(--line)}#map{height:62vh}}
+  @media(max-width:760px){.wrap{flex-direction:column;height:auto}.panel,.detail{width:100%;border-right:0;border-left:0;border-bottom:1px solid var(--line)}#map{flex:none;height:70vh;min-height:440px;order:-1}}
 </style>
 </head>
 <body>
@@ -360,6 +360,11 @@ document.getElementById('yr').oninput=e=>{state.yi=+e.target.value;document.getE
 
 document.getElementById('legendHelp').innerHTML=LEGEND_HELP;
 buildLayer();updateLegend();updatePanel();buildSearchIndex();selectUnit(null);
+// 반응형 레이아웃에서 Leaflet 타일 깨짐/짤림 방지
+function fixMapSize(){map.invalidateSize();try{if(layer)map.fitBounds(layer.getBounds(),{padding:[20,20]});}catch(e){}}
+window.addEventListener('load',fixMapSize);
+window.addEventListener('resize',fixMapSize);
+setTimeout(fixMapSize,300);
 </script>
 </body>
 </html>
