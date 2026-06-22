@@ -1,0 +1,5 @@
+/wonju_obesity/
+
+# 자체완결 index.html에 내장되어 웹에는 불필요한 원본 GIS 소스 (97MB shp 등)
+/infant_obesity_ehsa/data/
+/infant_obesity_ehsa/assets/*.zip

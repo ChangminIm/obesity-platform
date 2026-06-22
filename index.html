@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소아비만 연구 · GIS 종합 분석 플랫폼</title>
+<style>
+:root{
+  --kk-green:#036b3f;
+  --kk-green-dark:#024e2e;
+  --kk-green-light:#0a8c52;
+  --kk-accent:#00a86b;
+  --ink:#1f2937;
+  --muted:#6b7280;
+  --bg:#f4f7f5;
+  --card:#ffffff;
+  --border:#e5e9e7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+a{color:inherit}
+
+.hero{background:linear-gradient(135deg,var(--kk-green-dark) 0%,var(--kk-green) 55%,var(--kk-green-light) 100%);color:#fff;padding:56px 24px 64px;text-align:center;position:relative}
+.hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 16px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.5px;margin-bottom:18px}
+.hero h1{font-size:34px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px}
+.hero .subtitle{font-size:15px;opacity:.92;font-weight:500;margin-bottom:26px}
+.hero .info{max-width:760px;margin:0 auto;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 22px;text-align:left}
+.hero .info div{font-size:13.5px;margin:6px 0;opacity:.95;display:flex;gap:8px;align-items:flex-start}
+.hero .info div span:first-child{flex-shrink:0}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+.section-title{font-size:19px;font-weight:700;margin:44px 0 16px;display:flex;align-items:center;gap:8px}
+
+.maps{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;position:relative;z-index:2;margin-bottom:48px}
+.map-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;text-decoration:none;box-shadow:0 6px 20px rgba(3,107,63,.07)}
+.map-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(3,107,63,.13);border-color:var(--kk-accent)}
+.map-card .icon{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--kk-green),var(--kk-green-light));display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:18px}
+.map-card h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--ink)}
+.map-card p{font-size:13.5px;color:var(--muted);flex:1;margin-bottom:20px}
+.map-card .go{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;background:var(--kk-green);color:#fff;padding:10px 20px;border-radius:8px;font-size:13.5px;font-weight:600}
+.map-card:hover .go{background:var(--kk-green-dark)}
+.map-card .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:5px;background:#e8f5ee;color:var(--kk-green);margin-bottom:14px;align-self:flex-start}
+
+/* 전국 대표 카드 — 상단 풀폭 강조 (밝은 카드 + 강한 액센트로 헤더와 대비) */
+.feature{margin-top:-56px;position:relative;z-index:2;margin-bottom:36px}
+.feature-card{position:relative;background:var(--card);border:2px solid var(--kk-accent);border-radius:20px;padding:48px 52px 48px 56px;min-height:230px;display:flex;align-items:center;gap:40px;text-decoration:none;box-shadow:0 18px 48px rgba(3,107,63,.16);transition:transform .18s,box-shadow .18s;overflow:hidden}
+.feature-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,var(--kk-green),var(--kk-green-light))}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(3,107,63,.24)}
+.feature-card .icon{flex-shrink:0;width:104px;height:104px;border-radius:22px;background:linear-gradient(135deg,var(--kk-green),var(--kk-green-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:0 10px 24px rgba(3,107,63,.28)}
+.feature-card .body{flex:1}
+.feature-card .tag{display:inline-block;font-size:12px;font-weight:800;padding:5px 13px;border-radius:7px;background:var(--kk-green);color:#fff;margin-bottom:14px;letter-spacing:.6px}
+.feature-card h2{font-size:30px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px;color:var(--ink)}
+.feature-card p{font-size:15px;color:var(--muted);line-height:1.6;max-width:780px}
+.feature-card .go{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:var(--kk-green);color:#fff;padding:15px 30px;border-radius:11px;font-size:16px;font-weight:700;white-space:nowrap;box-shadow:0 6px 16px rgba(3,107,63,.22)}
+.feature-card:hover .go{background:var(--kk-green-dark)}
+@media(max-width:760px){.feature-card{flex-direction:column;align-items:flex-start;padding:32px 28px;gap:22px}.feature-card h2{font-size:24px}}
+
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:28px 24px 40px;border-top:1px solid var(--border)}
+footer .credit{margin-top:8px;font-weight:600;color:var(--kk-green)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">소아비만 연구 플랫폼</div>
+  <h1>소아비만 연구 · GIS 종합 분석 플랫폼</h1>
+  <div class="subtitle">학교 주변 의료환경 · 영유아 소아비만 공간 분석 통합 포털</div>
+  <div class="info">
+    <div><span>📊</span><span>전국 시군구 영유아 소아비만을 EHSA(신흥 핫스팟 분석)로 진단합니다.</span></div>
+    <div><span>🗺️</span><span>원주·용인 학교 주변 의료환경을 인터랙티브 지도로 탐색합니다.</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="feature">
+    <a class="feature-card" href="./infant_obesity_ehsa/index.html">
+      <div class="icon">📊</div>
+      <div class="body">
+        <span class="tag">전국 · 대표 분석</span>
+        <h2>전국 시군구 영유아 소아비만 EHSA</h2>
+        <p>전국 시군구 단위 영유아 소아비만율을 EHSA(Emerging Hot Spot Analysis, 신흥 핫스팟 분석)로 진단합니다. 2012–2024 시계열 공간 패턴과 권역별 핫스팟·콜드스팟 추세를 인터랙티브 지도로 살펴봅니다.</p>
+      </div>
+      <span class="go">지도 열기 →</span>
+    </a>
+  </div>
+
+  <div class="maps">
+    <a class="map-card" href="https://changminim.github.io/wonju-school-medical-map/" target="_blank" rel="noopener">
+      <div class="icon">🗺️</div>
+      <span class="tag">원주 · 용인</span>
+      <h3>원주·용인 학교 주변 의료환경 지도</h3>
+      <p>원주·용인 학교–의료기관 접근성을 인터랙티브하게 탐색합니다. 진료과 분류, 종별 필터, 반경 요약, 늘봄기관, 학교별 소아비만 추정치, 단계구분도와 2SFCA 접근성까지 한곳에서 확인할 수 있습니다.</p>
+      <span class="go">지도 열기 ↗</span>
+    </a>
+  </div>
+</div>
+
+<footer>GIS 기반 소아비만 종합 분석 플랫폼 · 데이터 기준 2026<div class="credit">made by 국립공주대학교 임창민</div></footer>
+
+</body>
+</html>

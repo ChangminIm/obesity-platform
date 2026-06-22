@@ -1,0 +1,647 @@
+﻿권역,SIG_CD,SIDO,시군구,OB_2024,OBz,OB_EHSA,OW_2024,OWz,OW_EHSA,CNT_2024,CNTz,CNT_EHSA
+전국,11010,서울,종로구,6.0,-2.95,Sporadic Cold,12.0,-2.79,Consecutive Cold,19,0.87,No Pattern
+전국,11020,서울,중구,6.8,-3.62,Intensifying Cold,13.8,-3.59,Consecutive Cold,25,-1.13,No Pattern
+전국,11030,서울,용산구,6.1,-4.27,Intensifying Cold,13.9,-4.38,Intensifying Cold,39,-0.35,No Pattern
+전국,11040,서울,성동구,5.9,-3.28,Intensifying Cold,12.4,-3.33,Consecutive Cold,62,-0.46,No Pattern
+전국,11050,서울,광진구,9.8,-2.8,Sporadic Cold,16.9,-2.75,Sporadic Cold,96,1.54,No Pattern
+전국,11060,서울,동대문구,7.3,-2.18,Consecutive Cold,15.8,-2.15,Consecutive Cold,94,1.12,No Pattern
+전국,11070,서울,중랑구,8.9,-2.29,Consecutive Cold,17.7,-2.17,Consecutive Cold,121,1.47,No Pattern
+전국,11080,서울,성북구,7.0,-2.75,Sporadic Cold,15.0,-2.71,Consecutive Cold,113,1.66,No Pattern
+전국,11090,서울,강북구,7.4,-1.54,No Pattern,18.0,-1.51,No Pattern,61,1.73,No Pattern
+전국,11100,서울,도봉구,10.0,-1.24,No Pattern,18.6,-1.27,No Pattern,100,1.9,No Pattern
+전국,11110,서울,노원구,8.2,-2.23,Sporadic Cold,15.4,-2.1,Consecutive Cold,135,3.47,Persistent Hot
+전국,11120,서울,은평구,8.1,-2.4,Consecutive Cold,15.5,-2.29,Consecutive Cold,135,1.11,No Pattern
+전국,11130,서울,서대문구,4.9,-2.97,Consecutive Cold,13.2,-2.86,Sporadic Cold,58,-0.11,No Pattern
+전국,11140,서울,마포구,6.4,-3.47,Intensifying Cold,13.2,-3.31,Consecutive Cold,80,0.29,No Pattern
+전국,11150,서울,양천구,6.5,-2.34,Sporadic Cold,13.6,-2.28,Consecutive Cold,91,3.07,No Pattern
+전국,11160,서울,강서구,7.9,-2.56,Sporadic Cold,16.0,-2.56,Consecutive Cold,161,3.76,Intensifying Hot
+전국,11170,서울,구로구,7.7,-2.2,Sporadic Cold,15.2,-2.1,Sporadic Cold,136,4.0,Persistent Hot
+전국,11180,서울,금천구,11.4,-1.68,No Pattern,22.1,-1.57,No Pattern,84,1.53,No Pattern
+전국,11190,서울,영등포구,6.2,-3.88,Intensifying Cold,15.7,-3.87,Intensifying Cold,100,1.67,No Pattern
+전국,11200,서울,동작구,6.5,-3.62,Intensifying Cold,15.8,-3.67,Intensifying Cold,86,0.34,No Pattern
+전국,11210,서울,관악구,8.6,-3.67,Persistent Cold,16.2,-3.67,Persistent Cold,101,0.09,No Pattern
+전국,11220,서울,서초구,5.6,-4.53,Intensifying Cold,13.0,-4.7,Intensifying Cold,77,-0.36,No Pattern
+전국,11230,서울,강남구,5.8,-3.48,Intensifying Cold,12.2,-3.82,Intensifying Cold,90,0.71,No Pattern
+전국,11240,서울,송파구,6.2,-2.96,Consecutive Cold,13.9,-3.11,Consecutive Cold,165,1.45,No Pattern
+전국,11250,서울,강동구,7.7,-2.47,Sporadic Cold,16.1,-2.43,Consecutive Cold,165,1.34,No Pattern
+전국,21010,부산,중구,18.5,0.48,No Pattern,25.9,0.67,No Pattern,10,-2.13,Sporadic Cold
+전국,21020,부산,서구,9.3,0.08,No Pattern,17.3,0.35,No Pattern,30,-0.8,No Pattern
+전국,21030,부산,동구,7.9,-0.21,No Pattern,13.6,-0.1,No Pattern,22,-1.05,No Pattern
+전국,21040,부산,영도구,12.7,0.13,No Pattern,22.4,0.37,No Pattern,38,-1.42,No Pattern
+전국,21050,부산,부산진구,8.3,-1.32,No Pattern,17.5,-1.14,No Pattern,121,-0.23,No Pattern
+전국,21060,부산,동래구,8.7,-2.49,Sporadic Cold,16.7,-2.4,Sporadic Cold,117,0.3,No Pattern
+전국,21070,부산,남구,8.5,-1.13,No Pattern,18.6,-0.77,No Pattern,83,-0.72,No Pattern
+전국,21080,부산,북구,8.5,-2.12,No Pattern,18.6,-1.98,No Pattern,103,2.09,Sporadic Hot
+전국,21090,부산,해운대구,8.7,-2.17,Sporadic Cold,17.8,-2.14,No Pattern,127,0.09,No Pattern
+전국,21100,부산,사하구,12.6,-0.65,No Pattern,22.4,-0.39,No Pattern,144,0.05,No Pattern
+전국,21110,부산,금정구,7.4,-2.34,Persistent Cold,17.0,-2.35,No Pattern,48,1.15,No Pattern
+전국,21120,부산,강서구,9.6,-1.52,No Pattern,17.7,-1.25,No Pattern,127,2.54,Diminishing Hot
+전국,21130,부산,연제구,7.3,-1.91,Sporadic Cold,15.7,-1.68,No Pattern,69,0.07,No Pattern
+전국,21140,부산,수영구,8.5,-1.77,Consecutive Cold,19.1,-1.52,No Pattern,51,0.17,No Pattern
+전국,21150,부산,사상구,11.9,-1.16,No Pattern,19.1,-0.94,No Pattern,87,0.53,No Pattern
+전국,21510,부산,기장군,9.6,-1.47,No Pattern,18.4,-1.51,No Pattern,110,1.33,No Pattern
+전국,22010,대구,중구,6.8,0.23,No Pattern,14.4,0.53,No Pattern,35,0.42,No Pattern
+전국,22020,대구,동구,9.5,0.38,No Pattern,17.1,0.91,No Pattern,147,0.22,No Pattern
+전국,22030,대구,서구,12.9,0.32,No Pattern,21.2,0.52,No Pattern,62,1.47,No Pattern
+전국,22040,대구,남구,9.8,-0.67,No Pattern,19.6,-0.24,No Pattern,39,0.62,No Pattern
+전국,22050,대구,북구,10.2,0.63,No Pattern,20.2,0.66,No Pattern,184,0.68,No Pattern
+전국,22060,대구,수성구,9.1,-0.3,No Pattern,17.2,-0.01,No Pattern,131,0.58,No Pattern
+전국,22070,대구,달서구,9.6,1.4,No Pattern,18.2,1.62,No Pattern,199,0.26,No Pattern
+전국,22510,대구,달성군,11.8,2.41,No Pattern,21.1,2.72,No Pattern,226,0.15,No Pattern
+전국,22520,대구,군위군,9.1,1.17,Sporadic Hot,13.6,2.22,Sporadic Hot,2,-0.79,No Pattern
+전국,23010,인천,중구,10.5,0.97,New Hot,20.7,1.27,No Pattern,100,-0.52,No Pattern
+전국,23020,인천,동구,11.7,-0.1,No Pattern,22.4,0.05,No Pattern,24,1.9,Sporadic Hot
+전국,23040,인천,연수구,7.9,-0.62,No Pattern,16.0,-0.62,No Pattern,172,3.32,Persistent Hot
+전국,23050,인천,남동구,10.5,-0.97,No Pattern,19.1,-0.99,No Pattern,219,6.47,Intensifying Hot
+전국,23060,인천,부평구,9.7,-1.13,No Pattern,18.1,-1.17,No Pattern,212,6.18,Persistent Hot
+전국,23070,인천,계양구,10.9,-1.62,No Pattern,20.0,-1.61,No Pattern,101,4.56,Intensifying Hot
+전국,23080,인천,서구,8.6,-0.31,No Pattern,16.6,-0.34,No Pattern,350,3.64,Persistent Hot
+전국,23090,인천,미추홀구,12.3,-0.46,No Pattern,22.1,-0.33,No Pattern,216,1.91,No Pattern
+전국,23510,인천,강화군,15.3,-0.24,No Pattern,26.6,-0.38,No Pattern,23,2.35,Sporadic Hot
+전국,23520,인천,옹진군,22.2,0.9,New Hot,25.9,1.14,No Pattern,12,-0.42,No Pattern
+전국,24010,광주,동구,8.2,0.21,No Pattern,16.2,0.16,No Pattern,40,0.28,No Pattern
+전국,24020,광주,서구,10.6,-0.24,No Pattern,21.0,-0.01,No Pattern,116,3.24,Diminishing Hot
+전국,24030,광주,남구,11.5,0.07,No Pattern,20.7,0.03,No Pattern,103,0.64,No Pattern
+전국,24040,광주,북구,9.6,0.5,No Pattern,18.5,0.41,No Pattern,182,0.7,No Pattern
+전국,24050,광주,광산구,11.6,-0.07,No Pattern,19.8,-0.07,No Pattern,241,1.19,No Pattern
+전국,25010,대전,동구,10.8,1.94,No Pattern,19.1,1.45,No Pattern,90,-0.81,No Pattern
+전국,25020,대전,중구,10.4,0.75,No Pattern,18.2,0.49,No Pattern,79,0.83,No Pattern
+전국,25030,대전,서구,8.5,0.02,No Pattern,17.7,-0.26,No Pattern,169,0.22,No Pattern
+전국,25040,대전,유성구,7.0,-1.47,New Cold,15.4,-1.96,No Pattern,157,0.91,No Pattern
+전국,25050,대전,대덕구,11.9,-0.83,No Pattern,21.0,-1.21,No Pattern,65,1.82,No Pattern
+전국,26010,울산,중구,10.7,0.01,No Pattern,21.3,0.09,No Pattern,110,1.46,No Pattern
+전국,26020,울산,남구,9.0,0.07,No Pattern,18.0,0.09,No Pattern,121,1.39,No Pattern
+전국,26030,울산,동구,11.5,-0.02,No Pattern,19.9,0.05,No Pattern,96,1.28,No Pattern
+전국,26040,울산,북구,11.1,0.31,No Pattern,19.5,0.45,No Pattern,180,1.53,No Pattern
+전국,26510,울산,울주군,13.9,0.34,No Pattern,24.0,0.68,No Pattern,146,1.02,No Pattern
+전국,29010,세종,세종시,5.4,-1.46,No Pattern,12.7,-2.03,No Pattern,186,1.6,No Pattern
+전국,31011,경기,수원시 장안구,9.3,-3.22,Persistent Cold,17.5,-3.44,Intensifying Cold,98,0.91,No Pattern
+전국,31012,경기,수원시 권선구,9.6,-2.37,Sporadic Cold,18.8,-2.53,Sporadic Cold,184,3.46,Intensifying Hot
+전국,31013,경기,수원시 팔달구,8.7,-1.89,Consecutive Cold,15.7,-2.08,Sporadic Cold,92,1.32,No Pattern
+전국,31014,경기,수원시 영통구,6.5,-3.52,Intensifying Cold,13.0,-3.75,Intensifying Cold,142,3.75,Intensifying Hot
+전국,31021,경기,성남시 수정구,7.5,-4.77,Intensifying Cold,14.9,-4.98,Intensifying Cold,87,0.26,No Pattern
+전국,31022,경기,성남시 중원구,9.2,-1.92,Sporadic Cold,18.1,-2.01,Consecutive Cold,88,1.2,No Pattern
+전국,31023,경기,성남시 분당구,5.8,-2.99,Intensifying Cold,12.9,-3.16,Intensifying Cold,116,0.84,No Pattern
+전국,31030,경기,의정부시,9.9,-0.91,No Pattern,18.1,-0.97,No Pattern,207,3.24,Persistent Hot
+전국,31041,경기,안양시 만안구,9.6,-1.96,No Pattern,16.2,-1.92,Sporadic Cold,93,2.45,Persistent Hot
+전국,31042,경기,안양시 동안구,5.8,-3.54,Persistent Cold,13.3,-3.56,Persistent Cold,87,-0.21,No Pattern
+전국,31051,경기,부천시 원미구,10.7,-1.26,No Pattern,18.4,-1.22,No Pattern,176,5.01,Persistent Hot
+전국,31052,경기,부천시 소사구,10.6,-1.59,No Pattern,18.8,-1.58,No Pattern,136,6.05,Persistent Hot
+전국,31053,경기,부천시 오정구,14.1,-2.05,No Pattern,26.6,-2.0,No Pattern,68,4.13,Persistent Hot
+전국,31060,경기,광명시,6.9,-1.28,No Pattern,13.5,-1.21,No Pattern,92,3.34,Persistent Hot
+전국,31070,경기,평택시,10.4,-1.37,No Pattern,19.1,-1.37,No Pattern,392,5.29,Intensifying Hot
+전국,31080,경기,동두천시,18.0,1.67,No Pattern,26.6,1.28,No Pattern,48,-0.88,No Pattern
+전국,31091,경기,안산시 상록구,11.7,-1.47,No Pattern,20.9,-1.5,No Pattern,154,4.67,Intensifying Hot
+전국,31092,경기,안산시 단원구,11.4,1.07,No Pattern,20.9,1.37,No Pattern,176,2.09,Sporadic Hot
+전국,31101,경기,고양시 덕양구,7.5,-3.27,Intensifying Cold,15.0,-3.35,Intensifying Cold,202,2.72,Diminishing Hot
+전국,31103,경기,고양시 일산동구,7.3,-2.54,Intensifying Cold,14.7,-2.63,Persistent Cold,88,2.7,Consecutive Hot
+전국,31104,경기,고양시 일산서구,7.8,-2.21,Sporadic Cold,15.7,-2.33,Sporadic Cold,90,2.22,Consecutive Hot
+전국,31110,경기,과천시,5.6,-3.89,Persistent Cold,11.2,-3.98,Persistent Cold,33,-0.28,No Pattern
+전국,31120,경기,구리시,8.7,-2.35,Consecutive Cold,17.8,-2.28,Consecutive Cold,79,3.03,Persistent Hot
+전국,31130,경기,남양주시,9.8,-1.33,No Pattern,17.6,-1.28,No Pattern,396,2.03,Consecutive Hot
+전국,31140,경기,오산시,9.1,-0.8,No Pattern,19.6,-0.82,No Pattern,145,5.76,Intensifying Hot
+전국,31150,경기,시흥시,9.6,-0.74,No Pattern,17.7,-0.67,No Pattern,350,4.52,Intensifying Hot
+전국,31160,경기,군포시,8.9,-2.09,Sporadic Cold,16.7,-2.15,Sporadic Cold,104,0.66,No Pattern
+전국,31170,경기,의왕시,7.2,-4.28,Persistent Cold,14.7,-4.41,Persistent Cold,62,0.92,No Pattern
+전국,31180,경기,하남시,6.9,-2.22,Consecutive Cold,15.3,-2.22,Consecutive Cold,162,3.24,Persistent Hot
+전국,31191,경기,용인시 처인구,9.9,-2.32,Sporadic Cold,19.7,-2.3,No Pattern,134,4.59,Intensifying Hot
+전국,31192,경기,용인시 기흥구,6.4,-3.58,Persistent Cold,13.9,-3.76,Persistent Cold,148,3.66,Intensifying Hot
+전국,31193,경기,용인시 수지구,5.4,-4.52,Persistent Cold,13.0,-4.67,Persistent Cold,112,0.97,No Pattern
+전국,31200,경기,파주시,9.4,-1.75,New Cold,17.2,-1.93,Sporadic Cold,292,2.06,Consecutive Hot
+전국,31210,경기,이천시,11.5,0.4,No Pattern,22.6,0.59,No Pattern,130,0.39,No Pattern
+전국,31220,경기,안성시,11.0,0.28,No Pattern,20.3,0.42,No Pattern,92,1.8,Consecutive Hot
+전국,31230,경기,김포시,7.7,-1.98,Sporadic Cold,15.2,-2.19,Sporadic Cold,261,3.36,Intensifying Hot
+전국,31240,경기,화성시,8.2,-2.12,Sporadic Cold,16.1,-2.2,Sporadic Cold,603,5.51,Intensifying Hot
+전국,31250,경기,광주시,12.2,-1.63,Consecutive Cold,21.4,-1.56,No Pattern,268,1.92,Consecutive Hot
+전국,31260,경기,양주시,12.1,-0.08,No Pattern,20.5,-0.31,No Pattern,191,1.6,No Pattern
+전국,31270,경기,포천시,14.3,1.74,No Pattern,22.9,1.79,No Pattern,71,0.14,No Pattern
+전국,31280,경기,여주시,11.1,0.45,No Pattern,18.1,0.44,No Pattern,43,0.51,No Pattern
+전국,31550,경기,연천군,11.2,1.56,No Pattern,20.2,1.48,No Pattern,15,-0.12,No Pattern
+전국,31570,경기,가평군,13.7,1.29,No Pattern,21.1,1.52,No Pattern,24,0.16,No Pattern
+전국,31580,경기,양평군,7.0,0.65,No Pattern,15.6,0.67,No Pattern,26,0.82,No Pattern
+전국,32010,강원,춘천시,9.5,2.34,No Pattern,19.4,2.95,No Pattern,127,-2.11,Sporadic Cold
+전국,32020,강원,원주시,10.1,1.74,No Pattern,18.7,1.74,No Pattern,177,-1.09,No Pattern
+전국,32030,강원,강릉시,14.3,3.67,Persistent Hot,21.6,3.23,Consecutive Hot,125,-2.05,No Pattern
+전국,32040,강원,동해시,15.1,2.59,Sporadic Hot,21.7,1.66,No Pattern,53,-1.73,No Pattern
+전국,32050,강원,태백시,14.8,2.81,Sporadic Hot,21.5,2.21,No Pattern,20,-2.75,Persistent Cold
+전국,32060,강원,속초시,15.7,2.17,No Pattern,25.2,1.55,No Pattern,58,-2.46,Persistent Cold
+전국,32070,강원,삼척시,12.2,2.54,Sporadic Hot,20.7,1.92,Sporadic Hot,26,-2.71,Persistent Cold
+전국,32510,강원,홍천군,14.4,2.71,No Pattern,22.3,2.55,No Pattern,31,-2.33,Persistent Cold
+전국,32520,강원,횡성군,10.9,2.03,No Pattern,20.2,2.04,No Pattern,14,-1.71,No Pattern
+전국,32530,강원,영월군,12.6,2.94,Sporadic Hot,18.9,2.28,No Pattern,14,-2.81,Persistent Cold
+전국,32540,강원,평창군,13.5,3.32,Persistent Hot,23.9,3.35,No Pattern,13,-2.31,Persistent Cold
+전국,32550,강원,정선군,17.5,3.51,Persistent Hot,24.7,3.3,Persistent Hot,17,-2.29,Consecutive Cold
+전국,32560,강원,철원군,12.1,2.4,No Pattern,23.6,2.94,No Pattern,22,-2.45,Persistent Cold
+전국,32570,강원,화천군,16.8,2.14,No Pattern,27.7,2.87,No Pattern,20,-1.79,No Pattern
+전국,32580,강원,양구군,12.7,2.19,No Pattern,25.4,2.94,No Pattern,14,-1.86,No Pattern
+전국,32590,강원,인제군,11.2,2.72,No Pattern,21.7,2.67,No Pattern,17,-2.37,Persistent Cold
+전국,32600,강원,고성군,9.9,0.95,No Pattern,22.6,0.66,No Pattern,7,-2.04,No Pattern
+전국,32610,강원,양양군,14.5,2.96,No Pattern,26.1,2.56,No Pattern,10,-1.72,No Pattern
+전국,33020,충북,충주시,11.7,0.97,No Pattern,20.7,1.34,No Pattern,114,-0.92,No Pattern
+전국,33030,충북,제천시,14.8,2.03,No Pattern,23.6,1.83,No Pattern,79,-0.96,No Pattern
+전국,33041,충북,청주시 상당구,8.7,0.48,No Pattern,16.0,0.18,No Pattern,104,-0.68,No Pattern
+전국,33042,충북,청주시 서원구,12.3,-1.32,No Pattern,21.7,-1.82,Sporadic Cold,96,1.9,No Pattern
+전국,33043,충북,청주시 흥덕구,8.8,-1.39,No Pattern,15.4,-1.77,No Pattern,152,1.88,No Pattern
+전국,33044,충북,청주시 청원구,8.7,0.19,No Pattern,16.4,-0.25,No Pattern,107,0.78,No Pattern
+전국,33520,충북,보은군,16.7,0.72,No Pattern,23.4,0.77,No Pattern,15,-1.63,No Pattern
+전국,33530,충북,옥천군,14.5,2.38,Sporadic Hot,25.2,1.86,Sporadic Hot,23,-2.22,Consecutive Cold
+전국,33540,충북,영동군,23.0,1.66,Sporadic Hot,29.3,1.34,Consecutive Hot,29,-2.75,Persistent Cold
+전국,33550,충북,진천군,12.0,0.45,No Pattern,21.0,0.33,No Pattern,65,0.33,No Pattern
+전국,33560,충북,괴산군,14.3,1.02,No Pattern,22.2,0.86,No Pattern,9,-2.18,Sporadic Cold
+전국,33570,충북,음성군,12.3,1.07,No Pattern,20.7,1.44,No Pattern,38,-1.46,No Pattern
+전국,33580,충북,단양군,17.3,2.33,No Pattern,22.6,2.05,No Pattern,13,-2.55,Persistent Cold
+전국,33590,충북,증평군,13.9,0.71,No Pattern,23.0,0.97,No Pattern,29,-1.11,No Pattern
+전국,34011,충남,천안시 동남구,11.2,-0.89,No Pattern,21.5,-1.36,No Pattern,124,2.2,Consecutive Hot
+전국,34012,충남,천안시 서북구,9.6,-0.41,No Pattern,17.6,-0.55,No Pattern,228,2.91,Consecutive Hot
+전국,34020,충남,공주시,10.0,0.07,No Pattern,20.6,-0.76,No Pattern,30,-0.6,No Pattern
+전국,34030,충남,보령시,14.7,2.46,No Pattern,25.0,2.23,Sporadic Hot,46,-2.79,Persistent Cold
+전국,34040,충남,아산시,10.0,0.01,No Pattern,18.4,-0.58,No Pattern,241,2.24,Consecutive Hot
+전국,34050,충남,서산시,9.0,0.59,No Pattern,16.8,0.34,No Pattern,87,-1.45,No Pattern
+전국,34060,충남,논산시,14.3,1.24,No Pattern,21.5,0.87,No Pattern,63,-0.97,No Pattern
+전국,34070,충남,계룡시,7.7,-0.78,No Pattern,16.2,-1.16,No Pattern,22,0.23,No Pattern
+전국,34080,충남,당진시,12.8,0.16,No Pattern,21.0,-0.33,No Pattern,118,0.27,No Pattern
+전국,34510,충남,금산군,16.7,1.42,Consecutive Hot,29.2,1.16,Consecutive Hot,20,-1.6,No Pattern
+전국,34530,충남,부여군,12.0,3.0,No Pattern,27.2,2.56,Sporadic Hot,15,-1.94,Consecutive Cold
+전국,34540,충남,서천군,19.8,2.35,No Pattern,30.6,2.35,Sporadic Hot,22,-0.6,No Pattern
+전국,34550,충남,청양군,8.2,2.02,No Pattern,22.5,1.42,Sporadic Hot,4,-2.59,Persistent Cold
+전국,34560,충남,홍성군,12.8,1.25,No Pattern,22.6,0.74,No Pattern,55,-2.01,No Pattern
+전국,34570,충남,예산군,16.7,0.98,No Pattern,24.2,0.17,No Pattern,31,-0.96,No Pattern
+전국,34580,충남,태안군,13.3,0.38,No Pattern,21.2,0.55,No Pattern,22,-1.32,No Pattern
+전국,35011,전북,전주시 완산구,10.0,0.02,No Pattern,18.3,-0.15,No Pattern,124,0.3,No Pattern
+전국,35012,전북,전주시 덕진구,8.6,0.31,No Pattern,16.7,0.26,No Pattern,143,0.71,No Pattern
+전국,35020,전북,군산시,12.3,2.08,No Pattern,22.5,2.05,No Pattern,140,-0.08,No Pattern
+전국,35030,전북,익산시,14.1,2.2,No Pattern,24.6,2.05,No Pattern,136,-0.5,No Pattern
+전국,35040,전북,정읍시,12.3,1.22,Consecutive Hot,22.1,1.22,Sporadic Hot,40,-3.26,Persistent Cold
+전국,35050,전북,남원시,13.8,0.32,No Pattern,23.6,0.78,Sporadic Hot,34,-3.99,Persistent Cold
+전국,35060,전북,김제시,11.6,1.11,No Pattern,20.0,1.13,No Pattern,26,0.19,No Pattern
+전국,35510,전북,완주군,10.4,1.25,No Pattern,16.1,1.09,Consecutive Hot,46,-1.25,No Pattern
+전국,35520,전북,진안군,17.5,0.93,No Pattern,28.0,0.73,Oscillating Hot,10,-3.24,Diminishing Cold
+전국,35530,전북,무주군,9.5,1.41,Sporadic Hot,14.3,1.23,Sporadic Hot,4,-3.27,Diminishing Cold
+전국,35540,전북,장수군,4.4,0.29,No Pattern,17.7,0.21,Oscillating Hot,2,-3.62,Persistent Cold
+전국,35550,전북,임실군,12.3,0.28,Consecutive Hot,27.7,0.4,Oscillating Hot,8,-3.22,Persistent Cold
+전국,35560,전북,순창군,17.8,0.47,Consecutive Hot,30.7,0.66,Consecutive Hot,18,-3.36,Persistent Cold
+전국,35570,전북,고창군,19.1,1.83,Sporadic Hot,28.7,2.24,Sporadic Hot,30,-2.54,Persistent Cold
+전국,35580,전북,부안군,17.7,1.83,Consecutive Hot,26.5,2.15,Sporadic Hot,20,-2.08,Sporadic Cold
+전국,36010,전남,목포시,14.8,2.5,Sporadic Hot,23.4,2.6,Sporadic Hot,142,-0.79,No Pattern
+전국,36020,전남,여수시,11.3,0.31,No Pattern,19.8,0.09,No Pattern,137,0.45,No Pattern
+전국,36030,전남,순천시,10.2,0.53,No Pattern,20.2,0.88,No Pattern,148,-1.17,No Pattern
+전국,36040,전남,나주시,11.4,0.5,New Hot,17.6,0.52,No Pattern,77,-0.58,No Pattern
+전국,36060,전남,광양시,12.6,-0.23,No Pattern,23.0,0.04,No Pattern,102,-0.31,No Pattern
+전국,36510,전남,담양군,13.7,0.59,No Pattern,22.6,0.81,New Hot,17,-1.71,No Pattern
+전국,36520,전남,곡성군,13.3,0.14,No Pattern,20.0,0.43,No Pattern,6,-2.58,Persistent Cold
+전국,36530,전남,구례군,8.8,0.12,No Pattern,17.6,0.8,No Pattern,3,-1.64,No Pattern
+전국,36550,전남,고흥군,11.7,1.07,No Pattern,21.1,0.79,No Pattern,15,-1.03,No Pattern
+전국,36560,전남,보성군,13.5,1.35,No Pattern,22.5,0.97,No Pattern,12,-1.76,No Pattern
+전국,36570,전남,화순군,12.3,1.08,Consecutive Hot,21.8,1.32,Consecutive Hot,22,-1.68,No Pattern
+전국,36580,전남,장흥군,17.4,1.43,Sporadic Hot,25.5,1.56,Sporadic Hot,15,-2.72,Persistent Cold
+전국,36590,전남,강진군,11.9,1.66,Sporadic Hot,23.8,2.36,Sporadic Hot,10,-2.66,Persistent Cold
+전국,36600,전남,해남군,14.1,1.97,Sporadic Hot,24.6,2.71,Sporadic Hot,31,-2.68,Persistent Cold
+전국,36610,전남,영암군,19.9,1.6,Sporadic Hot,32.5,2.08,Sporadic Hot,38,-1.99,No Pattern
+전국,36620,전남,무안군,15.3,2.07,Sporadic Hot,25.1,1.97,Sporadic Hot,73,-1.49,No Pattern
+전국,36630,전남,함평군,18.4,0.56,No Pattern,28.7,0.68,No Pattern,16,-0.83,No Pattern
+전국,36640,전남,영광군,14.3,1.18,Sporadic Hot,23.0,1.38,Sporadic Hot,33,-2.54,Persistent Cold
+전국,36650,전남,장성군,12.0,0.88,Consecutive Hot,21.0,1.02,Sporadic Hot,16,-1.06,No Pattern
+전국,36660,전남,완도군,19.5,1.64,Sporadic Hot,30.2,2.31,Sporadic Hot,31,0.47,No Pattern
+전국,36670,전남,진도군,25.4,3.02,Consecutive Hot,42.3,3.33,Sporadic Hot,15,-2.16,No Pattern
+전국,36680,전남,신안군,19.8,2.83,Sporadic Hot,32.4,2.92,Sporadic Hot,22,-0.98,No Pattern
+전국,37011,경북,포항시 남구,12.2,0.87,No Pattern,21.4,1.07,No Pattern,116,1.44,No Pattern
+전국,37012,경북,포항시 북구,10.2,2.4,Sporadic Hot,19.0,2.22,Sporadic Hot,151,-1.06,No Pattern
+전국,37020,경북,경주시,11.3,1.54,No Pattern,20.1,1.76,No Pattern,106,0.72,No Pattern
+전국,37030,경북,김천시,10.3,1.34,No Pattern,17.1,1.08,No Pattern,70,-1.72,No Pattern
+전국,37040,경북,안동시,14.8,2.04,Sporadic Hot,23.9,2.06,Sporadic Hot,86,-3.11,Persistent Cold
+전국,37050,경북,구미시,11.3,0.28,No Pattern,19.9,0.77,No Pattern,273,-1.06,No Pattern
+전국,37060,경북,영주시,14.3,2.34,No Pattern,23.5,1.66,No Pattern,48,-2.64,Persistent Cold
+전국,37070,경북,영천시,12.6,1.57,No Pattern,20.7,2.84,Sporadic Hot,45,-0.59,No Pattern
+전국,37080,경북,상주시,13.1,1.44,No Pattern,20.6,1.41,No Pattern,40,-2.65,Diminishing Cold
+전국,37090,경북,문경시,12.7,0.8,No Pattern,22.4,0.94,No Pattern,33,-2.5,Persistent Cold
+전국,37100,경북,경산시,11.6,0.95,No Pattern,20.9,1.11,No Pattern,135,0.52,No Pattern
+전국,37520,경북,의성군,12.1,0.68,No Pattern,17.6,1.86,No Pattern,11,-1.8,No Pattern
+전국,37530,경북,청송군,23.5,2.75,Sporadic Hot,39.2,3.51,Sporadic Hot,12,-2.62,Diminishing Cold
+전국,37540,경북,영양군,22.6,2.68,Sporadic Hot,29.1,2.63,Sporadic Hot,7,-2.98,Persistent Cold
+전국,37550,경북,영덕군,15.0,2.45,Sporadic Hot,25.0,2.85,Sporadic Hot,9,-2.07,No Pattern
+전국,37560,경북,청도군,11.4,1.92,No Pattern,25.7,2.15,No Pattern,8,-0.55,No Pattern
+전국,37570,경북,고령군,12.8,1.96,No Pattern,21.8,2.22,No Pattern,10,-0.85,No Pattern
+전국,37580,경북,성주군,13.6,1.84,No Pattern,21.2,1.85,No Pattern,16,-2.03,No Pattern
+전국,37590,경북,칠곡군,14.9,0.73,No Pattern,23.5,1.27,No Pattern,76,0.72,No Pattern
+전국,37600,경북,예천군,7.1,1.47,No Pattern,12.2,1.18,No Pattern,21,-2.76,Persistent Cold
+전국,37610,경북,봉화군,16.2,3.04,Sporadic Hot,23.6,2.62,Sporadic Hot,11,-3.06,Persistent Cold
+전국,37620,경북,울진군,17.8,2.8,Sporadic Hot,32.9,1.42,Sporadic Hot,33,-3.32,Persistent Cold
+전국,37630,경북,울릉군,14.8,1.52,Sporadic Hot,14.8,0.92,No Pattern,4,-1.17,No Pattern
+전국,38030,경남,진주시,11.1,-0.04,No Pattern,20.4,0.2,No Pattern,178,-2.24,Sporadic Cold
+전국,38050,경남,통영시,10.8,-0.86,No Pattern,16.9,-0.88,No Pattern,46,-0.38,No Pattern
+전국,38060,경남,사천시,11.5,-0.36,No Pattern,21.2,-0.3,No Pattern,51,-1.56,No Pattern
+전국,38070,경남,김해시,9.8,-1.46,No Pattern,17.8,-1.41,No Pattern,279,1.91,No Pattern
+전국,38080,경남,밀양시,13.2,0.56,No Pattern,21.1,0.77,No Pattern,30,0.98,No Pattern
+전국,38090,경남,거제시,7.9,-1.21,No Pattern,16.3,-1.19,No Pattern,106,0.19,No Pattern
+전국,38100,경남,양산시,10.1,-1.11,No Pattern,17.9,-1.12,No Pattern,217,1.93,No Pattern
+전국,38111,경남,창원시 의창구,10.2,0.04,No Pattern,18.5,-0.06,No Pattern,106,0.3,No Pattern
+전국,38112,경남,창원시 성산구,7.3,-1.14,No Pattern,15.5,-1.24,No Pattern,83,2.28,No Pattern
+전국,38113,경남,창원시 마산합포구,9.5,-0.28,No Pattern,16.9,-0.26,No Pattern,74,-0.63,No Pattern
+전국,38114,경남,창원시 마산회원구,10.0,0.04,No Pattern,18.3,-0.04,No Pattern,67,-0.41,No Pattern
+전국,38115,경남,창원시 진해구,9.6,-1.48,No Pattern,18.6,-1.41,No Pattern,99,1.92,No Pattern
+전국,38510,경남,의령군,9.1,0.61,No Pattern,20.0,0.57,No Pattern,5,-2.27,No Pattern
+전국,38520,경남,함안군,8.6,0.36,No Pattern,18.2,0.44,No Pattern,17,-0.9,No Pattern
+전국,38530,경남,창녕군,15.1,1.61,No Pattern,22.3,1.87,No Pattern,23,-2.63,Diminishing Cold
+전국,38540,경남,고성군,10.3,-0.72,No Pattern,18.2,-0.71,No Pattern,13,-0.55,No Pattern
+전국,38550,경남,남해군,11.4,0.11,No Pattern,17.7,0.09,No Pattern,9,-1.91,No Pattern
+전국,38560,경남,하동군,10.9,-0.22,No Pattern,16.3,-0.31,No Pattern,10,-2.43,Consecutive Cold
+전국,38570,경남,산청군,12.5,0.3,No Pattern,17.9,0.4,No Pattern,7,-2.72,Persistent Cold
+전국,38580,경남,함양군,10.6,0.52,No Pattern,25.0,0.65,No Pattern,11,-3.24,Persistent Cold
+전국,38590,경남,거창군,13.1,1.25,No Pattern,22.5,1.15,No Pattern,28,-3.66,Persistent Cold
+전국,38600,경남,합천군,13.0,2.2,No Pattern,28.6,2.5,No Pattern,10,-3.59,Persistent Cold
+전국,39010,제주,제주시,10.7,1.57,Sporadic Hot,20.0,1.77,Sporadic Hot,307,1.99,No Pattern
+전국,39020,제주,서귀포시,11.5,1.57,Sporadic Hot,21.8,1.77,Sporadic Hot,90,1.99,No Pattern
+수도권,11010,서울,종로구,6.0,-1.51,Sporadic Cold,12.0,-1.2,Sporadic Cold,19,-0.87,No Pattern
+수도권,11020,서울,중구,6.8,-2.4,Consecutive Cold,13.8,-2.25,Consecutive Cold,25,-2.83,Intensifying Cold
+수도권,11030,서울,용산구,6.1,-3.12,Intensifying Cold,13.9,-3.16,Consecutive Cold,39,-2.22,Sporadic Cold
+수도권,11040,서울,성동구,5.9,-1.95,Sporadic Cold,12.4,-1.92,Sporadic Cold,62,-2.17,Sporadic Cold
+수도권,11050,서울,광진구,9.8,-1.1,No Pattern,16.9,-0.99,No Pattern,96,-0.35,No Pattern
+수도권,11060,서울,동대문구,7.3,-0.68,No Pattern,15.8,-0.61,No Pattern,94,-0.45,No Pattern
+수도권,11070,서울,중랑구,8.9,-0.62,No Pattern,17.7,-0.41,No Pattern,121,-0.26,No Pattern
+수도권,11080,서울,성북구,7.0,-1.03,No Pattern,15.0,-0.93,No Pattern,113,-0.23,No Pattern
+수도권,11090,서울,강북구,7.4,0.13,No Pattern,18.0,0.19,No Pattern,61,0.12,No Pattern
+수도권,11100,서울,도봉구,10.0,0.53,No Pattern,18.6,0.48,No Pattern,100,0.28,No Pattern
+수도권,11110,서울,노원구,8.2,-0.35,No Pattern,15.4,-0.15,No Pattern,135,1.54,No Pattern
+수도권,11120,서울,은평구,8.1,-1.21,No Pattern,15.5,-1.0,New Cold,135,-0.31,No Pattern
+수도권,11130,서울,서대문구,4.9,-1.72,Consecutive Cold,13.2,-1.49,Consecutive Cold,58,-1.65,No Pattern
+수도권,11140,서울,마포구,6.4,-2.21,Sporadic Cold,13.2,-1.91,Sporadic Cold,80,-1.45,No Pattern
+수도권,11150,서울,양천구,6.5,-0.93,No Pattern,13.6,-0.82,No Pattern,91,1.4,No Pattern
+수도권,11160,서울,강서구,7.9,-0.81,No Pattern,16.0,-0.77,No Pattern,161,1.77,No Pattern
+수도권,11170,서울,구로구,7.7,-0.16,No Pattern,15.2,-0.0,No Pattern,136,1.84,No Pattern
+수도권,11180,서울,금천구,11.4,-0.09,No Pattern,22.1,0.07,No Pattern,84,-0.05,No Pattern
+수도권,11190,서울,영등포구,6.2,-2.6,Intensifying Cold,15.7,-2.52,Sporadic Cold,100,-0.21,No Pattern
+수도권,11200,서울,동작구,6.5,-2.65,Sporadic Cold,15.8,-2.63,Sporadic Cold,86,-1.23,No Pattern
+수도권,11210,서울,관악구,8.6,-2.35,No Pattern,16.2,-2.27,No Pattern,101,-1.79,No Pattern
+수도권,11220,서울,서초구,5.6,-3.48,Persistent Cold,13.0,-3.6,Persistent Cold,77,-2.23,Sporadic Cold
+수도권,11230,서울,강남구,5.8,-2.43,Sporadic Cold,12.2,-2.81,Consecutive Cold,90,-0.87,No Pattern
+수도권,11240,서울,송파구,6.2,-1.52,Sporadic Cold,13.9,-1.63,Consecutive Cold,165,-0.33,No Pattern
+수도권,11250,서울,강동구,7.7,-1.07,No Pattern,16.1,-0.95,No Pattern,165,-0.29,No Pattern
+수도권,23010,인천,중구,10.5,1.97,Sporadic Hot,20.7,2.17,Sporadic Hot,100,-0.97,No Pattern
+수도권,23020,인천,동구,11.7,1.8,No Pattern,22.4,2.01,No Pattern,24,0.44,No Pattern
+수도권,23040,인천,연수구,7.9,0.84,No Pattern,16.0,0.84,No Pattern,172,2.0,No Pattern
+수도권,23050,인천,남동구,10.5,1.31,No Pattern,19.1,1.3,No Pattern,219,4.43,Persistent Hot
+수도권,23060,인천,부평구,9.7,0.67,No Pattern,18.1,0.61,No Pattern,212,4.38,Persistent Hot
+수도권,23070,인천,계양구,10.9,0.04,No Pattern,20.0,0.08,No Pattern,101,2.81,Consecutive Hot
+수도권,23080,인천,서구,8.6,1.3,No Pattern,16.6,1.44,No Pattern,350,2.58,No Pattern
+수도권,23090,인천,미추홀구,12.3,1.57,No Pattern,22.1,1.74,No Pattern,216,0.28,No Pattern
+수도권,23510,인천,강화군,15.3,1.56,No Pattern,26.6,1.26,No Pattern,23,-0.56,No Pattern
+수도권,23520,인천,옹진군,22.2,3.22,Consecutive Hot,25.9,3.58,Consecutive Hot,12,-1.14,No Pattern
+수도권,31011,경기,수원시 장안구,9.3,-1.88,No Pattern,17.5,-2.14,No Pattern,98,-0.86,No Pattern
+수도권,31012,경기,수원시 권선구,9.6,-0.55,No Pattern,18.8,-0.74,No Pattern,184,1.48,No Pattern
+수도권,31013,경기,수원시 팔달구,8.7,-0.55,No Pattern,15.7,-0.78,No Pattern,92,-0.12,No Pattern
+수도권,31014,경기,수원시 영통구,6.5,-2.11,No Pattern,13.0,-2.37,Sporadic Cold,142,1.74,New Hot
+수도권,31021,경기,성남시 수정구,7.5,-3.46,Persistent Cold,14.9,-3.64,Persistent Cold,87,-1.92,No Pattern
+수도권,31022,경기,성남시 중원구,9.2,-0.35,No Pattern,18.1,-0.44,No Pattern,88,-0.43,No Pattern
+수도권,31023,경기,성남시 분당구,5.8,-1.58,No Pattern,12.9,-1.77,No Pattern,116,-0.92,No Pattern
+수도권,31030,경기,의정부시,9.9,1.19,No Pattern,18.1,1.12,No Pattern,207,1.43,No Pattern
+수도권,31041,경기,안양시 만안구,9.6,0.15,No Pattern,16.2,0.21,No Pattern,93,0.39,No Pattern
+수도권,31042,경기,안양시 동안구,5.8,-2.34,No Pattern,13.3,-2.34,No Pattern,87,-1.94,No Pattern
+수도권,31051,경기,부천시 원미구,10.7,0.49,No Pattern,18.4,0.55,No Pattern,176,3.2,No Pattern
+수도권,31052,경기,부천시 소사구,10.6,0.46,No Pattern,18.8,0.48,No Pattern,136,4.01,Persistent Hot
+수도권,31053,경기,부천시 오정구,14.1,-0.33,No Pattern,26.6,-0.27,No Pattern,68,2.28,No Pattern
+수도권,31060,경기,광명시,6.9,0.68,No Pattern,13.5,0.78,No Pattern,92,1.5,No Pattern
+수도권,31070,경기,평택시,10.4,0.93,No Pattern,19.1,1.05,No Pattern,392,2.87,Sporadic Hot
+수도권,31080,경기,동두천시,18.0,4.18,Persistent Hot,26.6,3.61,Persistent Hot,48,-2.26,No Pattern
+수도권,31091,경기,안산시 상록구,11.7,0.85,No Pattern,20.9,0.78,No Pattern,154,2.52,Sporadic Hot
+수도권,31092,경기,안산시 단원구,11.4,3.37,Consecutive Hot,20.9,3.67,Consecutive Hot,176,0.6,No Pattern
+수도권,31101,경기,고양시 덕양구,7.5,-1.24,No Pattern,15.0,-1.3,No Pattern,202,0.43,No Pattern
+수도권,31103,경기,고양시 일산동구,7.3,-1.2,No Pattern,14.7,-1.29,No Pattern,88,0.99,No Pattern
+수도권,31104,경기,고양시 일산서구,7.8,-0.99,No Pattern,15.7,-1.12,No Pattern,90,0.69,No Pattern
+수도권,31110,경기,과천시,5.6,-2.79,Sporadic Cold,11.2,-2.84,Persistent Cold,33,-2.0,No Pattern
+수도권,31120,경기,구리시,8.7,-0.5,No Pattern,17.8,-0.34,No Pattern,79,1.1,No Pattern
+수도권,31130,경기,남양주시,9.8,1.24,No Pattern,17.6,1.32,No Pattern,396,-0.19,No Pattern
+수도권,31140,경기,오산시,9.1,0.61,No Pattern,19.6,0.6,No Pattern,145,4.25,Intensifying Hot
+수도권,31150,경기,시흥시,9.6,1.63,No Pattern,17.7,1.69,No Pattern,350,2.52,No Pattern
+수도권,31160,경기,군포시,8.9,-0.6,No Pattern,16.7,-0.69,No Pattern,104,-0.93,No Pattern
+수도권,31170,경기,의왕시,7.2,-2.65,Sporadic Cold,14.7,-2.77,No Pattern,62,-1.39,No Pattern
+수도권,31180,경기,하남시,6.9,-0.13,No Pattern,15.3,-0.08,No Pattern,162,1.15,No Pattern
+수도권,31191,경기,용인시 처인구,9.9,-0.32,No Pattern,19.7,-0.24,No Pattern,134,2.42,Consecutive Hot
+수도권,31192,경기,용인시 기흥구,6.4,-2.6,Sporadic Cold,13.9,-2.77,Persistent Cold,148,1.92,Consecutive Hot
+수도권,31193,경기,용인시 수지구,5.4,-3.47,Diminishing Cold,13.0,-3.6,Diminishing Cold,112,-0.95,No Pattern
+수도권,31200,경기,파주시,9.4,0.27,No Pattern,17.2,0.04,No Pattern,292,0.07,No Pattern
+수도권,31210,경기,이천시,11.5,1.99,Sporadic Hot,22.6,2.17,Sporadic Hot,130,-0.93,No Pattern
+수도권,31220,경기,안성시,11.0,1.49,No Pattern,20.3,1.68,No Pattern,92,0.57,No Pattern
+수도권,31230,경기,김포시,7.7,0.13,No Pattern,15.2,-0.13,No Pattern,261,1.26,No Pattern
+수도권,31240,경기,화성시,8.2,-0.05,No Pattern,16.1,-0.13,No Pattern,603,3.33,Intensifying Hot
+수도권,31250,경기,광주시,12.2,0.81,No Pattern,21.4,0.95,No Pattern,268,-0.31,No Pattern
+수도권,31260,경기,양주시,12.1,2.93,Persistent Hot,20.5,2.59,Sporadic Hot,191,-0.6,No Pattern
+수도권,31270,경기,포천시,14.3,3.95,Persistent Hot,22.9,3.58,Persistent Hot,71,-0.81,No Pattern
+수도권,31280,경기,여주시,11.1,1.84,No Pattern,18.1,1.91,No Pattern,43,-1.37,No Pattern
+수도권,31550,경기,연천군,11.2,3.87,Persistent Hot,20.2,3.42,Persistent Hot,15,-1.21,No Pattern
+수도권,31570,경기,가평군,13.7,1.99,No Pattern,21.1,2.01,No Pattern,24,-0.58,No Pattern
+수도권,31580,경기,양평군,7.0,1.95,No Pattern,15.6,2.08,No Pattern,26,-0.37,No Pattern
+서울,11010,서울,종로구,6.0,0.26,No Pattern,12.0,0.58,No Pattern,19,-1.56,No Pattern
+서울,11020,서울,중구,6.8,-1.28,New Cold,13.8,-1.12,New Cold,25,-4.33,Intensifying Cold
+서울,11030,서울,용산구,6.1,-2.35,Sporadic Cold,13.9,-2.41,Sporadic Cold,39,-3.11,Persistent Cold
+서울,11040,서울,성동구,5.9,-0.55,No Pattern,12.4,-0.6,No Pattern,62,-3.06,Persistent Cold
+서울,11050,서울,광진구,9.8,0.79,No Pattern,16.9,0.67,No Pattern,96,1.14,No Pattern
+서울,11060,서울,동대문구,7.3,1.33,No Pattern,15.8,1.21,No Pattern,94,0.07,No Pattern
+서울,11070,서울,중랑구,8.9,1.37,No Pattern,17.7,1.39,No Pattern,121,1.21,No Pattern
+서울,11080,서울,성북구,7.0,1.36,No Pattern,15.0,1.2,No Pattern,113,-0.1,No Pattern
+서울,11090,서울,강북구,7.4,1.53,No Pattern,18.0,1.48,New Hot,61,0.11,No Pattern
+서울,11100,서울,도봉구,10.0,1.49,No Pattern,18.6,1.36,No Pattern,100,0.42,No Pattern
+서울,11110,서울,노원구,8.2,1.14,No Pattern,15.4,1.28,New Hot,135,1.43,No Pattern
+서울,11120,서울,은평구,8.1,0.23,No Pattern,15.5,0.38,No Pattern,135,-0.84,No Pattern
+서울,11130,서울,서대문구,4.9,-0.4,No Pattern,13.2,-0.17,No Pattern,58,-2.19,Sporadic Cold
+서울,11140,서울,마포구,6.4,-1.05,New Cold,13.2,-0.63,No Pattern,80,-2.7,Sporadic Cold
+서울,11150,서울,양천구,6.5,-0.07,No Pattern,13.6,-0.06,No Pattern,91,2.48,No Pattern
+서울,11160,서울,강서구,7.9,-0.37,No Pattern,16.0,-0.41,No Pattern,161,1.77,No Pattern
+서울,11170,서울,구로구,7.7,1.55,No Pattern,15.2,1.56,No Pattern,136,1.13,No Pattern
+서울,11180,서울,금천구,11.4,1.82,Consecutive Hot,22.1,1.95,Consecutive Hot,84,0.92,No Pattern
+서울,11190,서울,영등포구,6.2,-1.5,No Pattern,15.7,-1.44,No Pattern,100,0.73,No Pattern
+서울,11200,서울,동작구,6.5,-2.01,No Pattern,15.8,-1.95,No Pattern,86,-1.33,No Pattern
+서울,11210,서울,관악구,8.6,-0.37,No Pattern,16.2,-0.39,No Pattern,101,-0.79,No Pattern
+서울,11220,서울,서초구,5.6,-2.87,No Pattern,13.0,-2.91,No Pattern,77,-1.78,No Pattern
+서울,11230,서울,강남구,5.8,-2.69,Sporadic Cold,12.2,-3.07,Sporadic Cold,90,-0.42,No Pattern
+서울,11240,서울,송파구,6.2,-0.95,No Pattern,13.9,-1.11,No Pattern,165,1.1,No Pattern
+서울,11250,서울,강동구,7.7,0.02,No Pattern,16.1,-0.05,No Pattern,165,1.68,Sporadic Hot
+충청권,25010,대전,동구,10.8,1.23,No Pattern,19.1,1.07,No Pattern,90,-0.25,No Pattern
+충청권,25020,대전,중구,10.4,0.05,No Pattern,18.2,0.06,No Pattern,79,1.78,No Pattern
+충청권,25030,대전,서구,8.5,-0.94,No Pattern,17.7,-0.9,No Pattern,169,1.15,No Pattern
+충청권,25040,대전,유성구,7.0,-2.58,Sporadic Cold,15.4,-2.86,Sporadic Cold,157,2.06,No Pattern
+충청권,25050,대전,대덕구,11.9,-1.87,No Pattern,21.0,-1.98,Sporadic Cold,65,3.26,Diminishing Hot
+충청권,29010,세종,세종시,5.4,-2.47,Sporadic Cold,12.7,-2.86,Sporadic Cold,186,2.88,Persistent Hot
+충청권,33020,충북,충주시,11.7,0.22,No Pattern,20.7,1.23,No Pattern,114,-0.91,No Pattern
+충청권,33030,충북,제천시,14.8,0.79,No Pattern,23.6,0.79,No Pattern,79,-0.73,No Pattern
+충청권,33041,충북,청주시 상당구,8.7,-0.45,No Pattern,16.0,-0.45,No Pattern,104,-0.04,No Pattern
+충청권,33042,충북,청주시 서원구,12.3,-2.31,Sporadic Cold,21.7,-2.62,Sporadic Cold,96,3.26,Persistent Hot
+충청권,33043,충북,청주시 흥덕구,8.8,-2.28,Consecutive Cold,15.4,-2.47,Sporadic Cold,152,3.13,Persistent Hot
+충청권,33044,충북,청주시 청원구,8.7,-0.69,No Pattern,16.4,-0.86,No Pattern,107,1.81,No Pattern
+충청권,33520,충북,보은군,16.7,0.17,No Pattern,23.4,0.51,No Pattern,15,-1.0,No Pattern
+충청권,33530,충북,옥천군,14.5,2.14,Sporadic Hot,25.2,1.86,Sporadic Hot,23,-1.84,Sporadic Cold
+충청권,33540,충북,영동군,23.0,2.13,Sporadic Hot,29.3,2.34,Consecutive Hot,29,-2.07,No Pattern
+충청권,33550,충북,진천군,12.0,-0.27,No Pattern,21.0,-0.1,No Pattern,65,1.27,No Pattern
+충청권,33560,충북,괴산군,14.3,0.38,No Pattern,22.2,0.55,No Pattern,9,-1.38,No Pattern
+충청권,33570,충북,음성군,12.3,0.44,No Pattern,20.7,1.17,No Pattern,38,-1.47,No Pattern
+충청권,33580,충북,단양군,17.3,1.09,No Pattern,22.6,1.06,No Pattern,13,-1.15,No Pattern
+충청권,33590,충북,증평군,13.9,-0.09,No Pattern,23.0,0.51,No Pattern,29,-0.69,No Pattern
+충청권,34011,충남,천안시 동남구,11.2,-2.08,Consecutive Cold,21.5,-2.27,Sporadic Cold,124,3.96,Intensifying Hot
+충청권,34012,충남,천안시 서북구,9.6,-1.12,No Pattern,17.6,-1.09,No Pattern,228,3.01,Consecutive Hot
+충청권,34020,충남,공주시,10.0,-1.18,No Pattern,20.6,-1.7,No Pattern,30,0.26,No Pattern
+충청권,34030,충남,보령시,14.7,1.94,No Pattern,25.0,1.87,Sporadic Hot,46,-2.56,Persistent Cold
+충청권,34040,충남,아산시,10.0,-0.88,No Pattern,18.4,-1.25,No Pattern,241,2.15,Sporadic Hot
+충청권,34050,충남,서산시,9.0,-0.18,No Pattern,16.8,-0.13,No Pattern,87,-1.19,No Pattern
+충청권,34060,충남,논산시,14.3,0.36,No Pattern,21.5,0.24,No Pattern,63,-0.83,No Pattern
+충청권,34070,충남,계룡시,7.7,-1.65,No Pattern,16.2,-1.81,No Pattern,22,1.01,No Pattern
+충청권,34080,충남,당진시,12.8,-0.52,No Pattern,21.0,-0.8,No Pattern,118,0.98,No Pattern
+충청권,34510,충남,금산군,16.7,0.98,No Pattern,29.2,1.15,No Pattern,20,0.21,No Pattern
+충청권,34530,충남,부여군,12.0,2.37,No Pattern,27.2,2.16,No Pattern,15,-2.53,Consecutive Cold
+충청권,34540,충남,서천군,19.8,1.91,No Pattern,30.6,2.09,No Pattern,22,-1.9,No Pattern
+충청권,34550,충남,청양군,8.2,1.31,No Pattern,22.5,1.03,No Pattern,4,-2.65,Persistent Cold
+충청권,34560,충남,홍성군,12.8,0.53,No Pattern,22.6,0.3,No Pattern,55,-1.92,No Pattern
+충청권,34570,충남,예산군,16.7,0.09,No Pattern,24.2,-0.44,No Pattern,31,-0.41,No Pattern
+충청권,34580,충남,태안군,13.3,-0.47,No Pattern,21.2,-0.08,No Pattern,22,-0.79,No Pattern
+전북,35011,전북,전주시 완산구,10.0,-0.68,No Pattern,18.3,-1.06,No Pattern,124,2.26,Persistent Hot
+전북,35012,전북,전주시 덕진구,8.6,-0.44,No Pattern,16.7,-0.73,No Pattern,143,3.22,Diminishing Hot
+전북,35020,전북,군산시,12.3,0.71,No Pattern,22.5,0.67,No Pattern,140,2.35,Persistent Hot
+전북,35030,전북,익산시,14.1,0.15,No Pattern,24.6,-0.08,No Pattern,136,3.22,Persistent Hot
+전북,35040,전북,정읍시,12.3,0.77,No Pattern,22.1,0.61,No Pattern,40,-2.39,Persistent Cold
+전북,35050,전북,남원시,13.8,-0.51,No Pattern,23.6,-0.46,No Pattern,34,-2.25,Diminishing Cold
+전북,35060,전북,김제시,11.6,0.47,No Pattern,20.0,0.21,No Pattern,26,3.56,Persistent Hot
+전북,35510,전북,완주군,10.4,-0.58,No Pattern,16.1,-0.93,No Pattern,46,1.77,No Pattern
+전북,35520,전북,진안군,17.5,-0.45,No Pattern,28.0,-0.7,No Pattern,10,-2.54,Persistent Cold
+전북,35530,전북,무주군,9.5,-0.28,No Pattern,14.3,-0.06,No Pattern,4,-2.16,Persistent Cold
+전북,35540,전북,장수군,4.4,-0.48,No Pattern,17.7,-0.5,No Pattern,2,-2.74,Persistent Cold
+전북,35550,전북,임실군,12.3,-0.6,No Pattern,27.7,-0.58,No Pattern,8,-2.77,Diminishing Cold
+전북,35560,전북,순창군,17.8,-0.65,No Pattern,30.7,-0.85,No Pattern,18,-1.74,No Pattern
+전북,35570,전북,고창군,19.1,1.45,No Pattern,28.7,1.81,No Pattern,30,-1.17,No Pattern
+전북,35580,전북,부안군,17.7,1.59,No Pattern,26.5,1.83,No Pattern,20,-1.3,No Pattern
+전남,24010,광주,동구,8.2,-0.79,No Pattern,16.2,-1.03,No Pattern,40,1.4,No Pattern
+전남,24020,광주,서구,10.6,-1.25,No Pattern,21.0,-1.2,No Pattern,116,4.82,Persistent Hot
+전남,24030,광주,남구,11.5,-1.22,No Pattern,20.7,-1.48,No Pattern,103,2.16,No Pattern
+전남,24040,광주,북구,9.6,-0.88,No Pattern,18.5,-1.22,No Pattern,182,2.37,No Pattern
+전남,24050,광주,광산구,11.6,-1.51,No Pattern,19.8,-1.78,No Pattern,241,3.01,Consecutive Hot
+전남,36010,전남,목포시,14.8,0.41,No Pattern,23.4,0.66,No Pattern,142,0.74,No Pattern
+전남,36020,전남,여수시,11.3,-1.12,No Pattern,19.8,-1.19,No Pattern,137,2.33,No Pattern
+전남,36030,전남,순천시,10.2,-0.85,No Pattern,20.2,-0.67,No Pattern,148,0.06,No Pattern
+전남,36040,전남,나주시,11.4,-0.9,No Pattern,17.6,-1.11,No Pattern,77,0.83,No Pattern
+전남,36060,전남,광양시,12.6,-1.48,No Pattern,23.0,-1.51,No Pattern,102,1.47,No Pattern
+전남,36510,전남,담양군,13.7,-0.2,No Pattern,22.6,-0.17,No Pattern,17,-0.21,No Pattern
+전남,36520,전남,곡성군,13.3,-0.75,No Pattern,20.0,-0.69,No Pattern,6,-1.04,No Pattern
+전남,36530,전남,구례군,8.8,-1.09,No Pattern,17.6,-0.61,No Pattern,3,0.16,No Pattern
+전남,36550,전남,고흥군,11.7,0.75,No Pattern,21.1,0.25,No Pattern,15,-1.33,No Pattern
+전남,36560,전남,보성군,13.5,0.3,No Pattern,22.5,-0.28,No Pattern,12,-0.87,No Pattern
+전남,36570,전남,화순군,12.3,-0.7,No Pattern,21.8,-0.72,No Pattern,22,-0.15,No Pattern
+전남,36580,전남,장흥군,17.4,0.39,No Pattern,25.5,0.38,No Pattern,15,-2.0,No Pattern
+전남,36590,전남,강진군,11.9,0.31,No Pattern,23.8,0.96,No Pattern,10,-1.67,No Pattern
+전남,36600,전남,해남군,14.1,0.97,No Pattern,24.6,1.58,Sporadic Hot,31,-1.93,No Pattern
+전남,36610,전남,영암군,19.9,0.23,No Pattern,32.5,0.59,No Pattern,38,-0.85,No Pattern
+전남,36620,전남,무안군,15.3,0.92,No Pattern,25.1,0.63,No Pattern,73,-0.42,No Pattern
+전남,36630,전남,함평군,18.4,-0.69,No Pattern,28.7,-0.77,No Pattern,16,0.39,No Pattern
+전남,36640,전남,영광군,14.3,-0.06,No Pattern,23.0,-0.29,No Pattern,33,-1.62,No Pattern
+전남,36650,전남,장성군,12.0,-0.51,No Pattern,21.0,-0.85,No Pattern,16,1.53,No Pattern
+전남,36660,전남,완도군,19.5,0.84,No Pattern,30.2,1.4,No Pattern,31,-0.99,No Pattern
+전남,36670,전남,진도군,25.4,1.02,No Pattern,42.3,1.63,Sporadic Hot,15,-1.15,No Pattern
+전남,36680,전남,신안군,19.8,1.39,No Pattern,32.4,1.38,No Pattern,22,-0.86,No Pattern
+전라권,24010,광주,동구,8.2,-0.65,No Pattern,16.2,-0.85,No Pattern,40,1.56,No Pattern
+전라권,24020,광주,서구,10.6,-1.1,No Pattern,21.0,-1.0,No Pattern,116,5.09,Persistent Hot
+전라권,24030,광주,남구,11.5,-1.02,No Pattern,20.7,-1.23,No Pattern,103,2.34,Sporadic Hot
+전라권,24040,광주,북구,9.6,-0.66,No Pattern,18.5,-0.95,No Pattern,182,2.54,Persistent Hot
+전라권,24050,광주,광산구,11.6,-1.26,No Pattern,19.8,-1.45,No Pattern,241,3.18,Intensifying Hot
+전라권,35011,전북,전주시 완산구,10.0,-0.84,No Pattern,18.3,-1.17,No Pattern,124,1.59,No Pattern
+전라권,35012,전북,전주시 덕진구,8.6,-0.64,No Pattern,16.7,-0.87,No Pattern,143,2.23,No Pattern
+전라권,35020,전북,군산시,12.3,0.41,No Pattern,22.5,0.36,No Pattern,140,1.75,No Pattern
+전라권,35030,전북,익산시,14.1,-0.16,No Pattern,24.6,-0.36,No Pattern,136,2.24,Sporadic Hot
+전라권,35040,전북,정읍시,12.3,0.08,No Pattern,22.1,-0.15,No Pattern,40,-2.25,Consecutive Cold
+전라권,35050,전북,남원시,13.8,-0.89,No Pattern,23.6,-0.52,No Pattern,34,-2.65,Persistent Cold
+전라권,35060,전북,김제시,11.6,-0.06,No Pattern,20.0,-0.27,No Pattern,26,2.07,No Pattern
+전라권,35510,전북,완주군,10.4,-0.81,No Pattern,16.1,-1.14,No Pattern,46,0.87,No Pattern
+전라권,35520,전북,진안군,17.5,-0.67,No Pattern,28.0,-1.03,No Pattern,10,-2.21,Sporadic Cold
+전라권,35530,전북,무주군,9.5,-0.43,No Pattern,14.3,-0.36,No Pattern,4,-1.97,No Pattern
+전라권,35540,전북,장수군,4.4,-0.69,No Pattern,17.7,-0.88,No Pattern,2,-2.37,Persistent Cold
+전라권,35550,전북,임실군,12.3,-0.84,No Pattern,27.7,-0.99,No Pattern,8,-2.28,Sporadic Cold
+전라권,35560,전북,순창군,17.8,-0.66,No Pattern,30.7,-0.69,No Pattern,18,-2.45,Persistent Cold
+전라권,35570,전북,고창군,19.1,0.98,No Pattern,28.7,1.26,No Pattern,30,-1.67,No Pattern
+전라권,35580,전북,부안군,17.7,1.06,No Pattern,26.5,1.28,No Pattern,20,-1.26,No Pattern
+전라권,36010,전남,목포시,14.8,0.54,No Pattern,23.4,0.82,No Pattern,142,0.88,No Pattern
+전라권,36020,전남,여수시,11.3,-1.0,No Pattern,19.8,-1.04,No Pattern,137,2.53,Sporadic Hot
+전라권,36030,전남,순천시,10.2,-0.63,No Pattern,20.2,-0.42,No Pattern,148,0.23,No Pattern
+전라권,36040,전남,나주시,11.4,-0.66,No Pattern,17.6,-0.8,No Pattern,77,1.0,No Pattern
+전라권,36060,전남,광양시,12.6,-1.33,No Pattern,23.0,-1.31,No Pattern,102,1.64,No Pattern
+전라권,36510,전남,담양군,13.7,-0.45,No Pattern,22.6,-0.41,No Pattern,17,-0.55,No Pattern
+전라권,36520,전남,곡성군,13.3,-1.04,No Pattern,20.0,-0.94,No Pattern,6,-1.5,No Pattern
+전라권,36530,전남,구례군,8.8,-1.01,No Pattern,17.6,-0.52,No Pattern,3,-0.02,No Pattern
+전라권,36550,전남,고흥군,11.7,0.84,No Pattern,21.1,0.36,No Pattern,15,-1.3,No Pattern
+전라권,36560,전남,보성군,13.5,0.45,No Pattern,22.5,-0.07,No Pattern,12,-0.75,No Pattern
+전라권,36570,전남,화순군,12.3,-0.37,No Pattern,21.8,-0.31,No Pattern,22,0.08,No Pattern
+전라권,36580,전남,장흥군,17.4,0.53,No Pattern,25.5,0.57,No Pattern,15,-1.9,New Cold
+전라권,36590,전남,강진군,11.9,0.47,No Pattern,23.8,1.14,No Pattern,10,-1.59,No Pattern
+전라권,36600,전남,해남군,14.1,1.14,No Pattern,24.6,1.75,Sporadic Hot,31,-1.84,No Pattern
+전라권,36610,전남,영암군,19.9,0.45,No Pattern,32.5,0.82,No Pattern,38,-0.66,No Pattern
+전라권,36620,전남,무안군,15.3,1.1,No Pattern,25.1,0.86,No Pattern,73,-0.27,No Pattern
+전라권,36630,전남,함평군,18.4,-0.48,No Pattern,28.7,-0.51,No Pattern,16,0.55,No Pattern
+전라권,36640,전남,영광군,14.3,0.39,No Pattern,23.0,0.48,No Pattern,33,-1.8,No Pattern
+전라권,36650,전남,장성군,12.0,-0.38,No Pattern,21.0,-0.46,No Pattern,16,0.64,No Pattern
+전라권,36660,전남,완도군,19.5,0.96,No Pattern,30.2,1.5,No Pattern,31,-0.96,No Pattern
+전라권,36670,전남,진도군,25.4,1.17,No Pattern,42.3,1.77,Sporadic Hot,15,-1.11,No Pattern
+전라권,36680,전남,신안군,19.8,1.53,No Pattern,32.4,1.53,No Pattern,22,-0.81,No Pattern
+경북,22010,대구,중구,6.8,-1.14,No Pattern,14.4,-0.93,No Pattern,35,1.63,No Pattern
+경북,22020,대구,동구,9.5,-1.24,No Pattern,17.1,-0.74,No Pattern,147,1.62,No Pattern
+경북,22030,대구,서구,12.9,-0.92,No Pattern,21.2,-0.78,No Pattern,62,2.77,Intensifying Hot
+경북,22040,대구,남구,9.8,-1.71,New Cold,19.6,-1.35,No Pattern,39,1.61,No Pattern
+경북,22050,대구,북구,10.2,-0.73,No Pattern,20.2,-0.79,No Pattern,184,1.96,New Hot
+경북,22060,대구,수성구,9.1,-1.66,Consecutive Cold,17.2,-1.45,No Pattern,131,1.84,No Pattern
+경북,22070,대구,달서구,9.6,0.15,No Pattern,18.2,0.3,No Pattern,199,1.32,No Pattern
+경북,22510,대구,달성군,11.8,0.51,No Pattern,21.1,0.73,No Pattern,226,2.28,No Pattern
+경북,22520,대구,군위군,9.1,-0.28,No Pattern,13.6,0.69,No Pattern,2,0.24,No Pattern
+경북,37011,경북,포항시 남구,12.2,-0.08,No Pattern,21.4,0.03,No Pattern,116,2.42,No Pattern
+경북,37012,경북,포항시 북구,10.2,1.06,No Pattern,19.0,1.28,No Pattern,151,0.51,No Pattern
+경북,37020,경북,경주시,11.3,0.55,No Pattern,20.1,0.72,No Pattern,106,1.15,No Pattern
+경북,37030,경북,김천시,10.3,-0.08,No Pattern,17.1,-0.19,No Pattern,70,0.49,No Pattern
+경북,37040,경북,안동시,14.8,0.6,No Pattern,23.9,0.46,No Pattern,86,-2.63,Persistent Cold
+경북,37050,경북,구미시,11.3,-1.06,No Pattern,19.9,-0.6,No Pattern,273,-0.18,No Pattern
+경북,37060,경북,영주시,14.3,-0.1,No Pattern,23.5,-0.85,No Pattern,48,-1.32,No Pattern
+경북,37070,경북,영천시,12.6,-0.0,No Pattern,20.7,1.2,No Pattern,45,0.6,No Pattern
+경북,37080,경북,상주시,13.1,-0.97,No Pattern,20.6,-1.24,No Pattern,40,-0.43,No Pattern
+경북,37090,경북,문경시,12.7,-0.68,No Pattern,22.4,-0.93,No Pattern,33,-1.5,No Pattern
+경북,37100,경북,경산시,11.6,-0.42,No Pattern,20.9,-0.36,No Pattern,135,1.76,No Pattern
+경북,37520,경북,의성군,12.1,-0.78,No Pattern,17.6,0.31,No Pattern,11,-1.01,No Pattern
+경북,37530,경북,청송군,23.5,1.24,Consecutive Hot,39.2,1.9,No Pattern,12,-1.97,No Pattern
+경북,37540,경북,영양군,22.6,1.37,New Hot,29.1,1.18,New Hot,7,-2.52,Persistent Cold
+경북,37550,경북,영덕군,15.0,1.24,New Hot,25.0,1.49,New Hot,9,-1.49,No Pattern
+경북,37560,경북,청도군,11.4,0.34,No Pattern,25.7,0.51,No Pattern,8,1.0,No Pattern
+경북,37570,경북,고령군,12.8,0.68,No Pattern,21.8,0.93,No Pattern,10,1.2,No Pattern
+경북,37580,경북,성주군,13.6,0.76,No Pattern,21.2,0.66,No Pattern,16,-0.5,No Pattern
+경북,37590,경북,칠곡군,14.9,-0.86,No Pattern,23.5,-0.35,No Pattern,76,2.26,Consecutive Hot
+경북,37600,경북,예천군,7.1,-0.29,No Pattern,12.2,-0.52,No Pattern,21,-1.8,No Pattern
+경북,37610,경북,봉화군,16.2,0.63,No Pattern,23.6,0.03,No Pattern,11,-1.82,No Pattern
+경북,37620,경북,울진군,17.8,1.26,Sporadic Hot,32.9,-0.11,No Pattern,33,-2.85,Persistent Cold
+경북,37630,경북,울릉군,14.8,0.14,No Pattern,14.8,-0.55,No Pattern,4,-1.66,No Pattern
+경남,21010,부산,중구,18.5,1.34,No Pattern,25.9,1.53,No Pattern,10,-2.46,Intensifying Cold
+경남,21020,부산,서구,9.3,0.82,No Pattern,17.3,0.93,No Pattern,30,-0.3,No Pattern
+경남,21030,부산,동구,7.9,0.43,No Pattern,13.6,0.52,No Pattern,22,-1.01,No Pattern
+경남,21040,부산,영도구,12.7,1.51,No Pattern,22.4,1.78,No Pattern,38,-1.78,No Pattern
+경남,21050,부산,부산진구,8.3,-1.03,No Pattern,17.5,-0.85,No Pattern,121,0.14,No Pattern
+경남,21060,부산,동래구,8.7,-2.86,Sporadic Cold,16.7,-2.74,Sporadic Cold,117,0.79,No Pattern
+경남,21070,부산,남구,8.5,-1.17,New Cold,18.6,-0.92,No Pattern,83,-0.17,No Pattern
+경남,21080,부산,북구,8.5,-2.17,No Pattern,18.6,-2.04,No Pattern,103,3.4,Intensifying Hot
+경남,21090,부산,해운대구,8.7,-2.39,Sporadic Cold,17.8,-2.39,No Pattern,127,0.51,No Pattern
+경남,21100,부산,사하구,12.6,-0.27,No Pattern,22.4,0.04,No Pattern,144,0.42,No Pattern
+경남,21110,부산,금정구,7.4,-2.59,No Pattern,17.0,-2.64,No Pattern,48,2.0,Consecutive Hot
+경남,21120,부산,강서구,9.6,-0.97,No Pattern,17.7,-0.68,No Pattern,127,3.51,Persistent Hot
+경남,21130,부산,연제구,7.3,-1.99,New Cold,15.7,-1.72,No Pattern,69,0.48,No Pattern
+경남,21140,부산,수영구,8.5,-1.85,New Cold,19.1,-1.55,No Pattern,51,0.56,No Pattern
+경남,21150,부산,사상구,11.9,-0.85,No Pattern,19.1,-0.61,No Pattern,87,1.15,No Pattern
+경남,21510,부산,기장군,9.6,-1.34,No Pattern,18.4,-1.47,No Pattern,110,2.17,Consecutive Hot
+경남,26010,울산,중구,10.7,0.71,No Pattern,21.3,0.72,No Pattern,110,2.27,Consecutive Hot
+경남,26020,울산,남구,9.0,0.71,No Pattern,18.0,0.72,No Pattern,121,2.27,Consecutive Hot
+경남,26030,울산,동구,11.5,0.4,No Pattern,19.9,0.19,No Pattern,96,1.37,No Pattern
+경남,26040,울산,북구,11.1,0.91,No Pattern,19.5,0.79,No Pattern,180,2.25,Consecutive Hot
+경남,26510,울산,울주군,13.9,0.65,No Pattern,24.0,0.64,No Pattern,146,2.48,Consecutive Hot
+경남,38030,경남,진주시,11.1,0.87,No Pattern,20.4,1.14,No Pattern,178,-2.56,Persistent Cold
+경남,38050,경남,통영시,10.8,-0.63,No Pattern,16.9,-0.72,No Pattern,46,-0.2,No Pattern
+경남,38060,경남,사천시,11.5,0.18,No Pattern,21.2,0.2,No Pattern,51,-1.68,No Pattern
+경남,38070,경남,김해시,9.8,-1.17,No Pattern,17.8,-1.2,No Pattern,279,3.15,Intensifying Hot
+경남,38080,경남,밀양시,13.2,1.22,No Pattern,21.1,1.09,No Pattern,30,2.65,Persistent Hot
+경남,38090,경남,거제시,7.9,-0.66,No Pattern,16.3,-0.94,No Pattern,106,0.82,No Pattern
+경남,38100,경남,양산시,10.1,-0.68,No Pattern,17.9,-0.8,No Pattern,217,3.1,Intensifying Hot
+경남,38111,경남,창원시 의창구,10.2,1.04,No Pattern,18.5,0.73,No Pattern,106,0.86,No Pattern
+경남,38112,경남,창원시 성산구,7.3,-0.97,No Pattern,15.5,-1.17,No Pattern,83,3.32,Diminishing Hot
+경남,38113,경남,창원시 마산합포구,9.5,0.39,No Pattern,16.9,0.32,No Pattern,74,-0.45,No Pattern
+경남,38114,경남,창원시 마산회원구,10.0,0.78,No Pattern,18.3,0.56,No Pattern,67,-0.21,No Pattern
+경남,38115,경남,창원시 진해구,9.6,-1.46,No Pattern,18.6,-1.41,No Pattern,99,2.87,Intensifying Hot
+경남,38510,경남,의령군,9.1,1.61,No Pattern,20.0,1.53,Sporadic Hot,5,-2.61,Persistent Cold
+경남,38520,경남,함안군,8.6,1.42,No Pattern,18.2,1.44,No Pattern,17,-0.76,No Pattern
+경남,38530,경남,창녕군,15.1,2.33,No Pattern,22.3,2.41,No Pattern,23,-2.69,Intensifying Cold
+경남,38540,경남,고성군,10.3,-0.24,No Pattern,18.2,-0.34,No Pattern,13,-0.34,No Pattern
+경남,38550,경남,남해군,11.4,0.27,No Pattern,17.7,-0.08,No Pattern,9,-1.51,No Pattern
+경남,38560,경남,하동군,10.9,0.3,No Pattern,16.3,0.12,No Pattern,10,-1.78,No Pattern
+경남,38570,경남,산청군,12.5,1.23,No Pattern,17.9,1.34,Sporadic Hot,7,-3.22,Persistent Cold
+경남,38580,경남,함양군,10.6,1.01,No Pattern,25.0,0.77,No Pattern,11,-3.2,Persistent Cold
+경남,38590,경남,거창군,13.1,0.95,No Pattern,22.5,0.56,New Hot,28,-3.21,Persistent Cold
+경남,38600,경남,합천군,13.0,1.81,No Pattern,28.6,1.95,Sporadic Hot,10,-3.6,Persistent Cold
+경상권,21010,부산,중구,18.5,0.29,No Pattern,25.9,0.43,No Pattern,10,-2.02,Sporadic Cold
+경상권,21020,부산,서구,9.3,-0.27,No Pattern,17.3,-0.2,No Pattern,30,0.04,No Pattern
+경상권,21030,부산,동구,7.9,-0.48,No Pattern,13.6,-0.41,No Pattern,22,-0.65,No Pattern
+경상권,21040,부산,영도구,12.7,0.64,No Pattern,22.4,0.85,No Pattern,38,-1.49,No Pattern
+경상권,21050,부산,부산진구,8.3,-1.73,New Cold,17.5,-1.59,No Pattern,121,0.47,No Pattern
+경상권,21060,부산,동래구,8.7,-2.93,Sporadic Cold,16.7,-2.84,Sporadic Cold,117,1.0,No Pattern
+경상권,21070,부산,남구,8.5,-1.69,New Cold,18.6,-1.49,No Pattern,83,0.12,No Pattern
+경상권,21080,부산,북구,8.5,-2.64,Sporadic Cold,18.6,-2.54,Sporadic Cold,103,3.42,Intensifying Hot
+경상권,21090,부산,해운대구,8.7,-2.59,Sporadic Cold,17.8,-2.58,No Pattern,127,0.75,No Pattern
+경상권,21100,부산,사하구,12.6,-0.91,No Pattern,22.4,-0.69,No Pattern,144,0.64,No Pattern
+경상권,21110,부산,금정구,7.4,-2.81,Persistent Cold,17.0,-2.84,No Pattern,48,2.12,Consecutive Hot
+경상권,21120,부산,강서구,9.6,-1.61,No Pattern,17.7,-1.4,No Pattern,127,3.51,Persistent Hot
+경상권,21130,부산,연제구,7.3,-2.3,Sporadic Cold,15.7,-2.08,No Pattern,69,0.72,No Pattern
+경상권,21140,부산,수영구,8.5,-2.12,Consecutive Cold,19.1,-1.87,No Pattern,51,0.77,No Pattern
+경상권,21150,부산,사상구,11.9,-1.52,No Pattern,19.1,-1.34,No Pattern,87,1.36,No Pattern
+경상권,21510,부산,기장군,9.6,-1.82,No Pattern,18.4,-1.9,No Pattern,110,2.26,Consecutive Hot
+경상권,22010,대구,중구,6.8,-0.04,No Pattern,14.4,0.2,No Pattern,35,1.22,No Pattern
+경상권,22020,대구,동구,9.5,0.1,No Pattern,17.1,0.6,No Pattern,147,1.09,No Pattern
+경상권,22030,대구,서구,12.9,0.08,No Pattern,21.2,0.23,No Pattern,62,2.43,Consecutive Hot
+경상권,22040,대구,남구,9.8,-0.93,No Pattern,19.6,-0.53,No Pattern,39,1.31,No Pattern
+경상권,22050,대구,북구,10.2,0.4,No Pattern,20.2,0.35,No Pattern,184,1.55,New Hot
+경상권,22060,대구,수성구,9.1,-0.61,No Pattern,17.2,-0.37,No Pattern,131,1.43,New Hot
+경상권,22070,대구,달서구,9.6,1.25,No Pattern,18.2,1.41,No Pattern,199,0.97,No Pattern
+경상권,22510,대구,달성군,11.8,2.31,No Pattern,21.1,2.49,No Pattern,226,1.18,No Pattern
+경상권,22520,대구,군위군,9.1,1.01,New Hot,13.6,2.04,Sporadic Hot,2,-0.2,No Pattern
+경상권,26010,울산,중구,10.7,-0.22,No Pattern,21.3,-0.19,No Pattern,110,2.34,Consecutive Hot
+경상권,26020,울산,남구,9.0,-0.22,No Pattern,18.0,-0.19,No Pattern,121,2.34,Consecutive Hot
+경상권,26030,울산,동구,11.5,-0.23,No Pattern,19.9,-0.36,No Pattern,96,1.44,No Pattern
+경상권,26040,울산,북구,11.1,0.06,No Pattern,19.5,0.12,No Pattern,180,2.58,Intensifying Hot
+경상권,26510,울산,울주군,13.9,0.03,No Pattern,24.0,0.3,No Pattern,146,2.16,Consecutive Hot
+경상권,37011,경북,포항시 남구,12.2,0.74,No Pattern,21.4,0.87,No Pattern,116,2.21,No Pattern
+경상권,37012,경북,포항시 북구,10.2,2.36,Sporadic Hot,19.0,2.6,Sporadic Hot,151,0.1,No Pattern
+경상권,37020,경북,경주시,11.3,1.38,No Pattern,20.1,1.5,No Pattern,106,1.65,No Pattern
+경상권,37030,경북,김천시,10.3,0.9,No Pattern,17.1,0.81,No Pattern,70,-0.34,No Pattern
+경상권,37040,경북,안동시,14.8,1.95,Sporadic Hot,23.9,1.82,No Pattern,86,-3.05,Persistent Cold
+경상권,37050,경북,구미시,11.3,0.05,No Pattern,19.9,0.52,No Pattern,273,-0.58,No Pattern
+경상권,37060,경북,영주시,14.3,0.86,No Pattern,23.5,0.02,No Pattern,48,-1.69,No Pattern
+경상권,37070,경북,영천시,12.6,1.42,No Pattern,20.7,2.67,No Pattern,45,0.09,No Pattern
+경상권,37080,경북,상주시,13.1,0.14,No Pattern,20.6,-0.14,No Pattern,40,-0.84,No Pattern
+경상권,37090,경북,문경시,12.7,0.06,No Pattern,22.4,-0.2,No Pattern,33,-1.84,No Pattern
+경상권,37100,경북,경산시,11.6,0.75,No Pattern,20.9,0.82,No Pattern,135,1.35,No Pattern
+경상권,37520,경북,의성군,12.1,0.47,No Pattern,17.6,1.63,No Pattern,11,-1.44,No Pattern
+경상권,37530,경북,청송군,23.5,2.73,Sporadic Hot,39.2,3.41,Sporadic Hot,12,-2.41,Persistent Cold
+경상권,37540,경북,영양군,22.6,2.7,Sporadic Hot,29.1,2.49,Sporadic Hot,7,-2.94,Persistent Cold
+경상권,37550,경북,영덕군,15.0,2.46,Sporadic Hot,25.0,2.74,Sporadic Hot,9,-1.88,No Pattern
+경상권,37560,경북,청도군,11.4,1.8,No Pattern,25.7,1.91,No Pattern,8,0.16,No Pattern
+경상권,37570,경북,고령군,12.8,1.86,No Pattern,21.8,2.03,No Pattern,10,-0.32,No Pattern
+경상권,37580,경북,성주군,13.6,1.71,No Pattern,21.2,1.62,No Pattern,16,-1.72,No Pattern
+경상권,37590,경북,칠곡군,14.9,0.5,No Pattern,23.5,1.0,No Pattern,76,1.73,Consecutive Hot
+경상권,37600,경북,예천군,7.1,0.88,No Pattern,12.2,0.65,No Pattern,21,-2.22,Consecutive Cold
+경상권,37610,경북,봉화군,16.2,1.77,Sporadic Hot,23.6,1.14,New Hot,11,-2.22,No Pattern
+경상권,37620,경북,울진군,17.8,2.45,Sporadic Hot,32.9,0.95,Sporadic Hot,33,-3.26,Persistent Cold
+경상권,37630,경북,울릉군,14.8,0.8,Sporadic Hot,14.8,0.04,No Pattern,4,-1.97,No Pattern
+경상권,38030,경남,진주시,11.1,-0.37,No Pattern,20.4,-0.22,No Pattern,178,-1.94,No Pattern
+경상권,38050,경남,통영시,10.8,-1.1,No Pattern,16.9,-1.15,No Pattern,46,0.02,No Pattern
+경상권,38060,경남,사천시,11.5,-0.62,No Pattern,21.2,-0.61,No Pattern,51,-1.26,No Pattern
+경상권,38070,경남,김해시,9.8,-1.93,No Pattern,17.8,-1.93,No Pattern,279,3.2,Intensifying Hot
+경상권,38080,경남,밀양시,13.2,0.34,No Pattern,21.1,0.46,No Pattern,30,1.98,No Pattern
+경상권,38090,경남,거제시,7.9,-1.01,No Pattern,16.3,-1.22,No Pattern,106,0.93,No Pattern
+경상권,38100,경남,양산시,10.1,-1.5,No Pattern,17.9,-1.56,No Pattern,217,3.14,Intensifying Hot
+경상권,38111,경남,창원시 의창구,10.2,-0.24,No Pattern,18.5,-0.44,No Pattern,106,1.12,No Pattern
+경상권,38112,경남,창원시 성산구,7.3,-1.46,No Pattern,15.5,-1.6,No Pattern,83,3.32,Diminishing Hot
+경상권,38113,경남,창원시 마산합포구,9.5,-0.54,No Pattern,16.9,-0.58,No Pattern,74,-0.13,No Pattern
+경상권,38114,경남,창원시 마산회원구,10.0,-0.18,No Pattern,18.3,-0.33,No Pattern,67,0.06,No Pattern
+경상권,38115,경남,창원시 진해구,9.6,-1.81,No Pattern,18.6,-1.78,No Pattern,99,2.89,Intensifying Hot
+경상권,38510,경남,의령군,9.1,0.37,No Pattern,20.0,0.24,No Pattern,5,-2.07,No Pattern
+경상권,38520,경남,함안군,8.6,0.08,No Pattern,18.2,0.07,No Pattern,17,-0.35,No Pattern
+경상권,38530,경남,창녕군,15.1,1.42,No Pattern,22.3,1.58,No Pattern,23,-2.38,No Pattern
+경상권,38540,경남,고성군,10.3,-1.0,No Pattern,18.2,-1.05,No Pattern,13,-0.03,No Pattern
+경상권,38550,경남,남해군,11.4,-0.25,No Pattern,17.7,-0.51,No Pattern,9,-1.24,No Pattern
+경상권,38560,경남,하동군,10.9,-0.56,No Pattern,16.3,-0.72,No Pattern,10,-1.35,No Pattern
+경상권,38570,경남,산청군,12.5,-0.01,No Pattern,17.9,0.01,No Pattern,7,-2.58,Persistent Cold
+경상권,38580,경남,함양군,10.6,0.04,No Pattern,25.0,-0.15,No Pattern,11,-2.71,Persistent Cold
+경상권,38590,경남,거창군,13.1,1.09,No Pattern,22.5,0.84,No Pattern,28,-2.96,Persistent Cold
+경상권,38600,경남,합천군,13.0,2.08,No Pattern,28.6,2.27,No Pattern,10,-3.65,Persistent Cold
+강원,32010,강원,춘천시,9.5,-0.18,No Pattern,19.4,0.59,No Pattern,127,0.05,No Pattern
+강원,32020,강원,원주시,10.1,-0.1,No Pattern,18.7,-0.11,No Pattern,177,1.44,No Pattern
+강원,32030,강원,강릉시,14.3,1.21,No Pattern,21.6,0.81,No Pattern,125,-0.17,No Pattern
+강원,32040,강원,동해시,15.1,0.62,No Pattern,21.7,0.26,No Pattern,53,0.76,No Pattern
+강원,32050,강원,태백시,14.8,0.76,No Pattern,21.5,0.64,No Pattern,20,-1.28,No Pattern
+강원,32060,강원,속초시,15.7,-0.07,No Pattern,25.2,-0.68,No Pattern,58,-1.45,No Pattern
+강원,32070,강원,삼척시,12.2,0.36,No Pattern,20.7,-0.06,No Pattern,26,-0.67,No Pattern
+강원,32510,강원,홍천군,14.4,0.21,No Pattern,22.3,0.01,No Pattern,31,0.64,No Pattern
+강원,32520,강원,횡성군,10.9,0.0,No Pattern,20.2,-0.01,No Pattern,14,0.64,No Pattern
+강원,32530,강원,영월군,12.6,-0.22,No Pattern,18.9,-0.45,No Pattern,14,0.08,No Pattern
+강원,32540,강원,평창군,13.5,0.83,No Pattern,23.9,0.91,No Pattern,13,-0.66,No Pattern
+강원,32550,강원,정선군,17.5,0.78,No Pattern,24.7,0.57,No Pattern,17,-0.34,No Pattern
+강원,32560,강원,철원군,12.1,0.18,No Pattern,23.6,1.21,No Pattern,22,-1.37,No Pattern
+강원,32570,강원,화천군,16.8,-0.31,No Pattern,27.7,0.7,No Pattern,20,0.28,No Pattern
+강원,32580,강원,양구군,12.7,-0.41,No Pattern,25.4,0.54,No Pattern,14,-0.11,No Pattern
+강원,32590,강원,인제군,11.2,-0.32,No Pattern,21.7,-0.26,No Pattern,17,-0.47,No Pattern
+강원,32600,강원,고성군,9.9,-0.95,No Pattern,22.6,-1.3,No Pattern,7,-1.08,No Pattern
+강원,32610,강원,양양군,14.5,0.5,No Pattern,26.1,0.2,No Pattern,10,0.1,No Pattern
+제주,39010,제주,제주시,10.7,0.0,No Pattern,20.0,0.0,No Pattern,307,0.0,No Pattern
+제주,39020,제주,서귀포시,11.5,0.0,No Pattern,21.8,0.0,No Pattern,90,0.0,No Pattern
