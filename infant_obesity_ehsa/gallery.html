@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>결과지도 다운로드 · 영유아 소아비만 EHSA</title>
+<title>결과지도 갤러리 · 영유아 소아비만 EHSA</title>
 <style>
 :root{
   --kk-green:#036b3f; --kk-green-dark:#024e2e; --kk-green-light:#0a8c52; --kk-accent:#00a86b;
@@ -21,28 +21,34 @@ header.top a.nav{color:#fff;text-decoration:none;font-size:13px;border:1px solid
 header.top a.nav:hover{background:rgba(255,255,255,.15)}
 
 .wrap{max-width:1180px;margin:0 auto;padding:8px 24px 56px}
-.intro{font-size:13.5px;color:var(--muted);margin:22px 0 4px;max-width:880px;line-height:1.6}
+.intro{font-size:13px;color:var(--muted);margin:18px 0 0;line-height:1.7}
 
-.section-title{font-size:19px;font-weight:700;margin:38px 0 6px;display:flex;align-items:center;gap:8px}
-.section-title .cnt{font-size:13px;font-weight:500;color:var(--muted)}
-.section-desc{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+/* 필터바 */
+.filters{display:flex;flex-direction:column;gap:10px;margin:16px 0 6px;padding:16px 18px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 4px 14px rgba(3,107,63,.05)}
+.frow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.flab{font-size:12px;font-weight:700;color:var(--kk-green-dark);width:44px;flex-shrink:0}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;flex-wrap:wrap}
+.seg button{padding:8px 15px;border:0;background:#fff;font-size:13px;cursor:pointer;border-right:1px solid var(--border);color:var(--ink)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--kk-green);color:#fff;font-weight:700}
+.seg button.disabled{opacity:.32;pointer-events:none}
+.filters select{padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:#fff;color:var(--ink);cursor:pointer;min-width:180px}
+.filters select:hover{border-color:var(--kk-green)}
+.rescount{font-size:12.5px;color:var(--muted);margin:12px 2px 14px}
 
-.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
 .result-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
 .result-card .thumb{display:block;background:#f6f7f5;border-bottom:1px solid var(--border);overflow:hidden}
 .result-card .thumb img{width:100%;height:auto;display:block;transition:transform .2s}
 .result-card .thumb:hover img{transform:scale(1.02)}
-.result-card .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
-.result-card .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:5px;background:#e8f5ee;color:var(--kk-green);margin-bottom:10px;align-self:flex-start}
-.result-card h3{font-size:15.5px;font-weight:700;margin-bottom:4px}
-.result-card .meta{font-size:11.5px;color:var(--muted);margin-bottom:10px}
-.result-card .desc{font-size:12.5px;color:#4b5563;line-height:1.45;flex:1;margin-bottom:14px}
+.result-card .body{padding:15px 16px 16px;display:flex;flex-direction:column;flex:1}
+.result-card .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:5px;background:#e8f5ee;color:var(--kk-green);margin-bottom:9px;align-self:flex-start}
+.result-card h3{font-size:15px;font-weight:700;margin-bottom:3px}
+.result-card .meta{font-size:11.5px;color:var(--muted);margin-bottom:12px;flex:1}
 .result-card .dls{display:flex;gap:8px;flex-wrap:wrap}
 .result-card .dl{display:inline-flex;align-items:center;gap:6px;background:#e8f5ee;color:var(--kk-green);border:1px solid #cde8d8;padding:7px 14px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none}
 .result-card .dl:hover{background:var(--kk-green);color:#fff;border-color:var(--kk-green)}
-
-.soon{border:1.5px dashed var(--border);border-radius:14px;padding:26px 22px;background:#fbfcfb;color:var(--muted);font-size:13px;line-height:1.6}
-.soon b{color:var(--kk-green-dark)}
+.empty{color:var(--muted);font-size:13px;padding:30px 4px}
 
 footer{text-align:center;color:var(--muted);font-size:12.5px;padding:28px 24px 40px;border-top:1px solid var(--border)}
 footer .credit{margin-top:8px;font-weight:600;color:var(--kk-green)}
@@ -51,8 +57,8 @@ footer .credit{margin-top:8px;font-weight:600;color:var(--kk-green)}
 <body>
 <header class="top">
   <div>
-    <h1>결과지도 다운로드</h1>
-    <div class="sub">전국 시군구 영유아 소아비만 EHSA · 권역별 정지도(PNG)</div>
+    <h1>결과지도 갤러리</h1>
+    <div class="sub">전국 영유아 소아비만 공간분석 · 분석 · 지표 · 권역별 정지도</div>
   </div>
   <div class="links">
     <a class="nav" href="index.html">← 인터랙티브 지도</a>
@@ -62,88 +68,124 @@ footer .credit{margin-top:8px;font-weight:600;color:var(--kk-green)}
 
 <div class="wrap">
   <div class="intro">
-    - ArcGIS EHSA 방식(공간시간 Getis-Ord Gi*, 섬연결 가중, FDR 보정) 산출 권역별 정지도<br>
-    - 심볼은 ESRI EHSA 표준(v2) 준수<br>
+    - 분석(EHSA · 연도별 Gi*) · 지표(비만율 · 과체중이상율 · 비만 아동수) · 권역을 골라 탐색<br>
+    - ArcGIS EHSA 방식(공간시간 Getis-Ord Gi*, 섬연결 가중, FDR 보정) 산출, ESRI EHSA 표준 심볼<br>
     - 썸네일 클릭 시 원본 새 탭, 버튼으로 PNG·GIF 다운로드
   </div>
-  <div id="sections"></div>
+
+  <div class="filters">
+    <div class="frow"><span class="flab">분석</span>
+      <div class="seg" id="fAnalysis">
+        <button data-v="ehsa" class="on">EHSA (발생 핫스팟)</button>
+        <button data-v="giyear">연도별 Gi* (공간시간)</button>
+      </div>
+    </div>
+    <div class="frow"><span class="flab">지표</span>
+      <div class="seg" id="fInd">
+        <button data-v="" class="on">비만율</button>
+        <button data-v="overweight">과체중이상율</button>
+        <button data-v="count">비만 아동수</button>
+        <button data-v="compare">3지표 비교</button>
+      </div>
+    </div>
+    <div class="frow"><span class="flab">권역</span>
+      <select id="fRegion"></select>
+    </div>
+  </div>
+
+  <div class="rescount" id="rescount"></div>
+  <div class="results" id="grid"></div>
 </div>
 
 <footer>GIS 기반 소아비만 종합 분석 플랫폼 · 데이터 기준 2026<div class="credit">made by 국립공주대학교 임창민</div></footer>
 
 <script>
-// 새 지도는 해당 그룹 items 배열에 객체만 추가하면 카드 자동 생성.
-// base=하위 폴더, file=PNG(썸네일·다운로드), gif=애니메이션(선택), meta=설명, desc=상세
-const GI='assets/hotspot_result_by_year/';
-const SECTIONS=[
-  {
-    title:'권역별 EHSA 종합도', icon:'🗺️',
-    desc:'- 비만율·과체중이상율·비만 아동수(규모) 3개 지표 EHSA 패턴을 한 장에 담은 종합도',
-    items:[
-      {file:'assets/region_national_ehsa.png', tag:'전국', name:'전국 EHSA 종합도',
-       meta:'3지표 패널 · 클릭 시 원본', desc:'전국 기준 시군구 EHSA(비만율·과체중이상율·비만 아동수) 3패널 종합도.'},
-      {file:'assets/region_chungcheong_ehsa.png', tag:'충청권', name:'충청권 EHSA 종합도',
-       meta:'3지표 패널 · 클릭 시 원본', desc:'충청권 내 비교 기준 시군구 EHSA 3패널 종합도.'},
-      {file:'assets/region_gyeongsang_ehsa.png', tag:'경상권', name:'경상권 EHSA 종합도',
-       meta:'3지표 패널 · 클릭 시 원본', desc:'경상권 내 비교 기준 시군구 EHSA 3패널 종합도.'},
-      {file:'assets/region_jeolla_ehsa.png', tag:'전라권', name:'전라권 EHSA 종합도',
-       meta:'3지표 패널 · 클릭 시 원본', desc:'전라권 내 비교 기준 시군구 EHSA 3패널 종합도(내부 균질해 No Pattern 다수).'}
-    ]
-  },
-  {
-    title:'권역별 연도별 Gi* 지도 (공간시간)', icon:'📈',
-    desc:'- 2012–2024 연도별 Getis-Ord Gi* z-score 패널<br>- 비만율 기준(전국은 비만 아동수 별도 제공)<br>- PNG 패널 + GIF 애니메이션',
-    items:[
-      {file:GI+'region_national_giyear.png', gif:GI+'region_national_giyear.gif', tag:'전국 · 비만율', name:'전국 연도별 Gi* (비만율)',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'전국 기준 시군구 비만율 Gi* z 연도별 공간시간 패널.'},
-      {file:GI+'region_national_count_giyear.png', gif:GI+'region_national_count_giyear.gif', tag:'전국 · 규모', name:'전국 연도별 Gi* (비만 아동수)',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'전국 기준 비만 아동수(규모) Gi* z 연도별 공간시간 패널.'},
-      {file:GI+'region_capital_giyear.png', gif:GI+'region_capital_giyear.gif', tag:'수도권', name:'수도권 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'수도권 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_seoul_giyear.png', gif:GI+'region_seoul_giyear.gif', tag:'서울', name:'서울 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'서울 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_chungcheong_giyear.png', gif:GI+'region_chungcheong_giyear.gif', tag:'충청권', name:'충청권 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'충청권 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_jeolla_giyear.png', gif:GI+'region_jeolla_giyear.gif', tag:'전라권', name:'전라권 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'전라권 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_jeonbuk_giyear.png', gif:GI+'region_jeonbuk_giyear.gif', tag:'전북', name:'전북 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'전북 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_jeonnam_giyear.png', gif:GI+'region_jeonnam_giyear.gif', tag:'전남', name:'전남 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'전남 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_gyeongsang_giyear.png', gif:GI+'region_gyeongsang_giyear.gif', tag:'경상권', name:'경상권 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'경상권 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_gyeongbuk_giyear.png', gif:GI+'region_gyeongbuk_giyear.gif', tag:'경북', name:'경북 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'경북 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_gyeongnam_giyear.png', gif:GI+'region_gyeongnam_giyear.gif', tag:'경남', name:'경남 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'경남 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_gangwon_giyear.png', gif:GI+'region_gangwon_giyear.gif', tag:'강원', name:'강원 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'강원 내 비교 기준 비만율 Gi* z 연도별 패널.'},
-      {file:GI+'region_jeju_giyear.png', gif:GI+'region_jeju_giyear.gif', tag:'제주', name:'제주 연도별 Gi*',
-       meta:'2012–2024 패널 · PNG/GIF', desc:'제주 내 비교 기준 비만율 Gi* z 연도별 패널.'}
-    ]
-  }
+const BASE='assets/infant_obesity_maps/';
+const REGIONS=[
+  {key:'national',  ko:'전국',   grp:'전국'},
+  {key:'capital',   ko:'수도권', grp:'수도권'},
+  {key:'seoul',     ko:'서울',   grp:'수도권'},
+  {key:'chungcheong',ko:'충청권',grp:'충청'},
+  {key:'chungbuk',  ko:'충북',   grp:'충청'},
+  {key:'chungnam',  ko:'충남',   grp:'충청'},
+  {key:'jeolla',    ko:'전라권', grp:'전라'},
+  {key:'jeonbuk',   ko:'전북',   grp:'전라'},
+  {key:'jeonnam',   ko:'전남',   grp:'전라'},
+  {key:'gyeongsang',ko:'경상권', grp:'경상'},
+  {key:'gyeongbuk', ko:'경북',   grp:'경상'},
+  {key:'gyeongnam', ko:'경남',   grp:'경상'},
+  {key:'gangwon',   ko:'강원',   grp:'강원·제주'},
+  {key:'jeju',      ko:'제주',   grp:'강원·제주'}
 ];
+const GRP_ORDER=['수도권','충청','전라','경상','강원·제주'];
+const TOK={'':'','overweight':'overweight_','count':'count_'};
+const IND_KO={'':'비만율','overweight':'과체중이상율','count':'비만 아동수','compare':'3지표 비교'};
 
-const root=document.getElementById('sections');
-SECTIONS.forEach(s=>{
-  const n=s.items?s.items.length:0;
-  let h='<div class="section-title">'+s.icon+' '+s.title+(n?' <span class="cnt">· '+n+'종</span>':'')+'</div>';
-  if(s.desc)h+='<div class="section-desc">'+s.desc+'</div>';
-  h+='<div class="results">'+s.items.map(it=>{
-    const base=it.name.replace(/[ ·()]+/g,'_');
-    const gif=it.gif?'<a class="dl" href="'+it.gif+'" download="'+base+'.gif">⬇ GIF 애니메이션</a>':'';
-    return '<div class="result-card">'+
-      '<a class="thumb" href="'+it.file+'" target="_blank" rel="noopener"><img src="'+it.file+'" alt="'+it.name+'" loading="lazy"></a>'+
-      '<div class="body"><span class="tag">'+it.tag+'</span>'+
-      '<h3>'+it.name+'</h3>'+
-      '<div class="meta">'+it.meta+'</div>'+
-      '<div class="desc">- '+it.desc.replace(/\.$/,'')+'</div>'+
-      '<div class="dls">'+
-        '<a class="dl" href="'+it.file+'" download="'+base+'.png">⬇ PNG 다운로드</a>'+gif+
-      '</div></div></div>';
-  }).join('')+'</div>';
-  root.insertAdjacentHTML('beforeend',h);
-});
+const state={analysis:'ehsa',ind:'',region:'all'};
+
+// 권역 드롭다운
+(function(){
+  let h='<option value="all">전체 권역</option><option value="national">전국</option>';
+  GRP_ORDER.forEach(g=>{
+    const rs=REGIONS.filter(r=>r.grp===g);
+    h+='<optgroup label="'+g+'">'+rs.map(r=>'<option value="'+r.key+'">'+r.ko+'</option>').join('')+'</optgroup>';
+  });
+  document.getElementById('fRegion').innerHTML=h;
+})();
+
+function fileFor(analysis,ind,region){
+  if(analysis==='ehsa'){
+    if(ind==='compare') return {png:'ehsa_result/region_'+region+'_ehsa_compare.png'};
+    return {png:'ehsa_result/region_'+region+'_'+TOK[ind]+'ehsa.png'};
+  }
+  const t=TOK[ind];
+  return {png:'hotspot_result_by_year/region_'+region+'_'+t+'giyear.png',
+          gif:'hotspot_result_by_year/region_'+region+'_'+t+'giyear.gif'};
+}
+function cardHTML(r){
+  const f=fileFor(state.analysis,state.ind,r.key);
+  const aKo=state.analysis==='ehsa'?'EHSA':'연도별 Gi*';
+  const indKo=IND_KO[state.ind];
+  const png=BASE+f.png;
+  const dlbase=('region_'+r.key+'_'+state.ind+'_'+state.analysis).replace(/_+/g,'_');
+  const meta=state.analysis==='giyear'
+      ? '2012–2024 연도별 Gi* z 패널 · PNG/GIF'
+      : (state.ind==='compare'?'3지표(비만율·과체중이상율·비만 아동수) EHSA 비교도':'EHSA 패턴 (발생 핫스팟 분석)');
+  let dls='<a class="dl" href="'+png+'" download="'+dlbase+'.png">⬇ PNG</a>';
+  if(f.gif) dls+='<a class="dl" href="'+BASE+f.gif+'" download="'+dlbase+'.gif">⬇ GIF</a>';
+  return '<div class="result-card">'+
+    '<a class="thumb" href="'+png+'" target="_blank" rel="noopener"><img src="'+png+'" alt="'+r.ko+' '+indKo+' '+aKo+'" loading="lazy"></a>'+
+    '<div class="body"><span class="tag">'+r.ko+'</span>'+
+    '<h3>'+indKo+' · '+aKo+'</h3>'+
+    '<div class="meta">'+meta+'</div>'+
+    '<div class="dls">'+dls+'</div>'+
+    '</div></div>';
+}
+function render(){
+  const regions=state.region==='all'?REGIONS:REGIONS.filter(r=>r.key===state.region);
+  const cards=regions.map(cardHTML);
+  const grid=document.getElementById('grid');
+  grid.innerHTML=cards.length?cards.join(''):'<div class="empty">해당 조건의 지도가 없습니다.</div>';
+  document.getElementById('rescount').textContent=cards.length+'종';
+}
+function setSeg(id,val){
+  document.querySelectorAll('#'+id+' button').forEach(b=>b.classList.toggle('on',b.dataset.v===val));
+}
+function syncCompare(){
+  const btn=document.querySelector('#fInd [data-v="compare"]');
+  if(state.analysis!=='ehsa'){
+    btn.classList.add('disabled');
+    if(state.ind==='compare'){state.ind='';setSeg('fInd','');}
+  } else btn.classList.remove('disabled');
+}
+document.querySelectorAll('#fAnalysis button').forEach(b=>b.onclick=()=>{
+  state.analysis=b.dataset.v;setSeg('fAnalysis',state.analysis);syncCompare();render();});
+document.querySelectorAll('#fInd button').forEach(b=>b.onclick=()=>{
+  if(b.classList.contains('disabled'))return;
+  state.ind=b.dataset.v;setSeg('fInd',state.ind);render();});
+document.getElementById('fRegion').onchange=e=>{state.region=e.target.value;render();};
+
+syncCompare();render();
 </script>
 </body>
 </html>
