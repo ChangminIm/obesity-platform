@@ -166,8 +166,10 @@ a{color:var(--accent)}
 <section class="slide">
   <div class="s-tag">02 · DATA</div>
   <h2 class="st">자료와 변수</h2>
-  <p class="lead">종속변수: 영유아 건강검진 시군구 비만율·과체중이상율(수검수 역산 가중 집계).
-    독립변수: KOSIS 21종 후보 → 이론·다중공선성 진단으로 7종 선정(모두 z-표준화).</p>
+  <ul class="dot" style="font-size:1.05rem;margin-bottom:.8rem">
+    <li><b>종속변수</b>: 영유아 건강검진 시군구 비만율·과체중이상율</li>
+    <li><b>독립변수</b>: KOSIS 21종 후보 → 이론·다중공선성 진단으로 <b>7종 선정</b> (z-표준화)</li>
+  </ul>
   <div class="box">
     <table>
       <tr><th>영역</th><th>변수</th><th class="ctr">가설</th><th>참고문헌</th></tr>
@@ -228,9 +230,11 @@ a{color:var(--accent)}
 <section class="slide">
   <div class="s-tag">04 · DIAGNOSTICS</div>
   <h2 class="st">왜 공간 모형인가 — 공간적 자기상관 검정</h2>
-  <p class="lead">두 지표 모두 <b>전 연도 유의한 양(+)의 전역 Moran's I</b>(p ≤ 0.001).<br>
-    코로나 시기(2020–21)에 군집성이 정점 — 비만율이 오를 때 지역 간 격차 구조도 강해졌다.<br>
-    관측치 독립을 가정하는 전역 OLS는 부적합하다.</p>
+  <ul class="dot" style="font-size:1.08rem;margin-bottom:1rem">
+    <li><b>전 연도 유의한 양(+)의 Moran's I</b> (p ≤ 0.001)</li>
+    <li>군집성 정점은 <b>코로나 시기(2020–21)</b></li>
+    <li>→ 관측치 독립을 가정하는 전역 OLS는 부적합</li>
+  </ul>
   <div class="box"><h4>종속변수의 전역 Moran's I (연도별)</h4><table id="tblDvMoran"></table>
     <p class="tbl-note">999회 순열검정, 전 연도 p ≤ 0.001.</p></div>
 </section>
@@ -259,12 +263,11 @@ a{color:var(--accent)}
 <section class="slide">
   <div class="s-tag">06 · MODEL COMPARISON</div>
   <h2 class="st">모형 성능: 시간 이질성 &gt; 공간 이질성</h2>
-  <p class="lead">두 모형(비만율·과체중이상율) 모두 MGTWR가 최종 우위이며, 잔차의 공간 자기상관은
-    MGTWR에서 사실상 해소된다.<br>
-    <b>"시간 이질성 &gt; 공간 이질성"의 의미</b>: 비만율 모형 기준, 공간 이질성만 반영하면(OLS→GWR)
-    AICc가 274 개선되지만, 시간 이질성까지 반영하면(GWR→GTWR) <b>593이 추가로</b> 개선된다.
-    계수가 "지역마다 다르다"는 것보다 <b>"시기마다 다르다"</b>는 것이 자료 적합에 더 크게 기여했다 —
-    코로나 전후의 구조 변화가 그만큼 컸다는 뜻이다.</p>
+  <ul class="dot" style="font-size:1.08rem;margin-bottom:1rem">
+    <li>두 모형 모두 <b>MGTWR 최종 우위</b> — 잔차 공간 자기상관 사실상 해소</li>
+    <li>공간 이질성 반영(OLS→GWR): AICc <b>274 개선</b> · 시간 이질성 추가(GWR→GTWR): <b>593 추가 개선</b></li>
+    <li>→ "지역 차이"보다 <b>"시기 차이"</b>의 기여가 더 컸다 (코로나 전후 구조 변화)</li>
+  </ul>
   <div class="two-col">
     <div class="box" style="margin-top:0"><h4>비만율 모형</h4><table id="tblModelOb"></table></div>
     <div class="box" style="margin-top:0"><h4>과체중이상율 모형</h4><table id="tblModelOw"></table></div>
@@ -277,25 +280,21 @@ a{color:var(--accent)}
   <h2 class="st">변수별 작동 스케일 — 변수마다 힘이 미치는 범위가 다르다</h2>
   <div class="scale-grid">
     <div class="scale-card sc1"><h4>① 국지·시기 가변형</h4>
-      <b>수급률(+) · 조이혼율(+) · 청년순이동(−) · 아파트(−)</b><br><br>
-      좁은 권역(이웃 25~32곳)에서, 해마다 다르게 작동.<br>→ 지역·시기 맞춤 개입의 영역</div>
+      <b>수급률(+) · 조이혼율(+)<br>청년순이동(−) · 아파트(−)</b><br><br>
+      좁은 권역에서, 해마다 다르게<br>→ <b>지역·시기 맞춤 개입</b></div>
     <div class="scale-card sc2"><h4>② 국지·시기 안정형</h4>
       <b>인구밀도(±)</b><br><br>
-      지역마다 효과가 다르지만(도시 −, 농촌 +), 9년 내내 방향이 일정.<br>→ 구조적 변수</div>
+      지역마다 다르지만 9년 내내 일정<br>→ <b>구조적 변수</b></div>
     <div class="scale-card sc3"><h4>③ 전국 공통형</h4>
       <b>1인가구 · 의사수</b><br><br>
-      전국 어디서나, 어느 해든 같은 효과.<br>→ 전국 단위 정책의 영역</div>
+      어디서나, 어느 해든 같은 효과<br>→ <b>전국 단위 정책</b></div>
   </div>
   <div class="box">
     <h4>읽는 법 — bw · τ · 유효모수(ENP)</h4>
     <ul class="dot">
-      <li><b>bw(bandwidth)</b> = 한 지역의 계수를 계산할 때 빌려 쓰는 <b>이웃 관측치의 수</b>.
-        작을수록(예: 32) 좁은 권역에서만 통하는 국지적 효과, 전체 관측치 수(2,061)에 가까울수록(예: 1,769)
-        전국이 한 값을 공유하는 공통 효과.</li>
-      <li><b>τ(타우)</b> = 다른 연도 정보를 얼마나 <b>차단</b>하는지. 크면 같은 해 자료 위주로 추정되어
-        계수가 해마다 달라질 수 있고(시기 가변), 0에 가까우면 9년치를 합쳐 추정되어 계수가 일정(시기 안정).</li>
-      <li><b>유효모수(ENP)</b> = 국지 모형이 사실상 수행하는 <b>검정의 횟수</b>. 예컨대 수급률은 약 218번
-        검정하는 셈이라, 우연히 유의해 보이는 지역이 생기지 않도록 유의 기준(임계 t)을 그만큼 엄격하게 보정한다.</li>
+      <li><b>bw</b> = 계수 추정에 빌려 쓰는 <b>이웃 수</b> — 32면 좁은 권역(국지적), 1,769면 사실상 전국(공통)</li>
+      <li><b>τ</b> = 다른 연도 정보의 <b>차단 정도</b> — 크면 해마다 가변, 0에 가까우면 9년 내내 안정</li>
+      <li><b>ENP</b> = 사실상의 <b>검정 횟수</b> — 많을수록 유의 기준(임계 t)을 엄격하게 보정</li>
     </ul>
   </div>
   <div class="box"><h4>MGTWR 추정 결과</h4><table id="tblBwt"></table></div>
@@ -347,8 +346,11 @@ a{color:var(--accent)}
 <section class="slide">
   <div class="s-tag">10 · RESULTS IV</div>
   <h2 class="st">코로나19가 증폭시킨 지역환경 효과</h2>
-  <p class="lead">기저 위험(절편)은 되돌아오는 중이지만, 시변 변수 4종의 기울기는 강화된 채 유지 —
-    "새 위험"이 아니라 <b>기존 격차의 증폭</b>. 지역환경 표적 개입의 근거는 코로나 이후 더 강하다.</p>
+  <ul class="dot" style="font-size:1.08rem;margin-bottom:1rem">
+    <li>기저 위험(절편)은 <b>회복 중</b></li>
+    <li>시기 가변 4개 변수의 기울기는 <b>강화된 채 유지</b></li>
+    <li>→ "새 위험"이 아니라 <b>기존 격차의 증폭</b></li>
+  </ul>
   <div class="two-col">
     <div class="box" style="margin-top:0"><h4>지역 기저위험(절편) 궤적</h4><canvas id="interChart" height="130"></canvas></div>
     <div class="box" style="margin-top:0"><h4>이전(15–19) → 이후(20–23) 평균 β</h4><table id="tblCovid"></table></div>
@@ -360,17 +362,16 @@ a{color:var(--accent)}
   <div class="s-tag">11 · SUMMARY OF FINDINGS</div>
   <h2 class="st">결과 총 요약</h2>
   <ol class="rq" style="font-size:1.15rem;margin-top:1.4rem;max-width:58rem">
-    <li style="margin-bottom:1rem"><b>지역환경 요인은 영유아 비만과 체계적으로 연관된다.</b>
-      위험 요인: 기초생활수급률(+)·조이혼율(+) / 보호 요인: 아파트비율(−)·청년 유입(−)·의사수(−).</li>
-    <li style="margin-bottom:1rem"><b>효과는 시공간적으로 이질적이다.</b> 설명력 36% → 75%,
-      잔차의 공간 자기상관 해소 — 개선의 가장 큰 몫은 <b>시간 이질성</b>이었다.</li>
-    <li style="margin-bottom:1rem"><b>작동 스케일이 세 유형으로 갈린다.</b>
-      국지·시기 가변형 4개(결핍·가족·활력·주거) / 국지·시기 안정형 1개(인구밀도) / 전국 공통형 2개(1인가구·의사수)
-      — <b>변수의 스케일이 곧 정책의 스케일</b>.</li>
-    <li style="margin-bottom:1rem"><b>코로나는 격차를 증폭시켰다.</b> 기저 위험은 회복 중이지만
-      지역환경 효과의 기울기는 강화된 채 유지 — 표적 개입의 근거는 오히려 더 강해졌다.</li>
-    <li><b>전역 모형의 함정을 확인했다.</b> 아파트비율(+→−)·1인가구(+→준상수)의 사례처럼,
-      공간 교란을 걷어내지 않은 추정은 정책 방향까지 뒤집을 수 있다.</li>
+    <li style="margin-bottom:1rem"><b>지역환경 요인은 영유아 비만과 체계적으로 연관</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">위험: 수급률(+)·조이혼율(+) / 보호: 아파트(−)·청년 유입(−)·의사수(−)</span></li>
+    <li style="margin-bottom:1rem"><b>효과는 시공간적으로 이질적 — 핵심은 시간 이질성</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">설명력 36% → 75%, 잔차 공간 자기상관 해소</span></li>
+    <li style="margin-bottom:1rem"><b>작동 스케일 세 유형 = 정책의 스케일</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">국지·가변 4개(결핍·가족·활력·주거) / 국지·안정 1개(밀도) / 전국 공통 2개(1인가구·의사수)</span></li>
+    <li style="margin-bottom:1rem"><b>코로나는 격차를 증폭 — 아직 닫히지 않음</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">기저 위험은 회복 중, 기울기는 강화된 채 유지</span></li>
+    <li><b>전역 모형의 함정 확인</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">아파트(+→−)·1인가구(+→준상수) — 공간 교란은 정책 방향까지 뒤집는다</span></li>
   </ol>
 </section>
 
@@ -379,20 +380,13 @@ a{color:var(--accent)}
   <div class="s-tag">12 · LIMITATIONS</div>
   <h2 class="st">연구의 한계</h2>
   <div class="box" style="max-width:58rem">
-    <ul class="dot" style="font-size:1.02rem">
-      <li style="margin-bottom:.8rem"><b>생태학적 설계.</b> 시군구 수준의 연관이므로 "수급률이 높은 지역의
-        비만율이 높다"이지 "수급 가정의 아동이 비만"이라는 뜻이 아니다(생태학적 오류).
-        개인 수준 자료와의 연계 분석이 후속 과제.</li>
-      <li style="margin-bottom:.8rem"><b>공간 단위의 임의성(MAUP).</b> 시군구 경계를 다르게 긋거나
-        읍면동 단위로 내려가면 결과가 달라질 수 있다.</li>
-      <li style="margin-bottom:.8rem"><b>시간 스케일 모수(τ)의 탐색 경계 도달.</b> "시기 가변 vs 안정"의
-        질적 구분은 견고하나, τ 점추정치 자체는 탐색 범위에 의존한다.</li>
-      <li style="margin-bottom:.8rem"><b>측정 일관성.</b> 2018년 전후 영유아 검진 지표 산출 기준이
-        달라졌을 가능성 — 수준(level)보다 연관 구조 중심으로 해석했다.</li>
-      <li style="margin-bottom:.8rem"><b>미관측 교란.</b> 식품환경(패스트푸드·편의점 밀도), 보육·교육 환경,
-        부모의 건강행태 등은 시군구 단위 자료 제약으로 포함하지 못했다.</li>
-      <li><b>연관이지 인과가 아니다.</b> 관측 연구로서 인과 식별 전략(자연실험·패널 고정효과 심화 등)은
-        별도 연구가 필요하다.</li>
+    <ul class="dot" style="font-size:1.05rem">
+      <li style="margin-bottom:.85rem"><b>생태학적 설계</b> — 지역 수준 연관 ≠ 개인 수준 결론(생태학적 오류) → 개인 자료 연계가 후속 과제</li>
+      <li style="margin-bottom:.85rem"><b>공간 단위 임의성(MAUP)</b> — 경계 설정·읍면동 단위에 따라 결과 변동 가능</li>
+      <li style="margin-bottom:.85rem"><b>τ의 탐색 경계 도달</b> — 가변/안정 구분은 견고, 점추정치는 범위 의존</li>
+      <li style="margin-bottom:.85rem"><b>측정 일관성</b> — 2018년 전후 검진 지표 기준 변화 가능성 → 연관 구조 중심 해석</li>
+      <li style="margin-bottom:.85rem"><b>미관측 교란</b> — 식품환경·보육환경·부모 건강행태 미포함</li>
+      <li><b>연관 ≠ 인과</b> — 인과 식별(자연실험 등)은 별도 연구 과제</li>
     </ul>
   </div>
 </section>
@@ -403,10 +397,10 @@ a{color:var(--accent)}
   <h2 class="st">결론</h2>
   <p class="concl">"소아비만 대책은 전국 일률이 아니라,<br>
     <span style="color:var(--accent)">어느 지역에서 · 어느 시기에 · 어떤 힘이</span><br>작동하는지에 맞춰야 한다."</p>
-  <ul class="dot" style="font-size:1.05rem;max-width:52rem">
-    <li>지역환경 효과는 시공간적으로 이질적 — 설명력 36% → 75%, 잔차 자기상관 해소</li>
-    <li>변수의 작동 스케일이 곧 정책의 스케일: 결핍·가족·활력·주거 = 시군구 맞춤 / 의료·가구구조 = 전국 단위</li>
-    <li>코로나는 격차 기울기를 증폭시켰고 아직 닫히지 않았다 — 표적 개입의 근거 강화</li>
+  <ul class="dot" style="font-size:1.08rem;max-width:52rem">
+    <li>지역환경 효과는 <b>시공간적으로 이질적</b> (설명력 36% → 75%)</li>
+    <li><b>변수의 스케일 = 정책의 스케일</b>: 결핍·가족·활력·주거는 시군구 맞춤, 의료·가구구조는 전국 단위</li>
+    <li>코로나가 키운 격차는 <b>아직 닫히지 않았다</b> — 표적 개입의 근거 강화</li>
   </ul>
   <p class="lead" style="margin-top:1.6rem">상세: <a href="./academic.html">학술 스토리맵</a> ·
     <a href="./index.html">대중 스토리맵</a></p>
