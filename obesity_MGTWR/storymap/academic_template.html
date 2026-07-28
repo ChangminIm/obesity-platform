@@ -164,7 +164,7 @@ a{color:var(--accent2)}
         <tr><td>가족·사회 구조</td><td>조이혼율</td><td class="ctr">+</td>
           <td>가족구조 이행 → 아동 생활습관 관리 약화</td>
           <td class="ref-small">Schmeer (2012)<br>Yannakoulia et al. (2008)<br>Anderson &amp; Whitaker (2010)</td></tr>
-        <tr><td>건조환경</td><td>인구밀도(log)</td><td class="ctr">±</td>
+        <tr><td>건조환경</td><td>인구밀도</td><td class="ctr">±</td>
           <td>도시성 — 보행 환경과 비만유발 환경의 상반된 경로</td>
           <td class="ref-small">Ewing et al. (2003)<br>Lopez (2004)<br>Vlahov &amp; Galea (2002)</td></tr>
         <tr><td>건조환경</td><td>아파트비율</td><td class="ctr">−</td>
@@ -210,15 +210,15 @@ a{color:var(--accent2)}
         Moran's I(연도별 계산 후 평균)로 평가.</li>
     </ul>
     <div class="box">
-      <h4>그림 1. 사전 진단 — 종속변수의 전역 공간 자기상관 추이 (Moran's I, 퀸 인접·도서 연결 W)</h4>
-      <canvas id="dvMoranChart" height="85"></canvas>
-      <p class="tbl-note">비만율·과체중이상율 모두 <b>전 연도에서 유의한 양(+)의 공간 자기상관</b>(I ≈ 0.19~0.42,
-        999회 순열검정 전 연도 p ≤ 0.001)을 보이며, 특히 코로나 시기(2020–21)에 자기상관이 정점에 달한다 —
+      <h4>표 2. 사전 진단 — 종속변수의 전역 공간 자기상관 (Moran's I, 퀸 인접·도서 연결 W)</h4>
+      <table id="tblDvMoran"></table>
+      <p class="tbl-note">비만율·과체중이상율 모두 <b>전 연도에서 유의한 양(+)의 공간 자기상관</b>(999회 순열검정,
+        전 연도 p ≤ 0.001)을 보이며, 특히 코로나 시기(2020–21)에 자기상관이 정점에 달한다 —
         비만율이 오를 때 지역 간 군집성도 함께 강해졌다는 뜻이다. 관측치 독립을 가정하는 전역 OLS는
         이 자료 구조에 부적합하며, 공간(국지) 모형 사용의 직접적 근거가 된다.</p>
     </div>
     <div class="box">
-      <h4>표 2. 모형 계보 — 단계마다 무엇이 달라지는가</h4>
+      <h4>표 3. 모형별 비교 — 단계마다 무엇이 달라지는가</h4>
       <table>
         <tr><th>모형</th><th class="ctr">계수가 지역마다 다른가</th><th class="ctr">계수가 시기마다 다른가</th><th>bandwidth 구조</th><th>한 줄 요약</th></tr>
         <tr><td>OLS</td><td class="ctr">×</td><td class="ctr">×</td><td>—</td>
@@ -237,27 +237,27 @@ a{color:var(--accent2)}
         다른 변수들을 하나의 평균적 범위로 평활하므로, 일부 변수는 과대·일부는 과소 평활되는 한계가 있다.</p>
     </div>
     <div class="box">
-      <h4>표 3. 기준 모형 — 전역 OLS 추정 결과 (표준화 계수)</h4>
+      <h4>표 4. 기준 모형 — 전역 OLS 추정 결과 (표준화 계수)</h4>
       <table>
         <tr><th>변수</th><th class="num">β (비만율)</th><th class="num">t</th>
           <th class="num">β (과체중이상율)</th><th class="num">t</th></tr>
         <tr><td>기초생활수급률</td><td class="num">+0.297</td><td class="num">13.07***</td><td class="num">+0.270</td><td class="num">11.78***</td></tr>
         <tr><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
         <tr><td>조이혼율</td><td class="num">+0.129</td><td class="num">7.03***</td><td class="num">+0.169</td><td class="num">9.13***</td></tr>
-        <tr><td>인구밀도(log)</td><td class="num">−0.243</td><td class="num">−8.96***</td><td class="num">−0.229</td><td class="num">−8.37***</td></tr>
+        <tr><td>인구밀도</td><td class="num">−0.243</td><td class="num">−8.96***</td><td class="num">−0.229</td><td class="num">−8.37***</td></tr>
         <tr><td>청년순이동률</td><td class="num">−0.128</td><td class="num">−6.07***</td><td class="num">−0.112</td><td class="num">−5.30***</td></tr>
         <tr><td>의사수</td><td class="num">−0.106</td><td class="num">−5.10***</td><td class="num">−0.084</td><td class="num">−4.03***</td></tr>
         <tr><td>아파트비율</td><td class="num">+0.205</td><td class="num">7.08***</td><td class="num">+0.025</td><td class="num">0.86 <span style="color:var(--muted)">n.s.</span></td></tr>
       </table>
       <p class="tbl-note">n=2,061, 종속·독립변수 모두 z-표준화(절편≈0 생략). *** p&lt;0.001.
-        R² = 0.361(비만율)/0.351(과체중이상율)이며 <b>잔차에 공간 자기상관이 그대로 남아</b>(표 4 참조)
+        R² = 0.361(비만율)/0.351(과체중이상율)이며 <b>잔차에 공간 자기상관이 그대로 남아</b>(표 5 참조)
         추정 왜곡의 위험이 있다. 실제로 아파트비율(+)과 1인가구비율(+)은 국지 모형에서 부호가 뒤집히거나
         준상수로 축소되어(§05 요약표), 전역 추정이 공간 교란을 흡수해 정책 방향을 오도할 수 있음을 보여준다.</p>
     </div>
     <div class="box">
-      <h4>표 4-a. 모형 성능 비교 — 비만율 모형</h4>
+      <h4>표 5-a. 모형 성능 비교 — 비만율 모형</h4>
       <table id="tblModelOb"></table>
-      <h4 style="margin-top:26px">표 4-b. 모형 성능 비교 — 과체중이상율 모형</h4>
+      <h4 style="margin-top:26px">표 5-b. 모형 성능 비교 — 과체중이상율 모형</h4>
       <table id="tblModelOw"></table>
       <p class="tbl-note">AICc가 낮을수록 우수. <b>잔차 Moran's I</b>는 각 모형의 잔차에 대해 연도별로 계산한 값의
         평균(0에 가까울수록 잔차의 공간 자기상관이 해소된 것). 두 종속변수 모두에서 공간 이질성(GWR)보다
@@ -293,7 +293,7 @@ a{color:var(--accent2)}
       </ul>
     </div>
     <div class="box">
-      <h4>표 5. MGTWR 변수별 공간 bandwidth·시간 스케일 τ·유효모수 (비만율 / 과체중이상율)</h4>
+      <h4>표 6. MGTWR 변수별 공간 bandwidth·시간 스케일 τ·유효모수 (비만율 / 과체중이상율)</h4>
       <table id="tblBwt"></table>
       <p class="tbl-note">bandwidth는 시공간 최근접 이웃 수(전체 n=2,061). τ는 탐색 범위 [0.1, 300]의
         경계값에 도달한 경우가 있어(각주 §07), 수치보다 시변/시불변의 질적 구분으로 해석한다.</p>
@@ -354,7 +354,7 @@ a{color:var(--accent2)}
         <tr><td>조이혼율</td><td>수도권–강원 벨트의 강한 양(+), 남부는 비유의</td>
           <td>+0.10 → +0.19로 <b>단조 강화</b></td>
           <td>가족구조 취약성의 효과가 수도권에서 해마다 심화</td></tr>
-        <tr><td>인구밀도(log)</td><td>내륙 중소도시 양(+) vs 일부 대도시권 음(−) — <b>부호가 공간 분화</b></td>
+        <tr><td>인구밀도</td><td>내륙 중소도시 양(+) vs 일부 대도시권 음(−) — <b>부호가 공간 분화</b></td>
           <td>시불변 (τ→0)</td>
           <td>도농 상이 기전: 농촌 저밀도의 자원 접근성 결핍 vs 도시 고밀 환경</td></tr>
         <tr><td>청년순이동률</td><td>영남 내륙(인구 유출 지역) 중심의 음(−) 클러스터</td>
@@ -381,11 +381,11 @@ a{color:var(--accent2)}
       산형 궤적을 그린 뒤 하락했지만, <b>지역환경 변수들의 기울기는 팬데믹 이후 더 가팔라진 채 유지</b>되고 있다 —
       즉 지역사회 환경이 아동 비만을 가르는 힘은 코로나 이전보다 지금이 더 크다.</p>
     <div class="box">
-      <h4>그림 2. 지역 기저위험(절편)의 연도별 궤적</h4>
+      <h4>그림 1. 지역 기저위험(절편)의 연도별 궤적</h4>
       <canvas id="interChart" height="95"></canvas>
     </div>
     <div class="box">
-      <h4>표 6. 코로나 이전(2015–19 평균) 대비 이후(2020–23 평균)의 로컬 계수 변화 (비만율)</h4>
+      <h4>표 7. 코로나 이전(2015–19 평균) 대비 이후(2020–23 평균)의 로컬 계수 변화 (비만율)</h4>
       <table id="tblCovid"></table>
       <p class="tbl-note">시변 변수 4종의 기울기가 일제히 강화된 반면(방향 일치 지역 87–100%), 결핍(수급률) 효과는
         팬데믹과 무관하게 지속 — "새로운 위험의 등장"이 아니라 <b>기존 지역환경 격차의 증폭</b>으로 해석된다.
@@ -545,7 +545,7 @@ a{color:var(--accent2)}
 <script>
 /*__DATA__*/
 const VLAB={intercept:"절편(기저 위험)",welfare_rate:"기초생활수급률",single_hh:"1인가구비율",
- divorce_rate:"조이혼율",log_pop_density:"인구밀도(log)",youth_net_mig:"청년순이동률",
+ divorce_rate:"조이혼율",log_pop_density:"인구밀도",youth_net_mig:"청년순이동률",
  doctors:"의사수(천명당)",apt_ratio:"아파트비율"};
 const VDESC={
  intercept:"공변량으로 설명되지 않는 지역 기저 위험. 연도 애니메이션으로 2020–21의 전국적 상승과 남서부 집중을 확인할 수 있다.",
@@ -650,6 +650,10 @@ function rebuildTables(){
   return h;};
  document.getElementById('tblModelOb').innerHTML=mkModel('ob');
  document.getElementById('tblModelOw').innerHTML=mkModel('ow');
+ let dm="<tr><th>연도</th>"+DATA.years.map(y=>`<th class='num'>${y}</th>`).join("")+"</tr>";
+ dm+="<tr><td>비만율 I</td>"+DATA.dvmoran.ob.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
+ dm+="<tr><td>과체중이상율 I</td>"+DATA.dvmoran.ow.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
+ document.getElementById('tblDvMoran').innerHTML=dm;
  const grp=v=>{const b=DATA.bwt.ob[v];
   if(v==='intercept')return"초국지(지역 맥락 흡수)";
   if(b.tau>100&&b.bw<50)return"시공간 국지(시변)";
@@ -675,12 +679,6 @@ function rebuildTables(){
 rebuildTables();
 
 Chart.defaults.font.family="'Noto Sans KR',sans-serif";
-new Chart(document.getElementById('dvMoranChart'),{type:'line',data:{labels:DATA.years,datasets:[
- {label:'비만율',data:DATA.dvmoran.ob.map(r=>r[1]),borderColor:'#8d2f1f',
-  backgroundColor:'rgba(141,47,31,.12)',fill:true,tension:.3},
- {label:'과체중이상율',data:DATA.dvmoran.ow.map(r=>r[1]),borderColor:'#14406b',tension:.3}]},
- options:{plugins:{legend:{position:'bottom'}},
-  scales:{y:{min:0,title:{display:true,text:"전역 Moran's I"}}}}});
 new Chart(document.getElementById('interChart'),{type:'line',data:{labels:DATA.years,datasets:[
  {label:'비만율 모형',data:DATA.inter.ob,borderColor:'#8d2f1f',backgroundColor:'rgba(141,47,31,.12)',fill:true,tension:.35},
  {label:'과체중이상율 모형',data:DATA.inter.ow,borderColor:'#14406b',tension:.35}]},
