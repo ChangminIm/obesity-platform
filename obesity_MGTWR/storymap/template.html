@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지도가 말해주는 소아비만 이야기 — MGTWR 분석 스토리맵</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --navy:#12263a; --navy2:#1b3a55; --accent:#e05c3a; --blue:#2470a8;
+  --bg:#f7f6f2; --ink:#22303c; --muted:#68788a; --card:#ffffff;
+  --red:#b2182b; --bluec:#2166ac;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg);line-height:1.75}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+.section-tag{display:inline-block;background:var(--accent);color:#fff;font-size:.8rem;
+  font-weight:700;padding:4px 14px;border-radius:999px;letter-spacing:.08em;margin-bottom:14px}
+.section-title{font-size:2rem;font-weight:900;margin-bottom:14px;letter-spacing:-.02em}
+.section-desc{color:var(--muted);max-width:760px;margin-bottom:36px;font-size:1.02rem}
+.reveal{opacity:0;transform:translateY(28px);transition:all .7s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* hero */
+#hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 60%,#274b6d 100%);
+  color:#fff;padding:110px 0 90px;position:relative;overflow:hidden}
+#hero h1{font-size:2.7rem;font-weight:900;line-height:1.3;letter-spacing:-.02em;max-width:760px}
+#hero .sub{margin-top:18px;color:#bcd0e2;font-size:1.1rem;max-width:700px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);
+  padding:8px 18px;border-radius:999px;font-size:.9rem;font-weight:500}
+.hero-deco{position:absolute;right:-120px;top:-80px;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(224,92,58,.35),transparent 70%)}
+
+/* stat cards */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:8px}
+.stat-card{background:var(--card);border-radius:16px;padding:26px;box-shadow:0 2px 14px rgba(18,38,58,.07)}
+.stat-number{font-size:2.2rem;font-weight:900;color:var(--accent)}
+.stat-number small{font-size:1.05rem;color:var(--ink)}
+.stat-label{font-weight:700;margin-top:2px}
+.stat-desc{color:var(--muted);font-size:.9rem;margin-top:6px}
+
+.chart-box{background:var(--card);border-radius:16px;padding:26px;box-shadow:0 2px 14px rgba(18,38,58,.07);margin-top:26px}
+.chart-box h4{margin-bottom:10px;font-size:1.02rem}
+.chart-note{color:var(--muted);font-size:.85rem;margin-top:10px}
+
+/* method steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.step{background:var(--card);border-radius:16px;padding:22px;box-shadow:0 2px 14px rgba(18,38,58,.07);
+  position:relative;border-top:4px solid #d7dee6}
+.step.final{border-top-color:var(--accent);background:#fff7f4}
+.step-num{position:absolute;top:14px;right:16px;font-weight:900;color:#d7dee6;font-size:1.4rem}
+.step.final .step-num{color:var(--accent)}
+.step-icon{font-size:1.7rem}
+.step-title{font-weight:900;margin:8px 0 4px;font-size:1rem}
+.step-desc{font-size:.87rem;color:var(--muted);line-height:1.6}
+
+/* explore map */
+#explore{background:#0f2032;color:#fff}
+#explore .section-desc{color:#9db4c8}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.ctrl-label{font-size:.85rem;color:#9db4c8;margin-right:4px;font-weight:700}
+.vbtn,.dvbtn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#dce8f2;
+  padding:7px 14px;border-radius:999px;font-size:.85rem;cursor:pointer;font-family:inherit;transition:.2s}
+.vbtn:hover,.dvbtn:hover{background:rgba(255,255,255,.18)}
+.vbtn.sel,.dvbtn.sel{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+#yearRow{display:flex;align-items:center;gap:14px;margin:6px 0 14px}
+#yearSlider{flex:1;max-width:420px;accent-color:var(--accent)}
+#yearLabel{font-size:1.3rem;font-weight:900;min-width:64px}
+#playBtn{background:var(--accent);border:none;color:#fff;border-radius:999px;
+  padding:7px 16px;cursor:pointer;font-family:inherit;font-weight:700}
+#map{height:640px;border-radius:16px;background:#0c1927}
+.map-foot{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-top:14px}
+#legend{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#c6d5e2}
+#legbar{width:200px;height:12px;border-radius:6px;
+  background:linear-gradient(90deg,#2166ac,#67a9cf,#d1e5f0,#f7f7f7,#fddbc7,#ef8a62,#b2182b)}
+.leg-gray{width:14px;height:14px;border-radius:3px;background:#4a5866;display:inline-block;margin-left:14px}
+#varDesc{background:rgba(255,255,255,.06);border-left:4px solid var(--accent);
+  padding:14px 18px;border-radius:0 12px 12px 0;margin-top:16px;font-size:.95rem;color:#dce8f2}
+.leaflet-container{font-family:'Noto Sans KR',sans-serif}
+.popup-name{font-weight:900;font-size:1rem}
+.popup-val{font-size:.9rem;margin-top:2px}
+
+/* findings */
+.find-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.find-card{background:var(--card);border-radius:16px;padding:24px;box-shadow:0 2px 14px rgba(18,38,58,.07)}
+.find-card .fico{font-size:1.6rem}
+.find-card h4{margin:8px 0 6px;font-size:1.02rem;font-weight:900}
+.find-card p{font-size:.88rem;color:var(--muted)}
+.fpos{color:var(--red);font-weight:900}
+.fneg{color:var(--bluec);font-weight:900}
+.scale-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:26px}
+.scale-card{border-radius:16px;padding:26px;color:#fff}
+.sc1{background:linear-gradient(150deg,#b2422a,#e05c3a)}
+.sc2{background:linear-gradient(150deg,#1b5e83,#2b83b7)}
+.sc3{background:linear-gradient(150deg,#3c4a59,#5c6c7d)}
+.scale-card h4{font-size:1.05rem;font-weight:900}
+.scale-card .who{font-size:.95rem;font-weight:700;margin:10px 0;line-height:1.6}
+.scale-card p{font-size:.85rem;opacity:.92}
+
+/* covid */
+.covid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:22px}
+.cov-card{background:var(--card);border-radius:14px;padding:20px;box-shadow:0 2px 14px rgba(18,38,58,.07);text-align:center}
+.cov-card .nm{font-weight:700;font-size:.9rem}
+.cov-card .arrow{font-size:1.15rem;font-weight:900;margin-top:8px}
+.cov-card .note{font-size:.78rem;color:var(--muted);margin-top:6px}
+
+/* limitations & conclusion */
+.limit-list{list-style:none;display:grid;gap:12px;max-width:820px}
+.limit-list li{background:var(--card);border-radius:12px;padding:16px 20px;
+  box-shadow:0 2px 10px rgba(18,38,58,.05);font-size:.92rem}
+.limit-list b{color:var(--accent)}
+#conclusion{background:linear-gradient(160deg,var(--navy),#274b6d);color:#fff}
+#conclusion .section-desc{color:#bcd0e2}
+.concl-quote{font-size:1.5rem;font-weight:900;line-height:1.6;max-width:820px;margin:10px 0 26px}
+.credit{color:#8ba3b8;font-size:.82rem;margin-top:40px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px}
+@media(max-width:640px){#hero h1{font-size:1.9rem}.section-title{font-size:1.5rem}#map{height:480px}}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header id="hero">
+  <div class="hero-deco"></div>
+  <div class="container">
+    <h1>지도가 말해주는<br>우리 동네 소아비만 이야기</h1>
+    <p class="sub">같은 변수라도 <b>어디에 사는지</b>, <b>언제인지</b>에 따라 아이들의 비만에 미치는 힘이 다릅니다.
+      전국 229개 시군구, 9년의 데이터를 시공간 다중스케일 모형(MGTWR)으로 읽었습니다.</p>
+    <div class="chips">
+      <span class="chip">📍 229개 시군구</span>
+      <span class="chip">📅 2015–2023 (9년)</span>
+      <span class="chip">🧮 5개 모델 비교</span>
+      <span class="chip">🎯 설명력 36% → 75%</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ 1. 배경 ═══════════ -->
+<section id="problem">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">01 · 배경</span>
+      <h2 class="section-title">영유아 비만, 코로나가 남긴 숙제</h2>
+      <p class="section-desc">영유아 건강검진 데이터로 본 전국 평균 비만율은 코로나 시기(2020–21)에 급등했다가
+        내려오는 중입니다. 하지만 <b>전국 평균은 절반의 진실</b>입니다 — 지역에 따라 오르내림의 폭과 회복 속도가 전혀 다릅니다.</p>
+    </div>
+    <div class="stat-grid reveal">
+      <div class="stat-card"><div class="stat-number">15.6<small>%</small></div>
+        <div class="stat-label">2021년 비만율 정점</div><div class="stat-desc">2015년 8.4%에서 두 배 가까이 상승</div></div>
+      <div class="stat-card"><div class="stat-number">5.0<small>만명</small></div>
+        <div class="stat-label">2021년 비만 아동 수</div><div class="stat-desc">2015년(1.7만)의 약 3배</div></div>
+      <div class="stat-card"><div class="stat-number">3<small>배+</small></div>
+        <div class="stat-label">시군구 간 격차</div><div class="stat-desc">같은 해에도 지역별 비만율은 몇 배씩 차이</div></div>
+    </div>
+    <div class="chart-box reveal">
+      <h4>전국 평균 추이 (2012–2024)</h4>
+      <canvas id="trendChart" height="110"></canvas>
+      <p class="chart-note">비만율·과체중이상율: 시군구 단순평균(%). 막대: 비만 아동 수 합계(명).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 2. 방법 ═══════════ -->
+<section id="methodology" style="background:#eef1f4">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">02 · 방법을 쉽게</span>
+      <h2 class="section-title">안경을 다섯 번 바꿔 쓰다</h2>
+      <p class="section-desc">회귀분석은 "무엇이 비만율을 움직이는가"를 재는 도구입니다.
+        문제는 <b>어떤 안경으로 보느냐</b>입니다. 전국을 하나의 안경으로 보면 지역의 사정이 뭉개집니다.
+        우리는 안경을 다섯 단계로 바꿔 썼습니다.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><span class="step-num">1</span><div class="step-icon">👓</div>
+        <div class="step-title">OLS — 안경 하나</div>
+        <div class="step-desc">전국 어디서나 효과가 같다고 가정. 설명력 36%. 지도에 남는 찌꺼기(잔차)가 뭉쳐 있음 = 뭔가 놓치고 있다는 신호.</div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-icon">🔍</div>
+        <div class="step-title">GWR — 동네마다 안경</div>
+        <div class="step-desc">지역마다 계수를 따로 추정. 공간 격차가 보이기 시작. 설명력 54%.</div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-icon">🔬</div>
+        <div class="step-title">MGWR — 변수마다 배율</div>
+        <div class="step-desc">변수마다 "얼마나 국지적인지"(bandwidth)를 따로 추정. 넓게 작동하는 변수와 좁게 작동하는 변수가 갈라짐.</div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-icon">⏱️</div>
+        <div class="step-title">GTWR — 시간 추가</div>
+        <div class="step-desc">이웃 지역뿐 아니라 이웃 연도의 정보까지 빌려 씀. 설명력 70% — 시간의 힘이 공간보다 컸다.</div></div>
+      <div class="step final"><span class="step-num">5</span><div class="step-icon">🎛️</div>
+        <div class="step-title">MGTWR — 최종 안경</div>
+        <div class="step-desc">변수마다 공간 배율×시간 배율을 모두 따로. 설명력 75%, 정보 손실(AICc) 최소. 이 스토리맵의 모든 지도가 이 모형의 결과.</div></div>
+    </div>
+    <div class="chart-box reveal">
+      <h4>모델이 좋아질수록: AICc(낮을수록 좋음)와 설명력 R²</h4>
+      <canvas id="modelChart" height="110"></canvas>
+      <p class="chart-note">비만율 기준. 과체중이상율에서도 같은 순서로 개선. 유의성 판정은 다중검정을 보정한 ENP-adjusted t 기준.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 3. 인터랙티브 지도 ═══════════ -->
+<section id="explore">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">03 · 직접 탐색</span>
+      <h2 class="section-title">변수·연도를 바꿔가며 지도를 읽어보세요</h2>
+      <p class="section-desc">색은 그 지역에서 해당 변수가 비만율을 <b style="color:#ef8a62">높이는 힘(빨강)</b>인지
+        <b style="color:#67a9cf">낮추는 힘(파랑)</b>인지, 진할수록 힘이 셉니다.
+        <b>회색은 통계적으로 믿기 어려운 지역</b>(보정된 기준 미달)입니다. 지역을 클릭하면 수치가 나옵니다.</p>
+    </div>
+    <div class="reveal">
+      <div class="ctrl"><span class="ctrl-label">지표</span>
+        <button class="dvbtn sel" data-dv="ob">비만율</button>
+        <button class="dvbtn" data-dv="ow">과체중이상율</button>
+      </div>
+      <div class="ctrl" id="varBtns"><span class="ctrl-label">변수</span></div>
+      <div id="yearRow">
+        <button id="playBtn">▶ 재생</button>
+        <input type="range" id="yearSlider" min="2015" max="2023" step="1" value="2023">
+        <span id="yearLabel">2023</span>
+      </div>
+      <div id="map"></div>
+      <div class="map-foot">
+        <div id="legend"><span id="legMin">-0.3</span><div id="legbar"></div><span id="legMax">+0.3</span>
+          <span class="leg-gray"></span><span>유의하지 않음</span></div>
+      </div>
+      <div id="varDesc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 4. 핵심 결과 ═══════════ -->
+<section id="findings">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">04 · 핵심 결과</span>
+      <h2 class="section-title">변수마다 '작동하는 스케일'이 다르다</h2>
+      <p class="section-desc">MGTWR가 알려준 가장 큰 발견: 7개 변수는 세 부류로 갈립니다.
+        어떤 힘은 전국 공통이고, 어떤 힘은 지역마다 다르며, 어떤 힘은 지역과 시기에 따라 계속 출렁입니다.</p>
+    </div>
+    <div class="scale-grid reveal">
+      <div class="scale-card sc1"><h4>🌪️ 지역·시기마다 출렁이는 힘</h4>
+        <div class="who">기초생활수급률(+) · 조이혼율(+) · 청년순이동률(−) · 아파트비율(−)</div>
+        <p>효과가 좁은 권역(이웃 25~32곳)에서, 해마다 다르게 작동. 지역 맞춤·시기 맞춤 개입이 필요한 변수들.</p></div>
+      <div class="scale-card sc2"><h4>🗺️ 지역마다 다르지만 꾸준한 힘</h4>
+        <div class="who">인구밀도 (+/− 혼재)</div>
+        <p>도시와 농촌에서 부호가 다르지만, 9년 내내 방향이 유지되는 구조적 변수.</p></div>
+      <div class="scale-card sc3"><h4>🇰🇷 전국 어디서나 같은 힘</h4>
+        <div class="who">1인가구비율 · 의사수</div>
+        <p>사실상 전국 공통 상수. 지역 정책보다 전국 단위 정책의 영역.</p></div>
+    </div>
+    <div class="find-grid reveal" style="margin-top:26px">
+      <div class="find-card"><div class="fico">🧾</div><h4>결핍은 비만을 <span class="fpos">높인다</span></h4>
+        <p>기초생활수급률이 높은 곳일수록 비만율↑. 강원 영동·전남 남해안·제주에서 특히 뚜렷 — 취약지역 표적 개입의 근거.</p></div>
+      <div class="find-card"><div class="fico">👨‍👩‍👧</div><h4>가족구조 변화도 <span class="fpos">높인다</span></h4>
+        <p>조이혼율 효과는 수도권~강원 벨트에서 강하고, 해마다 세지는 중(+0.10→+0.19).</p></div>
+      <div class="find-card"><div class="fico">🏢</div><h4>아파트 환경은 <span class="fneg">낮춘다</span></h4>
+        <p>전역 모형에선 +로 보였지만(착시), 지역별로 뜯어보면 일관되게 −. 단지 내 놀이·운동 공간 효과로 해석.</p></div>
+      <div class="find-card"><div class="fico">🚶</div><h4>청년이 떠나는 곳이 <span class="fpos">위험하다</span></h4>
+        <p>청년 순유출 지역(영남 내륙)일수록 비만율↑. 지역 활력과 아동 건강의 연결고리.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 5. 코로나 ═══════════ -->
+<section id="covid" style="background:#eef1f4">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">05 · 코로나가 보여준 것</span>
+      <h2 class="section-title">코로나 이후,<br>지역환경의 힘은 더 세졌다</h2>
+      <p class="section-desc">이 연구의 주인공은 코로나가 아니라 <b>지역사회 환경</b>입니다. 다만 팬데믹은
+        그 힘이 얼마나 시기에 따라 달라지는지 보여준 확대경이었습니다. 이전(2015–19 평균)과 이후(2020–23 평균)를
+        비교하면: 기저 위험은 치솟았다 내려왔지만, 가족구조·지역활력·주거환경 효과의 <b>기울기는 더 가팔라진 채
+        유지</b>되고 있고, 결핍(수급률) 효과는 한결같습니다. <b>지역환경에 맞춘 개입의 근거는 코로나 이전보다
+        지금이 더 강합니다.</b></p>
+    </div>
+    <div class="chart-box reveal">
+      <h4>지역 기저위험(절편)의 연도별 궤적 — 코로나 산</h4>
+      <canvas id="interChart" height="100"></canvas>
+      <p class="chart-note">시군구 평균 표준화 절편. 2021 정점 후 하락 — 그러나 아래 격차 계수들은 돌아오지 않았다.</p>
+    </div>
+    <div class="covid-grid reveal" id="covidCards"></div>
+  </div>
+</section>
+
+<!-- ═══════════ 6. 한계 ═══════════ -->
+<section id="limitations">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">06 · 읽을 때 주의할 점</span>
+      <h2 class="section-title">이 지도가 말하지 않는 것</h2>
+    </div>
+    <ul class="limit-list reveal">
+      <li><b>상관이지 인과가 아닙니다.</b> "수급률이 높아서 비만이 는다"가 아니라 "수급률이 높은 지역에서 비만율이 높게 나타난다"입니다.</li>
+      <li><b>지역 단위 분석입니다(생태학적 한계).</b> 지역의 경향을 개인에게 그대로 적용할 수 없습니다.</li>
+      <li><b>시간 가중 범위가 탐색 경계에 닿았습니다.</b> "시간가변 vs 시간안정"의 구분은 견고하지만 세부 수치는 탐색 범위(τ∈[0.1,300]) 안의 값입니다.</li>
+      <li><b>2018년 전후 측정 기준 변화 가능성.</b> 비만율 수준의 점프 일부는 검진 기준 변화의 영향일 수 있습니다.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════ 7. 결론 ═══════════ -->
+<section id="conclusion">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">07 · 결론</span>
+      <h2 class="section-title">한 장으로 요약하면</h2>
+      <p class="concl-quote">"소아비만 대책은 전국 일률이 아니라,<br>
+        <span style="color:#ffb59e">어느 지역에서 · 어느 시기에 · 어떤 힘이</span> 작동하는지에 맞춰야 한다."</p>
+      <p class="section-desc">전국 공통 변수(1인가구·의료접근)는 중앙정부의 몫, 출렁이는 변수(결핍·가족구조·지역활력·주거환경)는
+        시군구 맞춤 개입의 몫입니다. 그리고 코로나가 벌려놓은 격차는 아직 닫히지 않았습니다.</p>
+      <div class="credit">
+        데이터: 영유아 건강검진(2012–2024) · KOSIS 시군구 지표(2015–2023) ·
+        방법: MGTWR (Wu et al. 2019; Yu &amp; Fotheringham 2025) · 유의성: ENP-adjusted t ·
+        제작: obesity-platform 프로젝트 ·
+        <a href="./academic.html" style="color:#ffb59e">학술 버전 보기 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/*__DATA__*/
+
+/* ───── 공통 ───── */
+const VLAB = {intercept:"기저 위험(절편)", welfare_rate:"기초생활수급률", single_hh:"1인가구비율",
+  divorce_rate:"조이혼율", log_pop_density:"인구밀도", youth_net_mig:"청년순이동률",
+  doctors:"의사수(천명당)", apt_ratio:"아파트비율"};
+const VDESC = {
+ intercept:"👉 다른 조건이 모두 같을 때 그 지역이 가진 기본 비만 위험. 빨강 = 설명 안 되는 초과 위험이 있는 곳. 연도를 움직여 '코로나 산'을 확인해 보세요.",
+ welfare_rate:"👉 지역 결핍의 대표 지표. 빨강 = 수급률이 높을수록 비만율이 더 올라가는 곳. 강원 영동·전남 남해안·제주의 클러스터에 주목.",
+ single_hh:"👉 전국 공통으로 작동하는 변수라 지도가 거의 한 색(대부분 회색)입니다 — 이것 자체가 발견입니다.",
+ divorce_rate:"👉 가족구조 변화의 지표. 수도권~강원 벨트의 빨강이 해마다 짙어집니다.",
+ log_pop_density:"👉 유일하게 부호가 갈리는 변수. 내륙 중소도시는 빨강(+), 일부 대도시권은 파랑(−) — 도시와 농촌의 기전이 다릅니다.",
+ youth_net_mig:"👉 파랑 = 청년이 유입될수록 비만율이 낮아지는(= 유출될수록 높아지는) 곳. 영남 내륙에서 가장 강합니다.",
+ doctors:"👉 의료 접근성. 전국 공통의 약한 보호효과(−)라 대부분 회색입니다.",
+ apt_ratio:"👉 파랑 = 아파트 비율이 높을수록 비만율이 낮은 곳. 남부·동부에서 광역적으로 뚜렷하며 효과가 해마다 세집니다."};
+
+let dv="ob", curVar="welfare_rate", curYear=2023, playing=null;
+
+/* ───── 색 함수 (RdBu_r) ───── */
+const STOPS=[[33,102,172],[103,169,207],[209,229,240],[247,247,247],[253,219,199],[239,138,98],[178,24,43]];
+function colorOf(v,vmax){
+  let t=Math.max(-1,Math.min(1,v/vmax))*0.5+0.5;
+  const p=t*(STOPS.length-1), i=Math.min(Math.floor(p),STOPS.length-2), f=p-i;
+  const c=STOPS[i].map((a,k)=>Math.round(a+(STOPS[i+1][k]-a)*f));
+  return `rgb(${c[0]},${c[1]},${c[2]})`;
+}
+
+/* ───── Leaflet ───── */
+const map=L.map('map',{scrollWheelZoom:false,attributionControl:false}).setView([36.2,127.9],7);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{opacity:.55}).addTo(map);
+let layer=null;
+function styleOf(f){
+  const s=f.properties.sgg, yi=DATA.years.indexOf(curYear);
+  const b=(DATA.coef[dv][curVar][s]||[])[yi];
+  const ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
+  return {weight:.6,color:"#0f2032",fillOpacity:.9,
+          fillColor:(b===undefined)?"#4a5866":(ok?colorOf(b,DATA.vmax[dv][curVar]):"#4a5866")};
+}
+function popup(f){
+  const s=f.properties.sgg, yi=DATA.years.indexOf(curYear);
+  const b=(DATA.coef[dv][curVar][s]||[])[yi];
+  const ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
+  return `<div class="popup-name">${DATA.names[s]||s}</div>
+    <div class="popup-val">${VLAB[curVar]} · ${curYear}<br>계수 β = <b>${b===undefined?"-":b.toFixed(3)}</b>
+    ${ok?'<span style="color:#b2182b;font-weight:700"> (유의)</span>':' <span style="color:#888">(비유의)</span>'}</div>`;
+}
+function draw(){
+  if(layer) layer.remove();
+  layer=L.geoJSON(DATA.geo,{style:styleOf,
+    onEachFeature:(f,l)=>{l.bindPopup(popup(f));
+      l.on('mouseover',()=>l.setStyle({weight:2,color:'#ffb59e'}));
+      l.on('mouseout',()=>l.setStyle({weight:.6,color:'#0f2032'}));}}).addTo(map);
+  const vm=DATA.vmax[dv][curVar];
+  document.getElementById('legMin').textContent="-"+vm;
+  document.getElementById('legMax').textContent="+"+vm;
+  document.getElementById('varDesc').innerHTML=`<b>${VLAB[curVar]}</b> — ${VDESC[curVar]}`;
+}
+
+/* ───── 컨트롤 ───── */
+const vb=document.getElementById('varBtns');
+DATA.vars.forEach(v=>{
+  const b=document.createElement('button');
+  b.className='vbtn'+(v===curVar?' sel':''); b.textContent=VLAB[v]; b.dataset.v=v;
+  b.onclick=()=>{curVar=v;document.querySelectorAll('.vbtn').forEach(x=>x.classList.toggle('sel',x.dataset.v===v));draw();};
+  vb.appendChild(b);});
+document.querySelectorAll('.dvbtn').forEach(b=>b.onclick=()=>{
+  dv=b.dataset.dv;document.querySelectorAll('.dvbtn').forEach(x=>x.classList.toggle('sel',x===b));draw();});
+const slider=document.getElementById('yearSlider');
+slider.oninput=()=>{curYear=+slider.value;document.getElementById('yearLabel').textContent=curYear;draw();};
+document.getElementById('playBtn').onclick=function(){
+  if(playing){clearInterval(playing);playing=null;this.textContent="▶ 재생";return;}
+  this.textContent="⏸ 정지";
+  playing=setInterval(()=>{curYear=curYear>=2023?2015:curYear+1;
+    slider.value=curYear;document.getElementById('yearLabel').textContent=curYear;draw();},1200);};
+draw();
+
+/* ───── 차트 ───── */
+Chart.defaults.font.family="'Noto Sans KR',sans-serif";
+new Chart(document.getElementById('trendChart'),{data:{labels:DATA.trend.years,datasets:[
+  {type:'line',label:'비만율(%)',data:DATA.trend.ob,borderColor:'#e05c3a',backgroundColor:'#e05c3a',tension:.3,yAxisID:'y'},
+  {type:'line',label:'과체중이상율(%)',data:DATA.trend.ow,borderColor:'#2470a8',backgroundColor:'#2470a8',tension:.3,yAxisID:'y'},
+  {type:'bar',label:'비만 아동수(명)',data:DATA.trend.cnt,backgroundColor:'rgba(120,140,160,.35)',yAxisID:'y1'}]},
+ options:{scales:{y:{title:{display:true,text:'%'}},y1:{position:'right',grid:{display:false},title:{display:true,text:'명'}}},
+  plugins:{legend:{position:'bottom'}}}});
+new Chart(document.getElementById('modelChart'),{data:{labels:DATA.models,datasets:[
+  {type:'bar',label:'AICc (낮을수록 좋음)',data:DATA.modelcmp.ob.aicc,backgroundColor:['#c9d3dc','#9fb4c6','#7c9cb5','#4d7ea5','#e05c3a'],yAxisID:'y'},
+  {type:'line',label:'R² (설명력)',data:DATA.modelcmp.ob.r2,borderColor:'#12263a',backgroundColor:'#12263a',yAxisID:'y1',tension:.3}]},
+ options:{scales:{y:{title:{display:true,text:'AICc'}},y1:{position:'right',min:0,max:1,grid:{display:false},title:{display:true,text:'R²'}}},
+  plugins:{legend:{position:'bottom'}}}});
+new Chart(document.getElementById('interChart'),{type:'line',data:{labels:DATA.years,datasets:[
+  {label:'비만율 모형',data:DATA.inter.ob,borderColor:'#e05c3a',backgroundColor:'rgba(224,92,58,.15)',fill:true,tension:.35},
+  {label:'과체중이상율 모형',data:DATA.inter.ow,borderColor:'#2470a8',tension:.35}]},
+ options:{plugins:{legend:{position:'bottom'}},scales:{y:{title:{display:true,text:'표준화 절편(지역 평균)'}}}}});
+
+/* 코로나 카드 */
+const CV=[["intercept","기저 위험","전 지역 급등"],["divorce_rate","조이혼율 효과","87% 지역에서 강화"],
+ ["youth_net_mig","청년순이동 효과","97% 지역에서 강화(−)"],["apt_ratio","아파트 보호효과","전 지역 강화(−)"],
+ ["welfare_rate","수급률 효과","변화 없음 = 꾸준한 위험"]];
+const cg=document.getElementById('covidCards');
+CV.forEach(([v,nm,note])=>{
+  const c=DATA.covid[v], up=c.post>c.pre;
+  cg.insertAdjacentHTML('beforeend',`<div class="cov-card"><div class="nm">${nm}</div>
+   <div class="arrow" style="color:${up?'#b2182b':'#2166ac'}">${c.pre.toFixed(2)} → ${c.post.toFixed(2)}</div>
+   <div class="note">${note}</div></div>`);});
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
