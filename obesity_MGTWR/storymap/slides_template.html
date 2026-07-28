@@ -247,15 +247,15 @@ a{color:var(--accent)}
   <div class="box">
     <table>
       <tr><th>변수</th><th class="num">β (비만율)</th><th class="num">t</th><th class="num">β (과체중+)</th><th class="num">t</th></tr>
-      <tr class="hl"><td>기초생활수급률</td><td class="num">+0.297</td><td class="num">13.07***</td><td class="num">+0.270</td><td class="num">11.78***</td></tr>
-      <tr class="hl"><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
-      <tr class="hl"><td>조이혼율</td><td class="num">+0.129</td><td class="num">7.03***</td><td class="num">+0.169</td><td class="num">9.13***</td></tr>
-      <tr class="hl"><td>인구밀도</td><td class="num">−0.243</td><td class="num">−8.96***</td><td class="num">−0.229</td><td class="num">−8.37***</td></tr>
-      <tr class="hl"><td>청년순이동률</td><td class="num">−0.128</td><td class="num">−6.07***</td><td class="num">−0.112</td><td class="num">−5.30***</td></tr>
-      <tr class="hl"><td>의사수</td><td class="num">−0.106</td><td class="num">−5.10***</td><td class="num">−0.084</td><td class="num">−4.03***</td></tr>
+      <tr><td>기초생활수급률</td><td class="num">+0.297</td><td class="num">13.07***</td><td class="num">+0.270</td><td class="num">11.78***</td></tr>
+      <tr><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
+      <tr><td>조이혼율</td><td class="num">+0.129</td><td class="num">7.03***</td><td class="num">+0.169</td><td class="num">9.13***</td></tr>
+      <tr><td>인구밀도</td><td class="num">−0.243</td><td class="num">−8.96***</td><td class="num">−0.229</td><td class="num">−8.37***</td></tr>
+      <tr><td>청년순이동률</td><td class="num">−0.128</td><td class="num">−6.07***</td><td class="num">−0.112</td><td class="num">−5.30***</td></tr>
+      <tr><td>의사수</td><td class="num">−0.106</td><td class="num">−5.10***</td><td class="num">−0.084</td><td class="num">−4.03***</td></tr>
       <tr><td>아파트비율</td><td class="num">+0.205</td><td class="num">7.08***</td><td class="num">+0.025</td><td class="num">0.86 n.s.</td></tr>
     </table>
-    <p class="tbl-note">z-표준화 계수, n=2,061. *** p&lt;0.001. 음영 = 두 모형 모두 유의한 변수.</p>
+    <p class="tbl-note">z-표준화 계수, n=2,061. *** p&lt;0.001 (아파트비율은 비만율 모형에서만 유의).</p>
   </div>
 </section>
 
@@ -263,11 +263,19 @@ a{color:var(--accent)}
 <section class="slide">
   <div class="s-tag">06 · MODEL COMPARISON</div>
   <h2 class="st">모형 성능: 시간 이질성 &gt; 공간 이질성</h2>
-  <ul class="dot" style="font-size:1.08rem;margin-bottom:1rem">
+  <ul class="dot" style="font-size:1.08rem;margin-bottom:.7rem">
     <li>두 모형 모두 <b>MGTWR 최종 우위</b> — 잔차 공간 자기상관 사실상 해소</li>
     <li>공간 이질성 반영(OLS→GWR): AICc <b>274 개선</b> · 시간 이질성 추가(GWR→GTWR): <b>593 추가 개선</b></li>
-    <li>→ "지역 차이"보다 <b>"시기 차이"</b>의 기여가 더 컸다 (코로나 전후 구조 변화)</li>
+    <li>→ "지역 차이"보다 <b>"시기 차이"</b>의 기여가 더 컸다</li>
   </ul>
+  <div class="box" style="margin:.3rem 0 1rem;background:#faf3ec;border-color:#ecd9c8">
+    <h4>왜 "시기 차이"가 더 컸나?</h4>
+    <ul class="dot">
+      <li>분석 기간에 비만율 <b>수준 자체가 요동</b>: 전국 평균 8.4%(2015) → 15.6%(2021) → 11.6%(2023)</li>
+      <li>기저 위험(표준화 절편)도 −0.73 → +0.85로 <b>약 1.6 SD 이동</b> — 같은 지역도 해에 따라 전혀 다른 상태</li>
+      <li>공간만 허용(GWR)하면 계수가 <b>9년 평균으로 뭉개짐</b> → 시간 가변 허용(GTWR)에서 적합 급개선</li>
+    </ul>
+  </div>
   <div class="two-col">
     <div class="box" style="margin-top:0"><h4>비만율 모형</h4><table id="tblModelOb"></table></div>
     <div class="box" style="margin-top:0"><h4>과체중이상율 모형</h4><table id="tblModelOw"></table></div>
