@@ -198,17 +198,22 @@ a{color:var(--accent2)}
       <li><b>추정</b>: backfitting(후진적합) — 각 변수의 부분잔차에 대해 (bw<sub>j</sub>, τ<sub>j</sub>)를 AICc 최소화로 반복 탐색.</li>
       <li><b>추론</b>: 로컬 계수의 유의성은 변수별 유효모수 ENP<sub>j</sub>(backfitting 스무더 hat 행렬 대각합)로
         보정한 α<sub>adj</sub> = α/ENP<sub>j</sub> 기준의 임계 t를 적용(Yu &amp; Fotheringham 2025; da Silva &amp; Fotheringham 2016).</li>
+      <li><b>공간 가중의 두 층위</b>: ① 국지 모형의 추정 가중은 별도의 고정 가중행렬이 아니라 위 커널이 만드는
+        <b>관측치별 연속 가중</b>(적응형 bisquare)이며, ② 전역·잔차 Moran's I 검정에는 시군구 중심점 기반
+        <b>KNN-8 행표준화 가중행렬</b>을 사용(도서 지역이 있어 인접성 대신 최근접 이웃 방식 채택).</li>
       <li><b>모형 비교</b>: OLS → GWR → MGWR → GTWR → MGTWR을 동일 자료·동일 커널로 추정, AICc·adj-R²·잔차
-        Moran's I(연도별 KNN-8)로 평가.</li>
+        Moran's I(연도별 KNN-8 평균)로 평가.</li>
     </ul>
     <div class="box">
-      <h4>표 2. 사전 진단 — 종속변수의 전역 공간 자기상관 (Moran's I, KNN-8 행표준화)</h4>
-      <table id="tblDvMoran"></table>
-      <p class="tbl-note">비만율·과체중이상율 모두 전 연도에서 유의한 양(+)의 공간 자기상관을 보인다(999회 순열검정).
-        관측치 독립을 가정하는 전역 OLS는 이 자료 구조에 부적합하며, 공간(국지) 모형 사용의 직접적 근거가 된다.</p>
+      <h4>그림 1. 사전 진단 — 종속변수의 전역 공간 자기상관 추이 (Moran's I, KNN-8 행표준화)</h4>
+      <canvas id="dvMoranChart" height="85"></canvas>
+      <p class="tbl-note">비만율·과체중이상율 모두 <b>전 연도에서 유의한 양(+)의 공간 자기상관</b>(I ≈ 0.19~0.42,
+        999회 순열검정 전 연도 p ≤ 0.001)을 보이며, 특히 코로나 시기(2020–21)에 자기상관이 정점에 달한다 —
+        비만율이 오를 때 지역 간 군집성도 함께 강해졌다는 뜻이다. 관측치 독립을 가정하는 전역 OLS는
+        이 자료 구조에 부적합하며, 공간(국지) 모형 사용의 직접적 근거가 된다.</p>
     </div>
     <div class="box">
-      <h4>표 3. 모형 계보 — 단계마다 무엇이 달라지는가</h4>
+      <h4>표 2. 모형 계보 — 단계마다 무엇이 달라지는가</h4>
       <table>
         <tr><th>모형</th><th class="ctr">계수가 지역마다 다른가</th><th class="ctr">계수가 시기마다 다른가</th><th>bandwidth 구조</th><th>한 줄 요약</th></tr>
         <tr><td>OLS</td><td class="ctr">×</td><td class="ctr">×</td><td>—</td>
@@ -225,6 +230,25 @@ a{color:var(--accent2)}
       <p class="tbl-note">즉 GWR→MGWR은 "변수별 <b>공간</b> 스케일"을, GWR→GTWR은 "<b>시간</b> 이질성"을 각각 더한 것이고,
         MGTWR은 두 확장을 결합해 변수별 <b>시공간</b> 스케일을 추정한다. 단일 bandwidth 모형(GWR·GTWR)은 이질성 수준이
         다른 변수들을 하나의 평균적 범위로 평활하므로, 일부 변수는 과대·일부는 과소 평활되는 한계가 있다.</p>
+    </div>
+    <div class="box">
+      <h4>표 3. 기준 모형 — 전역 OLS 추정 결과 (표준화 계수)</h4>
+      <table>
+        <tr><th>변수</th><th class="num">β (비만율)</th><th class="num">t</th>
+          <th class="num">β (과체중이상율)</th><th class="num">t</th></tr>
+        <tr><td>기초생활수급률</td><td class="num">+0.297</td><td class="num">13.07***</td><td class="num">+0.270</td><td class="num">11.78***</td></tr>
+        <tr class="hl"><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
+        <tr><td>조이혼율</td><td class="num">+0.129</td><td class="num">7.03***</td><td class="num">+0.169</td><td class="num">9.13***</td></tr>
+        <tr><td>인구밀도(log)</td><td class="num">−0.243</td><td class="num">−8.96***</td><td class="num">−0.229</td><td class="num">−8.37***</td></tr>
+        <tr><td>청년순이동률</td><td class="num">−0.128</td><td class="num">−6.07***</td><td class="num">−0.112</td><td class="num">−5.30***</td></tr>
+        <tr><td>의사수</td><td class="num">−0.106</td><td class="num">−5.10***</td><td class="num">−0.084</td><td class="num">−4.03***</td></tr>
+        <tr class="hl"><td>아파트비율</td><td class="num">+0.205</td><td class="num">7.08***</td><td class="num">+0.025</td><td class="num">0.86 <span style="color:var(--muted)">n.s.</span></td></tr>
+      </table>
+      <p class="tbl-note">n=2,061, 종속·독립변수 모두 z-표준화(절편≈0 생략). *** p&lt;0.001.
+        R² = 0.361(비만율)/0.351(과체중이상율), 잔차 Moran's I = 0.088/0.085로 <b>공간 자기상관이 잔차에 그대로 남아</b>
+        추정 왜곡의 위험이 있다. 실제로 음영 처리한 두 변수 — 아파트비율(+)과 1인가구비율(+) — 는
+        국지 모형에서 부호가 뒤집히거나 준상수로 축소되어(§05 요약표), 전역 추정이 공간 교란을 흡수해
+        정책 방향을 오도할 수 있음을 보여준다.</p>
     </div>
     <div class="box">
       <h4>표 4-a. 모형 성능 비교 — 비만율 모형</h4>
@@ -343,7 +367,7 @@ a{color:var(--accent2)}
       산형 궤적을 그린 뒤 하락했지만, <b>지역환경 변수들의 기울기는 팬데믹 이후 더 가팔라진 채 유지</b>되고 있다 —
       즉 지역사회 환경이 아동 비만을 가르는 힘은 코로나 이전보다 지금이 더 크다.</p>
     <div class="box">
-      <h4>그림 1. 지역 기저위험(절편)의 연도별 궤적</h4>
+      <h4>그림 2. 지역 기저위험(절편)의 연도별 궤적</h4>
       <canvas id="interChart" height="95"></canvas>
     </div>
     <div class="box">
@@ -439,60 +463,60 @@ a{color:var(--accent2)}
       <ol class="refs">
         <li>Shrewsbury V, Wardle J (2008). Socioeconomic status and adiposity in childhood: a systematic review
           of cross-sectional studies 1990–2005. <i>Obesity</i> 16(2):275–284.
-          <a href="https://scholar.google.com/scholar?q=%22Socioeconomic+status+and+adiposity+in+childhood%22+Shrewsbury" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1038/oby.2007.35" target="_blank">[링크]</a></li>
         <li>Wang Y, Lim H (2012). The global childhood obesity epidemic and the association between
           socio-economic status and childhood obesity. <i>International Review of Psychiatry</i> 24(3):176–188.
-          <a href="https://scholar.google.com/scholar?q=%22The+global+childhood+obesity+epidemic+and+the+association%22+Wang+Lim" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.3109/09540261.2012.688195" target="_blank">[링크]</a></li>
         <li>Singh GK, Siahpush M, Kogan MD (2010). Neighborhood socioeconomic conditions, built environments,
           and childhood obesity. <i>Health Affairs</i> 29(3):503–512.
-          <a href="https://scholar.google.com/scholar?q=%22Neighborhood+socioeconomic+conditions%2C+built+environments%2C+and+childhood+obesity%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1377/hlthaff.2009.0730" target="_blank">[링크]</a></li>
         <li>Congdon P (2019). Obesity and urban environments. <i>Int J Environ Res Public Health</i> 16(3):464.
-          <a href="https://scholar.google.com/scholar?q=%22Obesity+and+Urban+Environments%22+Congdon+2019" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.3390/ijerph16030464" target="_blank">[링크]</a></li>
         <li>Cummins S, Curtis S, Diez-Roux AV, Macintyre S (2007). Understanding and representing 'place'
           in health research: a relational approach. <i>Social Science &amp; Medicine</i> 65(9):1825–1838.
-          <a href="https://scholar.google.com/scholar?q=%22Understanding+and+representing+place+in+health+research%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1016/j.socscimed.2007.05.036" target="_blank">[링크]</a></li>
         <li>Schmeer KK (2012). Family structure and obesity in early childhood. <i>Social Science Research</i> 41(4):820–832.
-          <a href="https://scholar.google.com/scholar?q=%22Family+structure+and+obesity+in+early+childhood%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1016/j.ssresearch.2012.01.007" target="_blank">[링크]</a></li>
         <li>Yannakoulia M, Papanikolaou K, Hatzopoulou I, et al. (2008). Association between family divorce and
           children's BMI and meal patterns: the GENDAI study. <i>Obesity</i> 16(6):1382–1387.
-          <a href="https://scholar.google.com/scholar?q=%22Association+Between+Family+Divorce+and+Children%27s+BMI%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1038/oby.2008.70" target="_blank">[링크]</a></li>
         <li>Anderson SE, Whitaker RC (2010). Household routines and obesity in US preschool-aged children.
           <i>Pediatrics</i> 125(3):420–428.
-          <a href="https://scholar.google.com/scholar?q=%22Household+routines+and+obesity+in+US+preschool-aged+children%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1542/peds.2009-0417" target="_blank">[링크]</a></li>
         <li>Ewing R, Schmid T, Killingsworth R, Zlot A, Raudenbush S (2003). Relationship between urban sprawl and
           physical activity, obesity, and morbidity. <i>Am J Health Promotion</i> 18(1):47–57.
-          <a href="https://scholar.google.com/scholar?q=%22Relationship+between+urban+sprawl+and+physical+activity%2C+obesity%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.4278/0890-1171-18.1.47" target="_blank">[링크]</a></li>
         <li>Lopez R (2004). Urban sprawl and risk for being overweight or obese. <i>Am J Public Health</i> 94(9):1574–1579.
-          <a href="https://scholar.google.com/scholar?q=%22Urban+sprawl+and+risk+for+being+overweight+or+obese%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.2105/AJPH.94.9.1574" target="_blank">[링크]</a></li>
         <li>Vlahov D, Galea S (2002). Urbanization, urbanicity, and health. <i>J Urban Health</i> 79(Suppl 1):S1–S12.
-          <a href="https://scholar.google.com/scholar?q=%22Urbanization%2C+urbanicity%2C+and+health%22+Vlahov" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1093/jurban/79.suppl_1.S1" target="_blank">[링크]</a></li>
         <li>Sallis JF, Glanz K (2006). The role of built environments in physical activity, eating, and obesity
           in childhood. <i>The Future of Children</i> 16(1):89–108.
-          <a href="https://scholar.google.com/scholar?q=%22The+role+of+built+environments+in+physical+activity%2C+eating%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1353/foc.2006.0009" target="_blank">[링크]</a></li>
         <li>Davison KK, Lawson CT (2006). Do attributes in the physical environment influence children's
           physical activity? A review of the literature. <i>Int J Behav Nutr Phys Act</i> 3:19.
-          <a href="https://scholar.google.com/scholar?q=%22Do+attributes+in+the+physical+environment+influence+children%27s+physical+activity%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1186/1479-5868-3-19" target="_blank">[링크]</a></li>
         <li>Dunton GF, Kaplan J, Wolch J, Jerrett M, Reynolds KD (2009). Physical environmental correlates of
           childhood obesity: a systematic review. <i>Obesity Reviews</i> 10(4):393–402.
-          <a href="https://scholar.google.com/scholar?q=%22Physical+environmental+correlates+of+childhood+obesity%22+Dunton" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1111/j.1467-789X.2009.00572.x" target="_blank">[링크]</a></li>
         <li>Norman P, Boyle P, Rees P (2005). Selective migration, health and deprivation: a longitudinal analysis.
           <i>Social Science &amp; Medicine</i> 60(12):2755–2771.
-          <a href="https://scholar.google.com/scholar?q=%22Selective+migration%2C+health+and+deprivation%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1016/j.socscimed.2004.11.008" target="_blank">[링크]</a></li>
         <li>Boyle P (2004). Population geography: migration and inequalities in mortality and morbidity.
           <i>Progress in Human Geography</i> 28(6):767–776.
-          <a href="https://scholar.google.com/scholar?q=%22Population+geography%3A+migration+and+inequalities+in+mortality%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1191/0309132504ph518pr" target="_blank">[링크]</a></li>
         <li>Riva M, Curtis S, Norman P (2011). Residential mobility within England and urban–rural inequalities
           in mortality. <i>Social Science &amp; Medicine</i> 73(12):1698–1706.
-          <a href="https://scholar.google.com/scholar?q=%22Residential+mobility+within+England%22+Riva+Curtis" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1016/j.socscimed.2011.09.030" target="_blank">[링크]</a></li>
         <li>Lobstein T, Baur L, Uauy R (2004). Obesity in children and young people: a crisis in public health.
           <i>Obesity Reviews</i> 5(s1):4–104.
-          <a href="https://scholar.google.com/scholar?q=%22Obesity+in+children+and+young+people%3A+a+crisis+in+public+health%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1111/j.1467-789X.2004.00133.x" target="_blank">[링크]</a></li>
         <li>Starfield B, Shi L, Macinko J (2005). Contribution of primary care to health systems and health.
           <i>Milbank Quarterly</i> 83(3):457–502.
-          <a href="https://scholar.google.com/scholar?q=%22Contribution+of+primary+care+to+health+systems+and+health%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1111/j.1468-0009.2005.00409.x" target="_blank">[링크]</a></li>
         <li>Guagliardo MF (2004). Spatial accessibility of primary care: concepts, methods and challenges.
           <i>Int J Health Geographics</i> 3:3.
-          <a href="https://scholar.google.com/scholar?q=%22Spatial+accessibility+of+primary+care%3A+concepts%2C+methods+and+challenges%22" target="_blank">[링크]</a></li>
+          <a href="https://doi.org/10.1186/1476-072X-3-3" target="_blank">[링크]</a></li>
       </ol>
     </div>
   </div>
@@ -572,12 +596,6 @@ function rebuildTables(){
   return h;};
  document.getElementById('tblModelOb').innerHTML=mkModel('ob');
  document.getElementById('tblModelOw').innerHTML=mkModel('ow');
- const fmtP=p=>p<=0.001?'&lt;0.001':p.toFixed(3);
- let dm="<tr><th>연도</th><th class='num'>비만율 I</th><th class='num'>p</th><th class='num'>과체중이상율 I</th><th class='num'>p</th></tr>";
- DATA.dvmoran.ob.forEach((r,i)=>{const s=DATA.dvmoran.ow[i];
-  dm+=`<tr><td>${r[0]}</td><td class='num'>${r[1].toFixed(3)}</td><td class='num'>${fmtP(r[2])}</td>
-   <td class='num'>${s[1].toFixed(3)}</td><td class='num'>${fmtP(s[2])}</td></tr>`;});
- document.getElementById('tblDvMoran').innerHTML=dm;
  const grp=v=>{const b=DATA.bwt.ob[v];
   if(v==='intercept')return"초국지(지역 맥락 흡수)";
   if(b.tau>100&&b.bw<50)return"시공간 국지(시변)";
@@ -603,6 +621,12 @@ function rebuildTables(){
 rebuildTables();
 
 Chart.defaults.font.family="'Noto Sans KR',sans-serif";
+new Chart(document.getElementById('dvMoranChart'),{type:'line',data:{labels:DATA.years,datasets:[
+ {label:'비만율',data:DATA.dvmoran.ob.map(r=>r[1]),borderColor:'#8d2f1f',
+  backgroundColor:'rgba(141,47,31,.12)',fill:true,tension:.3},
+ {label:'과체중이상율',data:DATA.dvmoran.ow.map(r=>r[1]),borderColor:'#14406b',tension:.3}]},
+ options:{plugins:{legend:{position:'bottom'}},
+  scales:{y:{min:0,title:{display:true,text:"전역 Moran's I"}}}}});
 new Chart(document.getElementById('interChart'),{type:'line',data:{labels:DATA.years,datasets:[
  {label:'비만율 모형',data:DATA.inter.ob,borderColor:'#8d2f1f',backgroundColor:'rgba(141,47,31,.12)',fill:true,tension:.35},
  {label:'과체중이상율 모형',data:DATA.inter.ow,borderColor:'#14406b',tension:.35}]},
