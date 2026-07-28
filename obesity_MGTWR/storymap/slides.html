@@ -529,7 +529,7 @@ Chart.defaults.font.family="'Noto Sans KR',sans-serif";
 Chart.defaults.font.size=15;
 function rebuildTables(){
  const M=DATA.models,mc=DATA.modelcmp;
- const mk=d=>{let h="<tr><th>모형</th><th class='num'>AICc</th><th class='num'>R²</th><th class='num'>adj-R²</th><th class='num'>잔차 Moran's <i class="mv">I</i></th></tr>";
+ const mk=d=>{let h="<tr><th>모형</th><th class='num'>AICc</th><th class='num'>R²</th><th class='num'>adj-R²</th><th class='num'>잔차 Moran's <i class='mv'>I</i></th></tr>";
   M.forEach((m,i)=>{h+=`<tr${m==='MGTWR'?" class='hl'":""}><td>${m}</td>
    <td class='num'>${mc[d].aicc[i].toFixed(1)}</td><td class='num'>${mc[d].r2[i].toFixed(3)}</td>
    <td class='num'>${DATA.adjr2[d][i].toFixed(3)}</td><td class='num'>${DATA.moran[d][i].toFixed(3)}</td></tr>`;});
@@ -540,7 +540,7 @@ function rebuildTables(){
  dm+="<tr><td>비만율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ob.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
  dm+="<tr><td>과체중이상율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ow.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
  document.getElementById('tblDvMoran').innerHTML=dm;
- let g="<tr><th>변수</th><th class='num'><i class="mv">bw</i>(비만율)</th><th class='num'><i class="mv">τ</i></th><th class='num'><i class="mv">bw</i>(과체중+)</th><th class='num'><i class="mv">τ</i></th><th class='num'>ENP<sub>j</sub></th><th class='num'><i class="mv">t</i><sub>crit</sub></th></tr>";
+ let g="<tr><th>변수</th><th class='num'><i class='mv'>bw</i>(비만율)</th><th class='num'><i class='mv'>τ</i></th><th class='num'><i class='mv'>bw</i>(과체중+)</th><th class='num'><i class='mv'>τ</i></th><th class='num'>ENP<sub>j</sub></th><th class='num'><i class='mv'>t</i><sub>crit</sub></th></tr>";
  DATA.vars.forEach(v=>{const a=DATA.bwt.ob[v],b=DATA.bwt.ow[v];
   g+=`<tr><td>${VLAB[v]}</td><td class='num'>${a.bw}</td><td class='num'>${a.tau}</td>
   <td class='num'>${b.bw}</td><td class='num'>${b.tau}</td>
