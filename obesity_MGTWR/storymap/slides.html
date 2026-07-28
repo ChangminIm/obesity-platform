@@ -47,6 +47,11 @@ details.box summary{font-size:1.02rem;font-weight:900;color:var(--navy);cursor:p
 details.box summary::before{content:"▸ ";color:var(--accent)}
 details.box[open] summary::before{content:"▾ "}
 details.box summary::-webkit-details-marker{display:none}
+.sym{cursor:help;border-bottom:2px dotted rgba(193,79,46,.55)}
+.sym:hover{background:#f7e8dd;border-radius:.2rem}
+#symTip{position:fixed;z-index:2000;background:var(--navy);color:#fff;padding:.55rem .85rem;
+  border-radius:.5rem;font-size:.82rem;font-family:'Noto Sans KR',sans-serif;max-width:22rem;
+  display:none;box-shadow:0 6px 20px rgba(0,0,0,.3);line-height:1.5}
 ul.dot{margin:.5rem 0 0 1.2rem;font-size:.95rem}
 ul.dot li{margin-bottom:.45rem}
 ol.rq{margin:.9rem 0 0 1.4rem;font-size:1.15rem}
@@ -169,7 +174,7 @@ a{color:var(--accent)}
       그 효과는 <b>공간적으로, 그리고 시간적으로</b> 어떻게 이질적인가?</li>
     <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
       border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside;margin-bottom:1.1rem">
-      각 요인은 어떤 <b>작동 스케일</b>에서 움직이는가 — 좁은 권역인가 전국인가, 해마다 변하는가 일정한가?</li>
+      각 요인은 어떤 <b>작동 스케일</b>에서 움직이는가 — 국지인가 전국인가, 가변인가 일정한가?</li>
     <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
       border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside">
       (부가) 코로나19 전후로 지역환경 효과의 구조는 어떻게 변화했는가?</li>
@@ -182,27 +187,41 @@ a{color:var(--accent)}
   <h2 class="st">자료와 변수</h2>
   <ul class="dot" style="font-size:1.05rem;margin-bottom:.8rem">
     <li><b>종속변수</b>: 영유아 건강검진 시군구 비만율·과체중이상율</li>
-    <li><b>독립변수</b>: KOSIS 21종 후보 → 이론·다중공선성 진단으로 <b>7종 선정</b> (z-표준화)</li>
+    <li><b>독립변수</b>: KOSIS 21종 후보 → 이론·다중공선성 진단으로 <b>7종 선정</b></li>
   </ul>
   <div class="box">
     <table>
       <tr><th>영역</th><th>변수</th><th class="ctr">가설</th><th>참고문헌</th></tr>
       <tr><td>사회경제 결핍</td><td>기초생활수급률</td><td class="ctr">+</td>
-        <td style="font-size:.82rem">Shrewsbury &amp; Wardle (2008) · Singh et al. (2010) · Wang &amp; Lim (2012)</td></tr>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1038/oby.2007.35" target="_blank">Shrewsbury &amp; Wardle (2008)</a> ·
+          <a href="https://doi.org/10.1377/hlthaff.2009.0730" target="_blank">Singh et al. (2010)</a> ·
+          <a href="https://doi.org/10.3109/09540261.2012.688195" target="_blank">Wang &amp; Lim (2012)</a></td></tr>
       <tr><td rowspan="2">가족·사회 구조</td><td>1인가구비율</td><td class="ctr">+</td>
-        <td style="font-size:.82rem">Cummins et al. (2007) · Singh et al. (2010) · Congdon (2019)</td></tr>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1016/j.socscimed.2007.05.036" target="_blank">Cummins et al. (2007)</a> ·
+          <a href="https://doi.org/10.1377/hlthaff.2009.0730" target="_blank">Singh et al. (2010)</a> ·
+          <a href="https://doi.org/10.3390/ijerph16030464" target="_blank">Congdon (2019)</a></td></tr>
       <tr><td>조이혼율</td><td class="ctr">+</td>
-        <td style="font-size:.82rem">Yannakoulia et al. (2008) · Anderson &amp; Whitaker (2010) · Schmeer (2012)</td></tr>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1038/oby.2008.70" target="_blank">Yannakoulia et al. (2008)</a> ·
+          <a href="https://doi.org/10.1542/peds.2009-0417" target="_blank">Anderson &amp; Whitaker (2010)</a> ·
+          <a href="https://doi.org/10.1016/j.ssresearch.2012.01.007" target="_blank">Schmeer (2012)</a></td></tr>
       <tr><td rowspan="2">건조환경</td><td>인구밀도</td><td class="ctr">±</td>
-        <td style="font-size:.82rem">Ewing et al. (2003) · Lopez (2004) · Jia (2020)</td></tr>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.4278/0890-1171-18.1.47" target="_blank">Ewing et al. (2003)</a> ·
+          <a href="https://doi.org/10.2105/AJPH.94.9.1574" target="_blank">Lopez (2004)</a> ·
+          <a href="https://doi.org/10.1111/obr.13158" target="_blank">Jia (2020)</a></td></tr>
       <tr><td>아파트비율</td><td class="ctr">−</td>
-        <td style="font-size:.82rem">Sallis &amp; Glanz (2006) · An et al. (2019) · Daniels et al. (2021)</td></tr>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1353/foc.2006.0009" target="_blank">Sallis &amp; Glanz (2006)</a> ·
+          <a href="https://doi.org/10.1016/j.jshs.2018.11.003" target="_blank">An et al. (2019)</a> ·
+          <a href="https://doi.org/10.1016/j.ypmed.2021.106790" target="_blank">Daniels et al. (2021)</a></td></tr>
       <tr><td>인구 동태</td><td>청년순이동률</td><td class="ctr">−</td>
-        <td style="font-size:.82rem">Boyle (2004) · Norman et al. (2005) · Riva et al. (2011)</td></tr>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1191/0309132504ph518pr" target="_blank">Boyle (2004)</a> ·
+          <a href="https://doi.org/10.1016/j.socscimed.2004.11.008" target="_blank">Norman et al. (2005)</a> ·
+          <a href="https://doi.org/10.1016/j.socscimed.2011.09.030" target="_blank">Riva et al. (2011)</a></td></tr>
       <tr><td>의료 접근성</td><td>천명당 의사수</td><td class="ctr">−</td>
-        <td style="font-size:.82rem">Lobstein et al. (2004) · Guagliardo (2004) · Starfield et al. (2005)</td></tr>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1111/j.1467-789X.2004.00133.x" target="_blank">Lobstein et al. (2004)</a> ·
+          <a href="https://doi.org/10.1186/1476-072X-3-3" target="_blank">Guagliardo (2004)</a> ·
+          <a href="https://doi.org/10.1111/j.1468-0009.2005.00409.x" target="_blank">Starfield et al. (2005)</a></td></tr>
     </table>
-    <p class="tbl-note">전체 서지 정보와 원문 링크는 학술판 참고문헌 참조.</p>
+    <p class="tbl-note">문헌을 클릭하면 원문(DOI)으로 이동. 전체 서지는 학술판 참고문헌 참조.</p>
   </div>
 </section>
 
@@ -221,8 +240,15 @@ a{color:var(--accent)}
     </table>
   </div>
   <div class="eq" id="eqBox" style="font-size:1.45rem;cursor:pointer" title="클릭하면 기호 설명이 열립니다">
-    <i>y</i><sub><i>i</i></sub> = Σ<sub><i>j</i></sub> <i>β</i><sub><i>j</i></sub>(<i>u</i><sub><i>i</i></sub>, <i>v</i><sub><i>i</i></sub>, <i>t</i><sub><i>i</i></sub>; <i>bw</i><sub><i>j</i></sub>, <i>τ</i><sub><i>j</i></sub>)·<i>x</i><sub><i>ij</i></sub> + <i>ε</i><sub><i>i</i></sub>,&nbsp;&nbsp;&nbsp; <i>d</i>²<sub>ST</sub> = <i>d</i>²<sub>S</sub> + <i>τ</i>·<i>d</i>²<sub>T</sub>
-    <span style="font-size:.78rem;color:var(--accent);margin-left:.8rem;font-family:'Noto Sans KR',sans-serif">▼ 클릭: 기호 설명</span></div>
+    <span class="sym" data-tip="종속변수: 관측치 i(특정 시군구·특정 연도)의 비만율(표준화)"><i>y</i><sub><i>i</i></sub></span> =
+    Σ<sub><i>j</i></sub> <span class="sym" data-tip="변수 j의 회귀계수 — 위치(u,v)와 시점(t)에 따라 달라질 수 있음"><i>β</i><sub><i>j</i></sub>(<i>u</i><sub><i>i</i></sub>, <i>v</i><sub><i>i</i></sub>, <i>t</i><sub><i>i</i></sub>;</span>
+    <span class="sym" data-tip="변수 j의 공간 bandwidth: 계수 추정에 빌려 쓰는 이웃 관측치 수"><i>bw</i><sub><i>j</i></sub>,</span>
+    <span class="sym" data-tip="변수 j의 시간 스케일: 다른 연도 정보를 얼마나 차단할지 (클수록 해마다 다르게 추정)"><i>τ</i><sub><i>j</i></sub>)</span>·<span class="sym" data-tip="관측치 i의 변수 j 값(표준화)"><i>x</i><sub><i>ij</i></sub></span> +
+    <span class="sym" data-tip="오차항"><i>ε</i><sub><i>i</i></sub></span>,&nbsp;&nbsp;&nbsp;
+    <span class="sym" data-tip="시공간 거리²: 이 거리가 가까운 관측치일수록 큰 가중을 받음"><i>d</i>²<sub>ST</sub></span> =
+    <span class="sym" data-tip="공간 거리² (시군구 중심점 간 거리)"><i>d</i>²<sub>S</sub></span> +
+    <span class="sym" data-tip="시간 가중 τ × 시간 거리² (연도 차이)"><i>τ</i>·<i>d</i>²<sub>T</sub></span>
+    <span style="font-size:.78rem;color:var(--accent);margin-left:.8rem;font-family:'Noto Sans KR',sans-serif">기호 클릭: 뜻 팝업 · 빈 곳 클릭: 전체 설명 ▼</span></div>
   <div class="box" id="eqExplain" style="display:none">
     <table>
       <tr><th style="width:10rem">기호</th><th>의미</th></tr>
@@ -338,9 +364,9 @@ a{color:var(--accent)}
   <div id="yearRow">
     <button id="playBtn">▶ 재생</button>
     <button class="ystep" id="prevYear">◀</button>
-    <input type="range" id="yearSlider" min="2015" max="2023" step="1" value="2023">
+    <input type="range" id="yearSlider" min="2015" max="2023" step="1" value="2015">
     <button class="ystep" id="nextYear">▶</button>
-    <span id="yearLabel">2023</span>
+    <span id="yearLabel">2015</span>
     <div id="legend" style="margin-left:.8rem"><span id="legMin"></span><div id="legbar"></div><span id="legMax"></span>
       <span class="leg-gray"></span><span>비유의</span></div>
   </div>
@@ -407,10 +433,7 @@ a{color:var(--accent)}
     <ul class="dot" style="font-size:1.05rem">
       <li style="margin-bottom:.85rem"><b>생태학적 설계</b> — 지역 수준 연관 ≠ 개인 수준 결론(생태학적 오류) → 개인 자료 연계가 후속 과제</li>
       <li style="margin-bottom:.85rem"><b>공간 단위 임의성(MAUP)</b> — 경계 설정·읍면동 단위에 따라 결과 변동 가능</li>
-      <li style="margin-bottom:.85rem"><b>τ의 탐색 경계 도달</b> — 가변/안정 구분은 견고, 점추정치는 범위 의존</li>
-      <li style="margin-bottom:.85rem"><b>측정 일관성</b> — 2018년 전후 검진 지표 기준 변화 가능성 → 연관 구조 중심 해석</li>
-      <li style="margin-bottom:.85rem"><b>미관측 교란</b> — 식품환경·보육환경·부모 건강행태 미포함</li>
-      <li><b>연관 ≠ 인과</b> — 인과 식별(자연실험 등)은 별도 연구 과제</li>
+      <li><b>미관측 교란</b> — 식품환경·보육환경·부모 건강행태 미포함</li>
     </ul>
   </div>
 </section>
@@ -432,6 +455,7 @@ a{color:var(--accent)}
 
 </div>
 
+<div id="symTip"></div>
 <div id="nav">
   <button id="fsBtn">⛶ 전체화면</button>
   <span id="pageNum">1 / 14</span>
@@ -454,7 +478,7 @@ const VDESC={
  youth_net_mig:"지역활력 효과(−): 영남 내륙 유출 지역 집중.",
  doctors:"약한 보호효과(−), 전역적.",
  apt_ratio:"주거환경 보호효과(−): 남부·동부 광역, 해마다 강화."};
-let dv="ob",curVar="welfare_rate",curYear=2023,playing=null;
+let dv="ob",curVar="welfare_rate",curYear=2015,playing=null;
 const STOPS=[[33,102,172],[103,169,207],[209,229,240],[247,247,247],[253,219,199],[239,138,98],[178,24,43]];
 function colorOf(v,vmax){let t=Math.max(-1,Math.min(1,v/vmax))*0.5+0.5;
  const p=t*(STOPS.length-1),i=Math.min(Math.floor(p),STOPS.length-2),f=p-i;
@@ -485,6 +509,15 @@ addEventListener('resize',()=>go(curIdx()));
 document.getElementById('eqBox').onclick=()=>{
  const e=document.getElementById('eqExplain');
  e.style.display=(e.style.display==='none')?'':'none';};
+/* 기호 클릭 팝업 */
+const symTip=document.getElementById('symTip');
+document.querySelectorAll('.sym').forEach(s=>{
+ s.addEventListener('click',e=>{e.stopPropagation();
+  symTip.textContent=s.dataset.tip;symTip.style.display='block';
+  const r=s.getBoundingClientRect();
+  symTip.style.left=Math.max(10,Math.min(r.left,innerWidth-symTip.offsetWidth-20))+'px';
+  symTip.style.top=(r.bottom+10)+'px';});});
+document.addEventListener('click',()=>{symTip.style.display='none';});
 
 /* ── 지도 (라이트) ── */
 const map=L.map('map',{scrollWheelZoom:false,attributionControl:false,zoomControl:true}).setView([36.2,127.9],7);
@@ -547,9 +580,10 @@ function rebuildTables(){
   return h;};
  document.getElementById('tblModelOb').innerHTML=mk('ob');
  document.getElementById('tblModelOw').innerHTML=mk('ow');
- let dm="<tr><th>연도</th>"+DATA.years.map(y=>`<th class='num'>${y}</th>`).join("")+"</tr>";
- dm+="<tr><td>비만율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ob.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
- dm+="<tr><td>과체중이상율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ow.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
+ const hlY=y=>y===2022?" hl":"";
+ let dm="<tr><th>연도</th>"+DATA.years.map(y=>`<th class='num${hlY(y)}'>${y}</th>`).join("")+"</tr>";
+ dm+="<tr><td>비만율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ob.map(r=>`<td class='num${hlY(r[0])}'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
+ dm+="<tr><td>과체중이상율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ow.map(r=>`<td class='num${hlY(r[0])}'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
  document.getElementById('tblDvMoran').innerHTML=dm;
  let g="<tr><th>변수</th><th class='num'><i class='mv'>bw</i>(비만율)</th><th class='num'><i class='mv'>τ</i></th><th class='num'><i class='mv'>bw</i>(과체중+)</th><th class='num'><i class='mv'>τ</i></th><th class='num'>ENP<sub>j</sub></th><th class='num'><i class='mv'>t</i><sub>crit</sub></th></tr>";
  DATA.vars.forEach(v=>{const a=DATA.bwt.ob[v],b=DATA.bwt.ow[v];
