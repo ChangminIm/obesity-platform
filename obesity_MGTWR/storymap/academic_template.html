@@ -13,8 +13,8 @@
 :root{--navy:#14263c;--accent:#8d2f1f;--accent2:#b5502f;--bg:#fbfaf7;--ink:#232c36;
   --muted:#5d6b7a;--line:#dfe4e9;--card:#fff}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg);line-height:1.8;font-size:15.5px}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg);line-height:1.8;font-size:15.5px;
+  word-break:keep-all;overflow-wrap:break-word}
 .container{max-width:1000px;margin:0 auto;padding:0 24px}
 section{padding:72px 0;border-bottom:1px solid var(--line)}
 h2.sec{font-family:'Noto Serif KR',serif;font-size:1.65rem;font-weight:900;color:var(--navy);
@@ -68,12 +68,20 @@ ul.dot li{margin-bottom:7px}
 #yearSlider{flex:1;max-width:400px;accent-color:var(--accent2)}
 #yearLabel{font-size:1.25rem;font-weight:900;min-width:60px}
 #playBtn{background:var(--accent2);border:none;color:#fff;border-radius:8px;padding:7px 15px;cursor:pointer;font-family:inherit;font-weight:700}
+.ystep{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;
+  border-radius:8px;padding:6px 12px;cursor:pointer;font-family:inherit;font-weight:700}
+.ystep:hover{background:rgba(255,255,255,.25)}
+#secNav{position:fixed;bottom:26px;right:26px;z-index:1200}
+#secNav button{background:var(--navy);color:#fff;border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;padding:11px 20px;font-family:inherit;font-weight:700;font-size:.9rem;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);transition:.2s}
+#secNav button:hover{background:var(--accent)}
 #map{height:600px;border-radius:12px;background:#0b1826}
 #legend{display:flex;align-items:center;gap:8px;font-size:.8rem;color:#c0cedb;margin-top:12px}
 #legbar{width:190px;height:11px;border-radius:6px;
   background:linear-gradient(90deg,#2166ac,#67a9cf,#d1e5f0,#f7f7f7,#fddbc7,#ef8a62,#b2182b)}
 .leg-gray{width:13px;height:13px;border-radius:3px;background:#4a5866;display:inline-block;margin-left:12px}
-#varDesc{background:rgba(255,255,255,.06);border-left:4px solid var(--accent2);
+#varDesc,#enpNote{background:rgba(255,255,255,.06);border-left:4px solid var(--accent2);
   padding:12px 16px;border-radius:0 10px 10px 0;margin-top:14px;font-size:.9rem;color:#dce6ef}
 .leaflet-container{font-family:'Noto Sans KR',sans-serif}
 .popup-name{font-weight:900}
@@ -98,7 +106,7 @@ a{color:var(--accent2)}
     <div class="meta-grid">
       <div class="meta"><div class="k">연구 설계</div><div class="v">시군구 균형 패널 (생태학적 연구)</div></div>
       <div class="meta"><div class="k">분석 단위·기간</div><div class="v">229개 시군구 × 2015–2023 (n=2,061)</div></div>
-      <div class="meta"><div class="k">모형</div><div class="v">OLS·GWR·MGWR·GTWR·MGTWR 비교</div></div>
+      <div class="meta"><div class="k">모형</div><div class="v">5종 비교 (OLS → GWR → MGWR → GTWR → MGTWR)</div></div>
       <div class="meta"><div class="k">추론</div><div class="v">ENP-adjusted t (다중검정 보정)</div></div>
     </div>
   </div>
@@ -140,14 +148,21 @@ a{color:var(--accent2)}
     <div class="box">
       <h4>표 1. 최종 독립변수 (모두 z-표준화 투입)</h4>
       <table>
-        <tr><th>영역</th><th>변수</th><th>가설 방향</th><th>비고</th></tr>
-        <tr><td>사회경제적 결핍</td><td>기초생활수급률</td><td class="num">+</td><td>지역 결핍 대표 지표</td></tr>
-        <tr><td rowspan="2">가족·사회 구조</td><td>1인가구비율</td><td class="num">+</td><td rowspan="2">가구 구조 변화</td></tr>
-        <tr><td>조이혼율</td><td class="num">+</td></tr>
-        <tr><td rowspan="2">건조환경</td><td>인구밀도(log)</td><td class="num">±</td><td>도시성</td></tr>
-        <tr><td>아파트비율</td><td class="num">−</td><td>주거환경(단지 내 활동공간)</td></tr>
-        <tr><td>인구 동태</td><td>청년순이동률</td><td class="num">−</td><td>지역 활력</td></tr>
-        <tr><td>의료 접근성</td><td>인구 천명당 의사수</td><td class="num">−</td><td>보건의료 자원</td></tr>
+        <tr><th>영역</th><th>변수</th><th>가설 방향</th><th>이론적 기전</th><th>근거 문헌</th></tr>
+        <tr><td>사회경제적 결핍</td><td>기초생활수급률</td><td class="num">+</td>
+          <td>저소득 → 식생활 질·신체활동 기회 저하</td><td>Shrewsbury &amp; Wardle (2008)</td></tr>
+        <tr><td>가족·사회 구조</td><td>1인가구비율</td><td class="num">+</td>
+          <td>지역 사회구조·연결망 변화</td><td>Singh et al. (2010)</td></tr>
+        <tr><td>가족·사회 구조</td><td>조이혼율</td><td class="num">+</td>
+          <td>가족구조 이행 → 아동 생활습관 관리 약화</td><td>Schmeer (2012)</td></tr>
+        <tr><td>건조환경</td><td>인구밀도(log)</td><td class="num">±</td>
+          <td>도시성 — 보행 환경과 비만유발 환경의 상반된 경로</td><td>Ewing et al. (2003)</td></tr>
+        <tr><td>건조환경</td><td>아파트비율</td><td class="num">−</td>
+          <td>단지 내 놀이·운동 공간 등 활동 친화 주거환경</td><td>Sallis &amp; Glanz (2006)</td></tr>
+        <tr><td>인구 동태</td><td>청년순이동률</td><td class="num">−</td>
+          <td>선택적 이주·지역 활력 — 유출 지역의 건강자원 약화</td><td>Norman et al. (2005)</td></tr>
+        <tr><td>의료 접근성</td><td>인구 천명당 의사수</td><td class="num">−</td>
+          <td>예방·관리 서비스 접근성</td><td>Lobstein et al. (2004)</td></tr>
       </table>
       <p class="tbl-note">제외 근거 예: 사업체밀도(인구밀도와 r=0.99), 독거노인가구비율(고령인구비율과 r=0.98),
         문화기반시설수(인구당 지표의 농촌 편의로 부호 역전). 재정자립도·노후주택비율·걷기실천율은 강건성 분석에 사용.</p>
@@ -177,7 +192,26 @@ a{color:var(--accent2)}
         Moran's I(연도별 KNN-8)로 평가.</li>
     </ul>
     <div class="box">
-      <h4>표 2. 모형 성능 비교</h4>
+      <h4>표 2. 모형 계보 — 단계마다 무엇이 달라지는가</h4>
+      <table>
+        <tr><th>모형</th><th>계수가 지역마다 다른가</th><th>계수가 시기마다 다른가</th><th>bandwidth 구조</th><th>한 줄 요약</th></tr>
+        <tr><td>OLS</td><td class="num">×</td><td class="num">×</td><td>—</td>
+          <td>전국·전기간 공통 계수 하나</td></tr>
+        <tr><td>GWR</td><td class="num">○</td><td class="num">×</td><td>모든 변수 공통 1개(공간)</td>
+          <td>지역별 계수 — 단, 모든 변수가 같은 공간 범위로 평활</td></tr>
+        <tr><td>MGWR</td><td class="num">○</td><td class="num">×</td><td><b>변수별</b>(공간)</td>
+          <td>변수마다 "얼마나 국지적인지"를 따로 추정</td></tr>
+        <tr><td>GTWR</td><td class="num">○</td><td class="num">○</td><td>모든 변수 공통 1개(시공간)</td>
+          <td>시간 이질성 도입 — 단, 모든 변수가 같은 시공간 범위</td></tr>
+        <tr class="hl"><td>MGTWR</td><td class="num">○</td><td class="num">○</td><td><b>변수별</b>(공간 bw + 시간 τ)</td>
+          <td>변수마다 공간 범위와 시간 범위를 모두 따로 — 작동 스케일의 직접 식별</td></tr>
+      </table>
+      <p class="tbl-note">즉 GWR→MGWR은 "변수별 <b>공간</b> 스케일"을, GWR→GTWR은 "<b>시간</b> 이질성"을 각각 더한 것이고,
+        MGTWR은 두 확장을 결합해 변수별 <b>시공간</b> 스케일을 추정한다. 단일 bandwidth 모형(GWR·GTWR)은 이질성 수준이
+        다른 변수들을 하나의 평균적 범위로 평활하므로, 일부 변수는 과대·일부는 과소 평활되는 한계가 있다.</p>
+    </div>
+    <div class="box">
+      <h4>표 3. 모형 성능 비교</h4>
       <table id="tblModel"></table>
       <p class="tbl-note">AICc가 낮을수록 우수. 잔차 Moran's I는 연도별 평균(0에 가까울수록 공간 자기상관 해소).
         공간 이질성(GWR)보다 <b>시간 이질성(GTWR)의 기여가 더 컸고</b>, 변수별 다중스케일(MGTWR)이 추가 개선 —
@@ -196,7 +230,23 @@ a{color:var(--accent2)}
       <b>공간 국지적이되 시불변적으로</b>, 1인가구비율·의사수는 <b>사실상 전역 상수</b>로 작동한다.
       두 종속변수에서 동일한 구조가 재현되어 결과의 강건성을 지지한다.</p>
     <div class="box">
-      <h4>표 3. MGTWR 변수별 공간 bandwidth·시간 스케일 τ·유효모수 (비만율 / 과체중이상율)</h4>
+      <h4>작동 스케일(operational scale) 읽는 법</h4>
+      <ul class="dot">
+        <li><b>bandwidth(bw)</b> = 한 지역의 계수를 추정할 때 빌려 쓰는 <b>시공간 이웃의 수</b>(전체 n=2,061).
+          bw가 작으면(예: 32) 계수가 좁은 권역 안에서만 비슷하다는 뜻 — <b>국지적으로 작동</b>.
+          bw가 n에 가까우면(예: 1,769) 전국이 사실상 한 값을 공유 — <b>전역적으로 작동</b>.</li>
+        <li><b>τ(시간 스케일)</b> = 시간 거리에 주는 가중. τ가 크면 다른 연도의 정보를 차단해 계수가
+          <b>해마다 달라질 수 있고</b>(시변), τ→0이면 9개년 정보를 모두 공유해 계수가 <b>시간에 안정</b>(시불변).</li>
+        <li>예시 ① 기초생활수급률(bw 32, τ 상한): "같은 해, 이웃 32곳"의 정보만으로 추정 —
+          효과가 <b>지역·연도마다 다르다</b>는 뜻. 지역 맞춤·시기 맞춤 개입의 영역.</li>
+        <li>예시 ② 의사수(bw 1,769, τ→0): 전국·전기간이 한 값을 공유 — <b>어디서나 같은 효과</b>.
+          시군구가 아닌 전국 단위 정책의 영역.</li>
+        <li>예시 ③ 인구밀도(bw 228 ≈ 한 해의 시군구 수, τ→0): 지역별로는 다르지만
+          9년간 방향이 유지되는 <b>구조적 변수</b>.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>표 4. MGTWR 변수별 공간 bandwidth·시간 스케일 τ·유효모수 (비만율 / 과체중이상율)</h4>
       <table id="tblBwt"></table>
       <p class="tbl-note">bandwidth는 시공간 최근접 이웃 수(전체 n=2,061). τ는 탐색 범위 [0.1, 300]의
         경계값에 도달한 경우가 있어(각주 §07), 수치보다 시변/시불변의 질적 구분으로 해석한다.</p>
@@ -211,13 +261,22 @@ a{color:var(--accent2)}
     <h2 class="sec">로컬 계수의 공간 분포 (ENP-adjusted t 마스킹)</h2>
     <p class="lead">표준화 로컬 계수 β̂. 적색 = 위험 증가, 청색 = 위험 감소, 회색 = 보정 임계 t 미달.
       변수·연도·종속변수를 전환하며 탐색할 수 있다(연도별 색 척도는 변수 내 고정 — 연도 간 직접 비교 가능).</p>
+    <div id="enpNote" style="margin:0 0 18px 0">
+      <b>ENP-adjusted t 마스킹이란?</b> 국지 모형은 시군구·연도마다 검정을 사실상 반복하므로, 통상 기준(|t| &gt; 1.96)을
+      그대로 쓰면 우연히 유의해 보이는 지역(위양성)이 다수 섞인다. 예컨대 수급률의 유효 검정 수는 ENP<sub>j</sub> ≈ 218개로,
+      5% 기준을 그대로 적용하면 순전히 우연만으로도 약 11곳이 "유의"하게 나온다. 이를 막기 위해 변수별 유효모수로
+      유의수준을 보정(α<sub>adj</sub> = 0.05/ENP<sub>j</sub>)한 임계 t(수급률의 경우 3.69)를 적용하고, 이를 넘지 못한
+      지역은 회색으로 마스킹한다. 따라서 <b>회색은 "효과 없음"의 증명이 아니라 "통계적 확신 부족"</b>이며,
+      색칠된 클러스터는 엄격한 다중검정 보정을 통과한 신호다.</div>
     <div class="ctrl"><span class="ctrl-label">종속변수</span>
       <button class="dvbtn sel" data-dv="ob">비만율</button>
       <button class="dvbtn" data-dv="ow">과체중이상율</button></div>
     <div class="ctrl" id="varBtns"><span class="ctrl-label">변수</span></div>
     <div id="yearRow">
       <button id="playBtn">▶ 연도 애니메이션</button>
+      <button class="ystep" id="prevYear" title="이전 연도">◀</button>
       <input type="range" id="yearSlider" min="2015" max="2023" step="1" value="2023">
+      <button class="ystep" id="nextYear" title="다음 연도">▶</button>
       <span id="yearLabel">2023</span></div>
     <div id="map"></div>
     <div id="legend"><span id="legMin"></span><div id="legbar"></div><span id="legMax"></span>
@@ -240,7 +299,7 @@ a{color:var(--accent2)}
       <canvas id="interChart" height="95"></canvas>
     </div>
     <div class="box">
-      <h4>표 4. 코로나 이전(2015–19 평균) 대비 이후(2020–23 평균)의 로컬 계수 변화 (비만율)</h4>
+      <h4>표 5. 코로나 이전(2015–19 평균) 대비 이후(2020–23 평균)의 로컬 계수 변화 (비만율)</h4>
       <table id="tblCovid"></table>
       <p class="tbl-note">시변 변수 4종의 기울기가 일제히 강화된 반면(방향 일치 지역 87–100%), 결핍(수급률) 효과는
         팬데믹과 무관하게 지속 — "새로운 위험의 등장"이 아니라 <b>기존 지역환경 격차의 증폭</b>으로 해석된다.
@@ -304,6 +363,19 @@ a{color:var(--accent2)}
         <li>Wu C, Du Y, Wei Q, Xiao X (2026). An efficient calibration algorithm for MGTWR. <i>IJGIS</i>, in press.</li>
         <li>da Silva AR, Fotheringham AS (2016). The multiple testing issue in geographically weighted regression.
           <i>Geographical Analysis</i> 48(3):233–247.</li>
+        <li>Shrewsbury V, Wardle J (2008). Socioeconomic status and adiposity in childhood: a systematic review
+          of cross-sectional studies 1990–2005. <i>Obesity</i> 16(2):275–284.</li>
+        <li>Singh GK, Siahpush M, Kogan MD (2010). Neighborhood socioeconomic conditions, built environments,
+          and childhood obesity. <i>Health Affairs</i> 29(3):503–512.</li>
+        <li>Schmeer KK (2012). Family structure and obesity in early childhood. <i>Social Science Research</i> 41(4):820–832.</li>
+        <li>Ewing R, Schmid T, Killingsworth R, Zlot A, Raudenbush S (2003). Relationship between urban sprawl and
+          physical activity, obesity, and morbidity. <i>American Journal of Health Promotion</i> 18(1):47–57.</li>
+        <li>Sallis JF, Glanz K (2006). The role of built environments in physical activity, eating, and obesity
+          in childhood. <i>The Future of Children</i> 16(1):89–108.</li>
+        <li>Norman P, Boyle P, Rees P (2005). Selective migration, health and deprivation: a longitudinal analysis.
+          <i>Social Science &amp; Medicine</i> 60(12):2755–2771.</li>
+        <li>Lobstein T, Baur L, Uauy R (2004). Obesity in children and young people: a crisis in public health.
+          <i>Obesity Reviews</i> 5(s1):4–104.</li>
       </ol>
     </div>
   </div>
@@ -311,6 +383,8 @@ a{color:var(--accent2)}
 
 <footer>영유아 비만 지역환경 결정요인 연구 · MGTWR 스토리맵(학술 버전) ·
   대중 버전: <a href="./index.html" style="color:#d29b82">index.html</a></footer>
+
+<div id="secNav"><button id="nextSec">다음 섹션 ▼</button></div>
 
 <script>
 /*__DATA__*/
@@ -358,7 +432,11 @@ DATA.vars.forEach(v=>{const b=document.createElement('button');
 document.querySelectorAll('.dvbtn').forEach(b=>b.onclick=()=>{dv=b.dataset.dv;
  document.querySelectorAll('.dvbtn').forEach(x=>x.classList.toggle('sel',x===b));draw();rebuildTables();});
 const slider=document.getElementById('yearSlider');
-slider.oninput=()=>{curYear=+slider.value;document.getElementById('yearLabel').textContent=curYear;draw();};
+function setYear(y){curYear=Math.max(2015,Math.min(2023,y));slider.value=curYear;
+ document.getElementById('yearLabel').textContent=curYear;draw();}
+slider.oninput=()=>setYear(+slider.value);
+document.getElementById('prevYear').onclick=()=>setYear(curYear-1);
+document.getElementById('nextYear').onclick=()=>setYear(curYear+1);
 document.getElementById('playBtn').onclick=function(){
  if(playing){clearInterval(playing);playing=null;this.textContent="▶ 연도 애니메이션";return;}
  this.textContent="⏸ 정지";
@@ -404,6 +482,23 @@ new Chart(document.getElementById('interChart'),{type:'line',data:{labels:DATA.y
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* 다음 섹션 네비게이션 */
+const SECS=[...document.querySelectorAll('header#top,section')];
+const nextBtn=document.getElementById('nextSec');
+nextBtn.onclick=()=>{
+ const idx=SECS.findIndex(s=>s.offsetTop>window.scrollY+90);
+ const max=document.documentElement.scrollHeight-innerHeight;
+ const target=idx===-1?0:Math.min(SECS[idx].offsetTop,max);
+ window.scrollTo(0, Math.abs(target-window.scrollY)<2 ? 0 : target);
+};
+let lastTop=0,atEnd=false;
+function measureNav(){lastTop=SECS[SECS.length-1].offsetTop;}
+measureNav();window.addEventListener('resize',measureNav,{passive:true});
+window.addEventListener('scroll',()=>{
+ const e=window.scrollY+80>=lastTop;
+ if(e!==atEnd){atEnd=e;nextBtn.textContent=e?"처음으로 ▲":"다음 섹션 ▼";}
+},{passive:true});
 </script>
 </body>
 </html>

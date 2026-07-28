@@ -16,8 +16,8 @@
   --red:#b2182b; --bluec:#2166ac;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg);line-height:1.75}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg);line-height:1.75;
+  word-break:keep-all;overflow-wrap:break-word}
 .container{max-width:1080px;margin:0 auto;padding:0 24px}
 section{padding:88px 0}
 .section-tag{display:inline-block;background:var(--accent);color:#fff;font-size:.8rem;
@@ -75,6 +75,14 @@ section{padding:88px 0}
 #yearLabel{font-size:1.3rem;font-weight:900;min-width:64px}
 #playBtn{background:var(--accent);border:none;color:#fff;border-radius:999px;
   padding:7px 16px;cursor:pointer;font-family:inherit;font-weight:700}
+.ystep{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;
+  border-radius:999px;padding:6px 13px;cursor:pointer;font-family:inherit;font-weight:700}
+.ystep:hover{background:rgba(255,255,255,.25)}
+#secNav{position:fixed;bottom:26px;right:26px;z-index:1200}
+#secNav button{background:var(--navy);color:#fff;border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;padding:11px 20px;font-family:inherit;font-weight:700;font-size:.9rem;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:.2s}
+#secNav button:hover{background:var(--accent)}
 #map{height:640px;border-radius:16px;background:#0c1927}
 .map-foot{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-top:14px}
 #legend{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#c6d5e2}
@@ -209,7 +217,9 @@ section{padding:88px 0}
       <h2 class="section-title">변수·연도를 바꿔가며 지도를 읽어보세요</h2>
       <p class="section-desc">색은 그 지역에서 해당 변수가 비만율을 <b style="color:#ef8a62">높이는 힘(빨강)</b>인지
         <b style="color:#67a9cf">낮추는 힘(파랑)</b>인지, 진할수록 힘이 셉니다.
-        <b>회색은 통계적으로 믿기 어려운 지역</b>(보정된 기준 미달)입니다. 지역을 클릭하면 수치가 나옵니다.</p>
+        <b>회색은 통계적으로 믿기 어려운 지역</b>입니다 — 지역마다 검정을 반복하는 분석이라 우연히 유의해 보이는
+        지역이 생기기 쉬워, 그만큼 기준을 엄격하게 보정(ENP-adjusted t)했습니다. 색칠된 곳은 이 엄격한 기준을
+        통과한 확실한 신호이고, 회색은 "효과 없음"이 아니라 "아직 확신하기 어려움"입니다. 지역을 클릭하면 수치가 나옵니다.</p>
     </div>
     <div class="reveal">
       <div class="ctrl"><span class="ctrl-label">지표</span>
@@ -219,7 +229,9 @@ section{padding:88px 0}
       <div class="ctrl" id="varBtns"><span class="ctrl-label">변수</span></div>
       <div id="yearRow">
         <button id="playBtn">▶ 재생</button>
+        <button class="ystep" id="prevYear" title="이전 연도">◀</button>
         <input type="range" id="yearSlider" min="2015" max="2023" step="1" value="2023">
+        <button class="ystep" id="nextYear" title="다음 연도">▶</button>
         <span id="yearLabel">2023</span>
       </div>
       <div id="map"></div>
@@ -239,7 +251,10 @@ section{padding:88px 0}
       <span class="section-tag">04 · 핵심 결과</span>
       <h2 class="section-title">변수마다 '작동하는 스케일'이 다르다</h2>
       <p class="section-desc">MGTWR가 알려준 가장 큰 발견: 7개 변수는 세 부류로 갈립니다.
-        어떤 힘은 전국 공통이고, 어떤 힘은 지역마다 다르며, 어떤 힘은 지역과 시기에 따라 계속 출렁입니다.</p>
+        어떤 힘은 전국 공통이고, 어떤 힘은 지역마다 다르며, 어떤 힘은 지역과 시기에 따라 계속 출렁입니다.
+        읽는 법은 간단합니다 — 모형이 변수마다 "계수를 추정할 때 <b>몇 개의 이웃(공간 범위)</b>을,
+        그리고 <b>몇 년치 정보(시간 범위)</b>를 빌려 쓰는 게 최적인지"를 데이터에서 직접 찾아내는데,
+        빌리는 범위가 좁을수록 그 변수의 힘이 국지적·시기 의존적이라는 뜻입니다.</p>
     </div>
     <div class="scale-grid reveal">
       <div class="scale-card sc1"><h4>🌪️ 지역·시기마다 출렁이는 힘</h4>
@@ -322,6 +337,8 @@ section{padding:88px 0}
   </div>
 </section>
 
+<div id="secNav"><button id="nextSec">다음 ▼</button></div>
+
 <script>
 /*__DATA__*/
 
@@ -391,7 +408,11 @@ DATA.vars.forEach(v=>{
 document.querySelectorAll('.dvbtn').forEach(b=>b.onclick=()=>{
   dv=b.dataset.dv;document.querySelectorAll('.dvbtn').forEach(x=>x.classList.toggle('sel',x===b));draw();});
 const slider=document.getElementById('yearSlider');
-slider.oninput=()=>{curYear=+slider.value;document.getElementById('yearLabel').textContent=curYear;draw();};
+function setYear(y){curYear=Math.max(2015,Math.min(2023,y));slider.value=curYear;
+ document.getElementById('yearLabel').textContent=curYear;draw();}
+slider.oninput=()=>setYear(+slider.value);
+document.getElementById('prevYear').onclick=()=>setYear(curYear-1);
+document.getElementById('nextYear').onclick=()=>setYear(curYear+1);
 document.getElementById('playBtn').onclick=function(){
   if(playing){clearInterval(playing);playing=null;this.textContent="▶ 재생";return;}
   this.textContent="⏸ 정지";
@@ -431,6 +452,23 @@ CV.forEach(([v,nm,note])=>{
 /* reveal */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* 다음 섹션 네비게이션 */
+const SECS=[...document.querySelectorAll('header#hero,section')];
+const nextBtn=document.getElementById('nextSec');
+nextBtn.onclick=()=>{
+ const idx=SECS.findIndex(s=>s.offsetTop>window.scrollY+90);
+ const max=document.documentElement.scrollHeight-innerHeight;
+ const target=idx===-1?0:Math.min(SECS[idx].offsetTop,max);
+ window.scrollTo(0, Math.abs(target-window.scrollY)<2 ? 0 : target);
+};
+let lastTop=0,atEnd=false;
+function measureNav(){lastTop=SECS[SECS.length-1].offsetTop;}
+measureNav();window.addEventListener('resize',measureNav,{passive:true});
+window.addEventListener('scroll',()=>{
+ const e=window.scrollY+80>=lastTop;
+ if(e!==atEnd){atEnd=e;nextBtn.textContent=e?"처음으로 ▲":"다음 ▼";}
+},{passive:true});
 </script>
 </body>
 </html>
