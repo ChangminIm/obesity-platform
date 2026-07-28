@@ -13,7 +13,7 @@
 :root{--navy:#1d3350;--accent:#c14f2e;--accent2:#b5502f;--bg:#fbfaf7;--ink:#26313d;
   --muted:#5d6b7a;--line:#e2e6ea;--card:#fff}
 *{margin:0;padding:0;box-sizing:border-box}
-html{font-size:20px}
+html{font-size:clamp(13px, 1.042vw, 27px)} /* 1920px 화면 ≈ 20px 기준, 화면 폭에 비례 */
 html,body{height:100%;overflow:hidden}
 body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg);
   line-height:1.65;word-break:keep-all;overflow-wrap:break-word}
@@ -40,8 +40,9 @@ tr:last-child td{border-bottom:none}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .eq{background:#f2f4f7;border-left:.28rem solid var(--navy);border-radius:0 .6rem .6rem 0;
   padding:.85rem 1.2rem;margin:.9rem 0;font-size:1.05rem;overflow-x:auto;white-space:nowrap}
-.eq i{font-family:'Times New Roman',serif}
-.mv{font-family:'Times New Roman',Georgia,serif;font-style:italic}
+.eq{font-family:'Times New Roman',Georgia,serif}
+i,.mv{font-family:'Times New Roman',Georgia,serif;font-style:italic}
+sub{font-size:.68em}
 details.box summary{font-size:1.02rem;font-weight:900;color:var(--navy);cursor:pointer;list-style:none}
 details.box summary::before{content:"▸ ";color:var(--accent)}
 details.box[open] summary::before{content:"▾ "}
@@ -50,6 +51,14 @@ ul.dot{margin:.5rem 0 0 1.2rem;font-size:.95rem}
 ul.dot li{margin-bottom:.45rem}
 ol.rq{margin:.9rem 0 0 1.4rem;font-size:1.15rem}
 ol.rq li{margin-bottom:1rem}
+@media(max-width:1000px){
+  .two-col{grid-template-columns:1fr}
+  .scale-grid{grid-template-columns:1fr}
+  .slide{padding:2.2rem 1.5rem 4.4rem}
+  #map{height:52vh;min-height:18rem}
+  #yearRow{flex-wrap:wrap}
+  #legend{margin-left:0!important;margin-top:.4rem}
+}
 
 /* ── 타이틀 슬라이드 ── */
 #titleSlide{background:linear-gradient(150deg,#fdfcf9 0%,#f6efe8 55%,#f1e2d6 100%);
@@ -60,7 +69,7 @@ ol.rq li{margin-bottom:1rem}
   background:radial-gradient(circle,rgba(29,51,80,.10),transparent 68%)}
 .t-kicker{font-size:.85rem;letter-spacing:.28em;color:var(--accent);font-weight:700}
 .t-rule{width:4.4rem;height:.3rem;background:var(--accent);border-radius:2px;margin:1.1rem 0 1.4rem}
-h1.title{font-family:'Noto Serif KR',serif;font-size:2.9rem;font-weight:900;line-height:1.38;
+h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.6vw,2.9rem);font-weight:900;line-height:1.38;
   color:var(--navy);max-width:54rem}
 .t-sub{color:#7c6a5c;margin-top:1rem;font-size:1.05rem;max-width:50rem}
 .meta-grid{display:flex;gap:1rem;margin-top:2.6rem;flex-wrap:wrap}
@@ -211,18 +220,20 @@ a{color:var(--accent)}
       <tr class="hl"><td>MGTWR</td><td class="ctr">○</td><td class="ctr">○</td><td><b>변수별</b>(bw + τ)</td><td>작동 스케일 직접 식별</td></tr>
     </table>
   </div>
-  <div class="eq" id="eqBox" style="font-size:1.4rem;cursor:pointer" title="클릭하면 기호 설명이 열립니다">
-    <i>y</i><sub>i</sub> = Σ<sub>j</sub> β<sub>j</sub>(<i>u</i><sub>i</sub>,<i>v</i><sub>i</sub>,<i>t</i><sub>i</sub>; <i>bw</i><sub>j</sub>, τ<sub>j</sub>)·<i>x</i><sub>ij</sub> + ε<sub>i</sub>,&nbsp;&nbsp; d²<sub>ST</sub> = d²<sub>S</sub> + τ·d²<sub>T</sub>
-    <span style="font-size:.78rem;color:var(--accent);margin-left:.8rem">▼ 클릭: 기호 설명</span></div>
+  <div class="eq" id="eqBox" style="font-size:1.45rem;cursor:pointer" title="클릭하면 기호 설명이 열립니다">
+    <i>y</i><sub><i>i</i></sub> = Σ<sub><i>j</i></sub> <i>β</i><sub><i>j</i></sub>(<i>u</i><sub><i>i</i></sub>, <i>v</i><sub><i>i</i></sub>, <i>t</i><sub><i>i</i></sub>; <i>bw</i><sub><i>j</i></sub>, <i>τ</i><sub><i>j</i></sub>)·<i>x</i><sub><i>ij</i></sub> + <i>ε</i><sub><i>i</i></sub>,&nbsp;&nbsp;&nbsp; <i>d</i>²<sub>ST</sub> = <i>d</i>²<sub>S</sub> + <i>τ</i>·<i>d</i>²<sub>T</sub>
+    <span style="font-size:.78rem;color:var(--accent);margin-left:.8rem;font-family:'Noto Sans KR',sans-serif">▼ 클릭: 기호 설명</span></div>
   <div class="box" id="eqExplain" style="display:none">
     <table>
-      <tr><th style="width:9rem">기호</th><th>의미</th></tr>
-      <tr><td><i>y</i><sub>i</sub></td><td>관측치 i(특정 시군구·특정 연도)의 비만율(표준화)</td></tr>
-      <tr><td><i class="mv">β</i><sub>j</sub>(<i>u</i><sub>i</sub>,<i>v</i><sub>i</sub>,<i>t</i><sub>i</sub>)</td><td>변수 j의 회귀계수 — 위치(u,v)와 시점(t)에 따라 달라질 수 있음</td></tr>
-      <tr><td><i>bw</i><sub>j</sub></td><td>변수 j의 공간 bandwidth: 계수를 추정할 때 빌려 쓰는 이웃 관측치 수</td></tr>
-      <tr><td><i class="mv">τ</i><sub>j</sub></td><td>변수 j의 시간 스케일: 다른 연도 정보를 얼마나 차단할지(클수록 해마다 다르게 추정)</td></tr>
-      <tr><td><i class="mv">d</i>²<sub>ST</sub></td><td>시공간 거리 = 공간 거리² + τ × 시간 거리² — 이 거리로 가까운 관측치일수록 큰 가중</td></tr>
-      <tr><td><i class="mv">ε</i><sub>i</sub></td><td>오차항</td></tr>
+      <tr><th style="width:10rem">기호</th><th>의미</th></tr>
+      <tr><td><i>y</i><sub><i>i</i></sub></td><td>관측치 <i>i</i>(특정 시군구·특정 연도)의 비만율(표준화)</td></tr>
+      <tr><td><i>β</i><sub><i>j</i></sub>(<i>u</i><sub><i>i</i></sub>, <i>v</i><sub><i>i</i></sub>, <i>t</i><sub><i>i</i></sub>)</td>
+        <td>변수 <i>j</i>의 회귀계수 — 위치(<i>u</i>, <i>v</i>)와 시점(<i>t</i>)에 따라 달라질 수 있음</td></tr>
+      <tr><td><i>x</i><sub><i>ij</i></sub></td><td>관측치 <i>i</i>의 변수 <i>j</i> 값(표준화)</td></tr>
+      <tr><td><i>bw</i><sub><i>j</i></sub></td><td>변수 <i>j</i>의 공간 bandwidth: 계수를 추정할 때 빌려 쓰는 이웃 관측치 수</td></tr>
+      <tr><td><i>τ</i><sub><i>j</i></sub></td><td>변수 <i>j</i>의 시간 스케일: 다른 연도 정보를 얼마나 차단할지(클수록 해마다 다르게 추정)</td></tr>
+      <tr><td><i>d</i>²<sub>ST</sub></td><td>시공간 거리² = 공간 거리² + <i>τ</i> × 시간 거리² — 가까운 관측치일수록 큰 가중</td></tr>
+      <tr><td><i>ε</i><sub><i>i</i></sub></td><td>오차항</td></tr>
     </table>
   </div>
   <ul class="dot">
