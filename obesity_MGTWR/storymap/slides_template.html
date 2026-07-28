@@ -41,6 +41,11 @@ tr:last-child td{border-bottom:none}
 .eq{background:#f2f4f7;border-left:.28rem solid var(--navy);border-radius:0 .6rem .6rem 0;
   padding:.85rem 1.2rem;margin:.9rem 0;font-size:1.05rem;overflow-x:auto;white-space:nowrap}
 .eq i{font-family:'Times New Roman',serif}
+.mv{font-family:'Times New Roman',Georgia,serif;font-style:italic}
+details.box summary{font-size:1.02rem;font-weight:900;color:var(--navy);cursor:pointer;list-style:none}
+details.box summary::before{content:"▸ ";color:var(--accent)}
+details.box[open] summary::before{content:"▾ "}
+details.box summary::-webkit-details-marker{display:none}
 ul.dot{margin:.5rem 0 0 1.2rem;font-size:.95rem}
 ul.dot li{margin-bottom:.45rem}
 ol.rq{margin:.9rem 0 0 1.4rem;font-size:1.15rem}
@@ -213,11 +218,11 @@ a{color:var(--accent)}
     <table>
       <tr><th style="width:9rem">기호</th><th>의미</th></tr>
       <tr><td><i>y</i><sub>i</sub></td><td>관측치 i(특정 시군구·특정 연도)의 비만율(표준화)</td></tr>
-      <tr><td>β<sub>j</sub>(<i>u</i><sub>i</sub>,<i>v</i><sub>i</sub>,<i>t</i><sub>i</sub>)</td><td>변수 j의 회귀계수 — 위치(u,v)와 시점(t)에 따라 달라질 수 있음</td></tr>
+      <tr><td><i class="mv">β</i><sub>j</sub>(<i>u</i><sub>i</sub>,<i>v</i><sub>i</sub>,<i>t</i><sub>i</sub>)</td><td>변수 j의 회귀계수 — 위치(u,v)와 시점(t)에 따라 달라질 수 있음</td></tr>
       <tr><td><i>bw</i><sub>j</sub></td><td>변수 j의 공간 bandwidth: 계수를 추정할 때 빌려 쓰는 이웃 관측치 수</td></tr>
-      <tr><td>τ<sub>j</sub></td><td>변수 j의 시간 스케일: 다른 연도 정보를 얼마나 차단할지(클수록 해마다 다르게 추정)</td></tr>
-      <tr><td>d²<sub>ST</sub></td><td>시공간 거리 = 공간 거리² + τ × 시간 거리² — 이 거리로 가까운 관측치일수록 큰 가중</td></tr>
-      <tr><td>ε<sub>i</sub></td><td>오차항</td></tr>
+      <tr><td><i class="mv">τ</i><sub>j</sub></td><td>변수 j의 시간 스케일: 다른 연도 정보를 얼마나 차단할지(클수록 해마다 다르게 추정)</td></tr>
+      <tr><td><i class="mv">d</i>²<sub>ST</sub></td><td>시공간 거리 = 공간 거리² + τ × 시간 거리² — 이 거리로 가까운 관측치일수록 큰 가중</td></tr>
+      <tr><td><i class="mv">ε</i><sub>i</sub></td><td>오차항</td></tr>
     </table>
   </div>
   <ul class="dot">
@@ -231,11 +236,11 @@ a{color:var(--accent)}
   <div class="s-tag">04 · DIAGNOSTICS</div>
   <h2 class="st">왜 공간 모형인가 — 공간적 자기상관 검정</h2>
   <ul class="dot" style="font-size:1.08rem;margin-bottom:1rem">
-    <li><b>전 연도 유의한 양(+)의 Moran's I</b> (p ≤ 0.001)</li>
+    <li><b>전 연도 유의한 양(+)의 Moran's <span class="mv">I</span></b> (p ≤ 0.001)</li>
     <li>군집성 정점은 <b>코로나 시기(2020–21)</b></li>
     <li>→ 관측치 독립을 가정하는 전역 OLS는 부적합</li>
   </ul>
-  <div class="box"><h4>종속변수의 전역 Moran's I (연도별)</h4><table id="tblDvMoran"></table>
+  <div class="box"><h4>종속변수의 전역 Moran's <span class="mv">I</span> (연도별)</h4><table id="tblDvMoran"></table>
     <p class="tbl-note">999회 순열검정, 전 연도 p ≤ 0.001.</p></div>
 </section>
 
@@ -246,7 +251,7 @@ a{color:var(--accent)}
   <p class="lead">설명력 R² 0.361/0.351에 그치고, 잔차에 공간 자기상관이 남는다.</p>
   <div class="box">
     <table>
-      <tr><th>변수</th><th class="num">β (비만율)</th><th class="num">t</th><th class="num">β (과체중+)</th><th class="num">t</th></tr>
+      <tr><th>변수</th><th class="num"><span class="mv">β</span> (비만율)</th><th class="num"><span class="mv">t</span></th><th class="num"><span class="mv">β</span> (과체중+)</th><th class="num"><span class="mv">t</span></th></tr>
       <tr><td>기초생활수급률</td><td class="num">+0.297</td><td class="num">13.07***</td><td class="num">+0.270</td><td class="num">11.78***</td></tr>
       <tr><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
       <tr><td>조이혼율</td><td class="num">+0.129</td><td class="num">7.03***</td><td class="num">+0.169</td><td class="num">9.13***</td></tr>
@@ -297,14 +302,14 @@ a{color:var(--accent)}
       <b>1인가구 · 의사수</b><br><br>
       어디서나, 어느 해든 같은 효과<br>→ <b>전국 단위 정책</b></div>
   </div>
-  <div class="box">
-    <h4>읽는 법 — bw · τ · 유효모수(ENP)</h4>
-    <ul class="dot">
-      <li><b>bw</b> = 계수 추정에 빌려 쓰는 <b>이웃 수</b> — 32면 좁은 권역(국지적), 1,769면 사실상 전국(공통)</li>
-      <li><b>τ</b> = 다른 연도 정보의 <b>차단 정도</b> — 크면 해마다 가변, 0에 가까우면 9년 내내 안정</li>
-      <li><b>ENP</b> = 사실상의 <b>검정 횟수</b> — 많을수록 유의 기준(임계 t)을 엄격하게 보정</li>
+  <details class="box">
+    <summary>읽는 법 — <span class="mv">bw</span> · <span class="mv">τ</span> · 유효모수(ENP)</summary>
+    <ul class="dot" style="margin-top:.6rem">
+      <li><b><span class="mv">bw</span></b> = 계수 추정에 빌려 쓰는 <b>이웃 수</b> — 32면 좁은 권역(국지적), 1,769면 사실상 전국(공통)</li>
+      <li><b><span class="mv">τ</span></b> = 다른 연도 정보의 <b>차단 정도</b> — 크면 해마다 가변, 0에 가까우면 9년 내내 안정</li>
+      <li><b>ENP</b> = 사실상의 <b>검정 횟수</b> — 많을수록 유의 기준(임계 <span class="mv">t</span>)을 엄격하게 보정</li>
     </ul>
-  </div>
+  </details>
   <div class="box"><h4>MGTWR 추정 결과</h4><table id="tblBwt"></table></div>
 </section>
 
@@ -361,7 +366,7 @@ a{color:var(--accent)}
   </ul>
   <div class="two-col">
     <div class="box" style="margin-top:0"><h4>지역 기저위험(절편) 궤적</h4><canvas id="interChart" height="130"></canvas></div>
-    <div class="box" style="margin-top:0"><h4>이전(15–19) → 이후(20–23) 평균 β</h4><table id="tblCovid"></table></div>
+    <div class="box" style="margin-top:0"><h4>이전(15–19) → 이후(20–23) 평균 <span class="mv">β</span></h4><table id="tblCovid"></table></div>
   </div>
 </section>
 
@@ -524,7 +529,7 @@ Chart.defaults.font.family="'Noto Sans KR',sans-serif";
 Chart.defaults.font.size=15;
 function rebuildTables(){
  const M=DATA.models,mc=DATA.modelcmp;
- const mk=d=>{let h="<tr><th>모형</th><th class='num'>AICc</th><th class='num'>R²</th><th class='num'>adj-R²</th><th class='num'>잔차 Moran's I</th></tr>";
+ const mk=d=>{let h="<tr><th>모형</th><th class='num'>AICc</th><th class='num'>R²</th><th class='num'>adj-R²</th><th class='num'>잔차 Moran's <i class="mv">I</i></th></tr>";
   M.forEach((m,i)=>{h+=`<tr${m==='MGTWR'?" class='hl'":""}><td>${m}</td>
    <td class='num'>${mc[d].aicc[i].toFixed(1)}</td><td class='num'>${mc[d].r2[i].toFixed(3)}</td>
    <td class='num'>${DATA.adjr2[d][i].toFixed(3)}</td><td class='num'>${DATA.moran[d][i].toFixed(3)}</td></tr>`;});
@@ -532,10 +537,10 @@ function rebuildTables(){
  document.getElementById('tblModelOb').innerHTML=mk('ob');
  document.getElementById('tblModelOw').innerHTML=mk('ow');
  let dm="<tr><th>연도</th>"+DATA.years.map(y=>`<th class='num'>${y}</th>`).join("")+"</tr>";
- dm+="<tr><td>비만율 I</td>"+DATA.dvmoran.ob.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
- dm+="<tr><td>과체중이상율 I</td>"+DATA.dvmoran.ow.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
+ dm+="<tr><td>비만율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ob.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
+ dm+="<tr><td>과체중이상율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ow.map(r=>`<td class='num'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
  document.getElementById('tblDvMoran').innerHTML=dm;
- let g="<tr><th>변수</th><th class='num'>bw(비만율)</th><th class='num'>τ</th><th class='num'>bw(과체중+)</th><th class='num'>τ</th><th class='num'>ENP_j</th><th class='num'>t_crit</th></tr>";
+ let g="<tr><th>변수</th><th class='num'><i class="mv">bw</i>(비만율)</th><th class='num'><i class="mv">τ</i></th><th class='num'><i class="mv">bw</i>(과체중+)</th><th class='num'><i class="mv">τ</i></th><th class='num'>ENP<sub>j</sub></th><th class='num'><i class="mv">t</i><sub>crit</sub></th></tr>";
  DATA.vars.forEach(v=>{const a=DATA.bwt.ob[v],b=DATA.bwt.ow[v];
   g+=`<tr><td>${VLAB[v]}</td><td class='num'>${a.bw}</td><td class='num'>${a.tau}</td>
   <td class='num'>${b.bw}</td><td class='num'>${b.tau}</td>
