@@ -166,10 +166,10 @@ a{color:var(--accent2)}
           <td class="ref-small">Schmeer (2012)<br>Yannakoulia et al. (2008)<br>Anderson &amp; Whitaker (2010)</td></tr>
         <tr><td>건조환경</td><td>인구밀도</td><td class="ctr">±</td>
           <td>도시성 — 보행 환경과 비만유발 환경의 상반된 경로</td>
-          <td class="ref-small">Ewing et al. (2003)<br>Lopez (2004)<br>Vlahov &amp; Galea (2002)</td></tr>
+          <td class="ref-small">Ewing et al. (2003)<br>Lopez (2004)<br>Jia (2020)</td></tr>
         <tr><td>건조환경</td><td>아파트비율</td><td class="ctr">−</td>
           <td>단지 내 놀이·운동 공간 등 활동 친화 주거환경</td>
-          <td class="ref-small">Sallis &amp; Glanz (2006)<br>Davison &amp; Lawson (2006)<br>Dunton et al. (2009)</td></tr>
+          <td class="ref-small">Sallis &amp; Glanz (2006)<br>An et al. (2019)<br>Daniels et al. (2021)</td></tr>
         <tr><td>인구 동태</td><td>청년순이동률</td><td class="ctr">−</td>
           <td>선택적 이주·지역 활력 — 유출 지역의 건강자원 약화</td>
           <td class="ref-small">Norman et al. (2005)<br>Boyle (2004)<br>Riva et al. (2011)</td></tr>
@@ -306,7 +306,7 @@ a{color:var(--accent2)}
   <div class="container reveal">
     <div class="secno" style="color:#d29b82">05 · RESULTS II</div>
     <h2 class="sec">로컬 계수의 공간 분포 (ENP-adjusted t 마스킹)</h2>
-    <p class="lead">표준화 로컬 계수 β̂. 적색 = 위험 증가, 청색 = 위험 감소, 회색 = 보정 임계 t 미달.
+    <p class="lead">표준화 로컬 계수 β. 적색 = 위험 증가, 청색 = 위험 감소, 회색 = 보정 임계 t 미달.
       변수·연도·종속변수를 전환하며 탐색할 수 있다(연도별 색 척도는 변수 내 고정 — 연도 간 직접 비교 가능).</p>
     <div id="enpNote" style="margin:0 0 18px 0">
       <b>ENP-adjusted t 마스킹이란?</b> 국지 모형은 시군구·연도마다 검정을 사실상 반복하므로, 통상 기준(|t| &gt; 1.96)을
@@ -336,34 +336,34 @@ a{color:var(--accent2)}
     <div class="box" id="trajBox" style="display:none;margin-top:22px">
       <h4 id="trajTitle"></h4>
       <canvas id="trajChart" height="72"></canvas>
-      <p class="tbl-note">굵은 선: 선택 지역의 로컬 계수 β̂ (진한 점 = ENP 보정 기준 유의 연도).
+      <p class="tbl-note">굵은 선: 선택 지역의 로컬 계수 β (진한 점 = ENP 보정 기준 유의 연도).
         회색 파선: 전국 평균. 변수·종속변수 버튼을 바꾸면 그래프도 갱신된다.</p>
     </div>
     <div class="box" style="margin-top:26px">
-      <h4>변수별 로컬 계수의 공간·시간 패턴 요약 (비만율 기준 — 과체중이상율도 동일 구조)</h4>
+      <h4>변수별 로컬 계수의 공간·시간 패턴 요약 (두 모형 공통 구조)</h4>
       <table>
-        <tr><th>변수</th><th>공간 패턴 (유의 지역)</th><th>연도별 변화</th><th>해석</th></tr>
+        <tr><th>변수</th><th>공간 패턴 (유의 지역)</th><th>비만율 모형 변화</th><th>과체중이상율 모형 변화</th><th>해석</th></tr>
         <tr><td>절편(기저 위험)</td><td>2015 전면 음(−) → 2021 전면 양(+), 남서부(전남·광주권) 최대 → 2023 축소</td>
-          <td>코로나 산형 궤적 (−0.75 → +0.86 → +0.38)</td>
+          <td>−0.73 → +0.85 → +0.39</td><td>−0.56 → +0.73 → +0.02</td>
           <td>공변량으로 설명되지 않는 기저 위험의 전국적 상승과 부분 회복</td></tr>
         <tr><td>기초생활수급률</td><td>강원 영동·전남 남해안·제주의 안정적 양(+) 클러스터</td>
-          <td>+0.14 내외로 <b>거의 불변</b> (2019–21 소폭 정점)</td>
+          <td>+0.14 <b>거의 불변</b></td><td>+0.12 <b>거의 불변</b></td>
           <td>결핍 효과는 시기와 무관하게 지속 — 상시적 취약지역 표적 개입의 근거</td></tr>
-        <tr><td>1인가구비율</td><td>유의 지역 드묾 (전역 변수, 준상수 ≈ −0.02)</td><td>변화 없음 (τ→0)</td>
+        <tr><td>1인가구비율</td><td>유의 지역 드묾 (전역 변수, 준상수)</td><td>≈ −0.02 시기 안정</td><td>≈ −0.08 시기 안정</td>
           <td>전국 공통의 약한 연관 — 전역 스케일 판별 자체가 발견</td></tr>
         <tr><td>조이혼율</td><td>수도권–강원 벨트의 강한 양(+), 남부는 비유의</td>
-          <td>+0.10 → +0.19로 <b>단조 강화</b></td>
+          <td>+0.10 → +0.19 <b>강화</b></td><td>+0.15 → +0.19 <b>강화</b></td>
           <td>가족구조 취약성의 효과가 수도권에서 해마다 심화</td></tr>
         <tr><td>인구밀도</td><td>내륙 중소도시 양(+) vs 일부 대도시권 음(−) — <b>부호가 공간 분화</b></td>
-          <td>시불변 (τ→0)</td>
+          <td>+0.07 시기 안정</td><td>+0.11 시기 안정</td>
           <td>도농 상이 기전: 농촌 저밀도의 자원 접근성 결핍 vs 도시 고밀 환경</td></tr>
         <tr><td>청년순이동률</td><td>영남 내륙(인구 유출 지역) 중심의 음(−) 클러스터</td>
-          <td>−0.02 → −0.09로 <b>강화·확산</b></td>
+          <td>−0.02 → −0.09 <b>강화</b></td><td>−0.04 → −0.07 <b>강화</b></td>
           <td>지역 쇠퇴와 아동 건강 격차의 연계가 깊어지는 중</td></tr>
-        <tr><td>의사수</td><td>충북 내륙 등 일부 지역의 음(−)</td><td>준상수 (τ→0)</td>
+        <tr><td>의사수</td><td>충북 내륙 등 일부 지역의 음(−)</td><td>≈ −0.04 시기 안정</td><td>≈ −0.02 시기 안정</td>
           <td>전국 공통의 약한 보호효과 — 의료 인프라는 전국 정책 영역</td></tr>
         <tr><td>아파트비율</td><td>남부·동부 광역의 일관된 음(−) (지역의 약 70% 유의)</td>
-          <td>−0.18 → −0.25로 <b>보호효과 강화</b></td>
+          <td>−0.18 → −0.25 <b>강화</b></td><td>−0.26 → −0.29 <b>강화</b></td>
           <td>전역 모형의 양(+) 계수는 공간 교란(억제효과)이었음이 국지 추정으로 판명</td></tr>
       </table>
       <p class="tbl-note">위 요약은 ENP-adjusted t 기준 유의 지역의 패턴이며, 지도에서 변수·연도를 전환해 직접 확인할 수 있다.</p>
@@ -389,7 +389,7 @@ a{color:var(--accent2)}
       <table id="tblCovid"></table>
       <p class="tbl-note">시변 변수 4종의 기울기가 일제히 강화된 반면(방향 일치 지역 87–100%), 결핍(수급률) 효과는
         팬데믹과 무관하게 지속 — "새로운 위험의 등장"이 아니라 <b>기존 지역환경 격차의 증폭</b>으로 해석된다.
-        시불변 변수(1인가구·인구밀도·의사수)의 Δ≈0은 τ 구조와 정합적.</p>
+        시불변 변수(1인가구·인구밀도·의사수)의 변화량 ≈ 0은 τ 구조와 정합적.</p>
     </div>
     <div class="box">
       <h4>종합 해석 — 결과가 그리는 하나의 그림</h4>
@@ -531,6 +531,15 @@ a{color:var(--accent2)}
         <li>Guagliardo MF (2004). Spatial accessibility of primary care: concepts, methods and challenges.
           <i>Int J Health Geographics</i> 3:3.
           <a href="https://doi.org/10.1186/1476-072X-3-3" target="_blank">[링크]</a></li>
+        <li>An R, Shen J, Yang Q, Yang Y (2019). Impact of built environment on physical activity and obesity
+          among children and adolescents in China: a narrative systematic review. <i>J Sport Health Sci</i> 8(2):153–169.
+          <a href="https://doi.org/10.1016/j.jshs.2018.11.003" target="_blank">[링크]</a></li>
+        <li>Jia P (2020). Obesogenic environment and childhood obesity. <i>Obesity Reviews</i> 22(S1):e13158.
+          <a href="https://doi.org/10.1111/obr.13158" target="_blank">[링크]</a></li>
+        <li>Daniels KM, Schinasi LH, Auchincloss AH, Forrest CB, Diez Roux AV (2021). The built and social
+          neighborhood environment and child obesity: a systematic review of longitudinal studies.
+          <i>Preventive Medicine</i> 153:106790.
+          <a href="https://doi.org/10.1016/j.ypmed.2021.106790" target="_blank">[링크]</a></li>
       </ol>
     </div>
   </div>
@@ -573,7 +582,7 @@ function styleOf(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
 function popup(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
  const b=(DATA.coef[dv][curVar][s]||[])[yi],ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
  return `<div class="popup-name">${DATA.names[s]||s}</div>${VLAB[curVar]} · ${curYear}<br>
-  β̂ = <b>${b===undefined?"-":b.toFixed(3)}</b> ${ok?'<span style="color:#b2182b;font-weight:700">(유의)</span>':'<span style="color:#888">(비유의)</span>'}`;}
+  β = <b>${b===undefined?"-":b.toFixed(3)}</b> ${ok?'<span style="color:#b2182b;font-weight:700">(유의)</span>':'<span style="color:#888">(비유의)</span>'}`;}
 function showTraj(){
  if(!selSgg){document.getElementById('trajBox').style.display='none';return;}
  const s=selSgg,bs=DATA.coef[dv][curVar][s]||[],sg=DATA.sig[dv][curVar][s]||"";
@@ -590,7 +599,7 @@ function showTraj(){
     pointBackgroundColor:bs.map((_,i)=>sg[i]==='1'?'#b5502f':'#e8e8e8')},
    {label:'전국 평균',data:natl,borderColor:'#9aa7b4',borderDash:[6,4],pointRadius:0,tension:.3}]},
   options:{plugins:{legend:{position:'bottom'}},
-   scales:{y:{title:{display:true,text:'표준화 β̂'}}}}});
+   scales:{y:{title:{display:true,text:'표준화 β'}}}}});
 }
 function selectRegion(s,zoom){
  selSgg=s;document.getElementById('clearSel').style.display='';
@@ -635,8 +644,11 @@ document.getElementById('nextYear').onclick=()=>setYear(curYear+1);
 document.getElementById('playBtn').onclick=function(){
  if(playing){clearInterval(playing);playing=null;this.textContent="▶ 연도 애니메이션";return;}
  this.textContent="⏸ 정지";
- playing=setInterval(()=>{curYear=curYear>=2023?2015:curYear+1;
-  slider.value=curYear;document.getElementById('yearLabel').textContent=curYear;draw();},1200);};
+ setYear(2015);
+ playing=setInterval(()=>{
+  if(curYear>=2023){clearInterval(playing);playing=null;
+   document.getElementById('playBtn').textContent="▶ 연도 애니메이션";return;}
+  setYear(curYear+1);},1200);};
 draw();
 
 /* 표 렌더링 */
@@ -665,7 +677,7 @@ function rebuildTables(){
   <td class='num'>${b.bw}</td><td class='num'>${b.tau}</td>
   <td class='num'>${a.enp}</td><td class='num'>${a.tcrit}</td><td>${grp(v)}</td></tr>`;});
  document.getElementById('tblBwt').innerHTML=g;
- let c="<tr><th>변수</th><th class='num'>이전 평균 β̂</th><th class='num'>이후 평균 β̂</th><th class='num'>Δ</th><th>해석</th></tr>";
+ let c="<tr><th>변수</th><th class='num'>이전 평균 β</th><th class='num'>이후 평균 β</th><th class='num'>변화량</th><th>해석</th></tr>";
  const NOTE={intercept:"기저 위험 전국 상승",divorce_rate:"가족구조 효과 강화",
   youth_net_mig:"지역활력 효과 강화",apt_ratio:"주거환경 보호효과 강화",
   welfare_rate:"결핍 효과 불변(지속 위험)",single_hh:"시불변(τ 구조 정합)",

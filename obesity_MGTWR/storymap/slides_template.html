@@ -132,25 +132,33 @@ a{color:var(--accent)}
   <div class="t-kicker">RESEARCH PRESENTATION</div>
   <div class="t-rule"></div>
   <h1 class="title">영유아 비만의<br>지역사회 환경 결정요인</h1>
-  <p class="t-sub">다중스케일 시공간 가중회귀(MGTWR)로 읽은 229개 시군구, 2015–2023</p>
+  <p class="t-sub">Community-environment determinants of early childhood obesity in Korea:<br>
+    a Multiscale Geographically and Temporally Weighted Regression (MGTWR) approach, 2015–2023</p>
   <div class="meta-grid">
-    <div class="meta"><div class="k">연구 설계</div><div class="v">시군구 균형 패널 (생태학적 연구)</div></div>
     <div class="meta"><div class="k">분석 단위</div><div class="v">229개 시군구 × 9개년 (n=2,061)</div></div>
     <div class="meta"><div class="k">모형</div><div class="v">OLS → GWR → MGWR → GTWR → MGTWR</div></div>
   </div>
+  <p style="margin-top:2.4rem;font-size:1.08rem;font-weight:700;color:var(--navy)">
+    임창민 <span style="font-weight:400;color:#7c6a5c">· 국립공주대학교 지리학과</span></p>
 </section>
 
 <!-- 2. 연구 질문 -->
 <section class="slide">
   <div class="s-tag">01 · INTRODUCTION</div>
   <h2 class="st">연구 질문</h2>
-  <p class="lead">지역환경 효과는 공간적으로 다를 뿐 아니라 시간에 따라 변한다 — 기존 전역 모형과
-    GWR/MGWR이 놓쳐 온 부분이다. 코로나19는 이 가변성이 극적으로 드러난 창이었다.</p>
-  <ol class="rq">
-    <li>어떤 <b>지역사회 환경 요인</b>이 시군구 영유아 비만율·과체중이상율과 연관되는가?</li>
-    <li>그 효과는 <b>공간적으로, 시간적으로</b> 어떻게 이질적인가?</li>
-    <li>각 요인은 어떤 <b>작동 스케일</b>(국지 vs 전역 · 시변 vs 시불변)을 갖는가?</li>
-    <li>(부가) 코로나19 전후로 지역환경 효과의 구조는 어떻게 변화했는가?</li>
+  <ol class="rq" style="font-size:1.45rem;margin-top:2.2rem;max-width:56rem">
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+      border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside;margin-bottom:1.1rem">
+      어떤 <b>지역사회 환경 요인</b>이 시군구 영유아 비만율·과체중이상율과 연관되는가?</li>
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+      border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside;margin-bottom:1.1rem">
+      그 효과는 <b>공간적으로, 그리고 시간적으로</b> 어떻게 이질적인가?</li>
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+      border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside;margin-bottom:1.1rem">
+      각 요인은 어떤 <b>작동 스케일</b>에서 움직이는가 — 좁은 권역인가 전국인가, 해마다 변하는가 일정한가?</li>
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+      border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside">
+      (부가) 코로나19 전후로 지역환경 효과의 구조는 어떻게 변화했는가?</li>
   </ol>
 </section>
 
@@ -162,15 +170,23 @@ a{color:var(--accent)}
     독립변수: KOSIS 21종 후보 → 이론·다중공선성 진단으로 7종 선정(모두 z-표준화).</p>
   <div class="box">
     <table>
-      <tr><th>영역</th><th>변수</th><th class="ctr">가설</th><th>대표 근거</th></tr>
-      <tr><td>사회경제 결핍</td><td>기초생활수급률</td><td class="ctr">+</td><td>Shrewsbury &amp; Wardle 2008 외</td></tr>
-      <tr><td rowspan="2">가족·사회 구조</td><td>1인가구비율</td><td class="ctr">+</td><td>Singh et al. 2010 외</td></tr>
-      <tr><td>조이혼율</td><td class="ctr">+</td><td>Schmeer 2012 외</td></tr>
-      <tr><td rowspan="2">건조환경</td><td>인구밀도</td><td class="ctr">±</td><td>Ewing et al. 2003 외</td></tr>
-      <tr><td>아파트비율</td><td class="ctr">−</td><td>Sallis &amp; Glanz 2006 외</td></tr>
-      <tr><td>인구 동태</td><td>청년순이동률</td><td class="ctr">−</td><td>Norman et al. 2005 외</td></tr>
-      <tr><td>의료 접근성</td><td>천명당 의사수</td><td class="ctr">−</td><td>Lobstein et al. 2004 외</td></tr>
+      <tr><th>영역</th><th>변수</th><th class="ctr">가설</th><th>참고문헌</th></tr>
+      <tr><td>사회경제 결핍</td><td>기초생활수급률</td><td class="ctr">+</td>
+        <td style="font-size:.82rem">Shrewsbury &amp; Wardle (2008) · Singh et al. (2010) · Wang &amp; Lim (2012)</td></tr>
+      <tr><td rowspan="2">가족·사회 구조</td><td>1인가구비율</td><td class="ctr">+</td>
+        <td style="font-size:.82rem">Cummins et al. (2007) · Singh et al. (2010) · Congdon (2019)</td></tr>
+      <tr><td>조이혼율</td><td class="ctr">+</td>
+        <td style="font-size:.82rem">Yannakoulia et al. (2008) · Anderson &amp; Whitaker (2010) · Schmeer (2012)</td></tr>
+      <tr><td rowspan="2">건조환경</td><td>인구밀도</td><td class="ctr">±</td>
+        <td style="font-size:.82rem">Ewing et al. (2003) · Lopez (2004) · Jia (2020)</td></tr>
+      <tr><td>아파트비율</td><td class="ctr">−</td>
+        <td style="font-size:.82rem">Sallis &amp; Glanz (2006) · An et al. (2019) · Daniels et al. (2021)</td></tr>
+      <tr><td>인구 동태</td><td>청년순이동률</td><td class="ctr">−</td>
+        <td style="font-size:.82rem">Boyle (2004) · Norman et al. (2005) · Riva et al. (2011)</td></tr>
+      <tr><td>의료 접근성</td><td>천명당 의사수</td><td class="ctr">−</td>
+        <td style="font-size:.82rem">Lobstein et al. (2004) · Guagliardo (2004) · Starfield et al. (2005)</td></tr>
     </table>
+    <p class="tbl-note">전체 서지 정보와 원문 링크는 학술판 참고문헌 참조.</p>
   </div>
 </section>
 
@@ -188,7 +204,20 @@ a{color:var(--accent)}
       <tr class="hl"><td>MGTWR</td><td class="ctr">○</td><td class="ctr">○</td><td><b>변수별</b>(bw + τ)</td><td>작동 스케일 직접 식별</td></tr>
     </table>
   </div>
-  <div class="eq"><i>y</i><sub>i</sub> = Σ<sub>j</sub> β<sub>j</sub>(<i>u</i><sub>i</sub>,<i>v</i><sub>i</sub>,<i>t</i><sub>i</sub>; <i>bw</i><sub>j</sub>, τ<sub>j</sub>)·<i>x</i><sub>ij</sub> + ε<sub>i</sub>,&nbsp;&nbsp; d²<sub>ST</sub> = d²<sub>S</sub> + τ·d²<sub>T</sub></div>
+  <div class="eq" id="eqBox" style="font-size:1.4rem;cursor:pointer" title="클릭하면 기호 설명이 열립니다">
+    <i>y</i><sub>i</sub> = Σ<sub>j</sub> β<sub>j</sub>(<i>u</i><sub>i</sub>,<i>v</i><sub>i</sub>,<i>t</i><sub>i</sub>; <i>bw</i><sub>j</sub>, τ<sub>j</sub>)·<i>x</i><sub>ij</sub> + ε<sub>i</sub>,&nbsp;&nbsp; d²<sub>ST</sub> = d²<sub>S</sub> + τ·d²<sub>T</sub>
+    <span style="font-size:.78rem;color:var(--accent);margin-left:.8rem">▼ 클릭: 기호 설명</span></div>
+  <div class="box" id="eqExplain" style="display:none">
+    <table>
+      <tr><th style="width:9rem">기호</th><th>의미</th></tr>
+      <tr><td><i>y</i><sub>i</sub></td><td>관측치 i(특정 시군구·특정 연도)의 비만율(표준화)</td></tr>
+      <tr><td>β<sub>j</sub>(<i>u</i><sub>i</sub>,<i>v</i><sub>i</sub>,<i>t</i><sub>i</sub>)</td><td>변수 j의 회귀계수 — 위치(u,v)와 시점(t)에 따라 달라질 수 있음</td></tr>
+      <tr><td><i>bw</i><sub>j</sub></td><td>변수 j의 공간 bandwidth: 계수를 추정할 때 빌려 쓰는 이웃 관측치 수</td></tr>
+      <tr><td>τ<sub>j</sub></td><td>변수 j의 시간 스케일: 다른 연도 정보를 얼마나 차단할지(클수록 해마다 다르게 추정)</td></tr>
+      <tr><td>d²<sub>ST</sub></td><td>시공간 거리 = 공간 거리² + τ × 시간 거리² — 이 거리로 가까운 관측치일수록 큰 가중</td></tr>
+      <tr><td>ε<sub>i</sub></td><td>오차항</td></tr>
+    </table>
+  </div>
   <ul class="dot">
     <li>적응형 bisquare 커널 · backfitting 추정 (Wu et al. 2019)</li>
     <li>로컬 계수 유의성: 변수별 유효모수 보정 임계 t 적용 (Yu &amp; Fotheringham 2025)</li>
@@ -199,8 +228,8 @@ a{color:var(--accent)}
 <section class="slide">
   <div class="s-tag">04 · DIAGNOSTICS</div>
   <h2 class="st">왜 공간 모형인가 — 공간적 자기상관 검정</h2>
-  <p class="lead">두 지표 모두 <b>전 연도 유의한 양(+)의 전역 Moran's I</b>(p ≤ 0.001).
-    코로나 시기(2020–21)에 군집성이 정점 — 비만율이 오를 때 지역 간 격차 구조도 강해졌다.
+  <p class="lead">두 지표 모두 <b>전 연도 유의한 양(+)의 전역 Moran's I</b>(p ≤ 0.001).<br>
+    코로나 시기(2020–21)에 군집성이 정점 — 비만율이 오를 때 지역 간 격차 구조도 강해졌다.<br>
     관측치 독립을 가정하는 전역 OLS는 부적합하다.</p>
   <div class="box"><h4>종속변수의 전역 Moran's I (연도별)</h4><table id="tblDvMoran"></table>
     <p class="tbl-note">999회 순열검정, 전 연도 p ≤ 0.001.</p></div>
@@ -210,20 +239,19 @@ a{color:var(--accent)}
 <section class="slide">
   <div class="s-tag">05 · BASELINE</div>
   <h2 class="st">기준 모형: 전역 OLS</h2>
-  <p class="lead">설명력 R² 0.361/0.351에 그치고 잔차에 공간 자기상관이 남는다.
-    아파트비율(+)·1인가구(+)의 부호는 이후 국지 모형에서 뒤집힌다 — 전역 추정의 공간 교란.</p>
+  <p class="lead">설명력 R² 0.361/0.351에 그치고, 잔차에 공간 자기상관이 남는다.</p>
   <div class="box">
     <table>
       <tr><th>변수</th><th class="num">β (비만율)</th><th class="num">t</th><th class="num">β (과체중+)</th><th class="num">t</th></tr>
-      <tr><td>기초생활수급률</td><td class="num">+0.297</td><td class="num">13.07***</td><td class="num">+0.270</td><td class="num">11.78***</td></tr>
-      <tr><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
-      <tr><td>조이혼율</td><td class="num">+0.129</td><td class="num">7.03***</td><td class="num">+0.169</td><td class="num">9.13***</td></tr>
-      <tr><td>인구밀도</td><td class="num">−0.243</td><td class="num">−8.96***</td><td class="num">−0.229</td><td class="num">−8.37***</td></tr>
-      <tr><td>청년순이동률</td><td class="num">−0.128</td><td class="num">−6.07***</td><td class="num">−0.112</td><td class="num">−5.30***</td></tr>
-      <tr><td>의사수</td><td class="num">−0.106</td><td class="num">−5.10***</td><td class="num">−0.084</td><td class="num">−4.03***</td></tr>
+      <tr class="hl"><td>기초생활수급률</td><td class="num">+0.297</td><td class="num">13.07***</td><td class="num">+0.270</td><td class="num">11.78***</td></tr>
+      <tr class="hl"><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
+      <tr class="hl"><td>조이혼율</td><td class="num">+0.129</td><td class="num">7.03***</td><td class="num">+0.169</td><td class="num">9.13***</td></tr>
+      <tr class="hl"><td>인구밀도</td><td class="num">−0.243</td><td class="num">−8.96***</td><td class="num">−0.229</td><td class="num">−8.37***</td></tr>
+      <tr class="hl"><td>청년순이동률</td><td class="num">−0.128</td><td class="num">−6.07***</td><td class="num">−0.112</td><td class="num">−5.30***</td></tr>
+      <tr class="hl"><td>의사수</td><td class="num">−0.106</td><td class="num">−5.10***</td><td class="num">−0.084</td><td class="num">−4.03***</td></tr>
       <tr><td>아파트비율</td><td class="num">+0.205</td><td class="num">7.08***</td><td class="num">+0.025</td><td class="num">0.86 n.s.</td></tr>
     </table>
-    <p class="tbl-note">z-표준화 계수, n=2,061. *** p&lt;0.001.</p>
+    <p class="tbl-note">z-표준화 계수, n=2,061. *** p&lt;0.001. 음영 = 두 모형 모두 유의한 변수.</p>
   </div>
 </section>
 
@@ -231,8 +259,12 @@ a{color:var(--accent)}
 <section class="slide">
   <div class="s-tag">06 · MODEL COMPARISON</div>
   <h2 class="st">모형 성능: 시간 이질성 &gt; 공간 이질성</h2>
-  <p class="lead">두 지표 모두 시간을 도입한 GTWR의 개선 폭이 공간만 도입한 GWR보다 크고,
-    MGTWR가 최종 우위. 잔차의 공간 자기상관은 MGTWR에서 사실상 해소된다.</p>
+  <p class="lead">두 모형(비만율·과체중이상율) 모두 MGTWR가 최종 우위이며, 잔차의 공간 자기상관은
+    MGTWR에서 사실상 해소된다.<br>
+    <b>"시간 이질성 &gt; 공간 이질성"의 의미</b>: 비만율 모형 기준, 공간 이질성만 반영하면(OLS→GWR)
+    AICc가 274 개선되지만, 시간 이질성까지 반영하면(GWR→GTWR) <b>593이 추가로</b> 개선된다.
+    계수가 "지역마다 다르다"는 것보다 <b>"시기마다 다르다"</b>는 것이 자료 적합에 더 크게 기여했다 —
+    코로나 전후의 구조 변화가 그만큼 컸다는 뜻이다.</p>
   <div class="two-col">
     <div class="box" style="margin-top:0"><h4>비만율 모형</h4><table id="tblModelOb"></table></div>
     <div class="box" style="margin-top:0"><h4>과체중이상율 모형</h4><table id="tblModelOw"></table></div>
@@ -242,16 +274,31 @@ a{color:var(--accent)}
 <!-- 8. 작동 스케일 -->
 <section class="slide">
   <div class="s-tag">07 · RESULTS I</div>
-  <h2 class="st">변수별 작동 스케일 — 세 층위로 갈린다</h2>
+  <h2 class="st">변수별 작동 스케일 — 변수마다 힘이 미치는 범위가 다르다</h2>
   <div class="scale-grid">
-    <div class="scale-card sc1"><h4>시공간 국지 (시변)</h4>수급률(+) · 조이혼율(+) · 청년순이동(−) · 아파트(−)
-      <br><br>bw 25~32 · τ 상한 — 지역·시기 맞춤 개입 영역</div>
-    <div class="scale-card sc2"><h4>공간 국지 · 시불변</h4>인구밀도(±)
-      <br><br>bw ≈ 228 · τ→0 — 도농 부호 분화, 구조적 변수</div>
-    <div class="scale-card sc3"><h4>전역 (시불변)</h4>1인가구 · 의사수
-      <br><br>bw ≈ 1,769(≈n) · τ→0 — 전국 단위 정책 영역</div>
+    <div class="scale-card sc1"><h4>① 국지·시기 가변형</h4>
+      <b>수급률(+) · 조이혼율(+) · 청년순이동(−) · 아파트(−)</b><br><br>
+      좁은 권역(이웃 25~32곳)에서, 해마다 다르게 작동.<br>→ 지역·시기 맞춤 개입의 영역</div>
+    <div class="scale-card sc2"><h4>② 국지·시기 안정형</h4>
+      <b>인구밀도(±)</b><br><br>
+      지역마다 효과가 다르지만(도시 −, 농촌 +), 9년 내내 방향이 일정.<br>→ 구조적 변수</div>
+    <div class="scale-card sc3"><h4>③ 전국 공통형</h4>
+      <b>1인가구 · 의사수</b><br><br>
+      전국 어디서나, 어느 해든 같은 효과.<br>→ 전국 단위 정책의 영역</div>
   </div>
-  <div class="box"><h4>MGTWR bandwidth·τ·유효모수</h4><table id="tblBwt"></table></div>
+  <div class="box">
+    <h4>읽는 법 — bw · τ · 유효모수(ENP)</h4>
+    <ul class="dot">
+      <li><b>bw(bandwidth)</b> = 한 지역의 계수를 계산할 때 빌려 쓰는 <b>이웃 관측치의 수</b>.
+        작을수록(예: 32) 좁은 권역에서만 통하는 국지적 효과, 전체 관측치 수(2,061)에 가까울수록(예: 1,769)
+        전국이 한 값을 공유하는 공통 효과.</li>
+      <li><b>τ(타우)</b> = 다른 연도 정보를 얼마나 <b>차단</b>하는지. 크면 같은 해 자료 위주로 추정되어
+        계수가 해마다 달라질 수 있고(시기 가변), 0에 가까우면 9년치를 합쳐 추정되어 계수가 일정(시기 안정).</li>
+      <li><b>유효모수(ENP)</b> = 국지 모형이 사실상 수행하는 <b>검정의 횟수</b>. 예컨대 수급률은 약 218번
+        검정하는 셈이라, 우연히 유의해 보이는 지역이 생기지 않도록 유의 기준(임계 t)을 그만큼 엄격하게 보정한다.</li>
+    </ul>
+  </div>
+  <div class="box"><h4>MGTWR 추정 결과</h4><table id="tblBwt"></table></div>
 </section>
 
 <!-- 9. 지도 -->
@@ -281,17 +328,17 @@ a{color:var(--accent)}
 <!-- 10. 패턴 요약 -->
 <section class="slide">
   <div class="s-tag">09 · RESULTS III</div>
-  <h2 class="st">변수별 공간·시간 패턴 요약 (비만율 기준)</h2>
+  <h2 class="st">변수별 공간·시간 패턴 요약 — 두 모형 공통 구조</h2>
   <div class="box" style="margin-top:.4rem">
     <table>
-      <tr><th>변수</th><th>공간 패턴(유의 지역)</th><th>연도별 변화</th><th>해석</th></tr>
-      <tr><td>절편(기저위험)</td><td>2021 전면 양(+), 남서부 최대</td><td>코로나 산형(−0.75→+0.86→+0.38)</td><td>기저 위험의 전국 상승·부분 회복</td></tr>
-      <tr><td>수급률</td><td>강원 영동·전남 남해안·제주</td><td>+0.14 거의 불변</td><td>결핍 효과는 상시 지속</td></tr>
-      <tr><td>조이혼율</td><td>수도권–강원 벨트</td><td>+0.10→+0.19 강화</td><td>가족구조 취약성 심화</td></tr>
-      <tr><td>청년순이동</td><td>영남 내륙(유출 지역)</td><td>−0.02→−0.09 강화</td><td>지역쇠퇴-아동건강 연계</td></tr>
-      <tr><td>아파트비율</td><td>남부·동부 광역(70% 유의 −)</td><td>−0.18→−0.25 강화</td><td>전역모형 억제효과 해소 사례</td></tr>
-      <tr><td>인구밀도</td><td>내륙 중소도시 + / 대도시권 −</td><td>시불변</td><td>도농 상이 기전</td></tr>
-      <tr><td>1인가구·의사수</td><td>준상수(전역)</td><td>시불변</td><td>전국 공통 효과</td></tr>
+      <tr><th>변수</th><th>공간 패턴(유의 지역)</th><th>비만율 모형 변화</th><th>과체중이상율 모형 변화</th><th>해석</th></tr>
+      <tr><td>절편(기저위험)</td><td>2021 전면 양(+), 남서부 최대</td><td>−0.73 → +0.85 → +0.39</td><td>−0.56 → +0.73 → +0.02</td><td>기저 위험의 전국 상승·부분 회복</td></tr>
+      <tr><td>수급률</td><td>강원 영동·전남 남해안·제주</td><td>+0.14 거의 불변</td><td>+0.12 거의 불변</td><td>결핍 효과는 상시 지속</td></tr>
+      <tr><td>조이혼율</td><td>수도권–강원 벨트</td><td>+0.10 → +0.19 강화</td><td>+0.15 → +0.19 강화</td><td>가족구조 취약성 심화</td></tr>
+      <tr><td>청년순이동</td><td>영남 내륙(유출 지역)</td><td>−0.02 → −0.09 강화</td><td>−0.04 → −0.07 강화</td><td>지역쇠퇴-아동건강 연계</td></tr>
+      <tr><td>아파트비율</td><td>남부·동부 광역(70% 유의 −)</td><td>−0.18 → −0.25 강화</td><td>−0.26 → −0.29 강화</td><td>전역모형의 착시(+) 해소 사례</td></tr>
+      <tr><td>인구밀도</td><td>내륙 중소도시 + / 대도시권 −</td><td>시기 안정(+0.07)</td><td>시기 안정(+0.11)</td><td>도농 상이 기전</td></tr>
+      <tr><td>1인가구·의사수</td><td>준상수(전국 공통)</td><td>시기 안정(−0.02/−0.04)</td><td>시기 안정(−0.08/−0.02)</td><td>전국 공통 효과</td></tr>
     </table>
   </div>
 </section>
@@ -304,35 +351,55 @@ a{color:var(--accent)}
     "새 위험"이 아니라 <b>기존 격차의 증폭</b>. 지역환경 표적 개입의 근거는 코로나 이후 더 강하다.</p>
   <div class="two-col">
     <div class="box" style="margin-top:0"><h4>지역 기저위험(절편) 궤적</h4><canvas id="interChart" height="130"></canvas></div>
-    <div class="box" style="margin-top:0"><h4>이전(15–19) → 이후(20–23) 평균 β̂</h4><table id="tblCovid"></table></div>
+    <div class="box" style="margin-top:0"><h4>이전(15–19) → 이후(20–23) 평균 β</h4><table id="tblCovid"></table></div>
   </div>
 </section>
 
-<!-- 12. 강건성·한계 -->
+<!-- 12. 결과 총 요약 -->
 <section class="slide">
-  <div class="s-tag">11 · ROBUSTNESS &amp; LIMITATIONS</div>
-  <h2 class="st">강건성과 한계</h2>
-  <div class="two-col">
-    <div class="box" style="margin-top:0"><h4>강건성 (4개 사양 × 2개 지표)</h4>
-      <ul class="dot">
-        <li>핵심 변수 부호·유의 구조 전 사양 불변</li>
-        <li>재정자립도 추가: 기여 미미 → 제외 정당</li>
-        <li>아파트→노후주택 교체: 적합도 악화 → 사양 지지</li>
-        <li>걷기실천율(2017–23): 유의한 음(−) — 행태 경로 보조 근거</li>
-      </ul></div>
-    <div class="box" style="margin-top:0"><h4>한계</h4>
-      <ul class="dot">
-        <li>생태학적 설계 — 개인 추론·인과 식별 제한</li>
-        <li>시간 스케일 모수의 탐색 경계 도달 — 질적 구분은 견고</li>
-        <li>2018년 전후 검진 지표 기준 변화 가능성</li>
-        <li>식생활·보육 환경 등 미관측 교란</li>
-      </ul></div>
+  <div class="s-tag">11 · SUMMARY OF FINDINGS</div>
+  <h2 class="st">결과 총 요약</h2>
+  <ol class="rq" style="font-size:1.15rem;margin-top:1.4rem;max-width:58rem">
+    <li style="margin-bottom:1rem"><b>지역환경 요인은 영유아 비만과 체계적으로 연관된다.</b>
+      위험 요인: 기초생활수급률(+)·조이혼율(+) / 보호 요인: 아파트비율(−)·청년 유입(−)·의사수(−).</li>
+    <li style="margin-bottom:1rem"><b>효과는 시공간적으로 이질적이다.</b> 설명력 36% → 75%,
+      잔차의 공간 자기상관 해소 — 개선의 가장 큰 몫은 <b>시간 이질성</b>이었다.</li>
+    <li style="margin-bottom:1rem"><b>작동 스케일이 세 유형으로 갈린다.</b>
+      국지·시기 가변형 4개(결핍·가족·활력·주거) / 국지·시기 안정형 1개(인구밀도) / 전국 공통형 2개(1인가구·의사수)
+      — <b>변수의 스케일이 곧 정책의 스케일</b>.</li>
+    <li style="margin-bottom:1rem"><b>코로나는 격차를 증폭시켰다.</b> 기저 위험은 회복 중이지만
+      지역환경 효과의 기울기는 강화된 채 유지 — 표적 개입의 근거는 오히려 더 강해졌다.</li>
+    <li><b>전역 모형의 함정을 확인했다.</b> 아파트비율(+→−)·1인가구(+→준상수)의 사례처럼,
+      공간 교란을 걷어내지 않은 추정은 정책 방향까지 뒤집을 수 있다.</li>
+  </ol>
+</section>
+
+<!-- 13. 한계 -->
+<section class="slide">
+  <div class="s-tag">12 · LIMITATIONS</div>
+  <h2 class="st">연구의 한계</h2>
+  <div class="box" style="max-width:58rem">
+    <ul class="dot" style="font-size:1.02rem">
+      <li style="margin-bottom:.8rem"><b>생태학적 설계.</b> 시군구 수준의 연관이므로 "수급률이 높은 지역의
+        비만율이 높다"이지 "수급 가정의 아동이 비만"이라는 뜻이 아니다(생태학적 오류).
+        개인 수준 자료와의 연계 분석이 후속 과제.</li>
+      <li style="margin-bottom:.8rem"><b>공간 단위의 임의성(MAUP).</b> 시군구 경계를 다르게 긋거나
+        읍면동 단위로 내려가면 결과가 달라질 수 있다.</li>
+      <li style="margin-bottom:.8rem"><b>시간 스케일 모수(τ)의 탐색 경계 도달.</b> "시기 가변 vs 안정"의
+        질적 구분은 견고하나, τ 점추정치 자체는 탐색 범위에 의존한다.</li>
+      <li style="margin-bottom:.8rem"><b>측정 일관성.</b> 2018년 전후 영유아 검진 지표 산출 기준이
+        달라졌을 가능성 — 수준(level)보다 연관 구조 중심으로 해석했다.</li>
+      <li style="margin-bottom:.8rem"><b>미관측 교란.</b> 식품환경(패스트푸드·편의점 밀도), 보육·교육 환경,
+        부모의 건강행태 등은 시군구 단위 자료 제약으로 포함하지 못했다.</li>
+      <li><b>연관이지 인과가 아니다.</b> 관측 연구로서 인과 식별 전략(자연실험·패널 고정효과 심화 등)은
+        별도 연구가 필요하다.</li>
+    </ul>
   </div>
 </section>
 
 <!-- 13. 결론 -->
 <section class="slide" id="conclSlide">
-  <div class="s-tag">12 · CONCLUSIONS</div>
+  <div class="s-tag">13 · CONCLUSIONS</div>
   <h2 class="st">결론</h2>
   <p class="concl">"소아비만 대책은 전국 일률이 아니라,<br>
     <span style="color:var(--accent)">어느 지역에서 · 어느 시기에 · 어떤 힘이</span><br>작동하는지에 맞춰야 한다."</p>
@@ -349,7 +416,7 @@ a{color:var(--accent)}
 
 <div id="nav">
   <button id="fsBtn">⛶ 전체화면</button>
-  <span id="pageNum">1 / 13</span>
+  <span id="pageNum">1 / 14</span>
   <button id="prevSlide">←</button>
   <button id="nextSlide">→</button>
 </div>
@@ -397,6 +464,9 @@ document.addEventListener('keydown',e=>{
  else if(e.key==='f'||e.key==='F'){document.getElementById('fsBtn').onclick();}});
 deck.addEventListener('scroll',()=>setProgress(curIdx()),{passive:true});
 addEventListener('resize',()=>go(curIdx()));
+document.getElementById('eqBox').onclick=()=>{
+ const e=document.getElementById('eqExplain');
+ e.style.display=(e.style.display==='none')?'':'none';};
 
 /* ── 지도 (라이트) ── */
 const map=L.map('map',{scrollWheelZoom:false,attributionControl:false,zoomControl:true}).setView([36.2,127.9],7);
@@ -411,7 +481,7 @@ function styleOf(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
 function popup(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
  const b=(DATA.coef[dv][curVar][s]||[])[yi],ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
  return `<div class="popup-name">${DATA.names[s]||s}</div>${VLAB[curVar]} · ${curYear}<br>
-  β̂ = <b>${b===undefined?"-":b.toFixed(3)}</b> ${ok?'<b style="color:#b2182b">(유의)</b>':'<span style="color:#888">(비유의)</span>'}`;}
+  β = <b>${b===undefined?"-":b.toFixed(3)}</b> ${ok?'<b style="color:#b2182b">(유의)</b>':'<span style="color:#888">(비유의)</span>'}`;}
 function draw(){if(layer)layer.remove();
  layer=L.geoJSON(DATA.geo,{renderer:canvasR,style:styleOf,onEachFeature:(f,l)=>{l.bindPopup(popup(f));}}).addTo(map);
  const vm=DATA.vmax[dv][curVar];
@@ -434,7 +504,11 @@ document.getElementById('nextYear').onclick=()=>setYear(curYear+1);
 document.getElementById('playBtn').onclick=function(){
  if(playing){clearInterval(playing);playing=null;this.textContent="▶ 재생";return;}
  this.textContent="⏸ 정지";
- playing=setInterval(()=>setYear(curYear>=2023?2015:curYear+1),1200);};
+ setYear(2015);
+ playing=setInterval(()=>{
+  if(curYear>=2023){clearInterval(playing);playing=null;
+   document.getElementById('playBtn').textContent="▶ 재생";return;}
+  setYear(curYear+1);},1200);};
 const dl=document.getElementById('sggList'),nameToSgg={};
 Object.entries(DATA.names).forEach(([s,nm])=>{nameToSgg[nm]=s;
  const o=document.createElement('option');o.value=nm;dl.appendChild(o);});
@@ -465,7 +539,7 @@ function rebuildTables(){
   <td class='num'>${b.bw}</td><td class='num'>${b.tau}</td>
   <td class='num'>${a.enp}</td><td class='num'>${a.tcrit}</td></tr>`;});
  document.getElementById('tblBwt').innerHTML=g;
- let c="<tr><th>변수</th><th class='num'>이전</th><th class='num'>이후</th><th class='num'>Δ</th></tr>";
+ let c="<tr><th>변수</th><th class='num'>이전</th><th class='num'>이후</th><th class='num'>변화량</th></tr>";
  DATA.vars.forEach(v=>{const d2=DATA.covid[v],del=d2.post-d2.pre;
   c+=`<tr${Math.abs(del)>0.03?" class='hl'":""}><td>${VLAB[v]}</td>
   <td class='num'>${d2.pre.toFixed(3)}</td><td class='num'>${d2.post.toFixed(3)}</td>

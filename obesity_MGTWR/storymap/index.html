@@ -418,8 +418,11 @@ document.getElementById('nextYear').onclick=()=>setYear(curYear+1);
 document.getElementById('playBtn').onclick=function(){
   if(playing){clearInterval(playing);playing=null;this.textContent="▶ 재생";return;}
   this.textContent="⏸ 정지";
-  playing=setInterval(()=>{curYear=curYear>=2023?2015:curYear+1;
-    slider.value=curYear;document.getElementById('yearLabel').textContent=curYear;draw();},1200);};
+  setYear(2015);
+  playing=setInterval(()=>{
+    if(curYear>=2023){clearInterval(playing);playing=null;
+      document.getElementById('playBtn').textContent="▶ 재생";return;}
+    setYear(curYear+1);},1200);};
 draw();
 
 /* ───── 차트 ───── */
