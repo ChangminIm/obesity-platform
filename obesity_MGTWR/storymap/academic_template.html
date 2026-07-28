@@ -73,6 +73,9 @@ ul.dot li{margin-bottom:7px}
 #playBtn{background:var(--accent2);border:none;color:#fff;border-radius:8px;padding:7px 15px;cursor:pointer;font-family:inherit;font-weight:700}
 .ystep{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;
   border-radius:8px;padding:6px 12px;cursor:pointer;font-family:inherit;font-weight:700}
+#sggSearch{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;
+  border-radius:8px;padding:7px 12px;font-family:inherit;font-size:.85rem;width:200px}
+#sggSearch::placeholder{color:#8fa3b6}
 .ystep:hover{background:rgba(255,255,255,.25)}
 #secNav{position:fixed;bottom:26px;right:26px;z-index:1200}
 #secNav button{background:var(--navy);color:#fff;border:1px solid rgba(255,255,255,.25);
@@ -199,13 +202,15 @@ a{color:var(--accent2)}
       <li><b>추론</b>: 로컬 계수의 유의성은 변수별 유효모수 ENP<sub>j</sub>(backfitting 스무더 hat 행렬 대각합)로
         보정한 α<sub>adj</sub> = α/ENP<sub>j</sub> 기준의 임계 t를 적용(Yu &amp; Fotheringham 2025; da Silva &amp; Fotheringham 2016).</li>
       <li><b>공간 가중의 두 층위</b>: ① 국지 모형의 추정 가중은 별도의 고정 가중행렬이 아니라 위 커널이 만드는
-        <b>관측치별 연속 가중</b>(적응형 bisquare)이며, ② 전역·잔차 Moran's I 검정에는 시군구 중심점 기반
-        <b>KNN-8 행표준화 가중행렬</b>을 사용(도서 지역이 있어 인접성 대신 최근접 이웃 방식 채택).</li>
+        <b>관측치별 연속 가중</b>(적응형 bisquare)이며, ② 전역·잔차 Moran's I 검정에는
+        <b>퀸(Queen) 인접 + 도서 연결 보정, 행표준화 가중행렬</b>을 사용 — 영도·강화·옹진·진도·울릉·남해 등
+        고립 도서는 최근접 시군구와, 제주권은 본토 최근접 시군구와 연결해 완전 연결 그래프를 구성
+        (EHSA 핫스팟 플랫폼과 동일한 섬연결 방식).</li>
       <li><b>모형 비교</b>: OLS → GWR → MGWR → GTWR → MGTWR을 동일 자료·동일 커널로 추정, AICc·adj-R²·잔차
-        Moran's I(연도별 KNN-8 평균)로 평가.</li>
+        Moran's I(연도별 계산 후 평균)로 평가.</li>
     </ul>
     <div class="box">
-      <h4>그림 1. 사전 진단 — 종속변수의 전역 공간 자기상관 추이 (Moran's I, KNN-8 행표준화)</h4>
+      <h4>그림 1. 사전 진단 — 종속변수의 전역 공간 자기상관 추이 (Moran's I, 퀸 인접·도서 연결 W)</h4>
       <canvas id="dvMoranChart" height="85"></canvas>
       <p class="tbl-note">비만율·과체중이상율 모두 <b>전 연도에서 유의한 양(+)의 공간 자기상관</b>(I ≈ 0.19~0.42,
         999회 순열검정 전 연도 p ≤ 0.001)을 보이며, 특히 코로나 시기(2020–21)에 자기상관이 정점에 달한다 —
@@ -237,18 +242,17 @@ a{color:var(--accent2)}
         <tr><th>변수</th><th class="num">β (비만율)</th><th class="num">t</th>
           <th class="num">β (과체중이상율)</th><th class="num">t</th></tr>
         <tr><td>기초생활수급률</td><td class="num">+0.297</td><td class="num">13.07***</td><td class="num">+0.270</td><td class="num">11.78***</td></tr>
-        <tr class="hl"><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
+        <tr><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
         <tr><td>조이혼율</td><td class="num">+0.129</td><td class="num">7.03***</td><td class="num">+0.169</td><td class="num">9.13***</td></tr>
         <tr><td>인구밀도(log)</td><td class="num">−0.243</td><td class="num">−8.96***</td><td class="num">−0.229</td><td class="num">−8.37***</td></tr>
         <tr><td>청년순이동률</td><td class="num">−0.128</td><td class="num">−6.07***</td><td class="num">−0.112</td><td class="num">−5.30***</td></tr>
         <tr><td>의사수</td><td class="num">−0.106</td><td class="num">−5.10***</td><td class="num">−0.084</td><td class="num">−4.03***</td></tr>
-        <tr class="hl"><td>아파트비율</td><td class="num">+0.205</td><td class="num">7.08***</td><td class="num">+0.025</td><td class="num">0.86 <span style="color:var(--muted)">n.s.</span></td></tr>
+        <tr><td>아파트비율</td><td class="num">+0.205</td><td class="num">7.08***</td><td class="num">+0.025</td><td class="num">0.86 <span style="color:var(--muted)">n.s.</span></td></tr>
       </table>
       <p class="tbl-note">n=2,061, 종속·독립변수 모두 z-표준화(절편≈0 생략). *** p&lt;0.001.
-        R² = 0.361(비만율)/0.351(과체중이상율), 잔차 Moran's I = 0.088/0.085로 <b>공간 자기상관이 잔차에 그대로 남아</b>
-        추정 왜곡의 위험이 있다. 실제로 음영 처리한 두 변수 — 아파트비율(+)과 1인가구비율(+) — 는
-        국지 모형에서 부호가 뒤집히거나 준상수로 축소되어(§05 요약표), 전역 추정이 공간 교란을 흡수해
-        정책 방향을 오도할 수 있음을 보여준다.</p>
+        R² = 0.361(비만율)/0.351(과체중이상율)이며 <b>잔차에 공간 자기상관이 그대로 남아</b>(표 4 참조)
+        추정 왜곡의 위험이 있다. 실제로 아파트비율(+)과 1인가구비율(+)은 국지 모형에서 부호가 뒤집히거나
+        준상수로 축소되어(§05 요약표), 전역 추정이 공간 교란을 흡수해 정책 방향을 오도할 수 있음을 보여준다.</p>
     </div>
     <div class="box">
       <h4>표 4-a. 모형 성능 비교 — 비만율 모형</h4>
@@ -313,7 +317,11 @@ a{color:var(--accent2)}
       색칠된 클러스터는 엄격한 다중검정 보정을 통과한 신호다.</div>
     <div class="ctrl"><span class="ctrl-label">종속변수</span>
       <button class="dvbtn sel" data-dv="ob">비만율</button>
-      <button class="dvbtn" data-dv="ow">과체중이상율</button></div>
+      <button class="dvbtn" data-dv="ow">과체중이상율</button>
+      <span class="ctrl-label" style="margin-left:18px">지역 검색</span>
+      <input id="sggSearch" list="sggList" placeholder="시군구 이름 입력 후 선택">
+      <datalist id="sggList"></datalist>
+      <button id="clearSel" class="ystep" style="display:none">선택 해제 ✕</button></div>
     <div class="ctrl" id="varBtns"><span class="ctrl-label">변수</span></div>
     <div id="yearRow">
       <button id="playBtn">▶ 연도 애니메이션</button>
@@ -325,6 +333,12 @@ a{color:var(--accent2)}
     <div id="legend"><span id="legMin"></span><div id="legbar"></div><span id="legMax"></span>
       <span class="leg-gray"></span><span>비유의(ENP-adjusted t)</span></div>
     <div id="varDesc"></div>
+    <div class="box" id="trajBox" style="display:none;margin-top:22px">
+      <h4 id="trajTitle"></h4>
+      <canvas id="trajChart" height="72"></canvas>
+      <p class="tbl-note">굵은 선: 선택 지역의 로컬 계수 β̂ (진한 점 = ENP 보정 기준 유의 연도).
+        회색 파선: 전국 평균. 변수·종속변수 버튼을 바꾸면 그래프도 갱신된다.</p>
+    </div>
     <div class="box" style="margin-top:26px">
       <h4>변수별 로컬 계수의 공간·시간 패턴 요약 (비만율 기준 — 과체중이상율도 동일 구조)</h4>
       <table>
@@ -523,7 +537,8 @@ a{color:var(--accent2)}
 </section>
 
 <footer>영유아 비만 지역환경 결정요인 연구 · MGTWR 스토리맵(학술 버전) ·
-  대중 버전: <a href="./index.html" style="color:#d29b82">index.html</a></footer>
+  <a href="./index.html" style="color:#d29b82">대중 버전</a> ·
+  <a href="./slides.html" style="color:#d29b82">발표 슬라이드(횡스크롤)</a></footer>
 
 <div id="secNav"><button id="nextSec">다음 섹션 ▼</button></div>
 
@@ -548,23 +563,62 @@ function colorOf(v,vmax){let t=Math.max(-1,Math.min(1,v/vmax))*0.5+0.5;
  const c=STOPS[i].map((a,k)=>Math.round(a+(STOPS[i+1][k]-a)*f));return `rgb(${c[0]},${c[1]},${c[2]})`;}
 const map=L.map('map',{scrollWheelZoom:false,attributionControl:false}).setView([36.2,127.9],7);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{opacity:.55}).addTo(map);
-let layer=null;
+const canvasR=L.canvas({padding:0.4});
+let layer=null,selSgg=null,trajChart=null;
 function styleOf(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
  const b=(DATA.coef[dv][curVar][s]||[])[yi],ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
- return{weight:.6,color:"#10202f",fillOpacity:.9,
+ const sel=(s===selSgg);
+ return{weight:sel?2.5:.6,color:sel?"#ffb037":"#10202f",fillOpacity:.9,
   fillColor:(b===undefined)?"#e8e8e8":(ok?colorOf(b,DATA.vmax[dv][curVar]):"#e8e8e8")};}
 function popup(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
  const b=(DATA.coef[dv][curVar][s]||[])[yi],ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
  return `<div class="popup-name">${DATA.names[s]||s}</div>${VLAB[curVar]} · ${curYear}<br>
   β̂ = <b>${b===undefined?"-":b.toFixed(3)}</b> ${ok?'<span style="color:#b2182b;font-weight:700">(유의)</span>':'<span style="color:#888">(비유의)</span>'}`;}
+function showTraj(){
+ if(!selSgg){document.getElementById('trajBox').style.display='none';return;}
+ const s=selSgg,bs=DATA.coef[dv][curVar][s]||[],sg=DATA.sig[dv][curVar][s]||"";
+ const natl=DATA.years.map((y,i)=>{let t=0,n=0;
+  for(const k in DATA.coef[dv][curVar]){t+=DATA.coef[dv][curVar][k][i];n++;}return t/n;});
+ document.getElementById('trajBox').style.display='';
+ document.getElementById('trajTitle').textContent=
+  `${DATA.names[s]} — ${VLAB[curVar]} 로컬 계수 궤적 (${dv==='ob'?'비만율':'과체중이상율'} 모형)`;
+ if(trajChart)trajChart.destroy();
+ trajChart=new Chart(document.getElementById('trajChart'),{type:'line',
+  data:{labels:DATA.years,datasets:[
+   {label:DATA.names[s],data:bs,borderColor:'#b5502f',borderWidth:3,tension:.3,
+    pointRadius:bs.map((_,i)=>sg[i]==='1'?6:3),
+    pointBackgroundColor:bs.map((_,i)=>sg[i]==='1'?'#b5502f':'#e8e8e8')},
+   {label:'전국 평균',data:natl,borderColor:'#9aa7b4',borderDash:[6,4],pointRadius:0,tension:.3}]},
+  options:{plugins:{legend:{position:'bottom'}},
+   scales:{y:{title:{display:true,text:'표준화 β̂'}}}}});
+}
+function selectRegion(s,zoom){
+ selSgg=s;document.getElementById('clearSel').style.display='';
+ if(zoom&&layer){layer.eachLayer(l=>{if(l.feature.properties.sgg===s){
+  map.fitBounds(l.getBounds().pad(1.2));l.openPopup();}});}
+ draw();showTraj();}
 function draw(){if(layer)layer.remove();
- layer=L.geoJSON(DATA.geo,{style:styleOf,onEachFeature:(f,l)=>{l.bindPopup(popup(f));
+ layer=L.geoJSON(DATA.geo,{renderer:canvasR,style:styleOf,onEachFeature:(f,l)=>{l.bindPopup(popup(f));
+  l.on('click',()=>{selSgg=f.properties.sgg;document.getElementById('clearSel').style.display='';
+   layer.eachLayer(x=>x.setStyle(styleOf(x.feature)));showTraj();});
   l.on('mouseover',()=>l.setStyle({weight:2,color:'#d29b82'}));
-  l.on('mouseout',()=>l.setStyle({weight:.6,color:'#10202f'}));}}).addTo(map);
+  l.on('mouseout',()=>l.setStyle(styleOf(f)));}}).addTo(map);
  const vm=DATA.vmax[dv][curVar];
  document.getElementById('legMin').textContent="-"+vm;
  document.getElementById('legMax').textContent="+"+vm;
- document.getElementById('varDesc').innerHTML=`<b>${VLAB[curVar]}</b> — ${VDESC[curVar]}`;}
+ document.getElementById('varDesc').innerHTML=`<b>${VLAB[curVar]}</b> — ${VDESC[curVar]}`;
+ showTraj();}
+/* 검색 */
+const dl=document.getElementById('sggList');
+const nameToSgg={};
+Object.entries(DATA.names).forEach(([s,nm])=>{nameToSgg[nm]=s;
+ const o=document.createElement('option');o.value=nm;dl.appendChild(o);});
+document.getElementById('sggSearch').addEventListener('change',function(){
+ const s=nameToSgg[this.value];if(s){selectRegion(s,true);}});
+document.getElementById('clearSel').onclick=function(){
+ selSgg=null;this.style.display='none';
+ document.getElementById('sggSearch').value='';
+ map.setView([36.2,127.9],7);draw();};
 const vb=document.getElementById('varBtns');
 DATA.vars.forEach(v=>{const b=document.createElement('button');
  b.className='vbtn'+(v===curVar?' sel':'');b.textContent=VLAB[v];b.dataset.v=v;
@@ -644,6 +698,15 @@ nextBtn.onclick=()=>{
  const target=idx===-1?0:Math.min(SECS[idx].offsetTop,max);
  window.scrollTo(0, Math.abs(target-window.scrollY)<2 ? 0 : target);
 };
+function prevSection(){
+ const before=SECS.filter(s=>s.offsetTop<window.scrollY-10);
+ window.scrollTo(0, before.length?before[before.length-1].offsetTop:0);
+}
+document.addEventListener('keydown',e=>{
+ if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+ if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();nextBtn.onclick();}
+ else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prevSection();}
+});
 let lastTop=0,atEnd=false;
 function measureNav(){lastTop=SECS[SECS.length-1].offsetTop;}
 measureNav();window.addEventListener('resize',measureNav,{passive:true});

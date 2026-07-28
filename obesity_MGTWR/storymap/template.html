@@ -331,7 +331,8 @@ section{padding:88px 0}
         데이터: 영유아 건강검진(2012–2024) · KOSIS 시군구 지표(2015–2023) ·
         방법: MGTWR (Wu et al. 2019; Yu &amp; Fotheringham 2025) · 유의성: ENP-adjusted t ·
         제작: obesity-platform 프로젝트 ·
-        <a href="./academic.html" style="color:#ffb59e">학술 버전 보기 →</a>
+        <a href="./academic.html" style="color:#ffb59e">학술 버전</a> ·
+        <a href="./slides.html" style="color:#ffb59e">발표 슬라이드</a>
       </div>
     </div>
   </div>
@@ -370,6 +371,7 @@ function colorOf(v,vmax){
 /* ───── Leaflet ───── */
 const map=L.map('map',{scrollWheelZoom:false,attributionControl:false}).setView([36.2,127.9],7);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{opacity:.55}).addTo(map);
+const canvasR=L.canvas({padding:0.4});
 let layer=null;
 function styleOf(f){
   const s=f.properties.sgg, yi=DATA.years.indexOf(curYear);
@@ -388,7 +390,7 @@ function popup(f){
 }
 function draw(){
   if(layer) layer.remove();
-  layer=L.geoJSON(DATA.geo,{style:styleOf,
+  layer=L.geoJSON(DATA.geo,{renderer:canvasR,style:styleOf,
     onEachFeature:(f,l)=>{l.bindPopup(popup(f));
       l.on('mouseover',()=>l.setStyle({weight:2,color:'#ffb59e'}));
       l.on('mouseout',()=>l.setStyle({weight:.6,color:'#0f2032'}));}}).addTo(map);
@@ -462,6 +464,15 @@ nextBtn.onclick=()=>{
  const target=idx===-1?0:Math.min(SECS[idx].offsetTop,max);
  window.scrollTo(0, Math.abs(target-window.scrollY)<2 ? 0 : target);
 };
+function prevSection(){
+ const before=SECS.filter(s=>s.offsetTop<window.scrollY-10);
+ window.scrollTo(0, before.length?before[before.length-1].offsetTop:0);
+}
+document.addEventListener('keydown',e=>{
+ if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+ if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();nextBtn.onclick();}
+ else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prevSection();}
+});
 let lastTop=0,atEnd=false;
 function measureNav(){lastTop=SECS[SECS.length-1].offsetTop;}
 measureNav();window.addEventListener('resize',measureNav,{passive:true});
