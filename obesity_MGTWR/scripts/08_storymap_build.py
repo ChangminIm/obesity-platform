@@ -95,10 +95,27 @@ moran = {dv: [round(float(mc[(mc.dv == dv) & (mc.model == m)].moran.iloc[0]), 3)
 adjr2 = {dv: [round(float(mc[(mc.dv == dv) & (mc.model == m)].adj_R2.iloc[0]), 3)
               for m in models] for dv in ("ob", "ow")}
 
+# ---- 종속변수 자체의 전역 Moran's I (공간모형 사용 근거) ----
+from libpysal.weights import KNN
+from esda.moran import Moran
+sg0 = panel[panel.year == 2015].sort_values("sgg_cd")
+W = KNN.from_array(sg0[["cx_km", "cy_km"]].to_numpy(float), k=8)
+W.transform = "r"
+dvmoran = {}
+for dvc in ("ob", "ow"):
+    vals = []
+    for y in YEARS:
+        sub = panel[panel.year == y].sort_values("sgg_cd")
+        m = Moran(sub[dvc].to_numpy(float), W, permutations=999)
+        vals.append([y, round(float(m.I), 3), round(float(m.p_sim), 3)])
+    dvmoran[dvc] = vals
+print("dv Moran's I range:", {d: (min(v[1] for v in dvmoran[d]), max(v[1] for v in dvmoran[d]))
+                              for d in dvmoran})
+
 DATA = dict(geo=gj, names=names, coef=coef, sig=sig, vmax=vmax, tcrit=tcrit,
             years=YEARS, vars=ALLV, trend=trend, inter=inter,
             modelcmp=modelcmp, covid=covid, models=models,
-            bwt=bwt, moran=moran, adjr2=adjr2)
+            bwt=bwt, moran=moran, adjr2=adjr2, dvmoran=dvmoran)
 blob = json.dumps(DATA, ensure_ascii=False, separators=(",", ":"))
 print("total data size(KB):", len(blob) // 1024)
 

@@ -42,6 +42,9 @@ th{background:#f0f2f5;color:var(--navy);font-weight:700;padding:9px 10px;text-al
 td{padding:8px 10px;border-bottom:1px solid var(--line)}
 tr:last-child td{border-bottom:none}
 .num{text-align:right;font-variant-numeric:tabular-nums}
+.ctr{text-align:center}
+.nw{white-space:nowrap}
+.ref-small{font-size:.78rem;color:var(--muted)}
 .tbl-note{font-size:.8rem;color:var(--muted);margin-top:10px}
 .hl{background:#f7ece8;font-weight:700}
 .eq{background:#f4f6f8;border-left:4px solid var(--navy);border-radius:0 10px 10px 0;
@@ -80,7 +83,7 @@ ul.dot li{margin-bottom:7px}
 #legend{display:flex;align-items:center;gap:8px;font-size:.8rem;color:#c0cedb;margin-top:12px}
 #legbar{width:190px;height:11px;border-radius:6px;
   background:linear-gradient(90deg,#2166ac,#67a9cf,#d1e5f0,#f7f7f7,#fddbc7,#ef8a62,#b2182b)}
-.leg-gray{width:13px;height:13px;border-radius:3px;background:#4a5866;display:inline-block;margin-left:12px}
+.leg-gray{width:13px;height:13px;border-radius:3px;background:#e8e8e8;display:inline-block;margin-left:12px}
 #varDesc,#enpNote{background:rgba(255,255,255,.06);border-left:4px solid var(--accent2);
   padding:12px 16px;border-radius:0 10px 10px 0;margin-top:14px;font-size:.9rem;color:#dce6ef}
 .leaflet-container{font-family:'Noto Sans KR',sans-serif}
@@ -142,27 +145,34 @@ a{color:var(--accent2)}
     <h2 class="sec">자료와 변수 구축</h2>
     <p class="lead"><b>종속변수</b>는 영유아 건강검진 기반 시군구 비만율과 과체중이상율(2015–2023).
       원자료의 252개 공간단위(일반구 포함)를 독립변수와 정합하는 229개 시군구로 집계하되, 수검아동수를
-      역산(수검수 = 비만아동수 ÷ 비만율 × 100)하여 <b>정확한 가중 집계</b>를 적용했다.
+      역산(수검수 = 비만아동수 ÷ 비만율 × 100)하여 <b class="nw">정확한 가중 집계</b>를 적용했다.
       <b>독립변수</b>는 KOSIS 시군구 지표 21종 후보에서 이론적 관련성과 다중공선성 진단(|r| &gt; 0.7 클러스터 정리,
       VIF &lt; 5)을 거쳐 7종을 선정했다.</p>
     <div class="box">
       <h4>표 1. 최종 독립변수 (모두 z-표준화 투입)</h4>
       <table>
-        <tr><th>영역</th><th>변수</th><th>가설 방향</th><th>이론적 기전</th><th>근거 문헌</th></tr>
-        <tr><td>사회경제적 결핍</td><td>기초생활수급률</td><td class="num">+</td>
-          <td>저소득 → 식생활 질·신체활동 기회 저하</td><td>Shrewsbury &amp; Wardle (2008)</td></tr>
-        <tr><td>가족·사회 구조</td><td>1인가구비율</td><td class="num">+</td>
-          <td>지역 사회구조·연결망 변화</td><td>Singh et al. (2010)</td></tr>
-        <tr><td>가족·사회 구조</td><td>조이혼율</td><td class="num">+</td>
-          <td>가족구조 이행 → 아동 생활습관 관리 약화</td><td>Schmeer (2012)</td></tr>
-        <tr><td>건조환경</td><td>인구밀도(log)</td><td class="num">±</td>
-          <td>도시성 — 보행 환경과 비만유발 환경의 상반된 경로</td><td>Ewing et al. (2003)</td></tr>
-        <tr><td>건조환경</td><td>아파트비율</td><td class="num">−</td>
-          <td>단지 내 놀이·운동 공간 등 활동 친화 주거환경</td><td>Sallis &amp; Glanz (2006)</td></tr>
-        <tr><td>인구 동태</td><td>청년순이동률</td><td class="num">−</td>
-          <td>선택적 이주·지역 활력 — 유출 지역의 건강자원 약화</td><td>Norman et al. (2005)</td></tr>
-        <tr><td>의료 접근성</td><td>인구 천명당 의사수</td><td class="num">−</td>
-          <td>예방·관리 서비스 접근성</td><td>Lobstein et al. (2004)</td></tr>
+        <tr><th>영역</th><th>변수</th><th class="ctr">가설 방향</th><th>이론적 기전</th><th>근거 문헌</th></tr>
+        <tr><td>사회경제적 결핍</td><td>기초생활수급률</td><td class="ctr">+</td>
+          <td>저소득 → 식생활 질·신체활동 기회 저하</td>
+          <td class="ref-small">Shrewsbury &amp; Wardle (2008)<br>Wang &amp; Lim (2012)<br>Singh et al. (2010)</td></tr>
+        <tr><td>가족·사회 구조</td><td>1인가구비율</td><td class="ctr">+</td>
+          <td>지역 사회구조·연결망 변화</td>
+          <td class="ref-small">Singh et al. (2010)<br>Congdon (2019)<br>Cummins et al. (2007)</td></tr>
+        <tr><td>가족·사회 구조</td><td>조이혼율</td><td class="ctr">+</td>
+          <td>가족구조 이행 → 아동 생활습관 관리 약화</td>
+          <td class="ref-small">Schmeer (2012)<br>Yannakoulia et al. (2008)<br>Anderson &amp; Whitaker (2010)</td></tr>
+        <tr><td>건조환경</td><td>인구밀도(log)</td><td class="ctr">±</td>
+          <td>도시성 — 보행 환경과 비만유발 환경의 상반된 경로</td>
+          <td class="ref-small">Ewing et al. (2003)<br>Lopez (2004)<br>Vlahov &amp; Galea (2002)</td></tr>
+        <tr><td>건조환경</td><td>아파트비율</td><td class="ctr">−</td>
+          <td>단지 내 놀이·운동 공간 등 활동 친화 주거환경</td>
+          <td class="ref-small">Sallis &amp; Glanz (2006)<br>Davison &amp; Lawson (2006)<br>Dunton et al. (2009)</td></tr>
+        <tr><td>인구 동태</td><td>청년순이동률</td><td class="ctr">−</td>
+          <td>선택적 이주·지역 활력 — 유출 지역의 건강자원 약화</td>
+          <td class="ref-small">Norman et al. (2005)<br>Boyle (2004)<br>Riva et al. (2011)</td></tr>
+        <tr><td>의료 접근성</td><td>인구 천명당 의사수</td><td class="ctr">−</td>
+          <td>예방·관리 서비스 접근성</td>
+          <td class="ref-small">Lobstein et al. (2004)<br>Starfield et al. (2005)<br>Guagliardo (2004)</td></tr>
       </table>
       <p class="tbl-note">제외 근거 예: 사업체밀도(인구밀도와 r=0.99), 독거노인가구비율(고령인구비율과 r=0.98),
         문화기반시설수(인구당 지표의 농촌 편의로 부호 역전). 재정자립도·노후주택비율·걷기실천율은 강건성 분석에 사용.</p>
@@ -192,18 +202,24 @@ a{color:var(--accent2)}
         Moran's I(연도별 KNN-8)로 평가.</li>
     </ul>
     <div class="box">
-      <h4>표 2. 모형 계보 — 단계마다 무엇이 달라지는가</h4>
+      <h4>표 2. 사전 진단 — 종속변수의 전역 공간 자기상관 (Moran's I, KNN-8 행표준화)</h4>
+      <table id="tblDvMoran"></table>
+      <p class="tbl-note">비만율·과체중이상율 모두 전 연도에서 유의한 양(+)의 공간 자기상관을 보인다(999회 순열검정).
+        관측치 독립을 가정하는 전역 OLS는 이 자료 구조에 부적합하며, 공간(국지) 모형 사용의 직접적 근거가 된다.</p>
+    </div>
+    <div class="box">
+      <h4>표 3. 모형 계보 — 단계마다 무엇이 달라지는가</h4>
       <table>
-        <tr><th>모형</th><th>계수가 지역마다 다른가</th><th>계수가 시기마다 다른가</th><th>bandwidth 구조</th><th>한 줄 요약</th></tr>
-        <tr><td>OLS</td><td class="num">×</td><td class="num">×</td><td>—</td>
+        <tr><th>모형</th><th class="ctr">계수가 지역마다 다른가</th><th class="ctr">계수가 시기마다 다른가</th><th>bandwidth 구조</th><th>한 줄 요약</th></tr>
+        <tr><td>OLS</td><td class="ctr">×</td><td class="ctr">×</td><td>—</td>
           <td>전국·전기간 공통 계수 하나</td></tr>
-        <tr><td>GWR</td><td class="num">○</td><td class="num">×</td><td>모든 변수 공통 1개(공간)</td>
+        <tr><td>GWR</td><td class="ctr">○</td><td class="ctr">×</td><td>모든 변수 공통 1개(공간)</td>
           <td>지역별 계수 — 단, 모든 변수가 같은 공간 범위로 평활</td></tr>
-        <tr><td>MGWR</td><td class="num">○</td><td class="num">×</td><td><b>변수별</b>(공간)</td>
+        <tr><td>MGWR</td><td class="ctr">○</td><td class="ctr">×</td><td><b>변수별</b>(공간)</td>
           <td>변수마다 "얼마나 국지적인지"를 따로 추정</td></tr>
-        <tr><td>GTWR</td><td class="num">○</td><td class="num">○</td><td>모든 변수 공통 1개(시공간)</td>
+        <tr><td>GTWR</td><td class="ctr">○</td><td class="ctr">○</td><td>모든 변수 공통 1개(시공간)</td>
           <td>시간 이질성 도입 — 단, 모든 변수가 같은 시공간 범위</td></tr>
-        <tr class="hl"><td>MGTWR</td><td class="num">○</td><td class="num">○</td><td><b>변수별</b>(공간 bw + 시간 τ)</td>
+        <tr class="hl"><td>MGTWR</td><td class="ctr">○</td><td class="ctr">○</td><td><b>변수별</b>(공간 bw + 시간 τ)</td>
           <td>변수마다 공간 범위와 시간 범위를 모두 따로 — 작동 스케일의 직접 식별</td></tr>
       </table>
       <p class="tbl-note">즉 GWR→MGWR은 "변수별 <b>공간</b> 스케일"을, GWR→GTWR은 "<b>시간</b> 이질성"을 각각 더한 것이고,
@@ -211,10 +227,13 @@ a{color:var(--accent2)}
         다른 변수들을 하나의 평균적 범위로 평활하므로, 일부 변수는 과대·일부는 과소 평활되는 한계가 있다.</p>
     </div>
     <div class="box">
-      <h4>표 3. 모형 성능 비교</h4>
-      <table id="tblModel"></table>
-      <p class="tbl-note">AICc가 낮을수록 우수. 잔차 Moran's I는 연도별 평균(0에 가까울수록 공간 자기상관 해소).
-        공간 이질성(GWR)보다 <b>시간 이질성(GTWR)의 기여가 더 컸고</b>, 변수별 다중스케일(MGTWR)이 추가 개선 —
+      <h4>표 4-a. 모형 성능 비교 — 비만율 모형</h4>
+      <table id="tblModelOb"></table>
+      <h4 style="margin-top:26px">표 4-b. 모형 성능 비교 — 과체중이상율 모형</h4>
+      <table id="tblModelOw"></table>
+      <p class="tbl-note">AICc가 낮을수록 우수. <b>잔차 Moran's I</b>는 각 모형의 잔차에 대해 연도별로 계산한 값의
+        평균(0에 가까울수록 잔차의 공간 자기상관이 해소된 것). 두 종속변수 모두에서 공간 이질성(GWR)보다
+        <b>시간 이질성(GTWR)의 기여가 더 컸고</b>, 변수별 다중스케일(MGTWR)이 추가 개선을 얹었다 —
         지역환경 효과의 시공간 이질성을 무시하면 설명력의 절반을 잃는다.</p>
     </div>
   </div>
@@ -246,7 +265,7 @@ a{color:var(--accent2)}
       </ul>
     </div>
     <div class="box">
-      <h4>표 4. MGTWR 변수별 공간 bandwidth·시간 스케일 τ·유효모수 (비만율 / 과체중이상율)</h4>
+      <h4>표 5. MGTWR 변수별 공간 bandwidth·시간 스케일 τ·유효모수 (비만율 / 과체중이상율)</h4>
       <table id="tblBwt"></table>
       <p class="tbl-note">bandwidth는 시공간 최근접 이웃 수(전체 n=2,061). τ는 탐색 범위 [0.1, 300]의
         경계값에 도달한 경우가 있어(각주 §07), 수치보다 시변/시불변의 질적 구분으로 해석한다.</p>
@@ -282,6 +301,35 @@ a{color:var(--accent2)}
     <div id="legend"><span id="legMin"></span><div id="legbar"></div><span id="legMax"></span>
       <span class="leg-gray"></span><span>비유의(ENP-adjusted t)</span></div>
     <div id="varDesc"></div>
+    <div class="box" style="margin-top:26px">
+      <h4>변수별 로컬 계수의 공간·시간 패턴 요약 (비만율 기준 — 과체중이상율도 동일 구조)</h4>
+      <table>
+        <tr><th>변수</th><th>공간 패턴 (유의 지역)</th><th>연도별 변화</th><th>해석</th></tr>
+        <tr><td>절편(기저 위험)</td><td>2015 전면 음(−) → 2021 전면 양(+), 남서부(전남·광주권) 최대 → 2023 축소</td>
+          <td>코로나 산형 궤적 (−0.75 → +0.86 → +0.38)</td>
+          <td>공변량으로 설명되지 않는 기저 위험의 전국적 상승과 부분 회복</td></tr>
+        <tr><td>기초생활수급률</td><td>강원 영동·전남 남해안·제주의 안정적 양(+) 클러스터</td>
+          <td>+0.14 내외로 <b>거의 불변</b> (2019–21 소폭 정점)</td>
+          <td>결핍 효과는 시기와 무관하게 지속 — 상시적 취약지역 표적 개입의 근거</td></tr>
+        <tr><td>1인가구비율</td><td>유의 지역 드묾 (전역 변수, 준상수 ≈ −0.02)</td><td>변화 없음 (τ→0)</td>
+          <td>전국 공통의 약한 연관 — 전역 스케일 판별 자체가 발견</td></tr>
+        <tr><td>조이혼율</td><td>수도권–강원 벨트의 강한 양(+), 남부는 비유의</td>
+          <td>+0.10 → +0.19로 <b>단조 강화</b></td>
+          <td>가족구조 취약성의 효과가 수도권에서 해마다 심화</td></tr>
+        <tr><td>인구밀도(log)</td><td>내륙 중소도시 양(+) vs 일부 대도시권 음(−) — <b>부호가 공간 분화</b></td>
+          <td>시불변 (τ→0)</td>
+          <td>도농 상이 기전: 농촌 저밀도의 자원 접근성 결핍 vs 도시 고밀 환경</td></tr>
+        <tr><td>청년순이동률</td><td>영남 내륙(인구 유출 지역) 중심의 음(−) 클러스터</td>
+          <td>−0.02 → −0.09로 <b>강화·확산</b></td>
+          <td>지역 쇠퇴와 아동 건강 격차의 연계가 깊어지는 중</td></tr>
+        <tr><td>의사수</td><td>충북 내륙 등 일부 지역의 음(−)</td><td>준상수 (τ→0)</td>
+          <td>전국 공통의 약한 보호효과 — 의료 인프라는 전국 정책 영역</td></tr>
+        <tr><td>아파트비율</td><td>남부·동부 광역의 일관된 음(−) (지역의 약 70% 유의)</td>
+          <td>−0.18 → −0.25로 <b>보호효과 강화</b></td>
+          <td>전역 모형의 양(+) 계수는 공간 교란(억제효과)이었음이 국지 추정으로 판명</td></tr>
+      </table>
+      <p class="tbl-note">위 요약은 ENP-adjusted t 기준 유의 지역의 패턴이며, 지도에서 변수·연도를 전환해 직접 확인할 수 있다.</p>
+    </div>
   </div>
 </section>
 
@@ -299,11 +347,25 @@ a{color:var(--accent2)}
       <canvas id="interChart" height="95"></canvas>
     </div>
     <div class="box">
-      <h4>표 5. 코로나 이전(2015–19 평균) 대비 이후(2020–23 평균)의 로컬 계수 변화 (비만율)</h4>
+      <h4>표 6. 코로나 이전(2015–19 평균) 대비 이후(2020–23 평균)의 로컬 계수 변화 (비만율)</h4>
       <table id="tblCovid"></table>
       <p class="tbl-note">시변 변수 4종의 기울기가 일제히 강화된 반면(방향 일치 지역 87–100%), 결핍(수급률) 효과는
         팬데믹과 무관하게 지속 — "새로운 위험의 등장"이 아니라 <b>기존 지역환경 격차의 증폭</b>으로 해석된다.
         시불변 변수(1인가구·인구밀도·의사수)의 Δ≈0은 τ 구조와 정합적.</p>
+    </div>
+    <div class="box">
+      <h4>종합 해석 — 결과가 그리는 하나의 그림</h4>
+      <ul class="dot">
+        <li><b>수준과 기울기의 분리.</b> 코로나로 인한 비만율 상승(수준)은 절편이 흡수했고 2021년 이후 되돌아오는 중이다.
+          그러나 <b>지역환경 변수들의 기울기(격차 구조)는 강화된 채 유지</b>되고 있다 — 유행이 지나가도
+          "어디 사는지"의 중요성은 커진 상태로 남았다.</li>
+        <li><b>결핍은 상수, 가족·활력·주거는 변수.</b> 수급률 효과의 불변성은 결핍-비만 연관이 구조적임을,
+          조이혼율·청년순이동·아파트 효과의 강화는 위기 시 완충 자원의 격차가 커졌음을 시사한다.</li>
+        <li><b>공간 표적이 서로 다르다.</b> 결핍 개입은 강원 영동·전남 남해안·제주, 가족지원은 수도권–강원,
+          지역활력·아동건강 연계 대응은 영남 내륙 — 하나의 전국 정책으로는 셋 다 놓친다.</li>
+        <li><b>전역 모형이었다면 틀렸을 결론.</b> 아파트비율(+→−)과 1인가구(강한 +→준상수)의 사례처럼,
+          공간 교란을 못 걷어낸 전역 추정은 정책 방향까지 뒤집을 수 있다 — 다중스케일 국지 모형의 실질적 효용.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -350,32 +412,87 @@ a{color:var(--accent2)}
         <b>1인가구·의료접근성은 전역적</b>(중앙정부 정책 영역), 인구밀도는 공간 국지·시불변(구조 변수).</li>
       <li>코로나19는 지역환경 효과의 <b>격차 기울기를 증폭</b>시켰고 이는 회복되지 않았다 —
         지역 기반 표적 개입의 정책적 근거가 팬데믹 이후 오히려 강화되었음을 시사한다.</li>
+      <li>정책 매핑: <b>결핍 클러스터</b>(강원 영동·전남 남해안·제주)에는 상시적 영양·활동 지원,
+        <b>수도권–강원</b>에는 가족구조 취약 가정의 아동 지원, <b>영남 내륙 인구유출 지역</b>에는
+        지역쇠퇴-아동건강 통합 대응, 그리고 <b>의료 인프라·가구구조 대응은 전국 단위</b>로 —
+        변수의 작동 스케일이 곧 정책의 스케일이다.</li>
     </ol>
     <div class="box">
-      <h4>참고문헌 (주요)</h4>
+      <h4>참고문헌 — 방법론</h4>
       <ol class="refs">
         <li>Wu C, Ren F, Hu W, Du Q (2019). Multiscale geographically and temporally weighted regression:
-          exploring the spatiotemporal determinants of housing prices. <i>IJGIS</i> 33(3):489–511.</li>
+          exploring the spatiotemporal determinants of housing prices. <i>IJGIS</i> 33(3):489–511.
+          <a href="https://doi.org/10.1080/13658816.2018.1545158" target="_blank">[링크]</a></li>
         <li>Yu H, Fotheringham AS (2025). On the calibration of multiscale geographically and temporally
-          weighted regression models. <i>IJGIS</i> 39(6):1203–1222.</li>
+          weighted regression models. <i>IJGIS</i> 39(6):1203–1222.
+          <a href="https://doi.org/10.1080/13658816.2024.2440600" target="_blank">[링크]</a></li>
         <li>Luo X, Fotheringham AS, Yu H, Zhou XS (2026). MGTWR: exploring the spatiotemporal heterogeneity
-          of EV market adoption. <i>Transportation Research Part C</i> 186:105614.</li>
-        <li>Wu C, Du Y, Wei Q, Xiao X (2026). An efficient calibration algorithm for MGTWR. <i>IJGIS</i>, in press.</li>
+          of EV market adoption. <i>Transportation Research Part C</i> 186:105614.
+          <a href="https://www.sciencedirect.com/science/article/pii/S0968090X26001026" target="_blank">[링크]</a></li>
+        <li>Wu C, Du Y, Wei Q, Xiao X (2026). An efficient calibration algorithm for MGTWR. <i>IJGIS</i>, in press.
+          <a href="https://doi.org/10.1080/13658816.2026.2623155" target="_blank">[링크]</a></li>
         <li>da Silva AR, Fotheringham AS (2016). The multiple testing issue in geographically weighted regression.
-          <i>Geographical Analysis</i> 48(3):233–247.</li>
+          <i>Geographical Analysis</i> 48(3):233–247.
+          <a href="https://doi.org/10.1111/gean.12084" target="_blank">[링크]</a></li>
+      </ol>
+      <h4 style="margin-top:24px">참고문헌 — 변수 근거</h4>
+      <ol class="refs">
         <li>Shrewsbury V, Wardle J (2008). Socioeconomic status and adiposity in childhood: a systematic review
-          of cross-sectional studies 1990–2005. <i>Obesity</i> 16(2):275–284.</li>
+          of cross-sectional studies 1990–2005. <i>Obesity</i> 16(2):275–284.
+          <a href="https://scholar.google.com/scholar?q=%22Socioeconomic+status+and+adiposity+in+childhood%22+Shrewsbury" target="_blank">[링크]</a></li>
+        <li>Wang Y, Lim H (2012). The global childhood obesity epidemic and the association between
+          socio-economic status and childhood obesity. <i>International Review of Psychiatry</i> 24(3):176–188.
+          <a href="https://scholar.google.com/scholar?q=%22The+global+childhood+obesity+epidemic+and+the+association%22+Wang+Lim" target="_blank">[링크]</a></li>
         <li>Singh GK, Siahpush M, Kogan MD (2010). Neighborhood socioeconomic conditions, built environments,
-          and childhood obesity. <i>Health Affairs</i> 29(3):503–512.</li>
-        <li>Schmeer KK (2012). Family structure and obesity in early childhood. <i>Social Science Research</i> 41(4):820–832.</li>
+          and childhood obesity. <i>Health Affairs</i> 29(3):503–512.
+          <a href="https://scholar.google.com/scholar?q=%22Neighborhood+socioeconomic+conditions%2C+built+environments%2C+and+childhood+obesity%22" target="_blank">[링크]</a></li>
+        <li>Congdon P (2019). Obesity and urban environments. <i>Int J Environ Res Public Health</i> 16(3):464.
+          <a href="https://scholar.google.com/scholar?q=%22Obesity+and+Urban+Environments%22+Congdon+2019" target="_blank">[링크]</a></li>
+        <li>Cummins S, Curtis S, Diez-Roux AV, Macintyre S (2007). Understanding and representing 'place'
+          in health research: a relational approach. <i>Social Science &amp; Medicine</i> 65(9):1825–1838.
+          <a href="https://scholar.google.com/scholar?q=%22Understanding+and+representing+place+in+health+research%22" target="_blank">[링크]</a></li>
+        <li>Schmeer KK (2012). Family structure and obesity in early childhood. <i>Social Science Research</i> 41(4):820–832.
+          <a href="https://scholar.google.com/scholar?q=%22Family+structure+and+obesity+in+early+childhood%22" target="_blank">[링크]</a></li>
+        <li>Yannakoulia M, Papanikolaou K, Hatzopoulou I, et al. (2008). Association between family divorce and
+          children's BMI and meal patterns: the GENDAI study. <i>Obesity</i> 16(6):1382–1387.
+          <a href="https://scholar.google.com/scholar?q=%22Association+Between+Family+Divorce+and+Children%27s+BMI%22" target="_blank">[링크]</a></li>
+        <li>Anderson SE, Whitaker RC (2010). Household routines and obesity in US preschool-aged children.
+          <i>Pediatrics</i> 125(3):420–428.
+          <a href="https://scholar.google.com/scholar?q=%22Household+routines+and+obesity+in+US+preschool-aged+children%22" target="_blank">[링크]</a></li>
         <li>Ewing R, Schmid T, Killingsworth R, Zlot A, Raudenbush S (2003). Relationship between urban sprawl and
-          physical activity, obesity, and morbidity. <i>American Journal of Health Promotion</i> 18(1):47–57.</li>
+          physical activity, obesity, and morbidity. <i>Am J Health Promotion</i> 18(1):47–57.
+          <a href="https://scholar.google.com/scholar?q=%22Relationship+between+urban+sprawl+and+physical+activity%2C+obesity%22" target="_blank">[링크]</a></li>
+        <li>Lopez R (2004). Urban sprawl and risk for being overweight or obese. <i>Am J Public Health</i> 94(9):1574–1579.
+          <a href="https://scholar.google.com/scholar?q=%22Urban+sprawl+and+risk+for+being+overweight+or+obese%22" target="_blank">[링크]</a></li>
+        <li>Vlahov D, Galea S (2002). Urbanization, urbanicity, and health. <i>J Urban Health</i> 79(Suppl 1):S1–S12.
+          <a href="https://scholar.google.com/scholar?q=%22Urbanization%2C+urbanicity%2C+and+health%22+Vlahov" target="_blank">[링크]</a></li>
         <li>Sallis JF, Glanz K (2006). The role of built environments in physical activity, eating, and obesity
-          in childhood. <i>The Future of Children</i> 16(1):89–108.</li>
+          in childhood. <i>The Future of Children</i> 16(1):89–108.
+          <a href="https://scholar.google.com/scholar?q=%22The+role+of+built+environments+in+physical+activity%2C+eating%22" target="_blank">[링크]</a></li>
+        <li>Davison KK, Lawson CT (2006). Do attributes in the physical environment influence children's
+          physical activity? A review of the literature. <i>Int J Behav Nutr Phys Act</i> 3:19.
+          <a href="https://scholar.google.com/scholar?q=%22Do+attributes+in+the+physical+environment+influence+children%27s+physical+activity%22" target="_blank">[링크]</a></li>
+        <li>Dunton GF, Kaplan J, Wolch J, Jerrett M, Reynolds KD (2009). Physical environmental correlates of
+          childhood obesity: a systematic review. <i>Obesity Reviews</i> 10(4):393–402.
+          <a href="https://scholar.google.com/scholar?q=%22Physical+environmental+correlates+of+childhood+obesity%22+Dunton" target="_blank">[링크]</a></li>
         <li>Norman P, Boyle P, Rees P (2005). Selective migration, health and deprivation: a longitudinal analysis.
-          <i>Social Science &amp; Medicine</i> 60(12):2755–2771.</li>
+          <i>Social Science &amp; Medicine</i> 60(12):2755–2771.
+          <a href="https://scholar.google.com/scholar?q=%22Selective+migration%2C+health+and+deprivation%22" target="_blank">[링크]</a></li>
+        <li>Boyle P (2004). Population geography: migration and inequalities in mortality and morbidity.
+          <i>Progress in Human Geography</i> 28(6):767–776.
+          <a href="https://scholar.google.com/scholar?q=%22Population+geography%3A+migration+and+inequalities+in+mortality%22" target="_blank">[링크]</a></li>
+        <li>Riva M, Curtis S, Norman P (2011). Residential mobility within England and urban–rural inequalities
+          in mortality. <i>Social Science &amp; Medicine</i> 73(12):1698–1706.
+          <a href="https://scholar.google.com/scholar?q=%22Residential+mobility+within+England%22+Riva+Curtis" target="_blank">[링크]</a></li>
         <li>Lobstein T, Baur L, Uauy R (2004). Obesity in children and young people: a crisis in public health.
-          <i>Obesity Reviews</i> 5(s1):4–104.</li>
+          <i>Obesity Reviews</i> 5(s1):4–104.
+          <a href="https://scholar.google.com/scholar?q=%22Obesity+in+children+and+young+people%3A+a+crisis+in+public+health%22" target="_blank">[링크]</a></li>
+        <li>Starfield B, Shi L, Macinko J (2005). Contribution of primary care to health systems and health.
+          <i>Milbank Quarterly</i> 83(3):457–502.
+          <a href="https://scholar.google.com/scholar?q=%22Contribution+of+primary+care+to+health+systems+and+health%22" target="_blank">[링크]</a></li>
+        <li>Guagliardo MF (2004). Spatial accessibility of primary care: concepts, methods and challenges.
+          <i>Int J Health Geographics</i> 3:3.
+          <a href="https://scholar.google.com/scholar?q=%22Spatial+accessibility+of+primary+care%3A+concepts%2C+methods+and+challenges%22" target="_blank">[링크]</a></li>
       </ol>
     </div>
   </div>
@@ -411,7 +528,7 @@ let layer=null;
 function styleOf(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
  const b=(DATA.coef[dv][curVar][s]||[])[yi],ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
  return{weight:.6,color:"#10202f",fillOpacity:.9,
-  fillColor:(b===undefined)?"#4a5866":(ok?colorOf(b,DATA.vmax[dv][curVar]):"#4a5866")};}
+  fillColor:(b===undefined)?"#e8e8e8":(ok?colorOf(b,DATA.vmax[dv][curVar]):"#e8e8e8")};}
 function popup(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
  const b=(DATA.coef[dv][curVar][s]||[])[yi],ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
  return `<div class="popup-name">${DATA.names[s]||s}</div>${VLAB[curVar]} · ${curYear}<br>
@@ -447,12 +564,20 @@ draw();
 /* 표 렌더링 */
 function rebuildTables(){
  const M=DATA.models,mc=DATA.modelcmp;
- let h="<tr><th>모형</th><th class='num'>AICc(비만율)</th><th class='num'>R²</th><th class='num'>adj-R²</th><th class='num'>Moran's I</th><th class='num'>AICc(과체중+)</th><th class='num'>R²</th></tr>";
- M.forEach((m,i)=>{h+=`<tr${m==='MGTWR'?" class='hl'":""}><td>${m}</td>
-  <td class='num'>${mc.ob.aicc[i].toFixed(1)}</td><td class='num'>${mc.ob.r2[i].toFixed(3)}</td>
-  <td class='num'>${DATA.adjr2.ob[i].toFixed(3)}</td><td class='num'>${DATA.moran.ob[i].toFixed(3)}</td>
-  <td class='num'>${mc.ow.aicc[i].toFixed(1)}</td><td class='num'>${mc.ow.r2[i].toFixed(3)}</td></tr>`;});
- document.getElementById('tblModel').innerHTML=h;
+ const mkModel=d=>{
+  let h="<tr><th>모형</th><th class='num'>AICc</th><th class='num'>R²</th><th class='num'>adj-R²</th><th class='num'>잔차 Moran's I</th></tr>";
+  M.forEach((m,i)=>{h+=`<tr${m==='MGTWR'?" class='hl'":""}><td>${m}</td>
+   <td class='num'>${mc[d].aicc[i].toFixed(1)}</td><td class='num'>${mc[d].r2[i].toFixed(3)}</td>
+   <td class='num'>${DATA.adjr2[d][i].toFixed(3)}</td><td class='num'>${DATA.moran[d][i].toFixed(3)}</td></tr>`;});
+  return h;};
+ document.getElementById('tblModelOb').innerHTML=mkModel('ob');
+ document.getElementById('tblModelOw').innerHTML=mkModel('ow');
+ const fmtP=p=>p<=0.001?'&lt;0.001':p.toFixed(3);
+ let dm="<tr><th>연도</th><th class='num'>비만율 I</th><th class='num'>p</th><th class='num'>과체중이상율 I</th><th class='num'>p</th></tr>";
+ DATA.dvmoran.ob.forEach((r,i)=>{const s=DATA.dvmoran.ow[i];
+  dm+=`<tr><td>${r[0]}</td><td class='num'>${r[1].toFixed(3)}</td><td class='num'>${fmtP(r[2])}</td>
+   <td class='num'>${s[1].toFixed(3)}</td><td class='num'>${fmtP(s[2])}</td></tr>`;});
+ document.getElementById('tblDvMoran').innerHTML=dm;
  const grp=v=>{const b=DATA.bwt.ob[v];if(b.tau>100&&b.bw<50)return"시공간 국지(시변)";
   if(b.tau<1&&b.bw>1000)return"전역(시불변)";if(b.tau<1)return"공간 국지·시불변";return"초국지(절편)";};
  let g="<tr><th>변수</th><th class='num'>bw(ob)</th><th class='num'>τ(ob)</th><th class='num'>bw(ow)</th><th class='num'>τ(ow)</th><th class='num'>ENP_j</th><th class='num'>t_crit</th><th>작동 스케일</th></tr>";

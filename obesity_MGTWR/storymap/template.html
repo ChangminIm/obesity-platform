@@ -88,7 +88,7 @@ section{padding:88px 0}
 #legend{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#c6d5e2}
 #legbar{width:200px;height:12px;border-radius:6px;
   background:linear-gradient(90deg,#2166ac,#67a9cf,#d1e5f0,#f7f7f7,#fddbc7,#ef8a62,#b2182b)}
-.leg-gray{width:14px;height:14px;border-radius:3px;background:#4a5866;display:inline-block;margin-left:14px}
+.leg-gray{width:14px;height:14px;border-radius:3px;background:#e8e8e8;display:inline-block;margin-left:14px}
 #varDesc{background:rgba(255,255,255,.06);border-left:4px solid var(--accent);
   padding:14px 18px;border-radius:0 12px 12px 0;margin-top:16px;font-size:.95rem;color:#dce8f2}
 .leaflet-container{font-family:'Noto Sans KR',sans-serif}
@@ -376,7 +376,7 @@ function styleOf(f){
   const b=(DATA.coef[dv][curVar][s]||[])[yi];
   const ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
   return {weight:.6,color:"#0f2032",fillOpacity:.9,
-          fillColor:(b===undefined)?"#4a5866":(ok?colorOf(b,DATA.vmax[dv][curVar]):"#4a5866")};
+          fillColor:(b===undefined)?"#e8e8e8":(ok?colorOf(b,DATA.vmax[dv][curVar]):"#e8e8e8")};
 }
 function popup(f){
   const s=f.properties.sgg, yi=DATA.years.indexOf(curYear);
