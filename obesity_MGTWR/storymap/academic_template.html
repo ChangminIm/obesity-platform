@@ -35,7 +35,7 @@ h2.sec{font-family:'Noto Serif KR',serif;font-size:1.65rem;font-weight:900;color
 .meta .v{font-weight:700;font-size:.95rem;margin-top:2px}
 
 /* boxes, tables */
-.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px;margin-top:22px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px;margin-top:22px;color:var(--ink)}
 .box h4{font-size:1rem;font-weight:900;color:var(--navy);margin-bottom:12px}
 table{width:100%;border-collapse:collapse;font-size:.88rem}
 th{background:#f0f2f5;color:var(--navy);font-weight:700;padding:9px 10px;text-align:left;border-bottom:2px solid var(--line)}
@@ -578,8 +578,11 @@ function rebuildTables(){
   dm+=`<tr><td>${r[0]}</td><td class='num'>${r[1].toFixed(3)}</td><td class='num'>${fmtP(r[2])}</td>
    <td class='num'>${s[1].toFixed(3)}</td><td class='num'>${fmtP(s[2])}</td></tr>`;});
  document.getElementById('tblDvMoran').innerHTML=dm;
- const grp=v=>{const b=DATA.bwt.ob[v];if(b.tau>100&&b.bw<50)return"시공간 국지(시변)";
-  if(b.tau<1&&b.bw>1000)return"전역(시불변)";if(b.tau<1)return"공간 국지·시불변";return"초국지(절편)";};
+ const grp=v=>{const b=DATA.bwt.ob[v];
+  if(v==='intercept')return"초국지(지역 맥락 흡수)";
+  if(b.tau>100&&b.bw<50)return"시공간 국지(시변)";
+  if(b.tau<1&&b.bw>1000)return"전역(시불변)";
+  if(b.tau<1)return"공간 국지·시불변";return"시공간 국지(시변)";};
  let g="<tr><th>변수</th><th class='num'>bw(ob)</th><th class='num'>τ(ob)</th><th class='num'>bw(ow)</th><th class='num'>τ(ow)</th><th class='num'>ENP_j</th><th class='num'>t_crit</th><th>작동 스케일</th></tr>";
  DATA.vars.forEach(v=>{const a=DATA.bwt.ob[v],b=DATA.bwt.ow[v];
   g+=`<tr><td>${VLAB[v]}</td><td class='num'>${a.bw}</td><td class='num'>${a.tau}</td>

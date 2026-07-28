@@ -13,10 +13,26 @@ ALLV = ["intercept", "welfare_rate", "single_hh", "divorce_rate",
         "log_pop_density", "youth_net_mig", "doctors", "apt_ratio"]
 YEARS = list(range(2015, 2024))
 
-# ---- geometry: dissolve 캐시 → simplify → WGS84 → 좌표 4자리 반올림 ----
+# ---- geometry: dissolve 캐시 → topology 보존 단순화(경계 공유, 틈 없음) → WGS84 ----
 gdf = gpd.read_file(os.path.join(BASE, "data", "sgg229_dissolved.gpkg")).set_index("sgg229")
-gdf["geometry"] = gdf.geometry.simplify(400)
-gdf = gdf.to_crs(4326)
+import topojson as tp
+topo = tp.Topology(gdf.reset_index(), prequantize=1e6, toposimplify=350)
+gdf = topo.to_gdf().set_index("sgg229")
+gdf = gdf.set_crs(5179, allow_override=True).to_crs(4326)
+gdf["geometry"] = gdf.geometry.make_valid()
+
+from shapely.ops import unary_union
+def poly_only(g):
+    if g is None or g.is_empty:
+        return None
+    if g.geom_type in ("Polygon", "MultiPolygon"):
+        return g
+    parts = [p for p in getattr(g, "geoms", []) if p.geom_type in ("Polygon", "MultiPolygon")]
+    return unary_union(parts) if parts else None
+
+gdf["geometry"] = gdf.geometry.apply(poly_only)
+gdf = gdf.dropna(subset=["geometry"])
+assert len(gdf) == 229, f"geometry count {len(gdf)} != 229"
 gj = json.loads(gdf.reset_index().to_json())
 
 def rnd(obj):
