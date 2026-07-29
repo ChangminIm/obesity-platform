@@ -128,7 +128,8 @@ print("total data size(KB):", len(blob) // 1024)
 
 for tpl_name, out_name in (("template.html", "index.html"),
                            ("academic_template.html", "academic.html"),
-                           ("slides_template.html", "slides.html")):
+                           ("slides_template.html", "slides.html"),
+                           ("region_slides_template.html", "region_slides.html")):
     p = os.path.join(SM, tpl_name)
     if not os.path.exists(p):
         continue

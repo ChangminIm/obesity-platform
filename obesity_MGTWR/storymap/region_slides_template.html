@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1차 후보지역 × MGTWR 교차 검토 — 발표 슬라이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root{--navy:#1d3350;--accent:#c14f2e;--bg:#fbfaf7;--ink:#26313d;
+  --muted:#5d6b7a;--line:#e2e6ea;--card:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:clamp(13px, 1.042vw, 27px)}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg);
+  line-height:1.65;word-break:keep-all;overflow-wrap:break-word}
+#deck{display:flex;height:100vh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none}
+#deck::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100vw;height:100vh;scroll-snap-align:start;overflow-y:auto;
+  padding:3.2rem 4.2rem 4.2rem;background:var(--bg)}
+.s-tag{font-size:.78rem;letter-spacing:.2em;color:var(--accent);font-weight:700;margin-bottom:.55rem}
+h2.st{font-family:'Noto Serif KR',serif;font-size:1.9rem;font-weight:900;color:var(--navy);
+  margin-bottom:1rem;padding-left:.8rem;border-left:.32rem solid var(--accent)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:.7rem;padding:1.2rem 1.4rem;
+  margin-top:.9rem;color:var(--ink);box-shadow:0 2px 10px rgba(29,51,80,.05)}
+.box h4{font-size:1.02rem;font-weight:900;color:var(--navy);margin-bottom:.6rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:#eef1f4;color:var(--navy);font-weight:700;padding:.5rem .55rem;text-align:left;border-bottom:2px solid var(--line)}
+td{padding:.42rem .55rem;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.ctr{text-align:center}
+.hl{background:#faeee8;font-weight:700}
+.tbl-note{font-size:.82rem;color:var(--muted);margin-top:.5rem}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+ul.dot{margin:.5rem 0 0 1.2rem;font-size:1.02rem}
+ul.dot li{margin-bottom:.5rem}
+/* 타이틀 */
+#titleSlide{background:linear-gradient(150deg,#fdfcf9 0%,#f6efe8 55%,#f1e2d6 100%);
+  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+#titleSlide .deco{position:absolute;right:-14rem;top:-10rem;width:36rem;height:36rem;border-radius:50%;
+  background:radial-gradient(circle,rgba(193,79,46,.14),transparent 68%)}
+.t-kicker{font-size:.85rem;letter-spacing:.28em;color:var(--accent);font-weight:700}
+.t-rule{width:4.4rem;height:.3rem;background:var(--accent);border-radius:2px;margin:1.1rem 0 1.4rem}
+h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.7rem,4.2vw,2.7rem);font-weight:900;line-height:1.4;
+  color:var(--navy);max-width:56rem}
+.t-sub{color:#7c6a5c;margin-top:1rem;font-size:1.02rem;max-width:52rem}
+.meta-grid{display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap}
+.meta{background:rgba(255,255,255,.75);border:1px solid #e6d9cc;border-radius:.8rem;
+  padding:1rem 1.5rem;min-width:14rem;box-shadow:0 3px 14px rgba(29,51,80,.06)}
+.meta .k{font-size:.75rem;color:#a08a76;letter-spacing:.1em;font-weight:700}
+.meta .v{font-weight:900;font-size:1rem;margin-top:.2rem;color:var(--navy)}
+/* 카드 */
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem}
+.g-card{border-radius:.8rem;padding:1.1rem 1.2rem;color:#fff;font-size:.9rem}
+.gA{background:linear-gradient(150deg,#8d2f1f,#b5502f)}
+.gAp{background:linear-gradient(150deg,#c96a45,#dd9068)}
+.gB{background:linear-gradient(150deg,#1e5f84,#3b8dbd)}
+.gC{background:linear-gradient(150deg,#465666,#6b7d8f)}
+.g-card h4{font-size:1rem;font-weight:900;margin-bottom:.45rem}
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:stretch;margin-top:1.2rem}
+.vs-card{background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+  border-radius:.7rem;padding:1.2rem 1.4rem}
+.vs-card.blue{border-left-color:#1e5f84}
+.vs-mid{display:flex;align-items:center;font-size:1.6rem;font-weight:900;color:var(--accent)}
+/* 지도 */
+.map-slide{background:#f4f2ee}
+#map{height:calc(100vh - 14rem);min-height:22rem;border-radius:.7rem;background:#eceae5;border:1px solid var(--line)}
+.mleg{display:flex;gap:1rem;flex-wrap:wrap;font-size:.85rem;margin:.5rem 0;align-items:center}
+.mleg span{display:inline-flex;align-items:center;gap:.35rem}
+.sw{width:.85rem;height:.85rem;border-radius:.2rem;display:inline-block;border:1px solid #cfcfcf}
+.leaflet-container{font-family:'Noto Sans KR',sans-serif;background:#eceae5}
+.popup-name{font-weight:900}
+/* 결론 */
+#conclSlide{background:linear-gradient(150deg,#fdfcf9,#f2e8de)}
+.concl{font-family:'Noto Serif KR',serif;font-size:1.8rem;font-weight:900;line-height:1.55;color:var(--navy);max-width:54rem;margin:1.2rem 0}
+/* 내비 */
+#progress{position:fixed;top:0;left:0;height:.28rem;background:var(--accent);z-index:1400;transition:width .2s}
+#nav{position:fixed;bottom:1rem;right:1.2rem;z-index:1300;display:flex;gap:.4rem;align-items:center}
+#nav button{background:var(--navy);color:#fff;border:none;border-radius:999px;
+  width:2.4rem;height:2.4rem;font-size:1rem;cursor:pointer;box-shadow:0 3px 12px rgba(29,51,80,.3)}
+#nav button:hover{background:var(--accent)}
+#fsBtn{width:auto!important;padding:0 1rem;font-size:.82rem!important;font-weight:700}
+#pageNum{background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:999px;
+  padding:.4rem .9rem;font-size:.82rem;font-weight:700}
+.hint{position:fixed;bottom:1.15rem;left:1.4rem;color:#a7b1bb;font-size:.75rem;z-index:1300}
+a{color:var(--accent)}
+@media(max-width:1000px){.two-col{grid-template-columns:1fr}.g-grid{grid-template-columns:1fr 1fr}
+ .vs-grid{grid-template-columns:1fr}.vs-mid{justify-content:center}.slide{padding:2.2rem 1.5rem 4.4rem}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="deck">
+
+<!-- 1. 타이틀 -->
+<section class="slide" id="titleSlide">
+  <div class="deco"></div>
+  <div class="t-kicker">REGION SELECTION · CROSS-VALIDATION</div>
+  <div class="t-rule"></div>
+  <h1 class="title">중재프로그램 1차 후보지역 30곳<br>× MGTWR 환경 동인 교차 검토</h1>
+  <p class="t-sub">EHSA가 고른 "부담 지역"에서, 실제로 어떤 환경의 힘이 작동하는가</p>
+  <div class="meta-grid">
+    <div class="meta"><div class="k">대상</div><div class="v">1차 후보지역 30곳 (고비율 16 · 규모 13 · 전략 1)</div></div>
+    <div class="meta"><div class="k">방법</div><div class="v">EHSA 부담 축 × MGTWR 동인 유의성</div></div>
+  </div>
+  <p style="margin-top:2.2rem;font-size:1.05rem;font-weight:700;color:var(--navy)">
+    임창민 <span style="font-weight:400;color:#7c6a5c">(국립공주대학교 지리학과)</span>
+    <span style="font-weight:400;color:#7c6a5c">·</span>
+    이현희 <span style="font-weight:400;color:#7c6a5c">(건국대학교 지리학과)</span></p>
+</section>
+
+<!-- 2. 왜 교차 검토인가 -->
+<section class="slide">
+  <div class="s-tag">01 · WHY</div>
+  <h2 class="st">왜 교차 검토인가 — 두 방법의 역할 분담</h2>
+  <div class="vs-grid">
+    <div class="vs-card">
+      <h4 style="color:var(--accent);font-weight:900;margin-bottom:.5rem">EHSA (발생 핫스팟 분석)</h4>
+      <ul class="dot" style="font-size:.98rem">
+        <li><b>"어디가 부담인가"</b>를 답함</li>
+        <li>비만율·과체중이상율·아동수의 시공간 군집</li>
+        <li>→ 후보지 30곳 선정의 근거</li>
+      </ul>
+    </div>
+    <div class="vs-mid">×</div>
+    <div class="vs-card blue">
+      <h4 style="color:#1e5f84;font-weight:900;margin-bottom:.5rem">MGTWR (다중스케일 시공간 회귀)</h4>
+      <ul class="dot" style="font-size:.98rem">
+        <li><b>"어떤 환경의 힘이 작동하는가"</b>를 답함</li>
+        <li>지역·시기별 유의 동인(수급률·이혼율·청년이동·아파트)</li>
+        <li>→ 중재 가능성과 개입 내용의 근거</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box" style="margin-top:1.4rem">
+    <ul class="dot">
+      <li>부담(EHSA) × 중재 가능성(MGTWR) = <b>우선순위와 개입 설계를 동시에</b></li>
+      <li>동인 판정: ENP 보정 임계 <i>t</i> 기준, 2020–23년 4개년 중 과반 유의 = <b>지속 유의</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3. 핵심 발견 -->
+<section class="slide">
+  <div class="s-tag">02 · KEY FINDING</div>
+  <h2 class="st">선정 축과 환경 동인이 정확히 맞물린다</h2>
+  <div class="box">
+    <table>
+      <tr><th>선정 축</th><th>지속 유의 동인 (MGTWR)</th><th>함의</th></tr>
+      <tr><td><b>고비율 축</b> 16곳<br>(농촌·산간)</td>
+        <td>아파트(−) <b>16곳 전부</b> · 수급률(+) 10곳 · 청년이동(−) 6곳</td>
+        <td>결핍·지역쇠퇴·주거환경이 실제 작동<br>→ <b>환경 중재 여지 큼</b></td></tr>
+      <tr><td><b>규모 축</b> 13곳<br>(수도권·대도시)</td>
+        <td>이혼율(+) <b>13곳 전부, 단일 동인</b></td>
+        <td>가족구조 경로 공통<br>→ <b>표준 프로그램 대규모 적용</b></td></tr>
+      <tr><td><b>전략 거점</b> 원주</td>
+        <td>지속 동인 1개(청년이동−), 2023년 유의 동인 없음</td>
+        <td>통계 근거 약함<br>→ <b>검증·대조 거점으로 명분화</b></td></tr>
+    </table>
+  </div>
+  <ul class="dot" style="margin-top:1rem">
+    <li>독립적인 두 방법이 <b>같은 공간 구도로 수렴</b> → 리스트(안)의 두 축 구성은 타당</li>
+    <li>여기에 "동인 수" 축을 더하면 <b>우선순위</b>가 정해진다 →</li>
+  </ul>
+</section>
+
+<!-- 4. 지도 -->
+<section class="slide map-slide" id="mapSlide">
+  <div class="s-tag">03 · MAP</div>
+  <h2 class="st">후보지 30곳 — 우선순위 그룹 지도</h2>
+  <div class="mleg">
+    <span><span class="sw" style="background:#8d2f1f"></span><b>A</b> 최우선 (동인 3개)</span>
+    <span><span class="sw" style="background:#c96a45"></span><b>A′</b> 우선 (동인 2개)</span>
+    <span><span class="sw" style="background:#1e5f84"></span><b>B</b> 규모 효율 (이혼율 단일)</span>
+    <span><span class="sw" style="background:#6b7d8f"></span><b>C</b> 단일 동인·전략</span>
+    <span><span class="sw" style="background:#e8e8e8"></span>비후보</span>
+    <span style="color:var(--muted)">지역 클릭 → 축·동인 팝업</span>
+  </div>
+  <div id="map"></div>
+</section>
+
+<!-- 5. 우선순위 -->
+<section class="slide">
+  <div class="s-tag">04 · PRIORITY</div>
+  <h2 class="st">우선순위 제안 — 부담 × 동인 수</h2>
+  <div class="g-grid">
+    <div class="g-card gA"><h4>A 최우선 (5곳)</h4>
+      옥천 · 영동 · 영월<br>울진 · 영양<br><br>동인 3개 동시 작동<br><b>복합 취약지</b></div>
+    <div class="g-card gAp"><h4>A′ 우선 (9곳)</h4>
+      강릉 · 정선 · 평창 · 목포 · 무안<br>제주시 · 서귀포 · 아산 · 천안<br><br>동인 2개<br><b>결핍+주거 / 가족+주거</b></div>
+    <div class="g-card gB"><h4>B 규모 효율 (11곳)</h4>
+      수도권 규모 축<br>(화성 603명 · 평택 · 시흥 우선)<br><br>이혼율 단일 동인<br><b>표준 프로그램 대량 적용</b></div>
+    <div class="g-card gC"><h4>C 단일·전략 (5곳)</h4>
+      보령 · 서천 · 청송 · 포항 북구<br>+ 원주(전략)<br><br>아파트(−) 단일 처방<br><b>원주는 검증 거점</b></div>
+  </div>
+  <p class="tbl-note" style="margin-top:.8rem">그룹 규칙: 지속 동인 3개=A · 2개=A′ · 규모 축 1개=B · 그 외=C (엑셀에서 기준 변경 가능)</p>
+</section>
+
+<!-- 6. 개입 방향 -->
+<section class="slide">
+  <div class="s-tag">05 · INTERVENTION</div>
+  <h2 class="st">동인별 개입 방향 — 동인이 곧 처방이다</h2>
+  <div class="box">
+    <table>
+      <tr><th>지속 동인</th><th>해당 후보지</th><th>개입 방향</th></tr>
+      <tr><td><b>수급률(+)</b></td><td>강원 영동권 4 · 전남 2 · 울진·영양 · 제주 2</td>
+        <td>저소득 가정 <b>영양·신체활동 지원</b> (바우처·급식 질) 상시 운영</td></tr>
+      <tr><td><b>이혼율(+)</b></td><td>수도권 13곳 전부 + 충청 북부(아산·천안·옥천·영동)</td>
+        <td><b>한부모·맞벌이 가정</b> 아동 돌봄·생활습관 프로그램</td></tr>
+      <tr><td><b>청년이동(−)</b></td><td>옥천·영동·영월·울진·청송·영양</td>
+        <td><b>지역활력·정주여건</b> 사업과 아동건강 사업 연계</td></tr>
+      <tr><td><b>아파트(−)</b></td><td>고비율 축 전부</td>
+        <td><b>비아파트 주거지</b> 중심 놀이·활동 공간 조성</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 7. 누락 검토 -->
+<section class="slide">
+  <div class="s-tag">06 · GAPS</div>
+  <h2 class="st">누락 검토 — 리스트 밖의 두 지역</h2>
+  <div class="two-col">
+    <div class="box" style="margin-top:0;border-left:.35rem solid var(--accent)">
+      <h4>진도군 (전남)</h4>
+      <ul class="dot" style="font-size:.95rem">
+        <li>2024 비만율 <b>25.4% — 전국 최고 수준</b></li>
+        <li>지속 동인: 수급률(+) · 아파트(−)</li>
+        <li>목포·무안이 군집 대표라면 규칙상 타당하나 <b>개별 검토 가치</b></li>
+      </ul>
+    </div>
+    <div class="box" style="margin-top:0;border-left:.35rem solid var(--accent)">
+      <h4>보은군 (충북)</h4>
+      <ul class="dot" style="font-size:.95rem">
+        <li>전국 유일 <b>동인 4개 전부 지속 유의</b> + 비만율 16.7%</li>
+        <li>수급률+ · 이혼율+ · 청년이동− · 아파트−</li>
+        <li>같은 충북 남부 군집의 옥천과 <b>대표 교체 또는 추가</b> 검토</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box">
+    <h4>기타 (부담 + 동인 2개 이상, 군집 대표성에 따라 판단)</h4>
+    <ul class="dot" style="font-size:.92rem">
+      <li>전남 서남부: 영암 · 신안 · 완도 · 함평 · 장흥 (수급률+ · 아파트−)</li>
+      <li>내륙: 단양 · 봉화 · 태백 (수급률+ · 청년이동−) · 동해 · 예산 · 금산</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 8. 전체 교차표 -->
+<section class="slide">
+  <div class="s-tag">07 · APPENDIX</div>
+  <h2 class="st">30개 후보지 전체 교차표</h2>
+  <div class="box" style="margin-top:.4rem">
+    <table style="font-size:.78rem">
+      <tr><th class="ctr">연번</th><th>권역</th><th>시군구</th><th>선정 축</th>
+        <th class="num">비만율(%)</th><th class="num">과체중+(%)</th><th class="num">아동수</th>
+        <th>지속 유의 동인</th><th class="ctr">그룹</th></tr>
+      <tr><td class='ctr'>1</td><td>충청</td><td>옥천군</td><td>고비율(양지표)</td><td class='num'>14.5  SH</td><td class='num'>25.2  SH</td><td class='num'>23  Cd</td><td>이혼율+, 청년이동−, 아파트−</td><td class='ctr'>A</td></tr>
+      <tr><td class='ctr'>2</td><td>충청</td><td>영동군</td><td>고비율(양지표)</td><td class='num'>23.0  SH</td><td class='num'>29.3  CH</td><td class='num'>29  Cd</td><td>이혼율+, 청년이동−, 아파트−</td><td class='ctr'>A</td></tr>
+      <tr><td class='ctr'>3</td><td>충청</td><td>아산시</td><td>규모</td><td class='num'>10.0  NP</td><td class='num'>18.4  NP</td><td class='num'>241  CH</td><td>이혼율+, 아파트−</td><td class='ctr'>A′</td></tr>
+      <tr><td class='ctr'>4</td><td>충청</td><td>천안시 서북구</td><td>규모</td><td class='num'>9.6  NP</td><td class='num'>17.6  NP</td><td class='num'>228  CH</td><td>이혼율+, 아파트−</td><td class='ctr'>A′</td></tr>
+      <tr><td class='ctr'>5</td><td>충청</td><td>보령시</td><td>고비율(과체중)</td><td class='num'>14.7  NP</td><td class='num'>25.0  SH</td><td class='num'>46  Cd</td><td>아파트−</td><td class='ctr'>C</td></tr>
+      <tr><td class='ctr'>6</td><td>충청</td><td>서천군</td><td>고비율(과체중)</td><td class='num'>19.8  NP</td><td class='num'>30.6  SH</td><td class='num'>22  NP</td><td>아파트−</td><td class='ctr'>C</td></tr>
+      <tr><td class='ctr'>7</td><td>강원</td><td>강릉시</td><td>고비율(양지표)</td><td class='num'>14.3  PH</td><td class='num'>21.6  CH</td><td class='num'>125  NP</td><td>수급률+, 아파트−</td><td class='ctr'>A′</td></tr>
+      <tr><td class='ctr'>8</td><td>강원</td><td>정선군</td><td>고비율(양지표)</td><td class='num'>17.5  PH</td><td class='num'>24.7  PH</td><td class='num'>17  Cd</td><td>수급률+, 아파트−</td><td class='ctr'>A′</td></tr>
+      <tr><td class='ctr'>9</td><td>강원</td><td>평창군</td><td>고비율(비만)</td><td class='num'>13.5  PH</td><td class='num'>23.9  NP</td><td class='num'>13  Cd</td><td>수급률+, 아파트−</td><td class='ctr'>A′</td></tr>
+      <tr><td class='ctr'>10</td><td>강원</td><td>영월군</td><td>고비율(비만)</td><td class='num'>12.6  SH</td><td class='num'>18.9  NP</td><td class='num'>14  Cd</td><td>수급률+, 청년이동−, 아파트−</td><td class='ctr'>A</td></tr>
+      <tr><td class='ctr'>11</td><td>강원</td><td>원주시</td><td>전략(도농복합)</td><td class='num'>10.1  NP</td><td class='num'>18.7  NP</td><td class='num'>177  NP</td><td>청년이동−</td><td class='ctr'>C</td></tr>
+      <tr><td class='ctr'>12</td><td>수도권(서울)</td><td>강서구</td><td>규모</td><td class='num'>7.9  Cd</td><td class='num'>16.0  Cd</td><td class='num'>161  IH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>13</td><td>수도권(서울)</td><td>구로구</td><td>규모</td><td class='num'>7.7  Cd</td><td class='num'>15.2  Cd</td><td class='num'>136  PH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>14</td><td>수도권(서울)</td><td>노원구</td><td>규모</td><td class='num'>8.2  Cd</td><td class='num'>15.4  Cd</td><td class='num'>135  PH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>15</td><td>수도권(경기·인천)</td><td>화성시</td><td>규모</td><td class='num'>8.2  Cd</td><td class='num'>16.1  Cd</td><td class='num'>603  IH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>16</td><td>수도권(경기·인천)</td><td>남양주시</td><td>규모</td><td class='num'>9.8  NP</td><td class='num'>17.6  NP</td><td class='num'>396  CH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>17</td><td>수도권(경기·인천)</td><td>평택시</td><td>규모</td><td class='num'>10.4  NP</td><td class='num'>19.1  NP</td><td class='num'>392  IH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>18</td><td>수도권(경기·인천)</td><td>인천 서구</td><td>규모</td><td class='num'>8.6  NP</td><td class='num'>16.6  NP</td><td class='num'>350  PH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>19</td><td>수도권(경기·인천)</td><td>시흥시</td><td>규모</td><td class='num'>9.6  NP</td><td class='num'>17.7  NP</td><td class='num'>350  IH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>20</td><td>수도권(경기·인천)</td><td>인천 남동구</td><td>규모</td><td class='num'>10.5  NP</td><td class='num'>19.1  NP</td><td class='num'>219  IH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>21</td><td>수도권(경기·인천)</td><td>인천 부평구</td><td>규모</td><td class='num'>9.7  NP</td><td class='num'>18.1  NP</td><td class='num'>212  PH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>22</td><td>수도권(경기·인천)</td><td>부천시 소사구</td><td>규모</td><td class='num'>10.6  NP</td><td class='num'>18.8  NP</td><td class='num'>136  PH</td><td>이혼율+</td><td class='ctr'>B</td></tr>
+      <tr><td class='ctr'>23</td><td>전라</td><td>목포시</td><td>고비율(양지표)</td><td class='num'>14.8  SH</td><td class='num'>23.4  SH</td><td class='num'>142  NP</td><td>수급률+, 아파트−</td><td class='ctr'>A′</td></tr>
+      <tr><td class='ctr'>24</td><td>전라</td><td>무안군</td><td>고비율(양지표)</td><td class='num'>15.3  SH</td><td class='num'>25.1  SH</td><td class='num'>73  NP</td><td>수급률+, 아파트−</td><td class='ctr'>A′</td></tr>
+      <tr><td class='ctr'>25</td><td>경북</td><td>울진군</td><td>고비율(양지표)</td><td class='num'>17.8  SH</td><td class='num'>32.9  SH</td><td class='num'>33  Cd</td><td>수급률+, 청년이동−, 아파트−</td><td class='ctr'>A</td></tr>
+      <tr><td class='ctr'>26</td><td>경북</td><td>청송군</td><td>고비율(양지표)</td><td class='num'>23.5  SH</td><td class='num'>39.2  SH</td><td class='num'>12  Cd</td><td>아파트−</td><td class='ctr'>C</td></tr>
+      <tr><td class='ctr'>27</td><td>경북</td><td>영양군</td><td>고비율(양지표)</td><td class='num'>22.6  SH</td><td class='num'>29.1  SH</td><td class='num'>7  Cd</td><td>수급률+, 청년이동−, 아파트−</td><td class='ctr'>A</td></tr>
+      <tr><td class='ctr'>28</td><td>경북</td><td>포항시 북구</td><td>고비율(양지표)</td><td class='num'>10.2  SH</td><td class='num'>19.0  SH</td><td class='num'>151  NP</td><td>아파트−</td><td class='ctr'>C</td></tr>
+      <tr><td class='ctr'>29</td><td>제주</td><td>제주시</td><td>고비율(양지표)</td><td class='num'>10.7  SH</td><td class='num'>20.0  SH</td><td class='num'>307  NP</td><td>수급률+, 아파트−</td><td class='ctr'>A′</td></tr>
+      <tr><td class='ctr'>30</td><td>제주</td><td>서귀포시</td><td>고비율(양지표)</td><td class='num'>11.5  SH</td><td class='num'>21.8  SH</td><td class='num'>90  NP</td><td>수급률+, 아파트−</td><td class='ctr'>A′</td></tr>
+    </table>
+    <p class="tbl-note">수치·EHSA 약어는 원 리스트(2024년 기준). 동인은 MGTWR 2020–23 지속 유의(비만율 모형).
+      구 단위 후보(천안 서북구·부천 소사구·포항 북구)는 시 단위 계수로 근사.</p>
+  </div>
+</section>
+
+<!-- 9. 결론 -->
+<section class="slide" id="conclSlide">
+  <div class="s-tag">08 · CONCLUSIONS</div>
+  <h2 class="st">결론</h2>
+  <p class="concl">"EHSA가 고른 곳에서 MGTWR의 동인이 실제로 작동한다 —<br>
+    <span style="color:var(--accent)">두 축 선정은 타당하며, 동인이 우선순위와 처방을 정해준다.</span>"</p>
+  <ul class="dot" style="font-size:1.05rem;max-width:54rem">
+    <li>고비율 축 = 결핍·쇠퇴·주거 동인 / 규모 축 = 가족구조 동인 — <b>두 방법의 수렴</b></li>
+    <li>최우선 5곳(옥천·영동·영월·울진·영양) → A′ 9곳 → 규모 11곳 순 투입 제안</li>
+    <li>추가 검토 2곳: <b>진도군</b>(부담 최고) · <b>보은군</b>(동인 최다) / 원주는 검증 거점 프레임</li>
+  </ul>
+  <p style="margin-top:1.6rem;font-size:.95rem;color:var(--muted)">
+    상세: <a href="./slides.html">본 연구 발표 슬라이드</a> · <a href="./academic.html">학술 스토리맵</a> ·
+    보고서(워드)·데이터(엑셀) 별첨</p>
+</section>
+
+</div>
+
+<div id="nav">
+  <button id="fsBtn">⛶ 전체화면</button>
+  <span id="pageNum">1 / 9</span>
+  <button id="prevSlide">←</button>
+  <button id="nextSlide">→</button>
+</div>
+<div class="hint">← → 방향키 · F 전체화면</div>
+
+<script>
+/*__DATA__*/
+const CAND={"33530":{"nm":"옥천군","axis":"고비율(양지표)","grp":"A","drv":"이혼율+, 청년이동−, 아파트−"},"33540":{"nm":"영동군","axis":"고비율(양지표)","grp":"A","drv":"이혼율+, 청년이동−, 아파트−"},"34040":{"nm":"아산시","axis":"규모","grp":"Ap","drv":"이혼율+, 아파트−"},"34010":{"nm":"천안시 서북구","axis":"규모","grp":"Ap","drv":"이혼율+, 아파트−"},"34030":{"nm":"보령시","axis":"고비율(과체중)","grp":"C","drv":"아파트−"},"34540":{"nm":"서천군","axis":"고비율(과체중)","grp":"C","drv":"아파트−"},"32030":{"nm":"강릉시","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"32550":{"nm":"정선군","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"32540":{"nm":"평창군","axis":"고비율(비만)","grp":"Ap","drv":"수급률+, 아파트−"},"32530":{"nm":"영월군","axis":"고비율(비만)","grp":"A","drv":"수급률+, 청년이동−, 아파트−"},"32020":{"nm":"원주시","axis":"전략(도농복합)","grp":"C","drv":"청년이동−"},"11160":{"nm":"강서구","axis":"규모","grp":"B","drv":"이혼율+"},"11170":{"nm":"구로구","axis":"규모","grp":"B","drv":"이혼율+"},"11110":{"nm":"노원구","axis":"규모","grp":"B","drv":"이혼율+"},"31240":{"nm":"화성시","axis":"규모","grp":"B","drv":"이혼율+"},"31130":{"nm":"남양주시","axis":"규모","grp":"B","drv":"이혼율+"},"31070":{"nm":"평택시","axis":"규모","grp":"B","drv":"이혼율+"},"23080":{"nm":"인천 서구","axis":"규모","grp":"B","drv":"이혼율+"},"31150":{"nm":"시흥시","axis":"규모","grp":"B","drv":"이혼율+"},"23050":{"nm":"인천 남동구","axis":"규모","grp":"B","drv":"이혼율+"},"23060":{"nm":"인천 부평구","axis":"규모","grp":"B","drv":"이혼율+"},"31050":{"nm":"부천시 소사구","axis":"규모","grp":"B","drv":"이혼율+"},"36010":{"nm":"목포시","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"36620":{"nm":"무안군","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"37620":{"nm":"울진군","axis":"고비율(양지표)","grp":"A","drv":"수급률+, 청년이동−, 아파트−"},"37530":{"nm":"청송군","axis":"고비율(양지표)","grp":"C","drv":"아파트−"},"37540":{"nm":"영양군","axis":"고비율(양지표)","grp":"A","drv":"수급률+, 청년이동−, 아파트−"},"37010":{"nm":"포항시 북구","axis":"고비율(양지표)","grp":"C","drv":"아파트−"},"39010":{"nm":"제주시","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"39020":{"nm":"서귀포시","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"}};
+const GRPCOLOR={A:'#8d2f1f',Ap:'#c96a45',B:'#1e5f84',C:'#6b7d8f'};
+const GRPLABEL={A:'A 최우선',Ap:'A′ 우선',B:'B 규모 효율',C:'C 단일·전략'};
+
+/* 내비 */
+const deck=document.getElementById('deck');
+const slides=[...document.querySelectorAll('.slide')];
+function curIdx(){return Math.round(deck.scrollLeft/innerWidth);}
+function setProgress(i){document.getElementById('progress').style.width=((i+1)/slides.length*100)+"%";
+ document.getElementById('pageNum').textContent=(i+1)+" / "+slides.length;}
+function go(i){i=Math.max(0,Math.min(slides.length-1,i));
+ deck.scrollTo({left:i*innerWidth,behavior:'auto'});setProgress(i);
+ if(slides[i].id==='mapSlide'&&window._map){setTimeout(()=>window._map.invalidateSize(),60);}}
+document.getElementById('nextSlide').onclick=()=>go(curIdx()+1);
+document.getElementById('prevSlide').onclick=()=>go(curIdx()-1);
+document.getElementById('fsBtn').onclick=()=>{
+ if(document.fullscreenElement){document.exitFullscreen();}else{document.documentElement.requestFullscreen();}};
+document.addEventListener('keydown',e=>{
+ if(e.target.tagName==='INPUT')return;
+ if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(curIdx()+1);}
+ else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(curIdx()-1);}
+ else if(e.key==='Home'){go(0);}
+ else if(e.key==='f'||e.key==='F'){document.getElementById('fsBtn').onclick();}});
+deck.addEventListener('scroll',()=>setProgress(curIdx()),{passive:true});
+addEventListener('resize',()=>go(curIdx()));
+
+/* 지도: 우선순위 그룹 색칠 */
+const map=L.map('map',{scrollWheelZoom:false,attributionControl:false}).setView([36.2,127.9],7);
+window._map=map;
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{opacity:.9}).addTo(map);
+const canvasR=L.canvas({padding:0.4});
+L.geoJSON(DATA.geo,{renderer:canvasR,
+ style:f=>{const c=CAND[f.properties.sgg];
+  return{weight:.7,color:'#ffffff',fillOpacity:.92,
+   fillColor:c?GRPCOLOR[c.grp]:'#e8e8e8'};},
+ onEachFeature:(f,l)=>{const c=CAND[f.properties.sgg];
+  const nm=(DATA.names&&DATA.names[f.properties.sgg])||f.properties.sgg;
+  if(c){l.bindPopup(`<div class="popup-name">${c.nm}</div>${GRPLABEL[c.grp]} · ${c.axis}<br>지속 동인: ${c.drv}`);}
+  else{l.bindPopup(`<div class="popup-name">${nm}</div>비후보 지역`);}
+  l.on('mouseover',()=>l.setStyle({weight:2,color:'#c14f2e'}));
+  l.on('mouseout',()=>l.setStyle({weight:.7,color:'#ffffff'}));}}).addTo(map);
+go(0);
+</script>
+</body>
+</html>
