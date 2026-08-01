@@ -22,10 +22,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg)
 .slide{flex:0 0 100vw;height:100vh;scroll-snap-align:start;overflow-y:auto;
   padding:3rem 4.2rem 4.2rem;background:var(--bg)}
 .s-tag{font-size:.78rem;letter-spacing:.2em;font-weight:700;margin-bottom:.55rem;color:var(--accent)}
-.s-tag.t2{color:var(--blue)}.s-tag.t3{color:var(--plum)}.s-tag.t4{color:var(--green)}
 h2.st{font-family:'Noto Serif KR',serif;font-size:1.85rem;font-weight:900;color:var(--navy);
   margin-bottom:1rem;padding-left:.8rem;border-left:.32rem solid var(--accent)}
-.b2 h2.st{border-left-color:var(--blue)}.b3 h2.st{border-left-color:var(--plum)}.b4 h2.st{border-left-color:var(--green)}
 .lead{color:var(--muted);max-width:58rem;margin-bottom:.8rem;font-size:1rem}
 .box{background:var(--card);border:1px solid var(--line);border-radius:.7rem;padding:1.1rem 1.35rem;
   margin-top:.9rem;color:var(--ink);box-shadow:0 2px 10px rgba(29,51,80,.05)}
@@ -87,38 +85,14 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 .pdiv .pd-items{display:flex;gap:.8rem;margin-top:2rem;flex-wrap:wrap}
 .pdiv .pd-items span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
   border-radius:999px;padding:.4rem 1.1rem;font-size:.9rem;font-weight:700}
-.pd1{background:linear-gradient(150deg,#7e2a1b,#c96a45)}
-.pd2{background:linear-gradient(150deg,#16394f,#3b8dbd)}
-.pd3{background:linear-gradient(150deg,#4e2947,#8d5c83)}
-.pd4{background:linear-gradient(150deg,#00512d,#0a8c52)}
-
-/* ── 개요 카드 ── */
-.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.4rem}
-.ov-card{border-radius:.9rem;padding:1.3rem 1.3rem;color:#fff;min-height:13rem;display:flex;flex-direction:column}
-.ov-card .n{font-size:.8rem;font-weight:700;letter-spacing:.15em;opacity:.8}
-.ov-card h4{font-size:1.15rem;font-weight:900;margin:.5rem 0 .6rem;line-height:1.4}
-.ov-card p{font-size:.88rem;opacity:.92;line-height:1.55}
-.ov1{background:linear-gradient(150deg,#8d2f1f,#c96a45)}
-.ov2{background:linear-gradient(150deg,#1e5f84,#3b8dbd)}
-.ov3{background:linear-gradient(150deg,#5b2f52,#8d5c83)}
-.ov4{background:linear-gradient(150deg,#00512d,#0a8c52)}
+.pd1,.pd2,.pd3,.pd4{background:linear-gradient(150deg,#1d3350 0%,#2c4d74 60%,#3a628f 100%)}
 
 /* ── EHSA ── */
 .pat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem;margin-top:1rem}
 .pat{background:#fff;border:1px solid var(--line);border-radius:.7rem;padding:.85rem .95rem;font-size:.85rem}
 .pat b{display:block;font-size:.95rem;margin-bottom:.25rem}
 .pat .chip{display:inline-block;width:.85rem;height:.85rem;border-radius:.25rem;margin-right:.35rem;vertical-align:-.1rem}
-.ehsa-img{width:100%;max-height:calc(100vh - 17rem);object-fit:contain;background:#fff;
-  border:1px solid var(--line);border-radius:.7rem}
 #ehsaFrame{width:100%;height:calc(100vh - 11.5rem);border:1px solid var(--line);border-radius:.7rem;background:#fff}
-.axis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
-.axis-card{border-radius:.8rem;padding:1.2rem 1.3rem;color:#fff}
-.ax1{background:linear-gradient(150deg,#8d2f1f,#b5502f)}
-.ax2{background:linear-gradient(150deg,#1e5f84,#3b8dbd)}
-.ax3{background:linear-gradient(150deg,#465666,#6b7d8f)}
-.axis-card h4{font-size:1.05rem;font-weight:900;margin-bottom:.5rem}
-.axis-card .big{font-size:2rem;font-weight:900;line-height:1.1}
-.axis-card p{font-size:.88rem;margin-top:.5rem;opacity:.94}
 
 /* ── 스케일 카드(2부) ── */
 .scale-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
@@ -165,7 +139,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 .vs-card{background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
   border-radius:.7rem;padding:1.2rem 1.4rem}
 .vs-card.blue{border-left-color:var(--blue)}
-.vs-mid{display:flex;align-items:center;font-size:1.6rem;font-weight:900;color:var(--plum)}
+.vs-mid{display:flex;align-items:center;font-size:1.6rem;font-weight:900;color:var(--accent)}
 .g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem}
 .g-card{border-radius:.8rem;padding:1.1rem 1.2rem;color:#fff;font-size:.9rem}
 .gA{background:linear-gradient(150deg,#8d2f1f,#b5502f)}
@@ -176,23 +150,23 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 
 /* ── 4부 앱 ── */
 .app-hero{display:flex;align-items:center;gap:1.1rem;margin-top:.6rem}
-.app-hero img{width:4.6rem;height:4.6rem;border-radius:1.1rem;box-shadow:0 8px 20px rgba(0,112,62,.25)}
-.app-hero .nm{font-size:1.6rem;font-weight:900;color:var(--green)}
+.app-hero img{width:4.6rem;height:4.6rem;border-radius:1.1rem;box-shadow:0 8px 20px rgba(29,51,80,.22)}
+.app-hero .nm{font-size:1.6rem;font-weight:900;color:var(--navy)}
 .app-hero .ver{font-size:.85rem;color:var(--muted)}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1rem}
 .shot{text-align:center}
-.shot .frame{display:inline-block;background:#111;border-radius:1.4rem;padding:.45rem;box-shadow:0 10px 26px rgba(0,112,62,.18)}
+.shot .frame{display:inline-block;background:#111;border-radius:1.4rem;padding:.45rem;box-shadow:0 10px 26px rgba(29,51,80,.18)}
 .shot img{display:block;width:100%;max-width:12rem;max-height:calc(100vh - 21rem);object-fit:contain;border-radius:1rem}
 .shot .cap{font-size:.85rem;color:var(--muted);margin-top:.6rem;font-weight:700}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
 .step{background:#fff;border:1px solid var(--line);border-radius:.9rem;padding:1.2rem;text-align:center}
 .step .n{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:50%;
-  background:var(--green);color:#fff;font-weight:900;margin-bottom:.5rem}
+  background:var(--accent);color:#fff;font-weight:900;margin-bottom:.5rem}
 .step .em{font-size:1.9rem;margin-bottom:.4rem}
 .step h4{font-size:1rem;font-weight:900;margin-bottom:.3rem;color:var(--navy)}
 .step p{font-size:.85rem;color:var(--muted)}
-.privacy{background:#eef6f1;border:1px solid #d5e8dd;border-radius:.7rem;padding:.9rem 1.2rem;
-  font-size:.88rem;color:#00512d;margin-top:1rem;display:flex;gap:.6rem;align-items:flex-start}
+.privacy{background:#f2f4f7;border:1px solid #d9e0e6;border-radius:.7rem;padding:.9rem 1.2rem;
+  font-size:.88rem;color:var(--ink);margin-top:1rem;display:flex;gap:.6rem;align-items:flex-start}
 .qr-box{text-align:center}
 .qr-box img{width:9rem;height:9rem;border:1px solid var(--line);border-radius:.8rem;padding:.4rem;background:#fff}
 .qr-box .cap{font-size:.8rem;color:var(--muted);margin-top:.4rem}
@@ -213,8 +187,8 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
   padding:.4rem .9rem;font-size:.82rem;font-weight:700}
 .hint{position:fixed;bottom:1.15rem;left:1.4rem;color:#a7b1bb;font-size:.75rem;z-index:1300}
 @media(max-width:1000px){
-  .two-col,.pat-grid,.axis-grid,.scale-grid,.steps,.shots{grid-template-columns:1fr}
-  .ov-grid,.g-grid{grid-template-columns:1fr 1fr}
+  .two-col,.pat-grid,.scale-grid,.steps,.shots{grid-template-columns:1fr}
+  .g-grid{grid-template-columns:1fr 1fr}
   .vs-grid{grid-template-columns:1fr}.vs-mid{justify-content:center}
   .slide{padding:2.2rem 1.5rem 4.4rem}
   #map,#mapPrio{height:52vh;min-height:18rem}
@@ -232,12 +206,11 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
   <div class="deco"></div><div class="deco2"></div>
   <div class="t-kicker">「소아비만 지역별 건강격차 해소를 위한 중재프로그램 개발 및 실증연구」 제3차 정례 워크숍 · 2026. 8. 1.(토)</div>
   <div class="t-rule"></div>
-  <h1 class="title">어디에서 시작하고,<br>무엇을 바꿀 것인가</h1>
-  <p class="t-sub">발생 핫스팟 분석(EHSA)으로 찾은 우선 지역 × 시공간 회귀(MGTWR)로 확인한 환경 요인,<br>
-    그리고 이동기록 앱 '아이걸음'으로 여는 현장 실증</p>
+  <h1 class="title">영유아 비만의 시공간 분석과<br>중재 후보지역 검토</h1>
+  <p class="t-sub">발생 핫스팟 분석(EHSA) · 다중스케일 시공간 회귀(MGTWR) · 이동기록 앱 '아이걸음' 개발</p>
   <div class="meta-grid">
-    <div class="meta"><div class="k">구성</div><div class="v">1부 EHSA → 2부 MGTWR → 3부 교차 검토 → 4부 아이걸음</div></div>
     <div class="meta"><div class="k">자료</div><div class="v">전국 시군구 영유아 건강검진 2012–2024</div></div>
+    <div class="meta"><div class="k">분야</div><div class="v">지리학 (공간 분석)</div></div>
   </div>
   <p style="margin-top:2rem;font-size:1.05rem;font-weight:700;color:var(--navy)">
     임창민 <span style="font-weight:400;color:#7c6a5c">(국립공주대학교 지리학과)</span>
@@ -245,26 +218,28 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
     이현희 <span style="font-weight:400;color:#7c6a5c">(건국대학교 지리학과)</span></p>
 </section>
 
-<!-- 2. 오늘의 흐름 -->
+<!-- 2. 목차 -->
 <section class="slide">
-  <div class="s-tag">OVERVIEW</div>
-  <h2 class="st">오늘의 흐름 — 네 개의 질문</h2>
-  <div class="ov-grid">
-    <div class="ov-card ov1"><div class="n">1부 · EHSA</div>
-      <h4>어느 지역이<br>꾸준히 높은가?</h4>
-      <p>12년(2012–2024) 비만율·아동수의 시공간 핫스팟 추적 → 중재 후보지 30곳 선정의 근거</p></div>
-    <div class="ov-card ov2"><div class="n">2부 · MGTWR</div>
-      <h4>왜 그 지역이<br>높은가?</h4>
-      <p>어떤 지역환경 요인이, 어느 지역·어느 시기에 작동하는지 시공간 회귀로 식별 (본 연구 발표)</p></div>
-    <div class="ov-card ov3"><div class="n">3부 · 교차 검토</div>
-      <h4>어디부터,<br>무엇을 바꿀까?</h4>
-      <p>두 분석을 포개어 후보지 30곳의 우선순위 결정 + 지역별 프로그램 방향 제안</p></div>
-    <div class="ov-card ov4"><div class="n">4부 · 아이걸음</div>
-      <h4>효과를<br>어떻게 잴까?</h4>
-      <p>중재 전후 아이의 활동 변화를 실측하는 연구용 GPS 앱 개발 — 안드로이드 배포 시작</p></div>
-  </div>
-  <p class="lead" style="margin-top:1.4rem">핵심 메시지: <b style="color:var(--navy)">"문제가 몰린 곳(EHSA)과 바꿀 수 있는 요인(MGTWR)이 서로 맞물린다 —
-    우선순위와 프로그램 내용을 데이터로 정할 수 있고, 효과는 아이걸음으로 잰다."</b></p>
+  <div class="s-tag">CONTENTS</div>
+  <h2 class="st">목차</h2>
+  <ol class="rq" style="font-size:1.2rem;margin-top:1.8rem;max-width:58rem">
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+      border-radius:.6rem;padding:1rem 1.4rem;list-style-position:inside;margin-bottom:1rem">
+      <b>발생 핫스팟 분석(EHSA)과 1차 후보지역 30곳</b><br>
+      <span style="font-size:.92rem;color:var(--muted)">어느 지역이 꾸준히 높은가 — 선정 방법과 결과</span></li>
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+      border-radius:.6rem;padding:1rem 1.4rem;list-style-position:inside;margin-bottom:1rem">
+      <b>지역환경 요인 분석(MGTWR)</b><br>
+      <span style="font-size:.92rem;color:var(--muted)">왜 그 지역이 높은가 — 본 발표</span></li>
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+      border-radius:.6rem;padding:1rem 1.4rem;list-style-position:inside;margin-bottom:1rem">
+      <b>EHSA × MGTWR 교차 검토</b><br>
+      <span style="font-size:.92rem;color:var(--muted)">후보지역 우선순위와 프로그램 방향</span></li>
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+      border-radius:.6rem;padding:1rem 1.4rem;list-style-position:inside">
+      <b>이동기록 앱 '아이걸음' 개발</b><br>
+      <span style="font-size:.92rem;color:var(--muted)">중재 효과 실측 도구 — 개발 내용과 화면</span></li>
+  </ol>
 </section>
 
 <!-- ═══════════ 1부 EHSA ═══════════ -->
@@ -272,117 +247,117 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 <!-- 3. 1부 디바이더 -->
 <section class="slide pdiv pd1">
   <div class="pnum">1부</div>
-  <h2>발생 핫스팟 분석(EHSA)<br>— 어디가, 언제부터, 얼마나 꾸준히 높은가</h2>
-  <p class="pd-sub">한 해 수치가 아니라 12년의 흐름 — 우연히 한 번 높은 곳과 꾸준히 높은 곳을 구분.</p>
-  <div class="pd-items"><span>방법 소개</span><span>전국 비만율 핫스팟</span><span>아동수(규모) 핫스팟</span><span>인터랙티브 지도</span><span>후보지 30곳</span></div>
+  <h2>발생 핫스팟 분석(EHSA)과<br>1차 후보지역 30곳</h2>
+  <p class="pd-sub">한 해 수치가 아니라 13년(2012–2024)의 흐름 — 우연히 한 번 높은 곳과 꾸준히 높은 곳을 구분.</p>
+  <div class="pd-items"><span>발생 핫스팟 분석이란</span><span>인터랙티브 지도</span><span>선정 방법과 결과</span><span>후보지역 30곳 리스트</span></div>
 </section>
 
-<!-- 4. EHSA 방법 -->
+<!-- 4. EHSA란 -->
 <section class="slide">
   <div class="s-tag">1부 · 01 METHOD</div>
-  <h2 class="st">EHSA는 무엇을 보나 — "한 해"가 아니라 "흐름"</h2>
-  <ul class="dot" style="font-size:1.02rem">
-    <li>매년 시군구마다 <b>"주변보다 유의하게 높은가"</b>를 점수화 (시공간 핫스팟 통계 Gi*)</li>
-    <li>그렇게 쌓인 <b>13년(2012–2024)의 점수 흐름</b>을 보고 패턴을 분류 — 꾸준한 곳·심해지는 곳·새로 나타난 곳</li>
-    <li>대상: 전국 <b>252개 시군구</b> × 지표 3종(<b>비만율 · 과체중이상율 · 비만 아동수</b>) × 전국/11개 권역 기준</li>
-    <li>보완: 섬 지역 연결 가중, 다중검정 보정(FDR)으로 <b>우연한 핫스팟을 걸러냄</b> — ArcGIS 표준 방식 준용</li>
+  <h2 class="st">발생 핫스팟 분석(EHSA)이란</h2>
+  <ul class="dot" style="font-size:1.05rem">
+    <li>한 해 지도만 보면 <b>우연히 높은 곳</b>과 <b>꾸준히 높은 곳</b>을 구분할 수 없음</li>
+    <li>EHSA는 매년 시군구마다 <b>"주변보다 유의하게 높은가"</b>를 계산하고,
+      그 <b>13년(2012–2024) 흐름</b>을 보고 패턴을 분류하는 방법</li>
+    <li>자료: 영유아 건강검진 시군구 집계 · 지표 3종 — <b>비만율(%) · 과체중이상율(%) · 비만 아동수(명)</b></li>
   </ul>
   <div class="pat-grid">
-    <div class="pat"><b><span class="chip" style="background:#67001f"></span>지속 Persistent</b>13년 내내 핫스팟 — 가장 뿌리 깊은 곳</div>
-    <div class="pat"><b><span class="chip" style="background:#b2182b"></span>연속 Consecutive</b>최근 몇 년 연속 핫스팟, 끊김 없음</div>
-    <div class="pat"><b><span class="chip" style="background:#d6604d"></span>강화 Intensifying</b>핫스팟 강도가 해마다 세지는 중</div>
-    <div class="pat"><b><span class="chip" style="background:#f4a582"></span>신규 New</b>2024년에 처음 등장</div>
-    <div class="pat"><b><span class="chip" style="background:#fddbc7;border:1px solid #e2b49a"></span>산발 Sporadic</b>켜졌다 꺼졌다 반복 — 그래도 요주의</div>
+    <div class="pat"><b><span class="chip" style="background:#67001f"></span>지속형 PH</b>13년 내내 핫스팟 — 가장 뿌리 깊은 곳</div>
+    <div class="pat"><b><span class="chip" style="background:#b2182b"></span>연속형 CH</b>최근 몇 년 연속 핫스팟, 끊김 없음</div>
+    <div class="pat"><b><span class="chip" style="background:#d6604d"></span>심화형 IH</b>핫스팟 강도가 해마다 세지는 중</div>
+    <div class="pat"><b><span class="chip" style="background:#f4a582"></span>신규형 NH</b>2024년에 처음 등장</div>
+    <div class="pat"><b><span class="chip" style="background:#fddbc7;border:1px solid #e2b49a"></span>산발형 SH</b>켜졌다 꺼졌다 반복 — 그래도 요주의</div>
   </div>
-  <p class="tbl-note">반대 패턴(콜드스팟, 파란 계열)도 같은 방식으로 분류. 발표는 핫스팟 중심.</p>
+  <p class="tbl-note">반대 패턴(콜드스팟 Cd, 파란 계열)과 무패턴(NP)도 같은 방식으로 분류. 발표는 핫스팟 중심.</p>
 </section>
 
-<!-- 5. 전국 비만율 핫스팟 -->
-<section class="slide">
-  <div class="s-tag">1부 · 02 RESULTS</div>
-  <h2 class="st">전국 비만율 핫스팟 42곳 — 다섯 개의 벨트</h2>
-  <div class="two-col">
-    <div>
-      <img class="ehsa-img" src="../../infant_obesity_ehsa/assets/infant_obesity_maps/ehsa_result/region_national_ehsa.png"
-        alt="전국 비만율 EHSA 지도">
-    </div>
-    <div>
-      <div class="box" style="margin-top:0">
-        <table style="font-size:.85rem">
-          <tr><th>벨트</th><th>대표 시군구</th><th>패턴</th></tr>
-          <tr class="hl"><td>강원 영동</td><td>강릉·평창·정선 + 영월·동해·태백·삼척</td><td>전국 유일 <b>'지속'</b> 3곳 포함</td></tr>
-          <tr><td>충북 남부</td><td>옥천·영동 + 금산(충남)</td><td>산발·연속</td></tr>
-          <tr><td>경북 북부·동해안</td><td>울진·영양·청송·봉화·영덕·안동·포항 북구</td><td>산발 다수 — 수치 최상위권<br>(청송 23.5% · 영양 22.6%)</td></tr>
-          <tr><td>전남 서남해안</td><td>진도·신안·완도·영암·무안·목포·해남</td><td><b>진도 '연속' — 2024년 25.4%<br>전국 최고 수준</b></td></tr>
-          <tr><td>전북 내륙</td><td>순창·부안·정읍·임실 + 고창·무주</td><td>'연속' 밀집</td></tr>
-          <tr><td>제주</td><td>제주시·서귀포시</td><td>산발</td></tr>
-        </table>
-      </div>
-      <ul class="dot" style="font-size:.92rem">
-        <li>252곳 중 <b>핫스팟 42곳</b> (지속 3 · 연속 8 · 신규 3 · 산발 28) — 대부분 <b>농촌·산간·어촌</b></li>
-        <li>수도권·대도시는 오히려 <b>콜드스팟</b>(비만율이 꾸준히 낮은 곳)이 많음 — 뚜렷한 도농 격차</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- 6. 규모 핫스팟 -->
-<section class="slide">
-  <div class="s-tag">1부 · 03 RESULTS</div>
-  <h2 class="st">또 하나의 기준 — 비만 "아동수" 핫스팟</h2>
-  <p class="lead">비율이 낮아도 아이가 많으면 비만 아동의 <b>절대 수</b>는 많음 — 규모 기준으로 보면 지도가 뒤집힘.</p>
-  <div class="two-col">
-    <div>
-      <img class="ehsa-img" src="../../infant_obesity_ehsa/assets/infant_obesity_maps/ehsa_result/region_national_count_ehsa.png"
-        alt="전국 비만 아동수 EHSA 지도">
-    </div>
-    <div>
-      <div class="box" style="margin-top:0">
-        <table style="font-size:.85rem">
-          <tr><th>시군구</th><th class="num">비만 아동수(2024)</th><th>패턴</th></tr>
-          <tr class="hl"><td>화성시</td><td class="num">603명</td><td>강화</td></tr>
-          <tr><td>남양주시</td><td class="num">396명</td><td>연속</td></tr>
-          <tr><td>평택시</td><td class="num">392명</td><td>강화</td></tr>
-          <tr><td>인천 서구 · 시흥시</td><td class="num">각 350명</td><td>지속 · 강화</td></tr>
-          <tr><td>파주시 · 광주시 · 김포시</td><td class="num">292 · 268 · 261명</td><td>연속 · 강화</td></tr>
-          <tr><td>아산시 · 천안 서북구</td><td class="num">241 · 228명</td><td>연속</td></tr>
-        </table>
-      </div>
-      <ul class="dot" style="font-size:.92rem">
-        <li>지속·연속·강화 핫스팟 35곳 = <b>수도권 32 + 충남 천안·아산권 3</b></li>
-        <li>비율 벨트(농촌)와 규모 벨트(수도권)는 <b>겹치지 않는다</b> → 중재 지역 선정에 <b>두 축이 모두 필요</b></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- 7. 인터랙티브 지도 -->
+<!-- 5. 인터랙티브 지도 -->
 <section class="slide map-slide" id="ehsaMapSlide">
-  <div class="s-tag">1부 · 04 LIVE MAP</div>
-  <h2 class="st">인터랙티브 지도 — 전국 + 11개 권역, 연도별 재생</h2>
+  <div class="s-tag">1부 · 02 MAP</div>
+  <h2 class="st">분석 결과 지도 — 지난 워크숍에서 시연한 웹지도</h2>
   <iframe id="ehsaFrame" title="영유아 소아비만 EHSA 웹지도"></iframe>
-  <p class="tbl-note">탭: 전국·수도권·서울·충청권·전라권·경상권·강원·제주 등 12개 · 모드: 연도별 핫스팟(Gi*) / EHSA 패턴 · 지표: 비만율·과체중이상율·아동수 · 연도 슬라이더 2012–2024</p>
+  <p class="tbl-note">전국 + 11개 권역 탭 · 연도별 핫스팟 / EHSA 패턴 모드 · 지표 3종 · 연도 슬라이더 2012–2024 — 이 결과를 바탕으로 후보지역을 선정 →</p>
 </section>
 
-<!-- 8. 후보지 30곳 -->
+<!-- 6. 선정 방법과 결과 요약 -->
 <section class="slide">
-  <div class="s-tag">1부 · 05 SELECTION</div>
-  <h2 class="st">EHSA가 고른 중재 후보지 30곳 — 두 축 + 전략 거점</h2>
-  <div class="axis-grid">
-    <div class="axis-card ax1"><h4>고비율 축</h4><div class="big">16곳</div>
-      <p>비만율·과체중이상율 핫스팟 벨트에서 군집 대표 선정<br>
-      강원 영동 4 · 충청 4 · 전남 2 · 경북 4 · 제주 2<br><b>농촌·산간 중심</b></p></div>
-    <div class="axis-card ax2"><h4>규모 축</h4><div class="big">13곳</div>
-      <p>비만 아동수 핫스팟에서 선정<br>
-      서울 3 · 경기·인천 8 · 충남 2<br><b>수도권·대도시 중심</b> (화성 603명 등)</p></div>
-    <div class="axis-card ax3"><h4>전략 거점</h4><div class="big">1곳</div>
-      <p>원주시 — 도농복합 특성을 살린<br>프로그램 검증·비교 거점<br><b>통계보다 전략적 선택</b></p></div>
+  <div class="s-tag">1부 · 03 SELECTION</div>
+  <h2 class="st">선정 방법과 결과 — 1차 후보지역 30곳</h2>
+  <div class="two-col">
+    <div class="box" style="margin-top:0">
+      <h4>선정 규칙</h4>
+      <ul class="dot" style="font-size:.92rem">
+        <li><b>① 고비율 축</b> — 비만율 또는 과체중이상율이 핫스팟인 시군구를 군집 강도 순으로 (비만 아동 20명 이상 우선)</li>
+        <li><b>② 규모 축</b> — 비만 아동수가 핫스팟인 시군구를 13개년 평균 군집 강도 순으로</li>
+        <li><b>③ 권역 대표성</b> — 인접 핫스팟은 하나의 군집 → 군집별 대표 지역만 선정(중복 배제)</li>
+        <li><b>④ 전략 거점</b> — 도농복합 거점 1곳(원주)을 통계 축과 별도로 포함</li>
+      </ul>
+    </div>
+    <div class="box" style="margin-top:0">
+      <h4>결과 요약</h4>
+      <ul class="dot" style="font-size:.92rem">
+        <li>구성: <b>고비율 축 16 · 규모 축 13 · 전략 거점 1 = 총 30개</b></li>
+        <li>권역 분포: 수도권 11 · 충청 6 · 강원 5 · 경북 4 · 전라 2 · 제주 2</li>
+        <li><b>두 축의 공간 대비</b> — 고비율 축은 농촌·산간(강원 산간, 충북 남부, 충남 서해안, 경북 북부·동해안, 전남 서남부, 제주),
+          규모 축은 수도권·대도시(인천, 부천, 경기 서남부, 서울 서남·동북)</li>
+        <li>비율 높은 곳과 아동 많은 곳이 <b>분리</b>되어 있어 두 축을 함께 반영</li>
+      </ul>
+    </div>
   </div>
-  <div class="box" style="margin-top:1.3rem">
-    <ul class="dot">
-      <li>"꾸준히 높은 곳"(비율)과 "아이가 많은 곳"(규모)을 <b>함께 담은 리스트</b> — 형평과 효율의 균형</li>
-      <li>그런데 이 30곳이 <b>정말 맞는 선택일까?</b> → 독립적인 두 번째 분석(MGTWR)으로 검증 — <b>2·3부</b></li>
+  <div class="box">
+    <h4>특기 지역</h4>
+    <ul class="dot" style="font-size:.92rem">
+      <li><b>보령·서천(충남 서해안)</b> — 비만율은 무패턴이나 과체중이상율이 핫스팟인 <b>조기 신호 지역</b></li>
+      <li><b>제주시</b> — 고비율(두 비율 지표 모두 핫스팟)과 규모(아동 307명)를 겸비</li>
+      <li><b>포항 북구</b> — 드문 <b>도시형 고비율 핫스팟</b>(아동 151명)</li>
+      <li><b>원주</b> — 통계적 군집은 아니나 강원 최대 도농복합 거점, 도심·농촌 공존으로 건강격차를 압축 검증 가능</li>
     </ul>
+  </div>
+</section>
+
+<!-- 7. 후보지역 30곳 리스트 -->
+<section class="slide">
+  <div class="s-tag">1부 · 04 LIST</div>
+  <h2 class="st">1차 후보지역 리스트 (30개)</h2>
+  <div class="box" style="margin-top:.4rem">
+    <table style="font-size:.76rem">
+      <tr><th class="ctr">연번</th><th>권역</th><th>시군구</th><th>선정 축</th>
+        <th class="num">비만율(%)</th><th class="num">과체중이상율(%)</th><th class="num">비만 아동수(명)</th></tr>
+      <tr><td class='ctr'>1</td><td>충청</td><td>옥천군</td><td>고비율(양지표)</td><td class='num'>14.5  SH</td><td class='num'>25.2  SH</td><td class='num'>23  Cd</td></tr>
+      <tr><td class='ctr'>2</td><td>충청</td><td>영동군</td><td>고비율(양지표)</td><td class='num'>23.0  SH</td><td class='num'>29.3  CH</td><td class='num'>29  Cd</td></tr>
+      <tr><td class='ctr'>3</td><td>충청</td><td>아산시</td><td>규모</td><td class='num'>10.0  NP</td><td class='num'>18.4  NP</td><td class='num'>241  CH</td></tr>
+      <tr><td class='ctr'>4</td><td>충청</td><td>천안시 서북구</td><td>규모</td><td class='num'>9.6  NP</td><td class='num'>17.6  NP</td><td class='num'>228  CH</td></tr>
+      <tr><td class='ctr'>5</td><td>충청</td><td>보령시</td><td>고비율(과체중)</td><td class='num'>14.7  NP</td><td class='num'>25.0  SH</td><td class='num'>46  Cd</td></tr>
+      <tr><td class='ctr'>6</td><td>충청</td><td>서천군</td><td>고비율(과체중)</td><td class='num'>19.8  NP</td><td class='num'>30.6  SH</td><td class='num'>22  NP</td></tr>
+      <tr><td class='ctr'>7</td><td>강원</td><td>강릉시</td><td>고비율(양지표)</td><td class='num'>14.3  PH</td><td class='num'>21.6  CH</td><td class='num'>125  NP</td></tr>
+      <tr><td class='ctr'>8</td><td>강원</td><td>정선군</td><td>고비율(양지표)</td><td class='num'>17.5  PH</td><td class='num'>24.7  PH</td><td class='num'>17  Cd</td></tr>
+      <tr><td class='ctr'>9</td><td>강원</td><td>평창군</td><td>고비율(비만)</td><td class='num'>13.5  PH</td><td class='num'>23.9  NP</td><td class='num'>13  Cd</td></tr>
+      <tr><td class='ctr'>10</td><td>강원</td><td>영월군</td><td>고비율(비만)</td><td class='num'>12.6  SH</td><td class='num'>18.9  NP</td><td class='num'>14  Cd</td></tr>
+      <tr><td class='ctr'>11</td><td>강원</td><td>원주시</td><td>전략(도농복합)</td><td class='num'>10.1  NP</td><td class='num'>18.7  NP</td><td class='num'>177  NP</td></tr>
+      <tr><td class='ctr'>12</td><td>수도권(서울)</td><td>강서구</td><td>규모</td><td class='num'>7.9  Cd</td><td class='num'>16.0  Cd</td><td class='num'>161  IH</td></tr>
+      <tr><td class='ctr'>13</td><td>수도권(서울)</td><td>구로구</td><td>규모</td><td class='num'>7.7  Cd</td><td class='num'>15.2  Cd</td><td class='num'>136  PH</td></tr>
+      <tr><td class='ctr'>14</td><td>수도권(서울)</td><td>노원구</td><td>규모</td><td class='num'>8.2  Cd</td><td class='num'>15.4  Cd</td><td class='num'>135  PH</td></tr>
+      <tr><td class='ctr'>15</td><td>수도권(경기·인천)</td><td>화성시</td><td>규모</td><td class='num'>8.2  Cd</td><td class='num'>16.1  Cd</td><td class='num'>603  IH</td></tr>
+      <tr><td class='ctr'>16</td><td>수도권(경기·인천)</td><td>남양주시</td><td>규모</td><td class='num'>9.8  NP</td><td class='num'>17.6  NP</td><td class='num'>396  CH</td></tr>
+      <tr><td class='ctr'>17</td><td>수도권(경기·인천)</td><td>평택시</td><td>규모</td><td class='num'>10.4  NP</td><td class='num'>19.1  NP</td><td class='num'>392  IH</td></tr>
+      <tr><td class='ctr'>18</td><td>수도권(경기·인천)</td><td>인천 서구</td><td>규모</td><td class='num'>8.6  NP</td><td class='num'>16.6  NP</td><td class='num'>350  PH</td></tr>
+      <tr><td class='ctr'>19</td><td>수도권(경기·인천)</td><td>시흥시</td><td>규모</td><td class='num'>9.6  NP</td><td class='num'>17.7  NP</td><td class='num'>350  IH</td></tr>
+      <tr><td class='ctr'>20</td><td>수도권(경기·인천)</td><td>인천 남동구</td><td>규모</td><td class='num'>10.5  NP</td><td class='num'>19.1  NP</td><td class='num'>219  IH</td></tr>
+      <tr><td class='ctr'>21</td><td>수도권(경기·인천)</td><td>인천 부평구</td><td>규모</td><td class='num'>9.7  NP</td><td class='num'>18.1  NP</td><td class='num'>212  PH</td></tr>
+      <tr><td class='ctr'>22</td><td>수도권(경기·인천)</td><td>부천시 소사구</td><td>규모</td><td class='num'>10.6  NP</td><td class='num'>18.8  NP</td><td class='num'>136  PH</td></tr>
+      <tr><td class='ctr'>23</td><td>전라</td><td>목포시</td><td>고비율(양지표)</td><td class='num'>14.8  SH</td><td class='num'>23.4  SH</td><td class='num'>142  NP</td></tr>
+      <tr><td class='ctr'>24</td><td>전라</td><td>무안군</td><td>고비율(양지표)</td><td class='num'>15.3  SH</td><td class='num'>25.1  SH</td><td class='num'>73  NP</td></tr>
+      <tr><td class='ctr'>25</td><td>경북</td><td>울진군</td><td>고비율(양지표)</td><td class='num'>17.8  SH</td><td class='num'>32.9  SH</td><td class='num'>33  Cd</td></tr>
+      <tr><td class='ctr'>26</td><td>경북</td><td>청송군</td><td>고비율(양지표)</td><td class='num'>23.5  SH</td><td class='num'>39.2  SH</td><td class='num'>12  Cd</td></tr>
+      <tr><td class='ctr'>27</td><td>경북</td><td>영양군</td><td>고비율(양지표)</td><td class='num'>22.6  SH</td><td class='num'>29.1  SH</td><td class='num'>7  Cd</td></tr>
+      <tr><td class='ctr'>28</td><td>경북</td><td>포항시 북구</td><td>고비율(양지표)</td><td class='num'>10.2  SH</td><td class='num'>19.0  SH</td><td class='num'>151  NP</td></tr>
+      <tr><td class='ctr'>29</td><td>제주</td><td>제주시</td><td>고비율(양지표)</td><td class='num'>10.7  SH</td><td class='num'>20.0  SH</td><td class='num'>307  NP</td></tr>
+      <tr><td class='ctr'>30</td><td>제주</td><td>서귀포시</td><td>고비율(양지표)</td><td class='num'>11.5  SH</td><td class='num'>21.8  SH</td><td class='num'>90  NP</td></tr>
+    </table>
+    <p class="tbl-note">셀 표기 = 2024년 값 + EHSA 패턴 약어 (PH 지속형 · IH 심화형 · CH 연속형 · SH 산발형 / NP 무패턴 / Cd 콜드스팟).
+      선정 축: 고비율(양지표) = 두 비율 지표 모두 핫스팟 · 고비율(과체중/비만) = 해당 지표만 핫스팟 · 규모 = 아동수 핫스팟.
+      군집 강도(z)는 첨부 엑셀 수록.</p>
   </div>
 </section>
 
@@ -676,11 +651,11 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 </section>
 
 <!-- 22. 2부 결론 -->
-<section class="slide b2" style="background:linear-gradient(150deg,#fdfcf9,#e9eff5)">
+<section class="slide b2" style="background:linear-gradient(150deg,#fdfcf9,#f2e8de)">
   <div class="s-tag t2">2부 · 13 CONCLUSIONS</div>
   <h2 class="st">2부 결론</h2>
   <p class="concl">"소아비만 대책은 전국 일률이 아니라,<br>
-    <span style="color:var(--blue)">어느 지역에서 · 어느 시기에 · 어떤 힘이</span><br>작동하는지에 맞춰야 한다."</p>
+    <span style="color:var(--accent)">어느 지역에서 · 어느 시기에 · 어떤 힘이</span><br>작동하는지에 맞춰야 한다."</p>
   <ul class="dot" style="font-size:1.08rem;max-width:52rem">
     <li>지역환경 효과는 <b>시공간적으로 이질적</b> (설명력 36% → 75%)</li>
     <li><b>변수의 스케일 = 정책의 스케일</b>: 결핍·가족·활력·주거는 시군구 맞춤, 의료·가구구조는 전국 단위</li>
@@ -774,7 +749,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 <section class="slide b3">
   <div class="s-tag t3">3부 · 04 PRIORITY</div>
   <h2 class="st">우선순위 제안 — 그룹을 가르는 기준은 "겹치는 요인 수" 하나</h2>
-  <div class="box" style="margin:0 0 1rem;background:#f7f0f5;border-color:#e3d0dd">
+  <div class="box" style="margin:0 0 1rem;background:#faf3ec;border-color:#ecd9c8">
     <table style="font-size:.92rem">
       <tr><th class="ctr">동시에 작용하는 꾸준한 요인</th><th class="ctr">3개</th><th class="ctr">2개</th><th class="ctr">1개 (규모 축 공통)</th><th class="ctr">1개 (그 외)</th></tr>
       <tr><td class="ctr"><b>그룹</b></td><td class="ctr hl"><b>A</b> 최우선</td><td class="ctr"><b>A′</b> 우선</td><td class="ctr"><b>B</b> 규모 효율</td><td class="ctr"><b>C</b> 단일·전략</td></tr>
@@ -835,10 +810,10 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
       </ul>
     </div>
   </div>
-  <div class="box" style="background:#f7f0f5;border-color:#e3d0dd">
+  <div class="box" style="background:#faf3ec;border-color:#ecd9c8">
     <p style="font-family:'Noto Serif KR',serif;font-size:1.25rem;font-weight:900;color:var(--navy);line-height:1.6">
       "EHSA가 고른 곳에서 MGTWR의 요인이 실제로 작용한다 —<br>
-      <span style="color:var(--plum)">두 축 선정은 타당하고, 요인이 우선순위와 프로그램 내용을 정해 준다.</span>"</p>
+      <span style="color:var(--accent)">두 축 선정은 타당하고, 요인이 우선순위와 프로그램 내용을 정해 준다.</span>"</p>
   </div>
 </section>
 
@@ -958,23 +933,31 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
   </div>
 </section>
 
-<!-- 26. 마무리 -->
-<section class="slide" id="conclSlide">
-  <div class="s-tag">CLOSING</div>
-  <h2 class="st">오늘 드리는 제안</h2>
-  <p class="concl">"어디에서 — <span style="color:var(--accent)">EHSA가 고른 30곳</span>,
-    무엇을 — <span style="color:var(--blue)">지역별 요인에 맞춘 프로그램</span>,<br>
-    어떻게 확인하나 — <span style="color:var(--green)">아이걸음으로 실측</span>."</p>
-  <ul class="dot" style="font-size:1.05rem;max-width:56rem">
-    <li><b>후보지 30곳의 두 축(고비율·규모) 구성은 타당</b> — 독립적인 두 분석이 같은 결론으로 수렴</li>
-    <li>투입 순서 제안: <b>A 최우선 5곳</b>(옥천·영동·영월·울진·영양) → A′ 9곳 → 규모 축 11곳</li>
-    <li>추가 검토 2곳: <b>진도</b>(비만율 전국 최고 수준) · <b>보은</b>(요인 4개 모두 유의) / 원주는 검증 거점</li>
-    <li>프로그램 내용은 <b>지역별 꾸준한 요인</b>에 맞춰 설계 — 저소득 지원 · 가족 돌봄 · 활동 공간</li>
-    <li><b>아이걸음으로 중재 전후 활동 변화 실측</b> — 실증 데이터 수집 시작</li>
-  </ul>
-  <p style="margin-top:1.6rem;font-size:.92rem;color:var(--muted)">
-    더 보기: <a href="./slides.html">MGTWR 연구 발표</a> · <a href="./region_slides.html">교차 검토 상세</a> ·
-    <a href="./academic.html">학술 스토리맵</a> · <a href="../../infant_obesity_ehsa/index.html">EHSA 인터랙티브 지도</a></p>
+<!-- 결과 종합 -->
+<section class="slide">
+  <div class="s-tag">SUMMARY</div>
+  <h2 class="st">결과 종합</h2>
+  <ol class="rq" style="font-size:1.08rem;margin-top:1.4rem;max-width:58rem">
+    <li style="margin-bottom:1rem"><b>EHSA — 1차 후보지역 30곳</b> (고비율 축 16 · 규모 축 13 · 전략 거점 1)<br>
+      <span style="font-size:.92rem;color:var(--muted)">고비율 축은 농촌·산간, 규모 축은 수도권·대도시에 형성 — 두 축이 공간적으로 분리</span></li>
+    <li style="margin-bottom:1rem"><b>MGTWR — 지역환경 효과는 시공간적으로 이질적</b> (설명력 36% → 75%)<br>
+      <span style="font-size:.92rem;color:var(--muted)">위험: 수급률(+)·조이혼율(+) / 보호: 아파트(−)·청년 유입(−)·의사수(−) · 코로나 이후 효과 강화 유지</span></li>
+    <li style="margin-bottom:1rem"><b>교차 검토 — 선정 축과 환경 요인이 맞물림</b><br>
+      <span style="font-size:.92rem;color:var(--muted)">고비율 축=결핍·쇠퇴·주거 요인, 규모 축=가족구조 요인 · 겹치는 요인 수 기준 A 5 · A′ 9 · B 11 · C 5 ·
+      추가 검토 진도·보은</span></li>
+    <li><b>아이걸음 — 중재 전후 활동 실측 도구 개발 완료</b><br>
+      <span style="font-size:.92rem;color:var(--muted)">안드로이드 v1.1.2 배포 중 · iOS TestFlight 준비 · 3초 간격 GPS, 기기 내 저장, GPX·KML·ZIP 전송</span></li>
+  </ol>
+</section>
+
+<!-- Q&A -->
+<section class="slide" id="conclSlide" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+  <p style="font-family:'Noto Serif KR',serif;font-size:3.2rem;font-weight:900;color:var(--navy)">Q &amp; A</p>
+  <p style="font-size:1.2rem;color:var(--muted);margin-top:1rem">감사합니다</p>
+  <p style="margin-top:2.4rem;font-size:.88rem;color:var(--muted)">
+    임창민 (국립공주대학교 지리학과) · 이현희 (건국대학교 지리학과)<br><br>
+    자료: <a href="./slides.html">MGTWR 발표</a> · <a href="./region_slides.html">교차 검토 상세</a> ·
+    <a href="./academic.html">학술 스토리맵</a> · <a href="../../infant_obesity_ehsa/index.html">EHSA 지도</a></p>
 </section>
 
 </div>
