@@ -255,13 +255,22 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 <!-- 4. EHSA란 -->
 <section class="slide">
   <div class="s-tag">1부 · 01 METHOD</div>
-  <h2 class="st">발생 핫스팟 분석(EHSA)이란</h2>
-  <ul class="dot" style="font-size:1.05rem">
+  <h2 class="st">발생 핫스팟 분석(Emerging Hotspot Analysis, EHSA)이란</h2>
+  <ul class="dot" style="font-size:1.02rem">
     <li>한 해 지도만 보면 <b>우연히 높은 곳</b>과 <b>꾸준히 높은 곳</b>을 구분할 수 없음</li>
-    <li>EHSA는 매년 시군구마다 <b>"주변보다 유의하게 높은가"</b>를 계산하고,
-      그 <b>13년(2012–2024) 흐름</b>을 보고 패턴을 분류하는 방법</li>
+    <li>EHSA는 매년 시군구마다 <b>"주변보다 유의하게 높은가"</b>(Getis-Ord G<i><sub>i</sub></i>*)를 계산하고,
+      그 <b>13년(2012–2024) 흐름</b>을 추세 검정(Mann-Kendall)과 결합해 패턴을 분류하는 방법</li>
     <li>자료: 영유아 건강검진 시군구 집계 · 지표 3종 — <b>비만율(%) · 과체중이상율(%) · 비만 아동수(명)</b></li>
   </ul>
+  <div class="eq" style="font-size:1.2rem" title="기호를 클릭하면 뜻이 나옵니다">
+    <span class="sym" data-tip="시군구 i의 핫스팟 통계량(z-점수) — 양(+)으로 크면 핫스팟, 음(−)으로 크면 콜드스팟"><i>G</i><sub><i>i</i></sub>*</span> =
+    ( <span class="sym" data-tip="이웃 시군구 j의 지표 값(비만율 등)을 가중 합산한 '주변 수준'">Σ<sub><i>j</i></sub> <i>w</i><sub><i>ij</i></sub> <i>x</i><sub><i>j</i></sub></span> −
+    <span class="sym" data-tip="전국 평균 X̄ × 이웃 가중 합 — 우연이라면 기대되는 수준"><i>X̄</i> Σ<sub><i>j</i></sub> <i>w</i><sub><i>ij</i></sub></span> ) /
+    <span class="sym" data-tip="전국 표준편차 S 기반 정규화 항 — 우연 변동 대비 얼마나 큰 차이인지로 환산"><i>S</i>·√[(<i>n</i>Σ<sub><i>j</i></sub><i>w</i>²<sub><i>ij</i></sub> − (Σ<sub><i>j</i></sub><i>w</i><sub><i>ij</i></sub>)²)/(<i>n</i>−1)]</span>
+    <span style="font-size:.75rem;color:var(--accent);margin-left:.8rem;font-family:'Noto Sans KR',sans-serif">기호 클릭: 뜻 팝업</span>
+  </div>
+  <p class="tbl-note" style="margin-top:-.3rem"><i>w</i><sub><i>ij</i></sub> = 이웃이면 1, 아니면 0 · <i>n</i> = 시군구 수.
+    매년 산출한 G<i><sub>i</sub></i>* z-점수 13년 치의 추세·지속성으로 아래 패턴을 판정 (ArcGIS Emerging Hot Spot Analysis 방식).</p>
   <div class="pat-grid">
     <div class="pat"><b><span class="chip" style="background:#67001f"></span>지속형 PH</b>13년 내내 핫스팟 — 가장 뿌리 깊은 곳</div>
     <div class="pat"><b><span class="chip" style="background:#b2182b"></span>연속형 CH</b>최근 몇 년 연속 핫스팟, 끊김 없음</div>
@@ -433,7 +442,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
           <a href="https://doi.org/10.1186/1476-072X-3-3" target="_blank">Guagliardo (2004)</a> ·
           <a href="https://doi.org/10.1111/j.1468-0009.2005.00409.x" target="_blank">Starfield et al. (2005)</a></td></tr>
     </table>
-    <p class="tbl-note">문헌을 클릭하면 원문(DOI)으로 이동. 전체 서지는 학술판 참고문헌 참조.</p>
+    <p class="tbl-note">문헌을 클릭하면 원문(DOI)으로 이동.</p>
   </div>
 </section>
 
@@ -661,8 +670,6 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
     <li><b>변수의 스케일 = 정책의 스케일</b>: 결핍·가족·활력·주거는 시군구 맞춤, 의료·가구구조는 전국 단위</li>
     <li>코로나가 키운 격차는 <b>아직 닫히지 않았다</b> — 표적 개입의 근거 강화</li>
   </ul>
-  <p class="lead" style="margin-top:1.6rem">상세: <a href="./academic.html">학술 스토리맵</a> ·
-    <a href="./index.html">대중 스토리맵</a></p>
 </section>
 
 <!-- ═══════════ 3부 교차 ═══════════ -->
@@ -726,28 +733,13 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
   </div>
   <ul class="dot" style="margin-top:1rem">
     <li>서로 독립적인 두 분석이 <b>같은 공간 구도로 수렴</b> → 후보지의 두 축 구성은 타당</li>
-    <li>여기에 <b>"요인이 몇 개나 겹치는가"</b>를 더하면 우선순위가 나온다 →</li>
+    <li>여기에 <b>"요인이 몇 개나 겹치는가"</b>를 더하면 우선순위 그룹(A·A′·B·C)이 나온다 — 다음 슬라이드</li>
   </ul>
 </section>
 
-<!-- 18. 우선순위 지도 -->
-<section class="slide map-slide b3" id="prioMapSlide">
-  <div class="s-tag t3">3부 · 03 MAP</div>
-  <h2 class="st">후보지 30곳 — 우선순위 그룹 지도</h2>
-  <div class="mleg">
-    <span><span class="sw" style="background:#8d2f1f"></span><b>A</b> 최우선 (요인 3개)</span>
-    <span><span class="sw" style="background:#c96a45"></span><b>A′</b> 우선 (요인 2개)</span>
-    <span><span class="sw" style="background:#1e5f84"></span><b>B</b> 규모 효율 (이혼율 하나)</span>
-    <span><span class="sw" style="background:#6b7d8f"></span><b>C</b> 요인 하나·전략</span>
-    <span><span class="sw" style="background:#e8e8e8"></span>비후보</span>
-    <span style="color:var(--muted)">지역 클릭 → 축·요인 팝업</span>
-  </div>
-  <div id="mapPrio"></div>
-</section>
-
-<!-- 19. 우선순위 그룹 -->
+<!-- 18. 우선순위 그룹 -->
 <section class="slide b3">
-  <div class="s-tag t3">3부 · 04 PRIORITY</div>
+  <div class="s-tag t3">3부 · 03 PRIORITY</div>
   <h2 class="st">우선순위 제안 — 그룹을 가르는 기준은 "겹치는 요인 수" 하나</h2>
   <div class="box" style="margin:0 0 1rem;background:#faf3ec;border-color:#ecd9c8">
     <table style="font-size:.92rem">
@@ -766,6 +758,21 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
       보령 · 서천 · 청송 · 포항 북구<br>+ 원주(전략)<br><br>아파트(−) 단일 처방<br><b>원주는 검증 거점</b></div>
   </div>
   <p class="tbl-note" style="margin-top:.8rem">A와 A′의 차이 = 겹치는 요인이 3개냐 2개냐. 요인이 많이 겹칠수록 복합 취약 → 순위 상향. 기준은 협의로 조정 가능(별첨 엑셀).</p>
+</section>
+
+<!-- 19. 우선순위 지도 -->
+<section class="slide map-slide b3" id="prioMapSlide">
+  <div class="s-tag t3">3부 · 04 MAP</div>
+  <h2 class="st">후보지 30곳 — 우선순위 그룹 지도</h2>
+  <div class="mleg">
+    <span><span class="sw" style="background:#8d2f1f"></span><b>A</b> 최우선 (요인 3개)</span>
+    <span><span class="sw" style="background:#c96a45"></span><b>A′</b> 우선 (요인 2개)</span>
+    <span><span class="sw" style="background:#1e5f84"></span><b>B</b> 규모 효율 (이혼율 하나)</span>
+    <span><span class="sw" style="background:#6b7d8f"></span><b>C</b> 요인 하나·전략</span>
+    <span><span class="sw" style="background:#e8e8e8"></span>비후보</span>
+    <span style="color:var(--muted)">지역 클릭 → 축·요인 팝업</span>
+  </div>
+  <div id="mapPrio"></div>
 </section>
 
 <!-- 20. 요인별 개입 방향 -->
@@ -788,32 +795,38 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
   <p class="lead" style="margin-top:.8rem">같은 "비만율 높은 지역"이라도 작용하는 요인이 다르면 <b style="color:var(--navy)">프로그램의 내용이 달라져야 함.</b></p>
 </section>
 
-<!-- 21. 추가 검토 + 소결 -->
+<!-- 21. 실행 가능성 -->
 <section class="slide b3">
-  <div class="s-tag t3">3부 · 06 GAPS &amp; WRAP-UP</div>
-  <h2 class="st">추가 검토 두 곳, 그리고 3부의 결론</h2>
+  <div class="s-tag t3">3부 · 06 FEASIBILITY</div>
+  <h2 class="st">통계 밖의 세 번째 축 — 실행 가능성</h2>
+  <ul class="dot" style="font-size:1.02rem">
+    <li>통계가 정한 우선순위 ≠ 곧바로 시행 순서 — 중재 프로그램은 <b>지역이 받아 줘야 시작됨</b></li>
+    <li>실행 요건: <b>지자체·교육청·어린이집·보건소 협력 체계 · 참여 아동 모집 여건 · 연구진 접근성</b> — 통계만큼 결정적</li>
+  </ul>
   <div class="two-col">
-    <div class="box" style="margin-top:0;border-left:.35rem solid var(--accent)">
-      <h4>진도군 (전남)</h4>
+    <div class="box" style="margin-top:.6rem;border-left:.35rem solid var(--accent)">
+      <h4>실행 여건이 뒷받침되는 후보지</h4>
       <ul class="dot" style="font-size:.92rem">
-        <li>2024년 비만율 <b>25.4% — 전국 최고 수준</b>, EHSA '연속' 핫스팟</li>
-        <li>꾸준한 요인: 수급률(+) · 아파트(−)</li>
-        <li>목포·무안이 군집 대표라면 규칙상 빠질 수 있으나 <b>개별 검토 가치</b></li>
+        <li><b>아산·천안(규모 축)</b> — 비만 아동 규모 상위(241·228명)이면서 <b>연구진 거점 인접</b>
+          → 지역 컨택·상시 방문 관리가 용이한 <b>시범 적용 1순위 여건</b></li>
+        <li><b>원주(전략 거점)</b> — 강원 최대 도농복합 도시. 한 도시 안에서 <b>도심·농촌 비교</b>가 가능하고
+          협력 기반 확보 시 <b>검증·대조 거점</b>으로 최적</li>
       </ul>
     </div>
-    <div class="box" style="margin-top:0;border-left:.35rem solid var(--accent)">
-      <h4>보은군 (충북)</h4>
+    <div class="box" style="margin-top:.6rem;border-left:.35rem solid var(--accent)">
+      <h4>최종 선정 원칙 (제안)</h4>
       <ul class="dot" style="font-size:.92rem">
-        <li>전국에서 유일하게 <b>요인 4개가 모두 꾸준히 유의</b> + 비만율 16.7%</li>
-        <li>수급률+ · 이혼율+ · 청년이동− · 아파트−</li>
-        <li>같은 충북 남부 군집의 옥천과 <b>교체 또는 추가</b> 검토</li>
+        <li>최종 시행 지역 = <b>통계적 우선순위 × 실행 가능성의 교집합</b></li>
+        <li>통계 축 후보라도 협력이 어려우면 <b>후순위 조정</b></li>
+        <li>통계 축 밖이라도 실행 여건이 뛰어난 지역은 <b>시범·대조 지역으로 포함 가능</b>
+          — "공간분석 근거 + 현실 여건 보완"의 두 축으로 선정 논리 제시</li>
       </ul>
     </div>
   </div>
   <div class="box" style="background:#faf3ec;border-color:#ecd9c8">
-    <p style="font-family:'Noto Serif KR',serif;font-size:1.25rem;font-weight:900;color:var(--navy);line-height:1.6">
-      "EHSA가 고른 곳에서 MGTWR의 요인이 실제로 작용한다 —<br>
-      <span style="color:var(--accent)">두 축 선정은 타당하고, 요인이 우선순위와 프로그램 내용을 정해 준다.</span>"</p>
+    <p style="font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:900;color:var(--navy);line-height:1.6">
+      "어디가 필요한가는 통계가, 어디서 시작할 수 있는가는 현장이 정한다 —<br>
+      <span style="color:var(--accent)">두 답이 겹치는 곳(아산·천안, 원주)부터 여는 것이 현실적 경로.</span>"</p>
   </div>
 </section>
 
@@ -944,7 +957,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
       <span style="font-size:.92rem;color:var(--muted)">위험: 수급률(+)·조이혼율(+) / 보호: 아파트(−)·청년 유입(−)·의사수(−) · 코로나 이후 효과 강화 유지</span></li>
     <li style="margin-bottom:1rem"><b>교차 검토 — 선정 축과 환경 요인이 맞물림</b><br>
       <span style="font-size:.92rem;color:var(--muted)">고비율 축=결핍·쇠퇴·주거 요인, 규모 축=가족구조 요인 · 겹치는 요인 수 기준 A 5 · A′ 9 · B 11 · C 5 ·
-      추가 검토 진도·보은</span></li>
+      최종 시행은 실행 가능성(협력·접근성)과의 교집합에서 — 아산·천안, 원주 우선 여건</span></li>
     <li><b>아이걸음 — 중재 전후 활동 실측 도구 개발 완료</b><br>
       <span style="font-size:.92rem;color:var(--muted)">안드로이드 v1.1.2 배포 중 · iOS TestFlight 준비 · 3초 간격 GPS, 기기 내 저장, GPX·KML·ZIP 전송</span></li>
   </ol>
@@ -955,9 +968,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
   <p style="font-family:'Noto Serif KR',serif;font-size:3.2rem;font-weight:900;color:var(--navy)">Q &amp; A</p>
   <p style="font-size:1.2rem;color:var(--muted);margin-top:1rem">감사합니다</p>
   <p style="margin-top:2.4rem;font-size:.88rem;color:var(--muted)">
-    임창민 (국립공주대학교 지리학과) · 이현희 (건국대학교 지리학과)<br><br>
-    자료: <a href="./slides.html">MGTWR 발표</a> · <a href="./region_slides.html">교차 검토 상세</a> ·
-    <a href="./academic.html">학술 스토리맵</a> · <a href="../../infant_obesity_ehsa/index.html">EHSA 지도</a></p>
+    임창민 (국립공주대학교 지리학과) · 이현희 (건국대학교 지리학과)</p>
 </section>
 
 </div>
