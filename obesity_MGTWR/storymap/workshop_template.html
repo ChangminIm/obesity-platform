@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <style>
 :root{--navy:#1d3350;--accent:#c14f2e;--blue:#1e5f84;--plum:#6d3a62;--green:#00703E;
   --bg:#fbfaf7;--ink:#26313d;--muted:#5d6b7a;--line:#e2e6ea;--card:#fff}
@@ -39,6 +40,19 @@ tr:last-child td{border-bottom:none}
 .tbl-note{font-size:.82rem;color:var(--muted);margin-top:.5rem}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .mv{font-family:'Times New Roman',Georgia,serif;font-style:italic}
+.lead{color:var(--muted);max-width:56rem;margin-bottom:1rem;font-size:1rem}
+.eq{background:#f2f4f7;border-left:.28rem solid var(--navy);border-radius:0 .6rem .6rem 0;
+  padding:.85rem 1.2rem;margin:.9rem 0;font-size:1.05rem;overflow-x:auto;white-space:nowrap;
+  font-family:'Times New Roman',Georgia,serif}
+i{font-family:'Times New Roman',Georgia,serif;font-style:italic}
+sub{font-size:.68em}
+.sym{cursor:help;border-bottom:2px dotted rgba(193,79,46,.55)}
+.sym:hover{background:#f7e8dd;border-radius:.2rem}
+#symTip{position:fixed;z-index:2000;background:var(--navy);color:#fff;padding:.55rem .85rem;
+  border-radius:.5rem;font-size:.82rem;font-family:'Noto Sans KR',sans-serif;max-width:22rem;
+  display:none;box-shadow:0 6px 20px rgba(0,0,0,.3);line-height:1.5}
+ol.rq{margin:.9rem 0 0 1.4rem;font-size:1.15rem}
+ol.rq li{margin-bottom:1rem}
 ul.dot{margin:.5rem 0 0 1.2rem;font-size:.98rem}
 ul.dot li{margin-bottom:.5rem}
 details.box summary{font-size:1rem;font-weight:900;color:var(--navy);cursor:pointer;list-style:none}
@@ -238,16 +252,16 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
   <div class="ov-grid">
     <div class="ov-card ov1"><div class="n">1부 · EHSA</div>
       <h4>어느 지역이<br>꾸준히 높은가?</h4>
-      <p>12년(2012–2024) 자료로 비만율·아동수의 시공간 핫스팟을 추적합니다. 중재 후보지 선정의 출발점입니다.</p></div>
+      <p>12년(2012–2024) 비만율·아동수의 시공간 핫스팟 추적 → 중재 후보지 30곳 선정의 근거</p></div>
     <div class="ov-card ov2"><div class="n">2부 · MGTWR</div>
       <h4>왜 그 지역이<br>높은가?</h4>
-      <p>어떤 지역환경 요인이, 어느 지역에서, 어느 시기에 비만율과 연결되는지 시공간 회귀로 확인합니다.</p></div>
+      <p>어떤 지역환경 요인이, 어느 지역·어느 시기에 작동하는지 시공간 회귀로 식별 (본 연구 발표)</p></div>
     <div class="ov-card ov3"><div class="n">3부 · 교차 검토</div>
       <h4>어디부터,<br>무엇을 바꿀까?</h4>
-      <p>두 분석을 포개어 후보지 30곳의 우선순위를 정하고, 지역별 프로그램 방향을 제안합니다.</p></div>
+      <p>두 분석을 포개어 후보지 30곳의 우선순위 결정 + 지역별 프로그램 방향 제안</p></div>
     <div class="ov-card ov4"><div class="n">4부 · 아이걸음</div>
       <h4>효과를<br>어떻게 잴까?</h4>
-      <p>중재 전후 아이의 실제 활동 변화를 측정하는 연구용 GPS 앱을 소개합니다. 안드로이드 배포를 시작했습니다.</p></div>
+      <p>중재 전후 아이의 활동 변화를 실측하는 연구용 GPS 앱 개발 — 안드로이드 배포 시작</p></div>
   </div>
   <p class="lead" style="margin-top:1.4rem">핵심 메시지: <b style="color:var(--navy)">"문제가 몰린 곳(EHSA)과 바꿀 수 있는 요인(MGTWR)이 서로 맞물린다 —
     우선순위와 프로그램 내용을 데이터로 정할 수 있고, 효과는 아이걸음으로 잰다."</b></p>
@@ -259,7 +273,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 <section class="slide pdiv pd1">
   <div class="pnum">1부</div>
   <h2>발생 핫스팟 분석(EHSA)<br>— 어디가, 언제부터, 얼마나 꾸준히 높은가</h2>
-  <p class="pd-sub">한 해 수치가 아니라 12년의 흐름으로 봅니다. 우연히 한 번 높은 곳과, 꾸준히 높은 곳을 구분합니다.</p>
+  <p class="pd-sub">한 해 수치가 아니라 12년의 흐름 — 우연히 한 번 높은 곳과 꾸준히 높은 곳을 구분.</p>
   <div class="pd-items"><span>방법 소개</span><span>전국 비만율 핫스팟</span><span>아동수(규모) 핫스팟</span><span>인터랙티브 지도</span><span>후보지 30곳</span></div>
 </section>
 
@@ -280,7 +294,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
     <div class="pat"><b><span class="chip" style="background:#f4a582"></span>신규 New</b>2024년에 처음 등장</div>
     <div class="pat"><b><span class="chip" style="background:#fddbc7;border:1px solid #e2b49a"></span>산발 Sporadic</b>켜졌다 꺼졌다 반복 — 그래도 요주의</div>
   </div>
-  <p class="tbl-note">차가운 반대 패턴(콜드스팟, 파란 계열)도 같은 방식으로 분류됩니다. 오늘은 핫스팟 중심으로 보고합니다.</p>
+  <p class="tbl-note">반대 패턴(콜드스팟, 파란 계열)도 같은 방식으로 분류. 발표는 핫스팟 중심.</p>
 </section>
 
 <!-- 5. 전국 비만율 핫스팟 -->
@@ -315,8 +329,8 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 <!-- 6. 규모 핫스팟 -->
 <section class="slide">
   <div class="s-tag">1부 · 03 RESULTS</div>
-  <h2 class="st">또 하나의 렌즈 — 비만 "아동수" 핫스팟</h2>
-  <p class="lead">비율이 낮아도 아이가 많으면 비만 아동의 <b>절대 수</b>는 많습니다. 규모의 렌즈로 보면 지도가 뒤집힙니다.</p>
+  <h2 class="st">또 하나의 기준 — 비만 "아동수" 핫스팟</h2>
+  <p class="lead">비율이 낮아도 아이가 많으면 비만 아동의 <b>절대 수</b>는 많음 — 규모 기준으로 보면 지도가 뒤집힘.</p>
   <div class="two-col">
     <div>
       <img class="ehsa-img" src="../../infant_obesity_ehsa/assets/infant_obesity_maps/ehsa_result/region_national_count_ehsa.png"
@@ -378,91 +392,205 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 <section class="slide pdiv pd2">
   <div class="pnum">2부</div>
   <h2>시공간 회귀(MGTWR)<br>— 왜 그 지역이 높은가</h2>
-  <p class="pd-sub">지역환경 요인의 효과가 지역마다, 해마다 어떻게 다른지 직접 추정합니다.</p>
-  <div class="pd-items"><span>자료·변수</span><span>모형 성능</span><span>작동 스케일</span><span>계수 지도</span><span>핵심 결과</span></div>
+  <p class="pd-sub">지역환경 요인의 효과가 지역마다·해마다 어떻게 다른지 직접 추정 — 본 연구 발표 (오늘의 핵심).</p>
+  <div class="pd-items"><span>연구 질문</span><span>자료·변수</span><span>방법론</span><span>모형 성능</span><span>작동 스케일</span><span>계수 지도</span><span>결과·한계·결론</span></div>
 </section>
 
-<!-- 10. 자료·변수 -->
+<!-- 2부: 기존 MGTWR 발표 슬라이드 원본 -->
+
+<!-- 10. 연구 질문 -->
 <section class="slide b2">
-  <div class="s-tag t2">2부 · 01 DATA &amp; MODEL</div>
-  <h2 class="st">자료·변수·모형 한눈에</h2>
-  <div class="two-col">
-    <div class="box" style="margin-top:0">
-      <h4>자료</h4>
-      <ul class="dot" style="font-size:.95rem">
-        <li><b>종속변수</b>: 시군구 영유아 비만율·과체중이상율<br>229개 시군구 × 2015–2023 (n=2,061)</li>
-        <li><b>독립변수</b>: KOSIS 21종 후보 → 이론·다중공선성 진단으로 <b>7종</b></li>
-        <li>사전 진단: 모든 연도에서 비만율의 <b>공간 군집성 유의</b>(Moran's <span class="mv">I</span>, p≤0.001) → 공간을 무시하는 회귀는 부적합</li>
-      </ul>
-    </div>
-    <div class="box" style="margin-top:0">
-      <h4>7개 환경 변수 (가설 방향)</h4>
-      <table style="font-size:.88rem">
-        <tr><th>영역</th><th>변수</th><th class="ctr">방향</th></tr>
-        <tr><td>사회경제</td><td>기초생활수급률</td><td class="ctr">+</td></tr>
-        <tr><td rowspan="2">가족·사회</td><td>1인가구비율</td><td class="ctr">+</td></tr>
-        <tr><td>조이혼율</td><td class="ctr">+</td></tr>
-        <tr><td rowspan="2">건조환경</td><td>인구밀도</td><td class="ctr">±</td></tr>
-        <tr><td>아파트비율</td><td class="ctr">−</td></tr>
-        <tr><td>인구 동태</td><td>청년순이동률</td><td class="ctr">−</td></tr>
-        <tr><td>의료 접근</td><td>천명당 의사수</td><td class="ctr">−</td></tr>
-      </table>
-    </div>
-  </div>
-  <div class="box">
-    <h4>모형: OLS → GWR → MGWR → GTWR → <span style="color:var(--blue)">MGTWR</span></h4>
-    <p style="font-size:.95rem">단계마다 제약을 하나씩 풉니다 — 계수가 <b>지역마다</b> 다를 수 있게(GWR), <b>변수마다 다른 범위</b>에서 움직이게(MGWR),
-      <b>해마다</b> 달라질 수 있게(GTWR), 그리고 <b>변수별로 공간·시간 스케일을 따로</b> 추정(MGTWR).</p>
-  </div>
+  <div class="s-tag t2">2부 · 01 INTRODUCTION</div>
+  <h2 class="st">연구 질문</h2>
+  <ol class="rq" style="font-size:1.3rem;margin-top:2.2rem">
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--blue);
+      border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside;margin-bottom:1.1rem">
+      어떤 <b>지역사회 환경 요인</b>이 시군구 영유아 비만율·과체중이상율과 연관되는가?</li>
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--blue);
+      border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside;margin-bottom:1.1rem">
+      그 효과는 <b>공간적으로, 그리고 시간적으로</b> 어떻게 이질적인가?</li>
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--blue);
+      border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside;margin-bottom:1.1rem">
+      각 요인은 어떤 <b>작동 스케일</b>에서 움직이는가 — 국지적인가 전역적인가? 해마다 변하는가 일정한가?</li>
+    <li style="background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--blue);
+      border-radius:.6rem;padding:1.1rem 1.4rem;list-style-position:inside">
+      (부가) 코로나19 전후로 지역환경 효과의 구조는 어떻게 변화했는가?</li>
+  </ol>
 </section>
 
-<!-- 11. 모형 성능 -->
+<!-- 11. 자료·변수 -->
 <section class="slide b2">
-  <div class="s-tag t2">2부 · 02 MODEL COMPARISON</div>
-  <h2 class="st">모형 성능 — 설명력 36% → 75%</h2>
-  <ul class="dot" style="font-size:1.02rem;margin-bottom:.6rem">
-    <li>두 지표 모두 <b>MGTWR가 최종 우위</b> — 잔차의 공간 자기상관도 사실상 해소</li>
-    <li>지역 차이 반영(OLS→GWR)보다 <b>시기 차이 반영(GWR→GTWR)의 개선 폭이 더 컸음</b>
-      — 분석 기간에 비만율 수준 자체가 요동(전국 평균 8.4%→15.6%→11.6%)했기 때문</li>
+  <div class="s-tag t2">2부 · 02 DATA</div>
+  <h2 class="st">자료와 변수</h2>
+  <ul class="dot" style="font-size:1.05rem;margin-bottom:.8rem">
+    <li><b>종속변수</b>: 영유아 건강검진 시군구 비만율·과체중이상율</li>
+    <li><b>독립변수</b>: KOSIS 21종 후보 → 이론·다중공선성 진단으로 <b>7종 선정</b></li>
   </ul>
+  <div class="box">
+    <table>
+      <tr><th>영역</th><th>변수</th><th class="ctr">가설</th><th>참고문헌</th></tr>
+      <tr><td>사회경제 결핍</td><td>기초생활수급률</td><td class="ctr">+</td>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1038/oby.2007.35" target="_blank">Shrewsbury &amp; Wardle (2008)</a> ·
+          <a href="https://doi.org/10.1377/hlthaff.2009.0730" target="_blank">Singh et al. (2010)</a> ·
+          <a href="https://doi.org/10.3109/09540261.2012.688195" target="_blank">Wang &amp; Lim (2012)</a></td></tr>
+      <tr><td rowspan="2">가족·사회 구조</td><td>1인가구비율</td><td class="ctr">+</td>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1016/j.socscimed.2007.05.036" target="_blank">Cummins et al. (2007)</a> ·
+          <a href="https://doi.org/10.1377/hlthaff.2009.0730" target="_blank">Singh et al. (2010)</a> ·
+          <a href="https://doi.org/10.3390/ijerph16030464" target="_blank">Congdon (2019)</a></td></tr>
+      <tr><td>조이혼율</td><td class="ctr">+</td>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1038/oby.2008.70" target="_blank">Yannakoulia et al. (2008)</a> ·
+          <a href="https://doi.org/10.1542/peds.2009-0417" target="_blank">Anderson &amp; Whitaker (2010)</a> ·
+          <a href="https://doi.org/10.1016/j.ssresearch.2012.01.007" target="_blank">Schmeer (2012)</a></td></tr>
+      <tr><td rowspan="2">건조환경</td><td>인구밀도</td><td class="ctr">±</td>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.4278/0890-1171-18.1.47" target="_blank">Ewing et al. (2003)</a> ·
+          <a href="https://doi.org/10.2105/AJPH.94.9.1574" target="_blank">Lopez (2004)</a> ·
+          <a href="https://doi.org/10.1111/obr.13158" target="_blank">Jia (2020)</a></td></tr>
+      <tr><td>아파트비율</td><td class="ctr">−</td>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1353/foc.2006.0009" target="_blank">Sallis &amp; Glanz (2006)</a> ·
+          <a href="https://doi.org/10.1016/j.jshs.2018.11.003" target="_blank">An et al. (2019)</a> ·
+          <a href="https://doi.org/10.1016/j.ypmed.2021.106790" target="_blank">Daniels et al. (2021)</a></td></tr>
+      <tr><td>인구 동태</td><td>청년순이동률</td><td class="ctr">−</td>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1191/0309132504ph518pr" target="_blank">Boyle (2004)</a> ·
+          <a href="https://doi.org/10.1016/j.socscimed.2004.11.008" target="_blank">Norman et al. (2005)</a> ·
+          <a href="https://doi.org/10.1016/j.socscimed.2011.09.030" target="_blank">Riva et al. (2011)</a></td></tr>
+      <tr><td>의료 접근성</td><td>천명당 의사수</td><td class="ctr">−</td>
+        <td style="font-size:.82rem"><a href="https://doi.org/10.1111/j.1467-789X.2004.00133.x" target="_blank">Lobstein et al. (2004)</a> ·
+          <a href="https://doi.org/10.1186/1476-072X-3-3" target="_blank">Guagliardo (2004)</a> ·
+          <a href="https://doi.org/10.1111/j.1468-0009.2005.00409.x" target="_blank">Starfield et al. (2005)</a></td></tr>
+    </table>
+    <p class="tbl-note">문헌을 클릭하면 원문(DOI)으로 이동. 전체 서지는 학술판 참고문헌 참조.</p>
+  </div>
+</section>
+
+<!-- 12. 방법론 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 03 METHODS</div>
+  <h2 class="st">방법론 — 모형별 비교</h2>
+  <div class="box">
+    <table>
+      <tr><th>모형</th><th class="ctr">지역별 계수</th><th class="ctr">시기별 계수</th><th>bandwidth 구조</th><th>요약</th></tr>
+      <tr><td>OLS</td><td class="ctr">×</td><td class="ctr">×</td><td>—</td><td>전국·전기간 공통 계수</td></tr>
+      <tr><td>GWR</td><td class="ctr">○</td><td class="ctr">×</td><td>공통 1개(공간)</td><td>지역별 계수, 단일 평활</td></tr>
+      <tr><td>MGWR</td><td class="ctr">○</td><td class="ctr">×</td><td><b>변수별</b>(공간)</td><td>변수별 공간 스케일</td></tr>
+      <tr><td>GTWR</td><td class="ctr">○</td><td class="ctr">○</td><td>공통 1개(시공간)</td><td>시간 이질성 도입</td></tr>
+      <tr class="hl"><td>MGTWR</td><td class="ctr">○</td><td class="ctr">○</td><td><b>변수별</b>(bw + τ)</td><td>작동 스케일 직접 식별</td></tr>
+    </table>
+  </div>
+  <div class="eq" id="eqBox" style="font-size:1.45rem;cursor:pointer" title="클릭하면 기호 설명이 열립니다">
+    <span class="sym" data-tip="종속변수: 관측치 i(특정 시군구·특정 연도)의 비만율(표준화)"><i>y</i><sub><i>i</i></sub></span> =
+    Σ<sub><i>j</i></sub> <span class="sym" data-tip="변수 j의 회귀계수 — 위치(u,v)와 시점(t)에 따라 달라질 수 있음"><i>β</i><sub><i>j</i></sub>(<i>u</i><sub><i>i</i></sub>, <i>v</i><sub><i>i</i></sub>, <i>t</i><sub><i>i</i></sub>;</span>
+    <span class="sym" data-tip="변수 j의 공간 bandwidth: 계수 추정에 빌려 쓰는 이웃 관측치 수"><i>bw</i><sub><i>j</i></sub>,</span>
+    <span class="sym" data-tip="변수 j의 시간 스케일: 다른 연도 정보를 얼마나 차단할지 (클수록 해마다 다르게 추정)"><i>τ</i><sub><i>j</i></sub>)</span>·<span class="sym" data-tip="관측치 i의 변수 j 값(표준화)"><i>x</i><sub><i>ij</i></sub></span> +
+    <span class="sym" data-tip="오차항"><i>ε</i><sub><i>i</i></sub></span>,&nbsp;&nbsp;&nbsp;
+    <span class="sym" data-tip="시공간 거리²: 이 거리가 가까운 관측치일수록 큰 가중을 받음"><i>d</i>²<sub>ST</sub></span> =
+    <span class="sym" data-tip="공간 거리² (시군구 중심점 간 거리)"><i>d</i>²<sub>S</sub></span> +
+    <span class="sym" data-tip="시간 가중 τ × 시간 거리² (연도 차이)"><i>τ</i>·<i>d</i>²<sub>T</sub></span>
+    <span style="font-size:.78rem;color:var(--accent);margin-left:.8rem;font-family:'Noto Sans KR',sans-serif">기호 클릭: 뜻 팝업 · 빈 곳 클릭: 전체 설명 ▼</span></div>
+  <div class="box" id="eqExplain" style="display:none">
+    <table>
+      <tr><th style="width:10rem">기호</th><th>의미</th></tr>
+      <tr><td><i>y</i><sub><i>i</i></sub></td><td>관측치 <i>i</i>(특정 시군구·특정 연도)의 비만율(표준화)</td></tr>
+      <tr><td><i>β</i><sub><i>j</i></sub>(<i>u</i><sub><i>i</i></sub>, <i>v</i><sub><i>i</i></sub>, <i>t</i><sub><i>i</i></sub>)</td>
+        <td>변수 <i>j</i>의 회귀계수 — 위치(<i>u</i>, <i>v</i>)와 시점(<i>t</i>)에 따라 달라질 수 있음</td></tr>
+      <tr><td><i>x</i><sub><i>ij</i></sub></td><td>관측치 <i>i</i>의 변수 <i>j</i> 값(표준화)</td></tr>
+      <tr><td><i>bw</i><sub><i>j</i></sub></td><td>변수 <i>j</i>의 공간 bandwidth: 계수를 추정할 때 빌려 쓰는 이웃 관측치 수</td></tr>
+      <tr><td><i>τ</i><sub><i>j</i></sub></td><td>변수 <i>j</i>의 시간 스케일: 다른 연도 정보를 얼마나 차단할지(클수록 해마다 다르게 추정)</td></tr>
+      <tr><td><i>d</i>²<sub>ST</sub></td><td>시공간 거리² = 공간 거리² + <i>τ</i> × 시간 거리² — 가까운 관측치일수록 큰 가중</td></tr>
+      <tr><td><i>ε</i><sub><i>i</i></sub></td><td>오차항</td></tr>
+    </table>
+  </div>
+  <ul class="dot">
+    <li>적응형 bisquare 커널 · backfitting 추정 (Wu et al. 2019)</li>
+    <li>로컬 계수 유의성: 변수별 유효모수 보정 임계 t 적용 (Yu &amp; Fotheringham 2025)</li>
+  </ul>
+</section>
+
+<!-- 13. 사전 진단 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 04 DIAGNOSTICS</div>
+  <h2 class="st">왜 공간 모형인가 — 공간적 자기상관 검정</h2>
+  <ul class="dot" style="font-size:1.08rem;margin-bottom:1rem">
+    <li><b>전 연도 유의한 양(+)의 Moran's <span class="mv">I</span></b> (p ≤ 0.001)</li>
+    <li>군집성 정점은 <b>코로나 시기(2020–21)</b></li>
+    <li>→ 관측치 독립을 가정하는 전역 OLS는 부적합</li>
+  </ul>
+  <div class="box"><h4>종속변수의 전역 Moran's <span class="mv">I</span> (연도별)</h4><table id="tblDvMoran"></table>
+    <p class="tbl-note">999회 순열검정, 전 연도 p ≤ 0.001.</p></div>
+</section>
+
+<!-- 14. OLS 기준 모형 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 05 BASELINE</div>
+  <h2 class="st">기준 모형: 전역 OLS</h2>
+  <p class="lead">설명력 R² 0.361/0.351에 그치고, 잔차에 공간 자기상관이 남는다.</p>
+  <div class="box">
+    <table>
+      <tr><th>변수</th><th class="num"><span class="mv">β</span> (비만율)</th><th class="num"><span class="mv">t</span></th><th class="num"><span class="mv">β</span> (과체중+)</th><th class="num"><span class="mv">t</span></th></tr>
+      <tr><td>기초생활수급률</td><td class="num">+0.297</td><td class="num">13.07***</td><td class="num">+0.270</td><td class="num">11.78***</td></tr>
+      <tr><td>1인가구비율</td><td class="num">+0.276</td><td class="num">11.04***</td><td class="num">+0.145</td><td class="num">5.77***</td></tr>
+      <tr><td>조이혼율</td><td class="num">+0.129</td><td class="num">7.03***</td><td class="num">+0.169</td><td class="num">9.13***</td></tr>
+      <tr><td>인구밀도</td><td class="num">−0.243</td><td class="num">−8.96***</td><td class="num">−0.229</td><td class="num">−8.37***</td></tr>
+      <tr><td>청년순이동률</td><td class="num">−0.128</td><td class="num">−6.07***</td><td class="num">−0.112</td><td class="num">−5.30***</td></tr>
+      <tr><td>의사수</td><td class="num">−0.106</td><td class="num">−5.10***</td><td class="num">−0.084</td><td class="num">−4.03***</td></tr>
+      <tr><td>아파트비율</td><td class="num">+0.205</td><td class="num">7.08***</td><td class="num">+0.025</td><td class="num">0.86 n.s.</td></tr>
+    </table>
+    <p class="tbl-note">z-표준화 계수, n=2,061. *** p&lt;0.001 (아파트비율은 비만율 모형에서만 유의).</p>
+  </div>
+</section>
+
+<!-- 15. 성능 비교 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 06 MODEL COMPARISON</div>
+  <h2 class="st">모형 성능: 시간 이질성 &gt; 공간 이질성</h2>
+  <ul class="dot" style="font-size:1.08rem;margin-bottom:.7rem">
+    <li>두 모형 모두 <b>MGTWR 최종 우위</b> — 잔차 공간 자기상관 사실상 해소</li>
+    <li>공간 이질성 반영(OLS→GWR): AICc <b>274 개선</b> · 시간 이질성 추가(GWR→GTWR): <b>593 추가 개선</b></li>
+    <li>→ "지역 차이"보다 <b>"시기 차이"</b>의 기여가 더 컸다</li>
+  </ul>
+  <div class="box" style="margin:.3rem 0 1rem;background:#faf3ec;border-color:#ecd9c8">
+    <h4>왜 "시기 차이"가 더 컸나?</h4>
+    <ul class="dot">
+      <li>분석 기간에 비만율 <b>수준 자체가 요동</b>: 전국 평균 8.4%(2015) → 15.6%(2021) → 11.6%(2023)</li>
+      <li>기저 위험(표준화 절편)도 −0.73 → +0.85로 <b>약 1.6 SD 이동</b> — 같은 지역도 해에 따라 전혀 다른 상태</li>
+      <li>공간만 허용(GWR)하면 계수가 <b>9년 평균으로 뭉개짐</b> → 시간 가변 허용(GTWR)에서 적합 급개선</li>
+    </ul>
+  </div>
   <div class="two-col">
     <div class="box" style="margin-top:0"><h4>비만율 모형</h4><table id="tblModelOb"></table></div>
     <div class="box" style="margin-top:0"><h4>과체중이상율 모형</h4><table id="tblModelOw"></table></div>
   </div>
-  <p class="tbl-note">AICc는 낮을수록, R²는 높을수록 좋음. 잔차 Moran's <span class="mv">I</span>가 0에 가까우면 공간 패턴을 모형이 다 설명했다는 뜻.</p>
 </section>
 
-<!-- 12. 작동 스케일 -->
+<!-- 16. 작동 스케일 -->
 <section class="slide b2">
-  <div class="s-tag t2">2부 · 03 RESULTS</div>
-  <h2 class="st">변수마다 힘이 미치는 범위가 다르다 — 세 유형</h2>
+  <div class="s-tag t2">2부 · 07 RESULTS I</div>
+  <h2 class="st">변수별 작동 스케일 — 변수마다 힘이 미치는 범위가 다르다</h2>
   <div class="scale-grid">
-    <div class="scale-card sc1"><h4>① 좁은 지역 · 해마다 달라짐</h4>
+    <div class="scale-card sc1"><h4>① 국지·시기 가변형</h4>
       <b>수급률(+) · 조이혼율(+)<br>청년순이동(−) · 아파트(−)</b><br><br>
-      좁은 권역에서, 해마다 다르게 작동<br>→ <b>지역·시기 맞춤 개입 대상</b></div>
-    <div class="scale-card sc2"><h4>② 좁은 지역 · 늘 일정</h4>
+      좁은 권역에서, 해마다 다르게<br>→ <b>지역·시기 맞춤 개입</b></div>
+    <div class="scale-card sc2"><h4>② 국지·시기 안정형</h4>
       <b>인구밀도(±)</b><br><br>
-      지역마다 다르지만 9년 내내 일정<br>→ <b>구조적 배경 변수</b></div>
-    <div class="scale-card sc3"><h4>③ 전국 공통</h4>
+      지역마다 다르지만 9년 내내 일정<br>→ <b>구조적 변수</b></div>
+    <div class="scale-card sc3"><h4>③ 전국 공통형</h4>
       <b>1인가구 · 의사수</b><br><br>
-      어디서나, 어느 해든 같은 효과<br>→ <b>전국 단위 정책 대상</b></div>
+      어디서나, 어느 해든 같은 효과<br>→ <b>전국 단위 정책</b></div>
   </div>
   <details class="box">
-    <summary>읽는 법 — 스케일은 어떻게 재나</summary>
-    <ul class="dot" style="margin-top:.6rem;font-size:.92rem">
-      <li><b><span class="mv">bw</span></b>(공간 범위) = 계수 추정에 빌려 쓰는 이웃 수 — 작으면 좁은 권역에서 움직이는 요인, 크면 사실상 전국 공통</li>
-      <li><b><span class="mv">τ</span></b>(시간 범위) = 다른 연도 정보를 얼마나 차단하는지 — 크면 해마다 달라지는 요인, 0에 가까우면 늘 일정</li>
+    <summary>읽는 법 — <span class="mv">bw</span> · <span class="mv">τ</span> · 유효모수(ENP)</summary>
+    <ul class="dot" style="margin-top:.6rem">
+      <li><b><span class="mv">bw</span></b> = 계수 추정에 빌려 쓰는 <b>이웃 수</b> — 32면 좁은 권역(국지적), 1,769면 사실상 전국(공통)</li>
+      <li><b><span class="mv">τ</span></b> = 다른 연도 정보의 <b>차단 정도</b> — 크면 해마다 가변, 0에 가까우면 9년 내내 안정</li>
+      <li><b>ENP</b> = 사실상의 <b>검정 횟수</b> — 많을수록 유의 기준(임계 <span class="mv">t</span>)을 엄격하게 보정</li>
     </ul>
-    <div style="margin-top:.6rem"><table id="tblBwt"></table></div>
   </details>
-  <p class="lead" style="margin-top:.8rem"><b style="color:var(--navy)">요인의 스케일 = 정책의 스케일.</b>
-    ①은 시군구 맞춤 프로그램으로, ③은 전국 제도로 대응하는 것이 맞습니다.</p>
+  <div class="box"><h4>MGTWR 추정 결과</h4><table id="tblBwt"></table></div>
 </section>
 
-<!-- 13. 계수 지도 -->
+<!-- 17. 계수 지도 -->
 <section class="slide map-slide b2" id="mapSlide">
-  <div class="s-tag t2">2부 · 04 LIVE MAP</div>
-  <h2 class="st">로컬 계수 지도 — 어느 지역에서, 어느 해에 유의한가</h2>
+  <div class="s-tag t2">2부 · 08 RESULTS II</div>
+  <h2 class="st">로컬 계수 지도 (보정 유의성 마스킹)</h2>
   <div class="ctrl">
     <button class="dvbtn sel" data-dv="ob">비만율</button>
     <button class="dvbtn" data-dv="ow">과체중이상율</button>
@@ -483,29 +611,83 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
   <div id="varDesc"></div>
 </section>
 
-<!-- 14. 2부 요약 -->
+<!-- 18. 패턴 요약 -->
 <section class="slide b2">
-  <div class="s-tag t2">2부 · 05 SUMMARY</div>
-  <h2 class="st">2부 요약 — 무엇이, 어디서, 어떻게</h2>
-  <div class="two-col">
-    <div>
-      <ul class="dot" style="font-size:1rem">
-        <li><b>위험 요인</b>: 기초생활수급률(+) · 조이혼율(+)<br>
-          <span style="color:var(--muted);font-size:.9rem">저소득·가족구조 취약 지역에서 비만율이 높음</span></li>
-        <li><b>보호 요인</b>: 아파트비율(−) · 청년 유입(−) · 의사수(−)<br>
-          <span style="color:var(--muted);font-size:.9rem">주거·활동 환경과 지역 활력이 좋은 곳은 낮음</span></li>
-        <li><b>코로나19는 격차를 증폭</b> — 평균 수준은 회복 중이지만,
-          환경 요인의 기울기는 <b>강해진 채 유지</b> (아직 닫히지 않은 격차)</li>
-        <li><b>전국 평균 회귀(OLS)의 함정 확인</b> — 아파트비율은 전국 평균으로는 +로 보이지만,
-          지역별로 보면 대부분 <b>−(보호)</b> — 방향까지 뒤집힘</li>
-      </ul>
-    </div>
-    <div class="box" style="margin-top:0">
-      <h4>코로나 전(15–19) → 후(20–23) 평균 계수 변화</h4>
-      <table id="tblCovid"></table>
-      <p class="tbl-note">굵은 음영 = 변화 큰 변수. 시기 가변 4개 변수 모두 코로나 이후 효과가 강해짐.</p>
-    </div>
+  <div class="s-tag t2">2부 · 09 RESULTS III</div>
+  <h2 class="st">변수별 공간·시간 패턴 요약 — 두 모형 공통 구조</h2>
+  <div class="box" style="margin-top:.4rem">
+    <table>
+      <tr><th>변수</th><th>공간 패턴(유의 지역)</th><th>비만율 모형 변화</th><th>과체중이상율 모형 변화</th><th>해석</th></tr>
+      <tr><td>절편(기저위험)</td><td>2021 전면 양(+), 남서부 최대</td><td>−0.73 → +0.85 → +0.39</td><td>−0.56 → +0.73 → +0.02</td><td>기저 위험의 전국 상승·부분 회복</td></tr>
+      <tr><td>수급률</td><td>강원 영동·전남 남해안·제주</td><td>+0.14 거의 불변</td><td>+0.12 거의 불변</td><td>결핍 효과는 상시 지속</td></tr>
+      <tr><td>조이혼율</td><td>수도권–강원 벨트</td><td>+0.10 → +0.19 강화</td><td>+0.15 → +0.19 강화</td><td>가족구조 취약성 심화</td></tr>
+      <tr><td>청년순이동</td><td>영남 내륙(유출 지역)</td><td>−0.02 → −0.09 강화</td><td>−0.04 → −0.07 강화</td><td>지역쇠퇴-아동건강 연계</td></tr>
+      <tr><td>아파트비율</td><td>남부·동부 광역(70% 유의 −)</td><td>−0.18 → −0.25 강화</td><td>−0.26 → −0.29 강화</td><td>전역모형의 착시(+) 해소 사례</td></tr>
+      <tr><td>인구밀도</td><td>내륙 중소도시 + / 대도시권 −</td><td>시기 안정(+0.07)</td><td>시기 안정(+0.11)</td><td>도농 상이 기전</td></tr>
+      <tr><td>1인가구·의사수</td><td>준상수(전국 공통)</td><td>시기 안정(−0.02/−0.04)</td><td>시기 안정(−0.08/−0.02)</td><td>전국 공통 효과</td></tr>
+    </table>
   </div>
+</section>
+
+<!-- 19. 시간 동학 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 10 RESULTS IV</div>
+  <h2 class="st">코로나19가 증폭시킨 지역환경 효과</h2>
+  <ul class="dot" style="font-size:1.08rem;margin-bottom:1rem">
+    <li>기저 위험(절편)은 <b>회복 중</b></li>
+    <li>시기 가변 4개 변수의 기울기는 <b>강화된 채 유지</b></li>
+    <li>→ "새 위험"이 아니라 <b>기존 격차의 증폭</b></li>
+  </ul>
+  <div class="two-col">
+    <div class="box" style="margin-top:0"><h4>지역 기저위험(절편) 궤적</h4><canvas id="interChart" height="130"></canvas></div>
+    <div class="box" style="margin-top:0"><h4>이전(15–19) → 이후(20–23) 평균 <span class="mv">β</span></h4><table id="tblCovid"></table></div>
+  </div>
+</section>
+
+<!-- 20. 결과 총 요약 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 11 SUMMARY OF FINDINGS</div>
+  <h2 class="st">결과 총 요약</h2>
+  <ol class="rq" style="font-size:1.15rem;margin-top:1.4rem;max-width:58rem">
+    <li style="margin-bottom:1rem"><b>지역환경 요인은 영유아 비만과 체계적으로 연관</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">위험: 수급률(+)·조이혼율(+) / 보호: 아파트(−)·청년 유입(−)·의사수(−)</span></li>
+    <li style="margin-bottom:1rem"><b>효과는 시공간적으로 이질적 — 핵심은 시간 이질성</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">설명력 36% → 75%, 잔차 공간 자기상관 해소</span></li>
+    <li style="margin-bottom:1rem"><b>작동 스케일 세 유형 = 정책의 스케일</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">국지·가변 4개(결핍·가족·활력·주거) / 국지·안정 1개(밀도) / 전국 공통 2개(1인가구·의사수)</span></li>
+    <li style="margin-bottom:1rem"><b>코로나는 격차를 증폭 — 아직 닫히지 않음</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">기저 위험은 회복 중, 기울기는 강화된 채 유지</span></li>
+    <li><b>전역 모형의 함정 확인</b><br>
+      <span style="font-size:.95rem;color:var(--muted)">아파트(+→−)·1인가구(+→준상수) — 공간 교란은 정책 방향까지 뒤집는다</span></li>
+  </ol>
+</section>
+
+<!-- 21. 한계 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 12 LIMITATIONS</div>
+  <h2 class="st">연구의 한계</h2>
+  <div class="box" style="max-width:58rem">
+    <ul class="dot" style="font-size:1.05rem">
+      <li style="margin-bottom:.85rem"><b>생태학적 설계</b> — 지역 수준 연관 ≠ 개인 수준 결론(생태학적 오류) → 개인 자료 연계가 후속 과제</li>
+      <li style="margin-bottom:.85rem"><b>공간 단위 임의성(MAUP)</b> — 경계 설정·읍면동 단위에 따라 결과 변동 가능</li>
+      <li><b>미관측 교란</b> — 식품환경·보육환경·부모 건강행태 미포함</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 22. 2부 결론 -->
+<section class="slide b2" style="background:linear-gradient(150deg,#fdfcf9,#e9eff5)">
+  <div class="s-tag t2">2부 · 13 CONCLUSIONS</div>
+  <h2 class="st">2부 결론</h2>
+  <p class="concl">"소아비만 대책은 전국 일률이 아니라,<br>
+    <span style="color:var(--blue)">어느 지역에서 · 어느 시기에 · 어떤 힘이</span><br>작동하는지에 맞춰야 한다."</p>
+  <ul class="dot" style="font-size:1.08rem;max-width:52rem">
+    <li>지역환경 효과는 <b>시공간적으로 이질적</b> (설명력 36% → 75%)</li>
+    <li><b>변수의 스케일 = 정책의 스케일</b>: 결핍·가족·활력·주거는 시군구 맞춤, 의료·가구구조는 전국 단위</li>
+    <li>코로나가 키운 격차는 <b>아직 닫히지 않았다</b> — 표적 개입의 근거 강화</li>
+  </ul>
+  <p class="lead" style="margin-top:1.6rem">상세: <a href="./academic.html">학술 스토리맵</a> ·
+    <a href="./index.html">대중 스토리맵</a></p>
 </section>
 
 <!-- ═══════════ 3부 교차 ═══════════ -->
@@ -514,7 +696,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 <section class="slide pdiv pd3">
   <div class="pnum">3부</div>
   <h2>EHSA × MGTWR 교차 검토<br>— 어디부터, 무엇을 바꿀 것인가</h2>
-  <p class="pd-sub">후보지 30곳에서 실제로 어떤 환경 요인이 작용하는지 확인하고, 우선순위와 프로그램 방향을 정합니다.</p>
+  <p class="pd-sub">후보지 30곳에서 실제로 어떤 환경 요인이 작용하는지 확인 → 우선순위와 프로그램 방향 결정.</p>
   <div class="pd-items"><span>왜 함께 보나</span><span>핵심 발견</span><span>우선순위 지도</span><span>그룹 제안</span><span>요인별 방향</span></div>
 </section>
 
@@ -526,7 +708,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
     <div class="vs-card">
       <h4 style="color:var(--accent);font-weight:900;margin-bottom:.5rem">EHSA — 어디가?</h4>
       <ul class="dot" style="font-size:.98rem">
-        <li>비만 문제가 <b>어느 지역에 꾸준히 몰려 있는지</b> 알려줍니다</li>
+        <li>비만 문제가 <b>어느 지역에 꾸준히 몰리는지</b> 확인</li>
         <li>비만율·과체중이상율·아동수의 12년 시공간 군집</li>
         <li>→ 후보지 30곳 선정의 근거</li>
       </ul>
@@ -535,8 +717,8 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
     <div class="vs-card blue">
       <h4 style="color:var(--blue);font-weight:900;margin-bottom:.5rem">MGTWR — 왜? 무엇을?</h4>
       <ul class="dot" style="font-size:.98rem">
-        <li>그 지역에서 <b>어떤 환경 요인이 작용하는지</b> 보여줍니다</li>
-        <li>지역·시기별로 유의한 요인 (수급률·이혼율·청년이동·아파트)</li>
+        <li>그 지역에서 <b>어떤 환경 요인이 작용하는지</b> 식별</li>
+        <li>지역·시기별 유의 요인 (수급률·이혼율·청년이동·아파트)</li>
         <li>→ 무엇을 바꿀지, 프로그램 내용의 근거</li>
       </ul>
     </div>
@@ -544,7 +726,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
   <div class="box" style="margin-top:1.4rem">
     <ul class="dot">
       <li>문제가 몰린 곳(EHSA) × 바꿀 수 있는 요인(MGTWR) = <b>우선순위와 프로그램 설계를 한 번에</b></li>
-      <li>판단 기준: 보정된 유의성 검정으로 <b>2020–23년 4년 중 절반 넘게 유의</b>하면 그 지역의 <b>"꾸준한 요인"</b>으로 봄</li>
+      <li>"꾸준한 요인" 기준: 보정 유의성 검정에서 <b>2020–23년 4년 중 절반 초과 유의</b></li>
     </ul>
   </div>
 </section>
@@ -591,18 +773,24 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 <!-- 19. 우선순위 그룹 -->
 <section class="slide b3">
   <div class="s-tag t3">3부 · 04 PRIORITY</div>
-  <h2 class="st">우선순위 제안 — 문제의 크기 × 겹치는 요인 수</h2>
-  <div class="g-grid">
-    <div class="g-card gA"><h4>A 최우선 (5곳)</h4>
-      옥천 · 영동 · 영월<br>울진 · 영양<br><br>요인 3개가 동시에 작용<br><b>복합 취약지</b></div>
-    <div class="g-card gAp"><h4>A′ 우선 (9곳)</h4>
-      강릉 · 정선 · 평창 · 목포 · 무안<br>제주시 · 서귀포 · 아산 · 천안<br><br>요인 2개<br><b>저소득+주거 / 가족+주거</b></div>
-    <div class="g-card gB"><h4>B 규모 효율 (11곳)</h4>
-      수도권 규모 축<br>(화성 603명 · 평택 · 시흥 우선)<br><br>이혼율 하나가 공통<br><b>표준 프로그램 대량 적용</b></div>
-    <div class="g-card gC"><h4>C 요인 하나·전략 (5곳)</h4>
-      보령 · 서천 · 청송 · 포항 북구<br>+ 원주(전략)<br><br>아파트(−) 하나<br><b>원주는 검증 거점</b></div>
+  <h2 class="st">우선순위 제안 — 그룹을 가르는 기준은 "겹치는 요인 수" 하나</h2>
+  <div class="box" style="margin:0 0 1rem;background:#f7f0f5;border-color:#e3d0dd">
+    <table style="font-size:.92rem">
+      <tr><th class="ctr">동시에 작용하는 꾸준한 요인</th><th class="ctr">3개</th><th class="ctr">2개</th><th class="ctr">1개 (규모 축 공통)</th><th class="ctr">1개 (그 외)</th></tr>
+      <tr><td class="ctr"><b>그룹</b></td><td class="ctr hl"><b>A</b> 최우선</td><td class="ctr"><b>A′</b> 우선</td><td class="ctr"><b>B</b> 규모 효율</td><td class="ctr"><b>C</b> 단일·전략</td></tr>
+    </table>
   </div>
-  <p class="tbl-note" style="margin-top:.8rem">그룹 기준: 꾸준한 요인 3개=A · 2개=A′ · 규모 축의 1개=B · 그 외=C. 기준은 협의로 조정 가능(별첨 엑셀).</p>
+  <div class="g-grid">
+    <div class="g-card gA"><h4>A — 요인 3개 (5곳)</h4>
+      옥천 · 영동 · 영월<br>울진 · 영양<br><br>결핍 + 지역쇠퇴 + 주거가<br>한 지역에서 동시 작용<br><b>가장 복합적인 취약지 → 최우선</b></div>
+    <div class="g-card gAp"><h4>A′ — 요인 2개 (9곳)</h4>
+      강릉 · 정선 · 평창 · 목포 · 무안<br>제주시 · 서귀포 · 아산 · 천안<br><br>A보다 한 겹 적음<br>(수급률+아파트 / 이혼율+아파트)<br><b>두 번째 순위</b></div>
+    <div class="g-card gB"><h4>B — 이혼율 하나 (11곳)</h4>
+      수도권 규모 축<br>(화성 603명 · 평택 · 시흥 우선)<br><br>13곳 공통 단일 요인<br><b>표준 프로그램 대량 적용</b></div>
+    <div class="g-card gC"><h4>C — 그 외 (5곳)</h4>
+      보령 · 서천 · 청송 · 포항 북구<br>+ 원주(전략)<br><br>아파트(−) 단일 처방<br><b>원주는 검증 거점</b></div>
+  </div>
+  <p class="tbl-note" style="margin-top:.8rem">A와 A′의 차이 = 겹치는 요인이 3개냐 2개냐. 요인이 많이 겹칠수록 복합 취약 → 순위 상향. 기준은 협의로 조정 가능(별첨 엑셀).</p>
 </section>
 
 <!-- 20. 요인별 개입 방향 -->
@@ -622,7 +810,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
         <td><b>비아파트 주거지</b> 중심 놀이·활동 공간 조성</td></tr>
     </table>
   </div>
-  <p class="lead" style="margin-top:.8rem">같은 "비만율 높은 지역"이라도 작용하는 요인이 다르면 <b style="color:var(--navy)">프로그램의 내용이 달라져야 합니다.</b></p>
+  <p class="lead" style="margin-top:.8rem">같은 "비만율 높은 지역"이라도 작용하는 요인이 다르면 <b style="color:var(--navy)">프로그램의 내용이 달라져야 함.</b></p>
 </section>
 
 <!-- 21. 추가 검토 + 소결 -->
@@ -659,81 +847,105 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 <!-- 22. 4부 디바이더 -->
 <section class="slide pdiv pd4">
   <div class="pnum">4부</div>
-  <h2>이동기록 앱 '아이걸음'<br>— 중재 효과를 어떻게 잴 것인가</h2>
-  <p class="pd-sub">어디에(1부) · 왜(2부) · 무엇을(3부)까지 왔습니다. 남은 질문은 하나 — "프로그램이 실제로 아이의 하루를 바꾸는가".</p>
-  <div class="pd-items"><span>왜 이동기록인가</span><span>앱 소개</span><span>사용 흐름</span><span>배포 현황</span></div>
+  <h2>이동기록 앱 '아이걸음' 개발<br>— 중재 효과를 어떻게 잴 것인가</h2>
+  <p class="pd-sub">어디에(1부) · 왜(2부) · 무엇을(3부)에 이어, 남은 질문 하나 — "프로그램이 실제로 아이의 하루를 바꾸는가".
+    이를 실측할 연구용 앱을 직접 개발.</p>
+  <div class="pd-items"><span>개발 개요</span><span>개발 화면 — 기록 흐름</span><span>개발 화면 — 안정성·전송</span><span>배포 현황</span></div>
 </section>
 
-<!-- 23. 왜 이동기록인가 -->
+<!-- 23. 개발 개요 -->
 <section class="slide b4">
-  <div class="s-tag t4">4부 · 01 WHY</div>
-  <h2 class="st">왜 이동기록인가 — 설문이 아니라 실측</h2>
-  <ul class="dot" style="font-size:1.05rem;max-width:58rem">
-    <li style="margin-bottom:.9rem">중재 프로그램의 실증에는 <b>아이의 실제 생활 변화</b>를 재는 도구가 필요합니다
-      — 기억에 의존하는 설문은 아이의 하루를 놓치기 쉽습니다</li>
-    <li style="margin-bottom:.9rem">아이걸음은 <b>3초 간격 GPS</b>로 하루의 이동을 통째로 기록합니다
-      → <b>이동 거리 · 활동 반경 · 바깥 활동 시간</b>을 객관적으로 산출</li>
-    <li style="margin-bottom:.9rem">2·3부에서 <b>주거·활동 환경(아파트비율−)</b>이 꾸준한 요인으로 확인됐습니다
-      — 아이가 <b>실제로 어디서 얼마나 움직이는지</b>가 프로그램 평가의 핵심 지표가 됩니다</li>
-    <li>중재 <b>전·후 비교</b>, 지역 간 비교(중재지 vs 비교지)에 그대로 활용</li>
-  </ul>
-  <div class="box" style="max-width:58rem">
-    <h4>수집 자료</h4>
-    <p style="font-size:.95rem">위치 궤적(GPX·KML) — 기기 안에만 저장되며, 보호자가 '보내기'를 누른 경우에만 연구팀에 전달됩니다.</p>
-  </div>
-</section>
-
-<!-- 24. 앱 소개 -->
-<section class="slide b4">
-  <div class="s-tag t4">4부 · 02 THE APP</div>
-  <h2 class="st">아이걸음 — 버튼 하나로 기록되는 아이의 하루</h2>
-  <div class="two-col" style="grid-template-columns:1.15fr 1fr;align-items:start">
+  <div class="s-tag t4">4부 · 01 DEVELOPMENT</div>
+  <h2 class="st">무엇을 어떻게 만들었나 — 요구사항과 설계</h2>
+  <div class="two-col" style="grid-template-columns:1fr 1.25fr;align-items:start">
     <div>
       <div class="app-hero">
         <img src="./app_assets/icon.png" alt="아이걸음 아이콘">
         <div><div class="nm">아이걸음</div>
-          <div class="ver">v1.1.2 · 51MB · Android 8.0 이상 (2026.07 배포)</div></div>
+          <div class="ver">Flutter 자체 개발 · v1.1.2 (8차 빌드) · Android 8.0+ · 51MB</div></div>
       </div>
-      <ul class="dot" style="font-size:1rem;margin-top:1rem">
-        <li><b>참가자 번호 입력 → 기록 시작</b> — 조작은 이게 전부</li>
-        <li>화면이 꺼져도, 다른 앱을 써도 <b>하루 종일 자동 기록</b> (배터리 사용 15~30%)</li>
-        <li>기록은 <b>기기에만 저장</b> — 인터넷 자동 전송 없음</li>
-        <li>기록 종료 후 <b>카카오톡·메일로 보내기</b> (GPX·KML·ZIP)</li>
-        <li>삼성 등 기종별 배터리 설정까지 <b>안내 카드로 내장</b></li>
+      <ul class="dot" style="font-size:.95rem;margin-top:1rem">
+        <li>목표: <b>보호자·아동이 쓸 수 있는 가장 단순한 실측 도구</b> — 참가자 번호 입력 + 버튼 하나</li>
+        <li>산출 지표: 이동 거리 · 활동 반경 · 바깥 활동 시간 (중재 전후 비교용)</li>
+        <li>수집 파일: GPX·KML — GIS 분석에 바로 투입</li>
+        <li>개인정보: 기기 내 저장, 보호자가 '보내기'를 누른 경우에만 전송</li>
       </ul>
     </div>
-    <div class="shots" style="margin-top:0">
-      <div class="shot"><div class="frame"><img src="./app_assets/shot_splash.png" alt="시작 화면"></div><div class="cap">시작 화면</div></div>
-      <div class="shot"><div class="frame"><img src="./app_assets/shot_home.png" alt="홈 화면"></div><div class="cap">버튼 하나로 시작</div></div>
-      <div class="shot"><div class="frame"><img src="./app_assets/shot_rec.png" alt="기록 중"></div><div class="cap">기록 중 — 실시간 확인</div></div>
+    <div class="box" style="margin-top:0">
+      <h4>핵심 개발 내용</h4>
+      <table style="font-size:.85rem">
+        <tr><th>요구사항</th><th>구현</th></tr>
+        <tr><td><b>3초 간격 정밀 기록</b></td><td>고정 간격 위치 스트림 (geolocator)</td></tr>
+        <tr><td><b>화면 꺼져도 하루 종일</b></td><td>포그라운드 서비스 + 별도 isolate<br>(flutter_foreground_task) — 백그라운드 생존의 핵심</td></tr>
+        <tr><td><b>앱이 죽어도 기록 보존</b></td><td>좌표 수신 즉시 로컬 DB 저장(sqflite)<br>— 유실 최대 1개 지점</td></tr>
+        <tr><td><b>중단 감지·복구</b></td><td>재실행 시 중단 시각 안내 + 안전 저장 확인 배너</td></tr>
+        <tr><td><b>기종별 배터리 제한 대응</b></td><td>삼성 등 절전 설정 안내 카드 내장</td></tr>
+        <tr><td><b>간편 전송</b></td><td>세션별 GPX·KML / 전체 기록 ZIP 일괄 —<br>카카오톡·메일 공유 시트 (share_plus·archive)</td></tr>
+        <tr><td><b>연구 브랜딩</b></td><td>3개 대학 심볼 스플래시 · 과제명 표기<br>(Android 12 대응 이중 스플래시)</td></tr>
+      </table>
     </div>
   </div>
 </section>
 
-<!-- 25. 사용 흐름·배포 -->
+<!-- 24. 개발 화면 1: 기록 흐름 -->
 <section class="slide b4">
-  <div class="s-tag t4">4부 · 03 FLOW &amp; ROLLOUT</div>
-  <h2 class="st">하루 세 번의 터치, 그리고 배포 현황</h2>
+  <div class="s-tag t4">4부 · 02 SCREENS</div>
+  <h2 class="st">개발 화면 ① — 하루의 기록 흐름</h2>
+  <div class="shots" style="grid-template-columns:repeat(4,1fr)">
+    <div class="shot"><div class="frame"><img src="./app_assets/emu_v112.png" alt="스플래시"></div>
+      <div class="cap">스플래시 — 과제·대학 브랜딩</div></div>
+    <div class="shot"><div class="frame"><img src="./app_assets/shot_home.png" alt="홈"></div>
+      <div class="cap">홈 — 참가자 번호 + 기록 시작</div></div>
+    <div class="shot"><div class="frame"><img src="./app_assets/shot_rec.png" alt="기록 중"></div>
+      <div class="cap">기록 중 — 기록점 수·수신 상태 실시간</div></div>
+    <div class="shot"><div class="frame"><img src="./app_assets/emu_stopconfirm2.png" alt="종료 확인"></div>
+      <div class="cap">종료 확인 — 실수 방지 이중 확인</div></div>
+  </div>
+  <p class="tbl-note" style="margin-top:.6rem">조작은 시작·종료 두 번이 전부. 기록 중에는 "정상 기록 중 (마지막 수신 n초 전)"으로 작동 여부를 즉시 확인.</p>
+</section>
+
+<!-- 25. 개발 화면 2: 안정성·전송 -->
+<section class="slide b4">
+  <div class="s-tag t4">4부 · 03 SCREENS</div>
+  <h2 class="st">개발 화면 ② — 안정성과 전송 (개발 비중이 가장 컸던 부분)</h2>
+  <div class="shots" style="grid-template-columns:repeat(4,1fr)">
+    <div class="shot"><div class="frame"><img src="./app_assets/emu_interrupt.png" alt="중단 감지"></div>
+      <div class="cap">중단 감지 — 중단 시각 안내·안전 저장<br>+ 삼성 배터리 설정 안내 카드</div></div>
+    <div class="shot"><div class="frame"><img src="./app_assets/emu_firsttime_dialog.png" alt="저장 완료"></div>
+      <div class="cap">종료 즉시 저장 완료 → 보내기 유도</div></div>
+    <div class="shot"><div class="frame"><img src="./app_assets/emu_ziplist.png" alt="저장된 기록"></div>
+      <div class="cap">저장된 기록 — 세션별 지점 수·공유·삭제</div></div>
+    <div class="shot"><div class="frame"><img src="./app_assets/emu_zipshare4.png" alt="zip 공유"></div>
+      <div class="cap">전체 기록 ZIP 일괄 공유<br>(P001_전체기록_날짜.zip)</div></div>
+  </div>
+  <p class="tbl-note" style="margin-top:.6rem">현장 변수(절전 강제 종료·앱 밀어서 끄기·배터리 부족)를 가정한 방어 설계 — 어떤 경우에도 그때까지의 기록은 보존.</p>
+</section>
+
+<!-- 25b. 배포 현황 -->
+<section class="slide b4">
+  <div class="s-tag t4">4부 · 04 ROLLOUT</div>
+  <h2 class="st">배포 현황 — 안드로이드 배포 시작, iOS 준비 중</h2>
   <div class="two-col" style="grid-template-columns:1.4fr 1fr">
     <div>
       <div class="steps">
         <div class="step"><div class="n">1</div><div class="em">🌅</div><h4>아침 — 기록 시작</h4>
           <p>집을 나서기 전 앱을 열고<br><b>기록 시작</b> 버튼</p></div>
         <div class="step"><div class="n">2</div><div class="em">🏫</div><h4>하루 종일 — 자동</h4>
-          <p>아무것도 안 해도 됩니다<br>화면이 꺼져도 계속 기록</p></div>
+          <p>조작 불필요<br>화면이 꺼져도 계속 기록</p></div>
         <div class="step"><div class="n">3</div><div class="em">🌙</div><h4>저녁 — 종료·보내기</h4>
           <p>귀가 후 <b>기록 종료</b> →<br><b>보내기</b>로 연구팀 전송</p></div>
       </div>
       <div class="box">
-        <h4>배포 현황</h4>
+        <h4>배포 상태</h4>
         <ul class="dot" style="font-size:.92rem">
-          <li><b>안드로이드</b>: APK 배포 중 — 다운로드 페이지 + 설치 매뉴얼 + FAQ + 참가자 안내문 완비</li>
-          <li><b>아이폰(iOS)</b>: 개발 완료, TestFlight 배포 준비 중</li>
+          <li><b>안드로이드</b>: v1.1.2 APK 배포 중 — 다운로드 페이지 + 설치 매뉴얼 + FAQ + 참가자 안내문 완비</li>
+          <li><b>아이폰(iOS)</b>: 개발 완료 · 클라우드 빌드 파이프라인 구축 — TestFlight 배포 준비 중</li>
+          <li>하루 기록 배터리 사용 15~30% 수준 확인</li>
         </ul>
       </div>
       <div class="privacy"><span>🔒</span>
-        <span><b>개인정보</b> — 위치 기록은 휴대폰 안에만 저장되며 자동 전송되지 않습니다.
-        보호자가 직접 '보내기'를 눌렀을 때만 연구팀에 전달되고, 연구 목적으로만 사용 후 폐기합니다.</span></div>
+        <span><b>개인정보</b> — 위치 기록은 휴대폰 안에만 저장, 자동 전송 없음.
+        보호자가 직접 '보내기'를 눌렀을 때만 연구팀에 전달, 연구 목적 사용 후 폐기.</span></div>
     </div>
     <div class="box" style="margin-top:0;text-align:center">
       <h4>다운로드</h4>
@@ -758,7 +970,7 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
     <li>투입 순서 제안: <b>A 최우선 5곳</b>(옥천·영동·영월·울진·영양) → A′ 9곳 → 규모 축 11곳</li>
     <li>추가 검토 2곳: <b>진도</b>(비만율 전국 최고 수준) · <b>보은</b>(요인 4개 모두 유의) / 원주는 검증 거점</li>
     <li>프로그램 내용은 <b>지역별 꾸준한 요인</b>에 맞춰 설계 — 저소득 지원 · 가족 돌봄 · 활동 공간</li>
-    <li><b>아이걸음으로 중재 전후 활동 변화 측정</b> — 실증 데이터 수집을 시작합니다</li>
+    <li><b>아이걸음으로 중재 전후 활동 변화 실측</b> — 실증 데이터 수집 시작</li>
   </ul>
   <p style="margin-top:1.6rem;font-size:.92rem;color:var(--muted)">
     더 보기: <a href="./slides.html">MGTWR 연구 발표</a> · <a href="./region_slides.html">교차 검토 상세</a> ·
@@ -767,9 +979,10 @@ h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);
 
 </div>
 
+<div id="symTip"></div>
 <div id="nav">
   <button id="fsBtn">⛶ 전체화면</button>
-  <span id="pageNum">1 / 26</span>
+  <span id="pageNum">1 / 35</span>
   <button id="prevSlide">←</button>
   <button id="nextSlide">→</button>
 </div>
@@ -815,6 +1028,18 @@ document.addEventListener('keydown',e=>{
  else if(e.key==='f'||e.key==='F'){document.getElementById('fsBtn').onclick();}});
 deck.addEventListener('scroll',()=>setProgress(curIdx()),{passive:true});
 addEventListener('resize',()=>go(curIdx()));
+document.getElementById('eqBox').onclick=()=>{
+ const e=document.getElementById('eqExplain');
+ e.style.display=(e.style.display==='none')?'':'none';};
+/* 수식 기호 클릭 팝업 */
+const symTip=document.getElementById('symTip');
+document.querySelectorAll('.sym').forEach(s=>{
+ s.addEventListener('click',e=>{e.stopPropagation();
+  symTip.textContent=s.dataset.tip;symTip.style.display='block';
+  const r=s.getBoundingClientRect();
+  symTip.style.left=Math.max(10,Math.min(r.left,innerWidth-symTip.offsetWidth-20))+'px';
+  symTip.style.top=(r.bottom+10)+'px';});});
+document.addEventListener('click',()=>{symTip.style.display='none';});
 
 /* ── EHSA iframe: 로드 후 지연 주입(초기 로딩 가볍게) ── */
 setTimeout(()=>{document.getElementById('ehsaFrame').src='../../infant_obesity_ehsa/index.html';},1500);
@@ -889,20 +1114,28 @@ L.geoJSON(DATA.geo,{renderer:canvasP,
   l.on('mouseover',()=>l.setStyle({weight:2,color:'#8d5c83'}));
   l.on('mouseout',()=>l.setStyle({weight:.7,color:'#ffffff'}));}}).addTo(mapP);
 
-/* ── 표 ── */
+/* ── 표·차트 (기존 MGTWR 발표와 동일) ── */
+Chart.defaults.font.family="'Noto Sans KR',sans-serif";
+Chart.defaults.font.size=15;
 function buildTables(){
  const M=DATA.models,mc=DATA.modelcmp;
- const mk=d=>{let h="<tr><th>모형</th><th class='num'>AICc</th><th class='num'>R²</th><th class='num'>잔차 Moran's <i class='mv'>I</i></th></tr>";
+ const mk=d=>{let h="<tr><th>모형</th><th class='num'>AICc</th><th class='num'>R²</th><th class='num'>adj-R²</th><th class='num'>잔차 Moran's <i class='mv'>I</i></th></tr>";
   M.forEach((m,i)=>{h+=`<tr${m==='MGTWR'?" class='hl'":""}><td>${m}</td>
    <td class='num'>${mc[d].aicc[i].toFixed(1)}</td><td class='num'>${mc[d].r2[i].toFixed(3)}</td>
-   <td class='num'>${DATA.moran[d][i].toFixed(3)}</td></tr>`;});
+   <td class='num'>${DATA.adjr2[d][i].toFixed(3)}</td><td class='num'>${DATA.moran[d][i].toFixed(3)}</td></tr>`;});
   return h;};
  document.getElementById('tblModelOb').innerHTML=mk('ob');
  document.getElementById('tblModelOw').innerHTML=mk('ow');
- let g="<tr><th>변수</th><th class='num'><i class='mv'>bw</i>(비만율)</th><th class='num'><i class='mv'>τ</i></th><th class='num'><i class='mv'>bw</i>(과체중+)</th><th class='num'><i class='mv'>τ</i></th></tr>";
+ const hlY=y=>y===2022?" hl":"";
+ let dm="<tr><th>연도</th>"+DATA.years.map(y=>`<th class='num${hlY(y)}'>${y}</th>`).join("")+"</tr>";
+ dm+="<tr><td>비만율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ob.map(r=>`<td class='num${hlY(r[0])}'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
+ dm+="<tr><td>과체중이상율 <i class=\"mv\">I</i></td>"+DATA.dvmoran.ow.map(r=>`<td class='num${hlY(r[0])}'>${r[1].toFixed(3)}</td>`).join("")+"</tr>";
+ document.getElementById('tblDvMoran').innerHTML=dm;
+ let g="<tr><th>변수</th><th class='num'><i class='mv'>bw</i>(비만율)</th><th class='num'><i class='mv'>τ</i></th><th class='num'><i class='mv'>bw</i>(과체중+)</th><th class='num'><i class='mv'>τ</i></th><th class='num'>ENP<sub>j</sub></th><th class='num'><i class='mv'>t</i><sub>crit</sub></th></tr>";
  DATA.vars.forEach(v=>{const a=DATA.bwt.ob[v],b=DATA.bwt.ow[v];
   g+=`<tr><td>${VLAB[v]}</td><td class='num'>${a.bw}</td><td class='num'>${a.tau}</td>
-  <td class='num'>${b.bw}</td><td class='num'>${b.tau}</td></tr>`;});
+  <td class='num'>${b.bw}</td><td class='num'>${b.tau}</td>
+  <td class='num'>${a.enp}</td><td class='num'>${a.tcrit}</td></tr>`;});
  document.getElementById('tblBwt').innerHTML=g;
  let c="<tr><th>변수</th><th class='num'>이전</th><th class='num'>이후</th><th class='num'>변화량</th></tr>";
  DATA.vars.forEach(v=>{const d2=DATA.covid[v],del=d2.post-d2.pre;
@@ -911,6 +1144,10 @@ function buildTables(){
   <td class='num'>${del>0?"+":""}${del.toFixed(3)}</td></tr>`;});
  document.getElementById('tblCovid').innerHTML=c;}
 buildTables();
+new Chart(document.getElementById('interChart'),{type:'line',data:{labels:DATA.years,datasets:[
+ {label:'비만율 모형',data:DATA.inter.ob,borderColor:'#c14f2e',backgroundColor:'rgba(193,79,46,.12)',fill:true,tension:.35},
+ {label:'과체중이상율 모형',data:DATA.inter.ow,borderColor:'#1d3350',tension:.35}]},
+ options:{plugins:{legend:{position:'bottom'}},scales:{y:{title:{display:true,text:'표준화 절편'}}}}});
 go(0);
 </script>
 </body>
