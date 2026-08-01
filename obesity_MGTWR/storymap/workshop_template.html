@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제3차 정례 워크숍 — EHSA·MGTWR·아이걸음 발표 슬라이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root{--navy:#1d3350;--accent:#c14f2e;--blue:#1e5f84;--plum:#6d3a62;--green:#00703E;
+  --bg:#fbfaf7;--ink:#26313d;--muted:#5d6b7a;--line:#e2e6ea;--card:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:clamp(13px, 1.042vw, 27px)}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg);
+  line-height:1.65;word-break:keep-all;overflow-wrap:break-word}
+#deck{display:flex;height:100vh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none}
+#deck::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100vw;height:100vh;scroll-snap-align:start;overflow-y:auto;
+  padding:3rem 4.2rem 4.2rem;background:var(--bg)}
+.s-tag{font-size:.78rem;letter-spacing:.2em;font-weight:700;margin-bottom:.55rem;color:var(--accent)}
+.s-tag.t2{color:var(--blue)}.s-tag.t3{color:var(--plum)}.s-tag.t4{color:var(--green)}
+h2.st{font-family:'Noto Serif KR',serif;font-size:1.85rem;font-weight:900;color:var(--navy);
+  margin-bottom:1rem;padding-left:.8rem;border-left:.32rem solid var(--accent)}
+.b2 h2.st{border-left-color:var(--blue)}.b3 h2.st{border-left-color:var(--plum)}.b4 h2.st{border-left-color:var(--green)}
+.lead{color:var(--muted);max-width:58rem;margin-bottom:.8rem;font-size:1rem}
+.box{background:var(--card);border:1px solid var(--line);border-radius:.7rem;padding:1.1rem 1.35rem;
+  margin-top:.9rem;color:var(--ink);box-shadow:0 2px 10px rgba(29,51,80,.05)}
+.box h4{font-size:1.02rem;font-weight:900;color:var(--navy);margin-bottom:.55rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:#eef1f4;color:var(--navy);font-weight:700;padding:.48rem .55rem;text-align:left;border-bottom:2px solid var(--line)}
+td{padding:.42rem .55rem;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.ctr{text-align:center}
+.hl{background:#faeee8;font-weight:700}
+.tbl-note{font-size:.82rem;color:var(--muted);margin-top:.5rem}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.mv{font-family:'Times New Roman',Georgia,serif;font-style:italic}
+ul.dot{margin:.5rem 0 0 1.2rem;font-size:.98rem}
+ul.dot li{margin-bottom:.5rem}
+details.box summary{font-size:1rem;font-weight:900;color:var(--navy);cursor:pointer;list-style:none}
+details.box summary::before{content:"▸ ";color:var(--accent)}
+details.box[open] summary::before{content:"▾ "}
+details.box summary::-webkit-details-marker{display:none}
+a{color:var(--accent)}
+
+/* ── 타이틀 ── */
+#titleSlide{background:linear-gradient(150deg,#fdfcf9 0%,#f6efe8 55%,#f1e2d6 100%);
+  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+#titleSlide .deco{position:absolute;right:-14rem;top:-10rem;width:36rem;height:36rem;border-radius:50%;
+  background:radial-gradient(circle,rgba(193,79,46,.14),transparent 68%)}
+#titleSlide .deco2{position:absolute;left:-10rem;bottom:-14rem;width:30rem;height:30rem;border-radius:50%;
+  background:radial-gradient(circle,rgba(29,51,80,.10),transparent 68%)}
+.t-kicker{font-size:.82rem;letter-spacing:.14em;color:var(--accent);font-weight:700;max-width:60rem}
+.t-rule{width:4.4rem;height:.3rem;background:var(--accent);border-radius:2px;margin:1.1rem 0 1.4rem}
+h1.title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,4.4vw,2.8rem);font-weight:900;line-height:1.4;
+  color:var(--navy);max-width:58rem}
+.t-sub{color:#7c6a5c;margin-top:1rem;font-size:1.02rem;max-width:56rem}
+.meta-grid{display:flex;gap:1rem;margin-top:2.2rem;flex-wrap:wrap}
+.meta{background:rgba(255,255,255,.75);border:1px solid #e6d9cc;border-radius:.8rem;
+  padding:.9rem 1.4rem;min-width:14rem;box-shadow:0 3px 14px rgba(29,51,80,.06)}
+.meta .k{font-size:.75rem;color:#a08a76;letter-spacing:.1em;font-weight:700}
+.meta .v{font-weight:900;font-size:.98rem;margin-top:.2rem;color:var(--navy)}
+
+/* ── 부 구분(디바이더) ── */
+.pdiv{display:flex;flex-direction:column;justify-content:center;color:#fff;position:relative;overflow:hidden}
+.pdiv .pnum{font-family:'Noto Serif KR',serif;font-size:6rem;font-weight:900;opacity:.22;line-height:1}
+.pdiv h2{font-family:'Noto Serif KR',serif;font-size:2.5rem;font-weight:900;line-height:1.35;max-width:52rem;margin-top:.4rem}
+.pdiv .pd-sub{font-size:1.1rem;opacity:.92;margin-top:1.1rem;max-width:48rem}
+.pdiv .pd-items{display:flex;gap:.8rem;margin-top:2rem;flex-wrap:wrap}
+.pdiv .pd-items span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;padding:.4rem 1.1rem;font-size:.9rem;font-weight:700}
+.pd1{background:linear-gradient(150deg,#7e2a1b,#c96a45)}
+.pd2{background:linear-gradient(150deg,#16394f,#3b8dbd)}
+.pd3{background:linear-gradient(150deg,#4e2947,#8d5c83)}
+.pd4{background:linear-gradient(150deg,#00512d,#0a8c52)}
+
+/* ── 개요 카드 ── */
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.4rem}
+.ov-card{border-radius:.9rem;padding:1.3rem 1.3rem;color:#fff;min-height:13rem;display:flex;flex-direction:column}
+.ov-card .n{font-size:.8rem;font-weight:700;letter-spacing:.15em;opacity:.8}
+.ov-card h4{font-size:1.15rem;font-weight:900;margin:.5rem 0 .6rem;line-height:1.4}
+.ov-card p{font-size:.88rem;opacity:.92;line-height:1.55}
+.ov1{background:linear-gradient(150deg,#8d2f1f,#c96a45)}
+.ov2{background:linear-gradient(150deg,#1e5f84,#3b8dbd)}
+.ov3{background:linear-gradient(150deg,#5b2f52,#8d5c83)}
+.ov4{background:linear-gradient(150deg,#00512d,#0a8c52)}
+
+/* ── EHSA ── */
+.pat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem;margin-top:1rem}
+.pat{background:#fff;border:1px solid var(--line);border-radius:.7rem;padding:.85rem .95rem;font-size:.85rem}
+.pat b{display:block;font-size:.95rem;margin-bottom:.25rem}
+.pat .chip{display:inline-block;width:.85rem;height:.85rem;border-radius:.25rem;margin-right:.35rem;vertical-align:-.1rem}
+.ehsa-img{width:100%;max-height:calc(100vh - 17rem);object-fit:contain;background:#fff;
+  border:1px solid var(--line);border-radius:.7rem}
+#ehsaFrame{width:100%;height:calc(100vh - 11.5rem);border:1px solid var(--line);border-radius:.7rem;background:#fff}
+.axis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
+.axis-card{border-radius:.8rem;padding:1.2rem 1.3rem;color:#fff}
+.ax1{background:linear-gradient(150deg,#8d2f1f,#b5502f)}
+.ax2{background:linear-gradient(150deg,#1e5f84,#3b8dbd)}
+.ax3{background:linear-gradient(150deg,#465666,#6b7d8f)}
+.axis-card h4{font-size:1.05rem;font-weight:900;margin-bottom:.5rem}
+.axis-card .big{font-size:2rem;font-weight:900;line-height:1.1}
+.axis-card p{font-size:.88rem;margin-top:.5rem;opacity:.94}
+
+/* ── 스케일 카드(2부) ── */
+.scale-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.scale-card{border-radius:.8rem;padding:1.2rem 1.3rem;color:#fff;font-size:.95rem}
+.sc1{background:linear-gradient(150deg,#a33c22,#c96a45)}
+.sc2{background:linear-gradient(150deg,#1e5f84,#3b8dbd)}
+.sc3{background:linear-gradient(150deg,#465666,#6b7d8f)}
+.scale-card h4{font-size:1.05rem;font-weight:900;margin-bottom:.5rem}
+
+/* ── 지도 공통 ── */
+.map-slide{background:#f4f2ee}
+.ctrl{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.45rem;align-items:center}
+.ctrl-label{font-size:.82rem;color:var(--muted);font-weight:700;margin-right:.2rem}
+.vbtn,.dvbtn{background:#fff;border:1px solid #cdd6de;color:var(--ink);
+  padding:.3rem .7rem;border-radius:.5rem;font-size:.85rem;cursor:pointer;font-family:inherit}
+.vbtn.sel,.dvbtn.sel{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+#yearRow{display:flex;align-items:center;gap:.7rem;margin:.25rem 0 .6rem}
+#yearSlider{flex:1;max-width:20rem;accent-color:var(--accent)}
+#yearLabel{font-size:1.25rem;font-weight:900;min-width:3.2rem;color:var(--navy)}
+#playBtn{background:var(--accent);border:none;color:#fff;border-radius:.5rem;
+  padding:.35rem .8rem;cursor:pointer;font-family:inherit;font-weight:700}
+.ystep{background:#fff;border:1px solid #cdd6de;color:var(--ink);
+  border-radius:.5rem;padding:.3rem .65rem;cursor:pointer;font-family:inherit;font-weight:700}
+#sggSearch{background:#fff;border:1px solid #cdd6de;color:var(--ink);
+  border-radius:.5rem;padding:.32rem .65rem;font-family:inherit;font-size:.85rem;width:11rem}
+#map{height:calc(100vh - 15.5rem);min-height:22rem;border-radius:.7rem;background:#eceae5;border:1px solid var(--line)}
+#mapPrio{height:calc(100vh - 14rem);min-height:22rem;border-radius:.7rem;background:#eceae5;border:1px solid var(--line)}
+#legend{display:flex;align-items:center;gap:.45rem;font-size:.8rem;color:var(--muted)}
+#legbar{width:10rem;height:.55rem;border-radius:.3rem;
+  background:linear-gradient(90deg,#2166ac,#67a9cf,#d1e5f0,#f7f7f7,#fddbc7,#ef8a62,#b2182b)}
+.leg-gray{width:.7rem;height:.7rem;border-radius:.2rem;background:#e8e8e8;border:1px solid #cfcfcf;
+  display:inline-block;margin-left:.5rem}
+#varDesc{background:#fff;border-left:.28rem solid var(--accent);
+  padding:.5rem .9rem;border-radius:0 .5rem .5rem 0;margin-top:.55rem;font-size:.9rem;color:var(--ink);
+  border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.leaflet-container{font-family:'Noto Sans KR',sans-serif;background:#eceae5}
+.popup-name{font-weight:900}
+.mleg{display:flex;gap:1rem;flex-wrap:wrap;font-size:.85rem;margin:.5rem 0;align-items:center}
+.mleg span{display:inline-flex;align-items:center;gap:.35rem}
+.sw{width:.85rem;height:.85rem;border-radius:.2rem;display:inline-block;border:1px solid #cfcfcf}
+
+/* ── 3부 비교 카드 ── */
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:stretch;margin-top:1.2rem}
+.vs-card{background:#fff;border:1px solid var(--line);border-left:.35rem solid var(--accent);
+  border-radius:.7rem;padding:1.2rem 1.4rem}
+.vs-card.blue{border-left-color:var(--blue)}
+.vs-mid{display:flex;align-items:center;font-size:1.6rem;font-weight:900;color:var(--plum)}
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem}
+.g-card{border-radius:.8rem;padding:1.1rem 1.2rem;color:#fff;font-size:.9rem}
+.gA{background:linear-gradient(150deg,#8d2f1f,#b5502f)}
+.gAp{background:linear-gradient(150deg,#c96a45,#dd9068)}
+.gB{background:linear-gradient(150deg,#1e5f84,#3b8dbd)}
+.gC{background:linear-gradient(150deg,#465666,#6b7d8f)}
+.g-card h4{font-size:1rem;font-weight:900;margin-bottom:.45rem}
+
+/* ── 4부 앱 ── */
+.app-hero{display:flex;align-items:center;gap:1.1rem;margin-top:.6rem}
+.app-hero img{width:4.6rem;height:4.6rem;border-radius:1.1rem;box-shadow:0 8px 20px rgba(0,112,62,.25)}
+.app-hero .nm{font-size:1.6rem;font-weight:900;color:var(--green)}
+.app-hero .ver{font-size:.85rem;color:var(--muted)}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1rem}
+.shot{text-align:center}
+.shot .frame{display:inline-block;background:#111;border-radius:1.4rem;padding:.45rem;box-shadow:0 10px 26px rgba(0,112,62,.18)}
+.shot img{display:block;width:100%;max-width:12rem;max-height:calc(100vh - 21rem);object-fit:contain;border-radius:1rem}
+.shot .cap{font-size:.85rem;color:var(--muted);margin-top:.6rem;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.step{background:#fff;border:1px solid var(--line);border-radius:.9rem;padding:1.2rem;text-align:center}
+.step .n{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:50%;
+  background:var(--green);color:#fff;font-weight:900;margin-bottom:.5rem}
+.step .em{font-size:1.9rem;margin-bottom:.4rem}
+.step h4{font-size:1rem;font-weight:900;margin-bottom:.3rem;color:var(--navy)}
+.step p{font-size:.85rem;color:var(--muted)}
+.privacy{background:#eef6f1;border:1px solid #d5e8dd;border-radius:.7rem;padding:.9rem 1.2rem;
+  font-size:.88rem;color:#00512d;margin-top:1rem;display:flex;gap:.6rem;align-items:flex-start}
+.qr-box{text-align:center}
+.qr-box img{width:9rem;height:9rem;border:1px solid var(--line);border-radius:.8rem;padding:.4rem;background:#fff}
+.qr-box .cap{font-size:.8rem;color:var(--muted);margin-top:.4rem}
+
+/* ── 결론 ── */
+#conclSlide{background:linear-gradient(150deg,#fdfcf9,#f2e8de)}
+.concl{font-family:'Noto Serif KR',serif;font-size:1.7rem;font-weight:900;line-height:1.55;
+  color:var(--navy);max-width:56rem;margin:1rem 0}
+
+/* ── 내비 ── */
+#progress{position:fixed;top:0;left:0;height:.28rem;background:var(--accent);z-index:1400;transition:width .2s}
+#nav{position:fixed;bottom:1rem;right:1.2rem;z-index:1300;display:flex;gap:.4rem;align-items:center}
+#nav button{background:var(--navy);color:#fff;border:none;border-radius:999px;
+  width:2.4rem;height:2.4rem;font-size:1rem;cursor:pointer;box-shadow:0 3px 12px rgba(29,51,80,.3)}
+#nav button:hover{background:var(--accent)}
+#fsBtn{width:auto!important;padding:0 1rem;font-size:.82rem!important;font-weight:700}
+#pageNum{background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:999px;
+  padding:.4rem .9rem;font-size:.82rem;font-weight:700}
+.hint{position:fixed;bottom:1.15rem;left:1.4rem;color:#a7b1bb;font-size:.75rem;z-index:1300}
+@media(max-width:1000px){
+  .two-col,.pat-grid,.axis-grid,.scale-grid,.steps,.shots{grid-template-columns:1fr}
+  .ov-grid,.g-grid{grid-template-columns:1fr 1fr}
+  .vs-grid{grid-template-columns:1fr}.vs-mid{justify-content:center}
+  .slide{padding:2.2rem 1.5rem 4.4rem}
+  #map,#mapPrio{height:52vh;min-height:18rem}
+  #yearRow{flex-wrap:wrap}
+  #legend{margin-left:0!important;margin-top:.4rem}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="deck">
+
+<!-- 1. 타이틀 -->
+<section class="slide" id="titleSlide">
+  <div class="deco"></div><div class="deco2"></div>
+  <div class="t-kicker">「소아비만 지역별 건강격차 해소를 위한 중재프로그램 개발 및 실증연구」 제3차 정례 워크숍 · 2026. 8. 1.(토)</div>
+  <div class="t-rule"></div>
+  <h1 class="title">어디에서 시작하고,<br>무엇을 바꿀 것인가</h1>
+  <p class="t-sub">발생 핫스팟 분석(EHSA)으로 찾은 우선 지역 × 시공간 회귀(MGTWR)로 확인한 환경 요인,<br>
+    그리고 이동기록 앱 '아이걸음'으로 여는 현장 실증</p>
+  <div class="meta-grid">
+    <div class="meta"><div class="k">구성</div><div class="v">1부 EHSA → 2부 MGTWR → 3부 교차 검토 → 4부 아이걸음</div></div>
+    <div class="meta"><div class="k">자료</div><div class="v">전국 시군구 영유아 건강검진 2012–2024</div></div>
+  </div>
+  <p style="margin-top:2rem;font-size:1.05rem;font-weight:700;color:var(--navy)">
+    임창민 <span style="font-weight:400;color:#7c6a5c">(국립공주대학교 지리학과)</span>
+    <span style="font-weight:400;color:#7c6a5c">·</span>
+    이현희 <span style="font-weight:400;color:#7c6a5c">(건국대학교 지리학과)</span></p>
+</section>
+
+<!-- 2. 오늘의 흐름 -->
+<section class="slide">
+  <div class="s-tag">OVERVIEW</div>
+  <h2 class="st">오늘의 흐름 — 네 개의 질문</h2>
+  <div class="ov-grid">
+    <div class="ov-card ov1"><div class="n">1부 · EHSA</div>
+      <h4>어느 지역이<br>꾸준히 높은가?</h4>
+      <p>12년(2012–2024) 자료로 비만율·아동수의 시공간 핫스팟을 추적합니다. 중재 후보지 선정의 출발점입니다.</p></div>
+    <div class="ov-card ov2"><div class="n">2부 · MGTWR</div>
+      <h4>왜 그 지역이<br>높은가?</h4>
+      <p>어떤 지역환경 요인이, 어느 지역에서, 어느 시기에 비만율과 연결되는지 시공간 회귀로 확인합니다.</p></div>
+    <div class="ov-card ov3"><div class="n">3부 · 교차 검토</div>
+      <h4>어디부터,<br>무엇을 바꿀까?</h4>
+      <p>두 분석을 포개어 후보지 30곳의 우선순위를 정하고, 지역별 프로그램 방향을 제안합니다.</p></div>
+    <div class="ov-card ov4"><div class="n">4부 · 아이걸음</div>
+      <h4>효과를<br>어떻게 잴까?</h4>
+      <p>중재 전후 아이의 실제 활동 변화를 측정하는 연구용 GPS 앱을 소개합니다. 안드로이드 배포를 시작했습니다.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1.4rem">핵심 메시지: <b style="color:var(--navy)">"문제가 몰린 곳(EHSA)과 바꿀 수 있는 요인(MGTWR)이 서로 맞물린다 —
+    우선순위와 프로그램 내용을 데이터로 정할 수 있고, 효과는 아이걸음으로 잰다."</b></p>
+</section>
+
+<!-- ═══════════ 1부 EHSA ═══════════ -->
+
+<!-- 3. 1부 디바이더 -->
+<section class="slide pdiv pd1">
+  <div class="pnum">1부</div>
+  <h2>발생 핫스팟 분석(EHSA)<br>— 어디가, 언제부터, 얼마나 꾸준히 높은가</h2>
+  <p class="pd-sub">한 해 수치가 아니라 12년의 흐름으로 봅니다. 우연히 한 번 높은 곳과, 꾸준히 높은 곳을 구분합니다.</p>
+  <div class="pd-items"><span>방법 소개</span><span>전국 비만율 핫스팟</span><span>아동수(규모) 핫스팟</span><span>인터랙티브 지도</span><span>후보지 30곳</span></div>
+</section>
+
+<!-- 4. EHSA 방법 -->
+<section class="slide">
+  <div class="s-tag">1부 · 01 METHOD</div>
+  <h2 class="st">EHSA는 무엇을 보나 — "한 해"가 아니라 "흐름"</h2>
+  <ul class="dot" style="font-size:1.02rem">
+    <li>매년 시군구마다 <b>"주변보다 유의하게 높은가"</b>를 점수화 (시공간 핫스팟 통계 Gi*)</li>
+    <li>그렇게 쌓인 <b>13년(2012–2024)의 점수 흐름</b>을 보고 패턴을 분류 — 꾸준한 곳·심해지는 곳·새로 나타난 곳</li>
+    <li>대상: 전국 <b>252개 시군구</b> × 지표 3종(<b>비만율 · 과체중이상율 · 비만 아동수</b>) × 전국/11개 권역 기준</li>
+    <li>보완: 섬 지역 연결 가중, 다중검정 보정(FDR)으로 <b>우연한 핫스팟을 걸러냄</b> — ArcGIS 표준 방식 준용</li>
+  </ul>
+  <div class="pat-grid">
+    <div class="pat"><b><span class="chip" style="background:#67001f"></span>지속 Persistent</b>13년 내내 핫스팟 — 가장 뿌리 깊은 곳</div>
+    <div class="pat"><b><span class="chip" style="background:#b2182b"></span>연속 Consecutive</b>최근 몇 년 연속 핫스팟, 끊김 없음</div>
+    <div class="pat"><b><span class="chip" style="background:#d6604d"></span>강화 Intensifying</b>핫스팟 강도가 해마다 세지는 중</div>
+    <div class="pat"><b><span class="chip" style="background:#f4a582"></span>신규 New</b>2024년에 처음 등장</div>
+    <div class="pat"><b><span class="chip" style="background:#fddbc7;border:1px solid #e2b49a"></span>산발 Sporadic</b>켜졌다 꺼졌다 반복 — 그래도 요주의</div>
+  </div>
+  <p class="tbl-note">차가운 반대 패턴(콜드스팟, 파란 계열)도 같은 방식으로 분류됩니다. 오늘은 핫스팟 중심으로 보고합니다.</p>
+</section>
+
+<!-- 5. 전국 비만율 핫스팟 -->
+<section class="slide">
+  <div class="s-tag">1부 · 02 RESULTS</div>
+  <h2 class="st">전국 비만율 핫스팟 42곳 — 다섯 개의 벨트</h2>
+  <div class="two-col">
+    <div>
+      <img class="ehsa-img" src="../../infant_obesity_ehsa/assets/infant_obesity_maps/ehsa_result/region_national_ehsa.png"
+        alt="전국 비만율 EHSA 지도">
+    </div>
+    <div>
+      <div class="box" style="margin-top:0">
+        <table style="font-size:.85rem">
+          <tr><th>벨트</th><th>대표 시군구</th><th>패턴</th></tr>
+          <tr class="hl"><td>강원 영동</td><td>강릉·평창·정선 + 영월·동해·태백·삼척</td><td>전국 유일 <b>'지속'</b> 3곳 포함</td></tr>
+          <tr><td>충북 남부</td><td>옥천·영동 + 금산(충남)</td><td>산발·연속</td></tr>
+          <tr><td>경북 북부·동해안</td><td>울진·영양·청송·봉화·영덕·안동·포항 북구</td><td>산발 다수 — 수치 최상위권<br>(청송 23.5% · 영양 22.6%)</td></tr>
+          <tr><td>전남 서남해안</td><td>진도·신안·완도·영암·무안·목포·해남</td><td><b>진도 '연속' — 2024년 25.4%<br>전국 최고 수준</b></td></tr>
+          <tr><td>전북 내륙</td><td>순창·부안·정읍·임실 + 고창·무주</td><td>'연속' 밀집</td></tr>
+          <tr><td>제주</td><td>제주시·서귀포시</td><td>산발</td></tr>
+        </table>
+      </div>
+      <ul class="dot" style="font-size:.92rem">
+        <li>252곳 중 <b>핫스팟 42곳</b> (지속 3 · 연속 8 · 신규 3 · 산발 28) — 대부분 <b>농촌·산간·어촌</b></li>
+        <li>수도권·대도시는 오히려 <b>콜드스팟</b>(비만율이 꾸준히 낮은 곳)이 많음 — 뚜렷한 도농 격차</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 규모 핫스팟 -->
+<section class="slide">
+  <div class="s-tag">1부 · 03 RESULTS</div>
+  <h2 class="st">또 하나의 렌즈 — 비만 "아동수" 핫스팟</h2>
+  <p class="lead">비율이 낮아도 아이가 많으면 비만 아동의 <b>절대 수</b>는 많습니다. 규모의 렌즈로 보면 지도가 뒤집힙니다.</p>
+  <div class="two-col">
+    <div>
+      <img class="ehsa-img" src="../../infant_obesity_ehsa/assets/infant_obesity_maps/ehsa_result/region_national_count_ehsa.png"
+        alt="전국 비만 아동수 EHSA 지도">
+    </div>
+    <div>
+      <div class="box" style="margin-top:0">
+        <table style="font-size:.85rem">
+          <tr><th>시군구</th><th class="num">비만 아동수(2024)</th><th>패턴</th></tr>
+          <tr class="hl"><td>화성시</td><td class="num">603명</td><td>강화</td></tr>
+          <tr><td>남양주시</td><td class="num">396명</td><td>연속</td></tr>
+          <tr><td>평택시</td><td class="num">392명</td><td>강화</td></tr>
+          <tr><td>인천 서구 · 시흥시</td><td class="num">각 350명</td><td>지속 · 강화</td></tr>
+          <tr><td>파주시 · 광주시 · 김포시</td><td class="num">292 · 268 · 261명</td><td>연속 · 강화</td></tr>
+          <tr><td>아산시 · 천안 서북구</td><td class="num">241 · 228명</td><td>연속</td></tr>
+        </table>
+      </div>
+      <ul class="dot" style="font-size:.92rem">
+        <li>지속·연속·강화 핫스팟 35곳 = <b>수도권 32 + 충남 천안·아산권 3</b></li>
+        <li>비율 벨트(농촌)와 규모 벨트(수도권)는 <b>겹치지 않는다</b> → 중재 지역 선정에 <b>두 축이 모두 필요</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 인터랙티브 지도 -->
+<section class="slide map-slide" id="ehsaMapSlide">
+  <div class="s-tag">1부 · 04 LIVE MAP</div>
+  <h2 class="st">인터랙티브 지도 — 전국 + 11개 권역, 연도별 재생</h2>
+  <iframe id="ehsaFrame" title="영유아 소아비만 EHSA 웹지도"></iframe>
+  <p class="tbl-note">탭: 전국·수도권·서울·충청권·전라권·경상권·강원·제주 등 12개 · 모드: 연도별 핫스팟(Gi*) / EHSA 패턴 · 지표: 비만율·과체중이상율·아동수 · 연도 슬라이더 2012–2024</p>
+</section>
+
+<!-- 8. 후보지 30곳 -->
+<section class="slide">
+  <div class="s-tag">1부 · 05 SELECTION</div>
+  <h2 class="st">EHSA가 고른 중재 후보지 30곳 — 두 축 + 전략 거점</h2>
+  <div class="axis-grid">
+    <div class="axis-card ax1"><h4>고비율 축</h4><div class="big">16곳</div>
+      <p>비만율·과체중이상율 핫스팟 벨트에서 군집 대표 선정<br>
+      강원 영동 4 · 충청 4 · 전남 2 · 경북 4 · 제주 2<br><b>농촌·산간 중심</b></p></div>
+    <div class="axis-card ax2"><h4>규모 축</h4><div class="big">13곳</div>
+      <p>비만 아동수 핫스팟에서 선정<br>
+      서울 3 · 경기·인천 8 · 충남 2<br><b>수도권·대도시 중심</b> (화성 603명 등)</p></div>
+    <div class="axis-card ax3"><h4>전략 거점</h4><div class="big">1곳</div>
+      <p>원주시 — 도농복합 특성을 살린<br>프로그램 검증·비교 거점<br><b>통계보다 전략적 선택</b></p></div>
+  </div>
+  <div class="box" style="margin-top:1.3rem">
+    <ul class="dot">
+      <li>"꾸준히 높은 곳"(비율)과 "아이가 많은 곳"(규모)을 <b>함께 담은 리스트</b> — 형평과 효율의 균형</li>
+      <li>그런데 이 30곳이 <b>정말 맞는 선택일까?</b> → 독립적인 두 번째 분석(MGTWR)으로 검증 — <b>2·3부</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════ 2부 MGTWR ═══════════ -->
+
+<!-- 9. 2부 디바이더 -->
+<section class="slide pdiv pd2">
+  <div class="pnum">2부</div>
+  <h2>시공간 회귀(MGTWR)<br>— 왜 그 지역이 높은가</h2>
+  <p class="pd-sub">지역환경 요인의 효과가 지역마다, 해마다 어떻게 다른지 직접 추정합니다.</p>
+  <div class="pd-items"><span>자료·변수</span><span>모형 성능</span><span>작동 스케일</span><span>계수 지도</span><span>핵심 결과</span></div>
+</section>
+
+<!-- 10. 자료·변수 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 01 DATA &amp; MODEL</div>
+  <h2 class="st">자료·변수·모형 한눈에</h2>
+  <div class="two-col">
+    <div class="box" style="margin-top:0">
+      <h4>자료</h4>
+      <ul class="dot" style="font-size:.95rem">
+        <li><b>종속변수</b>: 시군구 영유아 비만율·과체중이상율<br>229개 시군구 × 2015–2023 (n=2,061)</li>
+        <li><b>독립변수</b>: KOSIS 21종 후보 → 이론·다중공선성 진단으로 <b>7종</b></li>
+        <li>사전 진단: 모든 연도에서 비만율의 <b>공간 군집성 유의</b>(Moran's <span class="mv">I</span>, p≤0.001) → 공간을 무시하는 회귀는 부적합</li>
+      </ul>
+    </div>
+    <div class="box" style="margin-top:0">
+      <h4>7개 환경 변수 (가설 방향)</h4>
+      <table style="font-size:.88rem">
+        <tr><th>영역</th><th>변수</th><th class="ctr">방향</th></tr>
+        <tr><td>사회경제</td><td>기초생활수급률</td><td class="ctr">+</td></tr>
+        <tr><td rowspan="2">가족·사회</td><td>1인가구비율</td><td class="ctr">+</td></tr>
+        <tr><td>조이혼율</td><td class="ctr">+</td></tr>
+        <tr><td rowspan="2">건조환경</td><td>인구밀도</td><td class="ctr">±</td></tr>
+        <tr><td>아파트비율</td><td class="ctr">−</td></tr>
+        <tr><td>인구 동태</td><td>청년순이동률</td><td class="ctr">−</td></tr>
+        <tr><td>의료 접근</td><td>천명당 의사수</td><td class="ctr">−</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="box">
+    <h4>모형: OLS → GWR → MGWR → GTWR → <span style="color:var(--blue)">MGTWR</span></h4>
+    <p style="font-size:.95rem">단계마다 제약을 하나씩 풉니다 — 계수가 <b>지역마다</b> 다를 수 있게(GWR), <b>변수마다 다른 범위</b>에서 움직이게(MGWR),
+      <b>해마다</b> 달라질 수 있게(GTWR), 그리고 <b>변수별로 공간·시간 스케일을 따로</b> 추정(MGTWR).</p>
+  </div>
+</section>
+
+<!-- 11. 모형 성능 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 02 MODEL COMPARISON</div>
+  <h2 class="st">모형 성능 — 설명력 36% → 75%</h2>
+  <ul class="dot" style="font-size:1.02rem;margin-bottom:.6rem">
+    <li>두 지표 모두 <b>MGTWR가 최종 우위</b> — 잔차의 공간 자기상관도 사실상 해소</li>
+    <li>지역 차이 반영(OLS→GWR)보다 <b>시기 차이 반영(GWR→GTWR)의 개선 폭이 더 컸음</b>
+      — 분석 기간에 비만율 수준 자체가 요동(전국 평균 8.4%→15.6%→11.6%)했기 때문</li>
+  </ul>
+  <div class="two-col">
+    <div class="box" style="margin-top:0"><h4>비만율 모형</h4><table id="tblModelOb"></table></div>
+    <div class="box" style="margin-top:0"><h4>과체중이상율 모형</h4><table id="tblModelOw"></table></div>
+  </div>
+  <p class="tbl-note">AICc는 낮을수록, R²는 높을수록 좋음. 잔차 Moran's <span class="mv">I</span>가 0에 가까우면 공간 패턴을 모형이 다 설명했다는 뜻.</p>
+</section>
+
+<!-- 12. 작동 스케일 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 03 RESULTS</div>
+  <h2 class="st">변수마다 힘이 미치는 범위가 다르다 — 세 유형</h2>
+  <div class="scale-grid">
+    <div class="scale-card sc1"><h4>① 좁은 지역 · 해마다 달라짐</h4>
+      <b>수급률(+) · 조이혼율(+)<br>청년순이동(−) · 아파트(−)</b><br><br>
+      좁은 권역에서, 해마다 다르게 작동<br>→ <b>지역·시기 맞춤 개입 대상</b></div>
+    <div class="scale-card sc2"><h4>② 좁은 지역 · 늘 일정</h4>
+      <b>인구밀도(±)</b><br><br>
+      지역마다 다르지만 9년 내내 일정<br>→ <b>구조적 배경 변수</b></div>
+    <div class="scale-card sc3"><h4>③ 전국 공통</h4>
+      <b>1인가구 · 의사수</b><br><br>
+      어디서나, 어느 해든 같은 효과<br>→ <b>전국 단위 정책 대상</b></div>
+  </div>
+  <details class="box">
+    <summary>읽는 법 — 스케일은 어떻게 재나</summary>
+    <ul class="dot" style="margin-top:.6rem;font-size:.92rem">
+      <li><b><span class="mv">bw</span></b>(공간 범위) = 계수 추정에 빌려 쓰는 이웃 수 — 작으면 좁은 권역에서 움직이는 요인, 크면 사실상 전국 공통</li>
+      <li><b><span class="mv">τ</span></b>(시간 범위) = 다른 연도 정보를 얼마나 차단하는지 — 크면 해마다 달라지는 요인, 0에 가까우면 늘 일정</li>
+    </ul>
+    <div style="margin-top:.6rem"><table id="tblBwt"></table></div>
+  </details>
+  <p class="lead" style="margin-top:.8rem"><b style="color:var(--navy)">요인의 스케일 = 정책의 스케일.</b>
+    ①은 시군구 맞춤 프로그램으로, ③은 전국 제도로 대응하는 것이 맞습니다.</p>
+</section>
+
+<!-- 13. 계수 지도 -->
+<section class="slide map-slide b2" id="mapSlide">
+  <div class="s-tag t2">2부 · 04 LIVE MAP</div>
+  <h2 class="st">로컬 계수 지도 — 어느 지역에서, 어느 해에 유의한가</h2>
+  <div class="ctrl">
+    <button class="dvbtn sel" data-dv="ob">비만율</button>
+    <button class="dvbtn" data-dv="ow">과체중이상율</button>
+    <span class="ctrl-label" style="margin-left:.6rem">변수</span><span id="varBtns" style="display:contents"></span>
+    <input id="sggSearch" list="sggList" placeholder="시군구 검색">
+    <datalist id="sggList"></datalist>
+  </div>
+  <div id="yearRow">
+    <button id="playBtn">▶ 재생</button>
+    <button class="ystep" id="prevYear">◀</button>
+    <input type="range" id="yearSlider" min="2015" max="2023" step="1" value="2015">
+    <button class="ystep" id="nextYear">▶</button>
+    <span id="yearLabel">2015</span>
+    <div id="legend" style="margin-left:.8rem"><span id="legMin"></span><div id="legbar"></div><span id="legMax"></span>
+      <span class="leg-gray"></span><span>비유의</span></div>
+  </div>
+  <div id="map"></div>
+  <div id="varDesc"></div>
+</section>
+
+<!-- 14. 2부 요약 -->
+<section class="slide b2">
+  <div class="s-tag t2">2부 · 05 SUMMARY</div>
+  <h2 class="st">2부 요약 — 무엇이, 어디서, 어떻게</h2>
+  <div class="two-col">
+    <div>
+      <ul class="dot" style="font-size:1rem">
+        <li><b>위험 요인</b>: 기초생활수급률(+) · 조이혼율(+)<br>
+          <span style="color:var(--muted);font-size:.9rem">저소득·가족구조 취약 지역에서 비만율이 높음</span></li>
+        <li><b>보호 요인</b>: 아파트비율(−) · 청년 유입(−) · 의사수(−)<br>
+          <span style="color:var(--muted);font-size:.9rem">주거·활동 환경과 지역 활력이 좋은 곳은 낮음</span></li>
+        <li><b>코로나19는 격차를 증폭</b> — 평균 수준은 회복 중이지만,
+          환경 요인의 기울기는 <b>강해진 채 유지</b> (아직 닫히지 않은 격차)</li>
+        <li><b>전국 평균 회귀(OLS)의 함정 확인</b> — 아파트비율은 전국 평균으로는 +로 보이지만,
+          지역별로 보면 대부분 <b>−(보호)</b> — 방향까지 뒤집힘</li>
+      </ul>
+    </div>
+    <div class="box" style="margin-top:0">
+      <h4>코로나 전(15–19) → 후(20–23) 평균 계수 변화</h4>
+      <table id="tblCovid"></table>
+      <p class="tbl-note">굵은 음영 = 변화 큰 변수. 시기 가변 4개 변수 모두 코로나 이후 효과가 강해짐.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 3부 교차 ═══════════ -->
+
+<!-- 15. 3부 디바이더 -->
+<section class="slide pdiv pd3">
+  <div class="pnum">3부</div>
+  <h2>EHSA × MGTWR 교차 검토<br>— 어디부터, 무엇을 바꿀 것인가</h2>
+  <p class="pd-sub">후보지 30곳에서 실제로 어떤 환경 요인이 작용하는지 확인하고, 우선순위와 프로그램 방향을 정합니다.</p>
+  <div class="pd-items"><span>왜 함께 보나</span><span>핵심 발견</span><span>우선순위 지도</span><span>그룹 제안</span><span>요인별 방향</span></div>
+</section>
+
+<!-- 16. 왜 함께 보나 -->
+<section class="slide b3">
+  <div class="s-tag t3">3부 · 01 WHY</div>
+  <h2 class="st">왜 함께 보나 — 두 분석의 역할이 다르다</h2>
+  <div class="vs-grid">
+    <div class="vs-card">
+      <h4 style="color:var(--accent);font-weight:900;margin-bottom:.5rem">EHSA — 어디가?</h4>
+      <ul class="dot" style="font-size:.98rem">
+        <li>비만 문제가 <b>어느 지역에 꾸준히 몰려 있는지</b> 알려줍니다</li>
+        <li>비만율·과체중이상율·아동수의 12년 시공간 군집</li>
+        <li>→ 후보지 30곳 선정의 근거</li>
+      </ul>
+    </div>
+    <div class="vs-mid">×</div>
+    <div class="vs-card blue">
+      <h4 style="color:var(--blue);font-weight:900;margin-bottom:.5rem">MGTWR — 왜? 무엇을?</h4>
+      <ul class="dot" style="font-size:.98rem">
+        <li>그 지역에서 <b>어떤 환경 요인이 작용하는지</b> 보여줍니다</li>
+        <li>지역·시기별로 유의한 요인 (수급률·이혼율·청년이동·아파트)</li>
+        <li>→ 무엇을 바꿀지, 프로그램 내용의 근거</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box" style="margin-top:1.4rem">
+    <ul class="dot">
+      <li>문제가 몰린 곳(EHSA) × 바꿀 수 있는 요인(MGTWR) = <b>우선순위와 프로그램 설계를 한 번에</b></li>
+      <li>판단 기준: 보정된 유의성 검정으로 <b>2020–23년 4년 중 절반 넘게 유의</b>하면 그 지역의 <b>"꾸준한 요인"</b>으로 봄</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 17. 핵심 발견 -->
+<section class="slide b3">
+  <div class="s-tag t3">3부 · 02 KEY FINDING</div>
+  <h2 class="st">선정 축과 환경 요인이 정확히 맞물린다</h2>
+  <div class="box">
+    <table>
+      <tr><th>선정 축</th><th>꾸준히 유의한 요인 (MGTWR)</th><th>의미</th></tr>
+      <tr><td><b>고비율 축</b> 16곳<br>(농촌·산간)</td>
+        <td>아파트(−) <b>16곳 전부</b> · 수급률(+) 10곳 · 청년이동(−) 6곳</td>
+        <td>저소득·지역 쇠퇴·주거환경이 실제로 작용<br>→ <b>환경을 바꾸는 중재의 여지가 큼</b></td></tr>
+      <tr><td><b>규모 축</b> 13곳<br>(수도권·대도시)</td>
+        <td>이혼율(+) <b>13곳 전부 — 사실상 하나의 요인</b></td>
+        <td>가족구조 경로가 공통<br>→ <b>표준 프로그램을 크게 적용</b></td></tr>
+      <tr><td><b>전략 거점</b> 원주</td>
+        <td>꾸준한 요인 1개(청년이동−) · 2023년 유의 요인 없음</td>
+        <td>통계 근거는 약함<br>→ <b>검증·비교 거점으로 활용</b></td></tr>
+    </table>
+  </div>
+  <ul class="dot" style="margin-top:1rem">
+    <li>서로 독립적인 두 분석이 <b>같은 공간 구도로 수렴</b> → 후보지의 두 축 구성은 타당</li>
+    <li>여기에 <b>"요인이 몇 개나 겹치는가"</b>를 더하면 우선순위가 나온다 →</li>
+  </ul>
+</section>
+
+<!-- 18. 우선순위 지도 -->
+<section class="slide map-slide b3" id="prioMapSlide">
+  <div class="s-tag t3">3부 · 03 MAP</div>
+  <h2 class="st">후보지 30곳 — 우선순위 그룹 지도</h2>
+  <div class="mleg">
+    <span><span class="sw" style="background:#8d2f1f"></span><b>A</b> 최우선 (요인 3개)</span>
+    <span><span class="sw" style="background:#c96a45"></span><b>A′</b> 우선 (요인 2개)</span>
+    <span><span class="sw" style="background:#1e5f84"></span><b>B</b> 규모 효율 (이혼율 하나)</span>
+    <span><span class="sw" style="background:#6b7d8f"></span><b>C</b> 요인 하나·전략</span>
+    <span><span class="sw" style="background:#e8e8e8"></span>비후보</span>
+    <span style="color:var(--muted)">지역 클릭 → 축·요인 팝업</span>
+  </div>
+  <div id="mapPrio"></div>
+</section>
+
+<!-- 19. 우선순위 그룹 -->
+<section class="slide b3">
+  <div class="s-tag t3">3부 · 04 PRIORITY</div>
+  <h2 class="st">우선순위 제안 — 문제의 크기 × 겹치는 요인 수</h2>
+  <div class="g-grid">
+    <div class="g-card gA"><h4>A 최우선 (5곳)</h4>
+      옥천 · 영동 · 영월<br>울진 · 영양<br><br>요인 3개가 동시에 작용<br><b>복합 취약지</b></div>
+    <div class="g-card gAp"><h4>A′ 우선 (9곳)</h4>
+      강릉 · 정선 · 평창 · 목포 · 무안<br>제주시 · 서귀포 · 아산 · 천안<br><br>요인 2개<br><b>저소득+주거 / 가족+주거</b></div>
+    <div class="g-card gB"><h4>B 규모 효율 (11곳)</h4>
+      수도권 규모 축<br>(화성 603명 · 평택 · 시흥 우선)<br><br>이혼율 하나가 공통<br><b>표준 프로그램 대량 적용</b></div>
+    <div class="g-card gC"><h4>C 요인 하나·전략 (5곳)</h4>
+      보령 · 서천 · 청송 · 포항 북구<br>+ 원주(전략)<br><br>아파트(−) 하나<br><b>원주는 검증 거점</b></div>
+  </div>
+  <p class="tbl-note" style="margin-top:.8rem">그룹 기준: 꾸준한 요인 3개=A · 2개=A′ · 규모 축의 1개=B · 그 외=C. 기준은 협의로 조정 가능(별첨 엑셀).</p>
+</section>
+
+<!-- 20. 요인별 개입 방향 -->
+<section class="slide b3">
+  <div class="s-tag t3">3부 · 05 INTERVENTION</div>
+  <h2 class="st">요인별 개입 방향 — 요인이 프로그램의 내용을 정한다</h2>
+  <div class="box">
+    <table>
+      <tr><th>꾸준한 요인</th><th>해당 후보지</th><th>개입 방향</th></tr>
+      <tr><td><b>기초생활수급률(+)</b></td><td>강원 영동권 4 · 전남 2 · 울진·영양 · 제주 2</td>
+        <td>저소득 가정 <b>영양·신체활동 지원</b> (바우처·급식 질) 상시 운영</td></tr>
+      <tr><td><b>조이혼율(+)</b></td><td>수도권 13곳 전부 + 충청 북부(아산·천안·옥천·영동)</td>
+        <td><b>한부모·맞벌이 가정</b> 아동 돌봄·생활습관 프로그램</td></tr>
+      <tr><td><b>청년순이동(−)</b></td><td>옥천·영동·영월·울진·청송·영양</td>
+        <td><b>지역활력·정주여건</b> 사업과 아동건강 사업 연계</td></tr>
+      <tr><td><b>아파트비율(−)</b></td><td>고비율 축 전부</td>
+        <td><b>비아파트 주거지</b> 중심 놀이·활동 공간 조성</td></tr>
+    </table>
+  </div>
+  <p class="lead" style="margin-top:.8rem">같은 "비만율 높은 지역"이라도 작용하는 요인이 다르면 <b style="color:var(--navy)">프로그램의 내용이 달라져야 합니다.</b></p>
+</section>
+
+<!-- 21. 추가 검토 + 소결 -->
+<section class="slide b3">
+  <div class="s-tag t3">3부 · 06 GAPS &amp; WRAP-UP</div>
+  <h2 class="st">추가 검토 두 곳, 그리고 3부의 결론</h2>
+  <div class="two-col">
+    <div class="box" style="margin-top:0;border-left:.35rem solid var(--accent)">
+      <h4>진도군 (전남)</h4>
+      <ul class="dot" style="font-size:.92rem">
+        <li>2024년 비만율 <b>25.4% — 전국 최고 수준</b>, EHSA '연속' 핫스팟</li>
+        <li>꾸준한 요인: 수급률(+) · 아파트(−)</li>
+        <li>목포·무안이 군집 대표라면 규칙상 빠질 수 있으나 <b>개별 검토 가치</b></li>
+      </ul>
+    </div>
+    <div class="box" style="margin-top:0;border-left:.35rem solid var(--accent)">
+      <h4>보은군 (충북)</h4>
+      <ul class="dot" style="font-size:.92rem">
+        <li>전국에서 유일하게 <b>요인 4개가 모두 꾸준히 유의</b> + 비만율 16.7%</li>
+        <li>수급률+ · 이혼율+ · 청년이동− · 아파트−</li>
+        <li>같은 충북 남부 군집의 옥천과 <b>교체 또는 추가</b> 검토</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box" style="background:#f7f0f5;border-color:#e3d0dd">
+    <p style="font-family:'Noto Serif KR',serif;font-size:1.25rem;font-weight:900;color:var(--navy);line-height:1.6">
+      "EHSA가 고른 곳에서 MGTWR의 요인이 실제로 작용한다 —<br>
+      <span style="color:var(--plum)">두 축 선정은 타당하고, 요인이 우선순위와 프로그램 내용을 정해 준다.</span>"</p>
+  </div>
+</section>
+
+<!-- ═══════════ 4부 아이걸음 ═══════════ -->
+
+<!-- 22. 4부 디바이더 -->
+<section class="slide pdiv pd4">
+  <div class="pnum">4부</div>
+  <h2>이동기록 앱 '아이걸음'<br>— 중재 효과를 어떻게 잴 것인가</h2>
+  <p class="pd-sub">어디에(1부) · 왜(2부) · 무엇을(3부)까지 왔습니다. 남은 질문은 하나 — "프로그램이 실제로 아이의 하루를 바꾸는가".</p>
+  <div class="pd-items"><span>왜 이동기록인가</span><span>앱 소개</span><span>사용 흐름</span><span>배포 현황</span></div>
+</section>
+
+<!-- 23. 왜 이동기록인가 -->
+<section class="slide b4">
+  <div class="s-tag t4">4부 · 01 WHY</div>
+  <h2 class="st">왜 이동기록인가 — 설문이 아니라 실측</h2>
+  <ul class="dot" style="font-size:1.05rem;max-width:58rem">
+    <li style="margin-bottom:.9rem">중재 프로그램의 실증에는 <b>아이의 실제 생활 변화</b>를 재는 도구가 필요합니다
+      — 기억에 의존하는 설문은 아이의 하루를 놓치기 쉽습니다</li>
+    <li style="margin-bottom:.9rem">아이걸음은 <b>3초 간격 GPS</b>로 하루의 이동을 통째로 기록합니다
+      → <b>이동 거리 · 활동 반경 · 바깥 활동 시간</b>을 객관적으로 산출</li>
+    <li style="margin-bottom:.9rem">2·3부에서 <b>주거·활동 환경(아파트비율−)</b>이 꾸준한 요인으로 확인됐습니다
+      — 아이가 <b>실제로 어디서 얼마나 움직이는지</b>가 프로그램 평가의 핵심 지표가 됩니다</li>
+    <li>중재 <b>전·후 비교</b>, 지역 간 비교(중재지 vs 비교지)에 그대로 활용</li>
+  </ul>
+  <div class="box" style="max-width:58rem">
+    <h4>수집 자료</h4>
+    <p style="font-size:.95rem">위치 궤적(GPX·KML) — 기기 안에만 저장되며, 보호자가 '보내기'를 누른 경우에만 연구팀에 전달됩니다.</p>
+  </div>
+</section>
+
+<!-- 24. 앱 소개 -->
+<section class="slide b4">
+  <div class="s-tag t4">4부 · 02 THE APP</div>
+  <h2 class="st">아이걸음 — 버튼 하나로 기록되는 아이의 하루</h2>
+  <div class="two-col" style="grid-template-columns:1.15fr 1fr;align-items:start">
+    <div>
+      <div class="app-hero">
+        <img src="./app_assets/icon.png" alt="아이걸음 아이콘">
+        <div><div class="nm">아이걸음</div>
+          <div class="ver">v1.1.2 · 51MB · Android 8.0 이상 (2026.07 배포)</div></div>
+      </div>
+      <ul class="dot" style="font-size:1rem;margin-top:1rem">
+        <li><b>참가자 번호 입력 → 기록 시작</b> — 조작은 이게 전부</li>
+        <li>화면이 꺼져도, 다른 앱을 써도 <b>하루 종일 자동 기록</b> (배터리 사용 15~30%)</li>
+        <li>기록은 <b>기기에만 저장</b> — 인터넷 자동 전송 없음</li>
+        <li>기록 종료 후 <b>카카오톡·메일로 보내기</b> (GPX·KML·ZIP)</li>
+        <li>삼성 등 기종별 배터리 설정까지 <b>안내 카드로 내장</b></li>
+      </ul>
+    </div>
+    <div class="shots" style="margin-top:0">
+      <div class="shot"><div class="frame"><img src="./app_assets/shot_splash.png" alt="시작 화면"></div><div class="cap">시작 화면</div></div>
+      <div class="shot"><div class="frame"><img src="./app_assets/shot_home.png" alt="홈 화면"></div><div class="cap">버튼 하나로 시작</div></div>
+      <div class="shot"><div class="frame"><img src="./app_assets/shot_rec.png" alt="기록 중"></div><div class="cap">기록 중 — 실시간 확인</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 25. 사용 흐름·배포 -->
+<section class="slide b4">
+  <div class="s-tag t4">4부 · 03 FLOW &amp; ROLLOUT</div>
+  <h2 class="st">하루 세 번의 터치, 그리고 배포 현황</h2>
+  <div class="two-col" style="grid-template-columns:1.4fr 1fr">
+    <div>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div class="em">🌅</div><h4>아침 — 기록 시작</h4>
+          <p>집을 나서기 전 앱을 열고<br><b>기록 시작</b> 버튼</p></div>
+        <div class="step"><div class="n">2</div><div class="em">🏫</div><h4>하루 종일 — 자동</h4>
+          <p>아무것도 안 해도 됩니다<br>화면이 꺼져도 계속 기록</p></div>
+        <div class="step"><div class="n">3</div><div class="em">🌙</div><h4>저녁 — 종료·보내기</h4>
+          <p>귀가 후 <b>기록 종료</b> →<br><b>보내기</b>로 연구팀 전송</p></div>
+      </div>
+      <div class="box">
+        <h4>배포 현황</h4>
+        <ul class="dot" style="font-size:.92rem">
+          <li><b>안드로이드</b>: APK 배포 중 — 다운로드 페이지 + 설치 매뉴얼 + FAQ + 참가자 안내문 완비</li>
+          <li><b>아이폰(iOS)</b>: 개발 완료, TestFlight 배포 준비 중</li>
+        </ul>
+      </div>
+      <div class="privacy"><span>🔒</span>
+        <span><b>개인정보</b> — 위치 기록은 휴대폰 안에만 저장되며 자동 전송되지 않습니다.
+        보호자가 직접 '보내기'를 눌렀을 때만 연구팀에 전달되고, 연구 목적으로만 사용 후 폐기합니다.</span></div>
+    </div>
+    <div class="box" style="margin-top:0;text-align:center">
+      <h4>다운로드</h4>
+      <div class="qr-box">
+        <img src="./app_assets/qr.png" alt="다운로드 QR">
+        <div class="cap">휴대폰 카메라로 스캔 →<br>다운로드 페이지</div>
+      </div>
+      <p style="font-size:.85rem;color:var(--muted);margin-top:.8rem">건국대 · 국립공주대 · 순천향대<br>연구단 공동 활용</p>
+    </div>
+  </div>
+</section>
+
+<!-- 26. 마무리 -->
+<section class="slide" id="conclSlide">
+  <div class="s-tag">CLOSING</div>
+  <h2 class="st">오늘 드리는 제안</h2>
+  <p class="concl">"어디에서 — <span style="color:var(--accent)">EHSA가 고른 30곳</span>,
+    무엇을 — <span style="color:var(--blue)">지역별 요인에 맞춘 프로그램</span>,<br>
+    어떻게 확인하나 — <span style="color:var(--green)">아이걸음으로 실측</span>."</p>
+  <ul class="dot" style="font-size:1.05rem;max-width:56rem">
+    <li><b>후보지 30곳의 두 축(고비율·규모) 구성은 타당</b> — 독립적인 두 분석이 같은 결론으로 수렴</li>
+    <li>투입 순서 제안: <b>A 최우선 5곳</b>(옥천·영동·영월·울진·영양) → A′ 9곳 → 규모 축 11곳</li>
+    <li>추가 검토 2곳: <b>진도</b>(비만율 전국 최고 수준) · <b>보은</b>(요인 4개 모두 유의) / 원주는 검증 거점</li>
+    <li>프로그램 내용은 <b>지역별 꾸준한 요인</b>에 맞춰 설계 — 저소득 지원 · 가족 돌봄 · 활동 공간</li>
+    <li><b>아이걸음으로 중재 전후 활동 변화 측정</b> — 실증 데이터 수집을 시작합니다</li>
+  </ul>
+  <p style="margin-top:1.6rem;font-size:.92rem;color:var(--muted)">
+    더 보기: <a href="./slides.html">MGTWR 연구 발표</a> · <a href="./region_slides.html">교차 검토 상세</a> ·
+    <a href="./academic.html">학술 스토리맵</a> · <a href="../../infant_obesity_ehsa/index.html">EHSA 인터랙티브 지도</a></p>
+</section>
+
+</div>
+
+<div id="nav">
+  <button id="fsBtn">⛶ 전체화면</button>
+  <span id="pageNum">1 / 26</span>
+  <button id="prevSlide">←</button>
+  <button id="nextSlide">→</button>
+</div>
+<div class="hint">← → 방향키 · F 전체화면 · 지도 조작 후에는 지도 밖을 한 번 클릭</div>
+
+<script>
+/*__DATA__*/
+const VLAB={intercept:"절편",welfare_rate:"기초생활수급률",single_hh:"1인가구비율",
+ divorce_rate:"조이혼율",log_pop_density:"인구밀도",youth_net_mig:"청년순이동률",
+ doctors:"의사수",apt_ratio:"아파트비율"};
+const VDESC={
+ intercept:"환경 변수로 설명되지 않는 지역 기저 위험 — 연도 재생으로 '코로나 산' 확인.",
+ welfare_rate:"저소득 효과(+): 강원 영동·전남 남해안·제주에 집중.",
+ single_hh:"전국 공통 변수 — 유의 지역이 드묾(그 자체가 발견).",
+ divorce_rate:"가족구조 효과(+): 수도권–강원 벨트, 해마다 강해짐.",
+ log_pop_density:"부호가 지역에 따라 갈리는 유일한 변수(도농 상이).",
+ youth_net_mig:"지역활력 효과(−): 영남 내륙 인구 유출 지역에 집중.",
+ doctors:"약한 보호효과(−), 전국 공통.",
+ apt_ratio:"주거환경 보호효과(−): 남부·동부 광역, 해마다 강해짐."};
+const CAND={"33530":{"nm":"옥천군","axis":"고비율(양지표)","grp":"A","drv":"이혼율+, 청년이동−, 아파트−"},"33540":{"nm":"영동군","axis":"고비율(양지표)","grp":"A","drv":"이혼율+, 청년이동−, 아파트−"},"34040":{"nm":"아산시","axis":"규모","grp":"Ap","drv":"이혼율+, 아파트−"},"34010":{"nm":"천안시 서북구","axis":"규모","grp":"Ap","drv":"이혼율+, 아파트−"},"34030":{"nm":"보령시","axis":"고비율(과체중)","grp":"C","drv":"아파트−"},"34540":{"nm":"서천군","axis":"고비율(과체중)","grp":"C","drv":"아파트−"},"32030":{"nm":"강릉시","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"32550":{"nm":"정선군","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"32540":{"nm":"평창군","axis":"고비율(비만)","grp":"Ap","drv":"수급률+, 아파트−"},"32530":{"nm":"영월군","axis":"고비율(비만)","grp":"A","drv":"수급률+, 청년이동−, 아파트−"},"32020":{"nm":"원주시","axis":"전략(도농복합)","grp":"C","drv":"청년이동−"},"11160":{"nm":"강서구","axis":"규모","grp":"B","drv":"이혼율+"},"11170":{"nm":"구로구","axis":"규모","grp":"B","drv":"이혼율+"},"11110":{"nm":"노원구","axis":"규모","grp":"B","drv":"이혼율+"},"31240":{"nm":"화성시","axis":"규모","grp":"B","drv":"이혼율+"},"31130":{"nm":"남양주시","axis":"규모","grp":"B","drv":"이혼율+"},"31070":{"nm":"평택시","axis":"규모","grp":"B","drv":"이혼율+"},"23080":{"nm":"인천 서구","axis":"규모","grp":"B","drv":"이혼율+"},"31150":{"nm":"시흥시","axis":"규모","grp":"B","drv":"이혼율+"},"23050":{"nm":"인천 남동구","axis":"규모","grp":"B","drv":"이혼율+"},"23060":{"nm":"인천 부평구","axis":"규모","grp":"B","drv":"이혼율+"},"31050":{"nm":"부천시 소사구","axis":"규모","grp":"B","drv":"이혼율+"},"36010":{"nm":"목포시","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"36620":{"nm":"무안군","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"37620":{"nm":"울진군","axis":"고비율(양지표)","grp":"A","drv":"수급률+, 청년이동−, 아파트−"},"37530":{"nm":"청송군","axis":"고비율(양지표)","grp":"C","drv":"아파트−"},"37540":{"nm":"영양군","axis":"고비율(양지표)","grp":"A","drv":"수급률+, 청년이동−, 아파트−"},"37010":{"nm":"포항시 북구","axis":"고비율(양지표)","grp":"C","drv":"아파트−"},"39010":{"nm":"제주시","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"},"39020":{"nm":"서귀포시","axis":"고비율(양지표)","grp":"Ap","drv":"수급률+, 아파트−"}};
+const GRPCOLOR={A:'#8d2f1f',Ap:'#c96a45',B:'#1e5f84',C:'#6b7d8f'};
+const GRPLABEL={A:'A 최우선',Ap:'A′ 우선',B:'B 규모 효율',C:'C 요인 하나·전략'};
+
+/* ── 내비 ── */
+const deck=document.getElementById('deck');
+const slides=[...document.querySelectorAll('.slide')];
+function curIdx(){return Math.round(deck.scrollLeft/innerWidth);}
+function setProgress(i){document.getElementById('progress').style.width=((i+1)/slides.length*100)+"%";
+ document.getElementById('pageNum').textContent=(i+1)+" / "+slides.length;}
+function go(i){i=Math.max(0,Math.min(slides.length-1,i));
+ deck.scrollTo({left:i*innerWidth,behavior:'auto'});setProgress(i);
+ if(slides[i].id==='mapSlide'&&window._map){setTimeout(()=>window._map.invalidateSize(),60);}
+ if(slides[i].id==='prioMapSlide'&&window._mapP){setTimeout(()=>window._mapP.invalidateSize(),60);}}
+document.getElementById('nextSlide').onclick=()=>go(curIdx()+1);
+document.getElementById('prevSlide').onclick=()=>go(curIdx()-1);
+document.getElementById('fsBtn').onclick=()=>{
+ if(document.fullscreenElement){document.exitFullscreen();}else{document.documentElement.requestFullscreen();}};
+document.addEventListener('keydown',e=>{
+ if(e.target.tagName==='INPUT')return;
+ if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(curIdx()+1);}
+ else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(curIdx()-1);}
+ else if(e.key==='Home'){go(0);}
+ else if(e.key==='f'||e.key==='F'){document.getElementById('fsBtn').onclick();}});
+deck.addEventListener('scroll',()=>setProgress(curIdx()),{passive:true});
+addEventListener('resize',()=>go(curIdx()));
+
+/* ── EHSA iframe: 로드 후 지연 주입(초기 로딩 가볍게) ── */
+setTimeout(()=>{document.getElementById('ehsaFrame').src='../../infant_obesity_ehsa/index.html';},1500);
+
+/* ── 계수 지도 (2부) ── */
+let dv="ob",curVar="welfare_rate",curYear=2015,playing=null;
+const STOPS=[[33,102,172],[103,169,207],[209,229,240],[247,247,247],[253,219,199],[239,138,98],[178,24,43]];
+function colorOf(v,vmax){let t=Math.max(-1,Math.min(1,v/vmax))*0.5+0.5;
+ const p=t*(STOPS.length-1),i=Math.min(Math.floor(p),STOPS.length-2),f=p-i;
+ const c=STOPS[i].map((a,k)=>Math.round(a+(STOPS[i+1][k]-a)*f));return `rgb(${c[0]},${c[1]},${c[2]})`;}
+const map=L.map('map',{scrollWheelZoom:false,attributionControl:false,zoomControl:true}).setView([36.2,127.9],7);
+window._map=map;
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{opacity:.9}).addTo(map);
+const canvasR=L.canvas({padding:0.4});
+let layer=null;
+function styleOf(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
+ const b=(DATA.coef[dv][curVar][s]||[])[yi],ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
+ return{weight:.7,color:"#ffffff",fillOpacity:.92,
+  fillColor:(b===undefined)?"#e8e8e8":(ok?colorOf(b,DATA.vmax[dv][curVar]):"#e8e8e8")};}
+function popup(f){const s=f.properties.sgg,yi=DATA.years.indexOf(curYear);
+ const b=(DATA.coef[dv][curVar][s]||[])[yi],ok=(DATA.sig[dv][curVar][s]||"")[yi]==="1";
+ return `<div class="popup-name">${DATA.names[s]||s}</div>${VLAB[curVar]} · ${curYear}<br>
+  β = <b>${b===undefined?"-":b.toFixed(3)}</b> ${ok?'<b style="color:#b2182b">(유의)</b>':'<span style="color:#888">(비유의)</span>'}`;}
+function draw(){if(layer)layer.remove();
+ layer=L.geoJSON(DATA.geo,{renderer:canvasR,style:styleOf,onEachFeature:(f,l)=>{l.bindPopup(popup(f));}}).addTo(map);
+ const vm=DATA.vmax[dv][curVar];
+ document.getElementById('legMin').textContent="-"+vm;
+ document.getElementById('legMax').textContent="+"+vm;
+ document.getElementById('varDesc').innerHTML=`<b>${VLAB[curVar]}</b> — ${VDESC[curVar]}`;}
+const vb=document.getElementById('varBtns');
+DATA.vars.forEach(v=>{const b=document.createElement('button');
+ b.className='vbtn'+(v===curVar?' sel':'');b.textContent=VLAB[v];b.dataset.v=v;
+ b.onclick=()=>{curVar=v;document.querySelectorAll('.vbtn').forEach(x=>x.classList.toggle('sel',x.dataset.v===v));draw();};
+ vb.appendChild(b);});
+document.querySelectorAll('.dvbtn').forEach(b=>b.onclick=()=>{dv=b.dataset.dv;
+ document.querySelectorAll('.dvbtn').forEach(x=>x.classList.toggle('sel',x===b));draw();});
+const slider=document.getElementById('yearSlider');
+function setYear(y){curYear=Math.max(2015,Math.min(2023,y));slider.value=curYear;
+ document.getElementById('yearLabel').textContent=curYear;draw();}
+slider.oninput=()=>setYear(+slider.value);
+document.getElementById('prevYear').onclick=()=>setYear(curYear-1);
+document.getElementById('nextYear').onclick=()=>setYear(curYear+1);
+document.getElementById('playBtn').onclick=function(){
+ if(playing){clearInterval(playing);playing=null;this.textContent="▶ 재생";return;}
+ this.textContent="⏸ 정지";
+ setYear(2015);
+ playing=setInterval(()=>{
+  if(curYear>=2023){clearInterval(playing);playing=null;
+   document.getElementById('playBtn').textContent="▶ 재생";return;}
+  setYear(curYear+1);},1200);};
+const dl=document.getElementById('sggList'),nameToSgg={};
+Object.entries(DATA.names).forEach(([s,nm])=>{nameToSgg[nm]=s;
+ const o=document.createElement('option');o.value=nm;dl.appendChild(o);});
+document.getElementById('sggSearch').addEventListener('change',function(){
+ const s=nameToSgg[this.value];if(s&&layer){layer.eachLayer(l=>{
+  if(l.feature.properties.sgg===s){map.fitBounds(l.getBounds().pad(1.2));l.openPopup();}});}});
+draw();
+
+/* ── 우선순위 지도 (3부) ── */
+const mapP=L.map('mapPrio',{scrollWheelZoom:false,attributionControl:false}).setView([36.2,127.9],7);
+window._mapP=mapP;
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{opacity:.9}).addTo(mapP);
+const canvasP=L.canvas({padding:0.4});
+L.geoJSON(DATA.geo,{renderer:canvasP,
+ style:f=>{const c=CAND[f.properties.sgg];
+  return{weight:.7,color:'#ffffff',fillOpacity:.92,
+   fillColor:c?GRPCOLOR[c.grp]:'#e8e8e8'};},
+ onEachFeature:(f,l)=>{const c=CAND[f.properties.sgg];
+  const nm=(DATA.names&&DATA.names[f.properties.sgg])||f.properties.sgg;
+  if(c){l.bindPopup(`<div class="popup-name">${c.nm}</div>${GRPLABEL[c.grp]} · ${c.axis}<br>꾸준한 요인: ${c.drv}`);}
+  else{l.bindPopup(`<div class="popup-name">${nm}</div>비후보 지역`);}
+  l.on('mouseover',()=>l.setStyle({weight:2,color:'#8d5c83'}));
+  l.on('mouseout',()=>l.setStyle({weight:.7,color:'#ffffff'}));}}).addTo(mapP);
+
+/* ── 표 ── */
+function buildTables(){
+ const M=DATA.models,mc=DATA.modelcmp;
+ const mk=d=>{let h="<tr><th>모형</th><th class='num'>AICc</th><th class='num'>R²</th><th class='num'>잔차 Moran's <i class='mv'>I</i></th></tr>";
+  M.forEach((m,i)=>{h+=`<tr${m==='MGTWR'?" class='hl'":""}><td>${m}</td>
+   <td class='num'>${mc[d].aicc[i].toFixed(1)}</td><td class='num'>${mc[d].r2[i].toFixed(3)}</td>
+   <td class='num'>${DATA.moran[d][i].toFixed(3)}</td></tr>`;});
+  return h;};
+ document.getElementById('tblModelOb').innerHTML=mk('ob');
+ document.getElementById('tblModelOw').innerHTML=mk('ow');
+ let g="<tr><th>변수</th><th class='num'><i class='mv'>bw</i>(비만율)</th><th class='num'><i class='mv'>τ</i></th><th class='num'><i class='mv'>bw</i>(과체중+)</th><th class='num'><i class='mv'>τ</i></th></tr>";
+ DATA.vars.forEach(v=>{const a=DATA.bwt.ob[v],b=DATA.bwt.ow[v];
+  g+=`<tr><td>${VLAB[v]}</td><td class='num'>${a.bw}</td><td class='num'>${a.tau}</td>
+  <td class='num'>${b.bw}</td><td class='num'>${b.tau}</td></tr>`;});
+ document.getElementById('tblBwt').innerHTML=g;
+ let c="<tr><th>변수</th><th class='num'>이전</th><th class='num'>이후</th><th class='num'>변화량</th></tr>";
+ DATA.vars.forEach(v=>{const d2=DATA.covid[v],del=d2.post-d2.pre;
+  c+=`<tr${Math.abs(del)>0.03?" class='hl'":""}><td>${VLAB[v]}</td>
+  <td class='num'>${d2.pre.toFixed(3)}</td><td class='num'>${d2.post.toFixed(3)}</td>
+  <td class='num'>${del>0?"+":""}${del.toFixed(3)}</td></tr>`;});
+ document.getElementById('tblCovid').innerHTML=c;}
+buildTables();
+go(0);
+</script>
+</body>
+</html>
